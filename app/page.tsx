@@ -281,6 +281,47 @@ export default function HomePage() {
 
   </div>
 </section>
+{/* ================= ABOUT FOUNDER ================= */}
+<section className="py-16 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <h2 className="text-4xl font-bold text-center mb-12">
+      About Our Founder
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+
+      {/* Founder Image */}
+      <div className="flex justify-center">
+        <img
+          src="/founder.jpg"   // <-- yaha apni founder ki image ka naam dalna
+          alt="Founder"
+          className="rounded-2xl shadow-xl w-[400px] h-auto object-cover"
+        />
+      </div>
+
+      {/* Founder Description */}
+      <div>
+        <h3 className="text-2xl font-bold mb-6 text-blue-700">
+          Dr. Shilpi Gupta 
+        </h3>
+
+        <p className="text-gray-600 leading-relaxed mb-4">
+          Our founder brings years of industry experience and a strong vision
+          to transform businesses through innovation and strategic execution.
+        </p>
+
+        <p className="text-gray-600 leading-relaxed">
+          With a passion for excellence and commitment to quality, he has
+          successfully led multiple projects and built a trusted brand
+          recognized for delivering premium solutions.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-blue-900 text-white py-16 text-center">
