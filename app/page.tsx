@@ -1,332 +1,193 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
-export default function HomePage() {
-  const [count, setCount] = useState(0);
+export default function Home() {
+  const words = [
+    "Elevating Lives",
+    "Elevating Skills",
+    "Elevating Performance",
+    "Elevating Business",
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    let start = 0;
-    const end = 98;
-    let duration = 1500;
-    let stepTime = 30;
-    let step = Math.ceil(end / (duration / stepTime));
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        setFade(true);
+      }, 400);
+    }, 2500);
 
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
-      }
-      setCount(start);
-    }, stepTime);
-
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <main className="pt-[104px]">
+    <main className="overflow-x-hidden">
+
+      {/* 🔵 TOP BLUE STRIP */}
+      <div className="w-full h-2 bg-blue-600 fixed top-0 z-50"></div>
+
+      {/* ================= NAVBAR ================= */}
+      <nav className="w-full bg-white shadow-md fixed top-2 z-40">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="text-2xl font-bold text-blue-600">LOGO</div>
+          <div className="space-x-6 font-medium">
+            <a href="#" className="hover:text-blue-600 transition">Home</a>
+            <a href="#" className="hover:text-blue-600 transition">Services</a>
+            <a href="#" className="hover:text-blue-600 transition">About</a>
+            <a href="#" className="hover:text-blue-600 transition">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <div className="h-24"></div>
 
       {/* ================= HERO ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+      <section className="py-24 text-center bg-gradient-to-br from-white via-blue-50 to-white">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl font-bold leading-tight mb-6">
-            Empowering Minds,<br /> Elevating Lives
+        <div className="max-w-5xl mx-auto px-6">
+
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6">
+            Empowering Minds
           </h1>
 
-          <p className="text-gray-600 text-lg mb-8">
-            We empower individuals and organizations to unlock their
-            true potential and achieve sustainable growth.
+          <h2
+            className={`text-3xl md:text-5xl font-extrabold transition-all duration-500 ${
+              fade ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+            }`}
+          >
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 bg-clip-text text-transparent">
+              {words[index]}
+            </span>
+          </h2>
+
+          <p className="mt-8 text-gray-600 max-w-2xl mx-auto">
+            We empower individuals and organizations with innovative strategies,
+            practical solutions, and measurable growth.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="bg-blue-700 text-white px-8 py-3 rounded-md"
-          >
-            Contact Us →
-          </motion.button>
+          {/* 🔥 RECTANGLE VIDEO (COMPACT) */}
+          <div className="mt-10 flex justify-center">
+            <div className="w-[350px] h-[200px] rounded-3xl overflow-hidden shadow-lg border border-gray-200 bg-black">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-14">
-            <div>
-              <h3 className="text-3xl font-bold text-blue-700">
-                {count}%
-              </h3>
-              <p className="text-gray-500 text-sm">Client Satisfaction</p>
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-blue-700">50K+</h3>
-              <p className="text-gray-500 text-sm">Employees Trained</p>
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-blue-700">18+</h3>
-              <p className="text-gray-500 text-sm">Industries Served</p>
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-blue-700">16+</h3>
-              <p className="text-gray-500 text-sm">Years Experience</p>
+              <video
+                src="/empowering-video.mp4"
+                controls
+                autoPlay
+                muted
+                loop
+                className="w-full h-full object-cover"
+              />
+
             </div>
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="relative h-[420px] w-full rounded-xl overflow-hidden shadow-xl"
-        >
-          <Image
-            src="/hero.jpg"
-            alt="Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-        </motion.div>
+        </div>
       </section>
 
       {/* ================= WE ENSURE ================= */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <section className="py-15">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-10">We Ensure</h2>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-14"
-          >
-            We Ensure
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              "Quality Service",
-              "Trusted Support",
-              "Measurable Results",
-            ].map((title, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -10 }}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="p-8 bg-white rounded-xl shadow hover:shadow-2xl transition"
-              >
-                <h3 className="text-xl font-semibold mb-4 text-blue-700">
-                  {title}
-                </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {["Quality", "Growth", "Success"].map((item, i) => (
+              <div key={i} className="p-8 shadow-lg rounded-xl text-center hover:scale-105 transition bg-white">
+                <h3 className="font-bold text-xl mb-4">{item}</h3>
                 <p className="text-gray-600">
-                  We provide professional solutions focused on long‑term growth and excellence.
+                  We are committed to delivering excellence and measurable impact.
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ================= WE OFFER ================= */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-
-          <h2 className="text-4xl font-bold mb-14">
-            We Offer
-          </h2>
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-10">We Offer</h2>
 
           <div className="grid md:grid-cols-4 gap-8">
-
-            {[
-              { title: "HR & Compliance Solutions", img: "/offer1.jpg" },
-              { title: "Employee Assistance Program", img: "/offer2.jpg" },
-              { title: "Customised Coaching Solutions", img: "/offer3.jpg" },
-              { title: "Success Enabler Series", img: "/offer4.jpg" },
-            ].map((item, i) => (
-
-              <motion.div
-                key={i}
-                whileHover={{ y: -10 }}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="relative rounded-xl overflow-hidden shadow-lg group"
-              >
-
-                <div className="relative h-60 w-full overflow-hidden">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition duration-500"
-                  />
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition">
+                <img
+                  src={`/offer${item}.jpg`}
+                  alt="offer"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-5 text-center font-semibold">
+                  Premium Service {item}
                 </div>
-
-                <div className="bg-white p-6 -mt-10 relative mx-4 rounded-lg shadow-lg">
-                  <h3 className="text-lg font-semibold text-blue-700 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                   
-                  </p>
-                </div>
-
-              </motion.div>
-
+              </div>
             ))}
-
           </div>
-
         </div>
       </section>
-      {/* ================= OFFER DETAILS SECTION ================= */}
-<section className="py-16 bg-gray-50">
-  <div className="max-w-6xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-20">
-      Our Expertise In Detail
-    </h2>
+      {/* ================= OUR EXPERTISE ================= */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-14">
+            Our Expertise In Detail
+          </h2>
 
-    {[
-      {
-        title: "Business Consulting",
-        desc: "Version2 stands out by offering customized HR and compliance solutions that not only ensure legal adherence but also foster a proactive, ethical workplace culture. Our unique approach integrates strategic guidance with hands-on training, addressing both compliance needs and organizational growth, empowering teams to thrive sustainably."
-      },
-      {
-        title: "Employee Assistance Program",
-        desc: "Version2’s Employee Assistance Programs (EAP) are uniquely designed to support both personal and professional well-being. We offer confidential counseling, mental health support, and practical resources to help employees navigate life’s challenges. Our holistic approach focuses on creating a healthier, more resilient workforce, enhancing employee engagement, and driving organizational success by addressing the mental and emotional needs of employees."
-      },
-      {
-        title: "Customised Coaching Solutions",
-        desc: "Designed to address the unique challenges and goals of individuals and teams. We offer personalized coaching that focuses on leadership development, performance enhancement, and emotional well-being, aligning with both personal aspirations and organizational objectives ensuring impactful, long-lasting transformation to unlock their full potential and contribute meaningfully to the organization’s success."
-      },
-      {
-        title: "Success Enabler Series",
-        desc: "Success Enabler Series is a dynamic collection of training programs designed to equip employees with essential skills for personal and professional growth, empowering individuals to develop the mindset and capabilities needed to thrive in today’s fast-paced business environment, ensuring a more engaged, productive, and high-performing workforce."
-      }
-    ].map((item, i) => (
-      
-      <div 
-        key={i} 
-        className="mb-16 p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition"
-      >
-        <h3 className="text-2xl font-bold text-blue-700 mb-4">
-          {item.title}
-        </h3>
-
-        <p className="text-gray-600 text-lg leading-relaxed">
-          {item.desc}
-        </p>
-      </div>
-
-    ))}
-
-  </div>
-</section>
-{/* ================= OUR METHODOLOGIES ================= */}
-<section className="py-16 bg-white">
-  <div className="max-w-7xl mx-auto px-6">
-
-    <h2 className="text-4xl font-bold text-center mb-16">
-      Our Methodologies
-    </h2>
-
-    <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
-
-      {[
-        {
-          title: "Research & Analysis",
-          desc: "Deep market research and data-driven analysis to understand business challenges."
-        },
-        {
-          title: "Strategic Planning",
-          desc: "Structured planning framework to design clear and measurable roadmaps."
-        },
-        {
-          title: "Execution Excellence",
-          desc: "Strong implementation approach ensuring high performance delivery."
-        },
-        {
-          title: "Continuous Monitoring",
-          desc: "Regular evaluation and performance tracking for better outcomes."
-        },
-        {
-          title: "Optimization & Growth",
-          desc: "Continuous improvement strategies focused on scaling success."
-        }
-      ].map((item, i) => (
-
-        <div
-          key={i}
-          className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-blue-600"
-        >
-          <h3 className="text-xl font-bold mb-4 text-blue-700">
-            {item.title}
-          </h3>
-
-          <p className="text-gray-600 text-sm leading-relaxed">
-            {item.desc}
-          </p>
+          {[1, 2, 3, 4].map((item) => (
+            <div key={item} className="mb-14 flex flex-col md:flex-row items-center gap-10">
+              <img
+                src={`/expert${item}.jpg`}
+                alt="expert"
+                className="w-full md:w-1/2 rounded-xl shadow-lg"
+              />
+              <p className="md:w-1/2 text-gray-600">
+                Detailed explanation about service {item}. Explain your offering clearly and professionally here.
+              </p>
+            </div>
+          ))}
         </div>
+      </section>
 
-      ))}
+      {/* ================= OUR METHODOLOGIES ================= */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-10">
+            Our Methodologies
+          </h2>
 
-    </div>
+          <div className="grid md:grid-cols-5 gap-6">
+            {[1, 2, 3, 4, 5].map((item) => (
+              <div key={item} className="p-6 bg-white shadow-lg rounded-xl text-center hover:scale-105 transition">
+                Method {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-  </div>
-</section>
-{/* ================= ABOUT FOUNDER ================= */}
-<section className="py-16 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-6">
+      {/* ================= ABOUT FOUNDER ================= */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <img
+            src="/founder.jpg"
+            alt="Founder"
+            className="rounded-xl shadow-lg"
+          />
 
-    <h2 className="text-4xl font-bold text-center mb-12">
-      About Our Founder
-    </h2>
-
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-
-      {/* Founder Image */}
-      <div className="flex justify-center">
-        <img
-          src="/founder.jpg"   // <-- yaha apni founder ki image ka naam dalna
-          alt="Founder"
-          className="rounded-2xl shadow-xl w-[400px] h-auto object-cover"
-        />
-      </div>
-
-      {/* Founder Description */}
-      <div>
-        <h3 className="text-2xl font-bold mb-6 text-blue-700">
-          Dr. Shilpi Gupta 
-        </h3>
-
-        <p className="text-gray-600 leading-relaxed mb-4">
-          Our founder brings years of industry experience and a strong vision
-          to transform businesses through innovation and strategic execution.
-        </p>
-
-        <p className="text-gray-600 leading-relaxed">
-          With a passion for excellence and commitment to quality, he has
-          successfully led multiple projects and built a trusted brand
-          recognized for delivering premium solutions.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-      {/* ================= FOOTER ================= */}
-      <footer className="bg-blue-900 text-white py-16 text-center">
-        © 2026 Version2. All rights reserved.
-      </footer>
+          <div>
+            <h2 className="text-3xl font-bold mb-6">About Our Founder</h2>
+            <p className="text-gray-600 mb-4">
+              Our founder brings years of expertise and a passion for empowering individuals and businesses.
+            </p>
+            <p className="text-gray-600">
+              With strong leadership and strategic vision, we continue to drive innovation and sustainable growth.
+            </p>
+          </div>
+        </div>
+      </section>
 
     </main>
   );
