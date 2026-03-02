@@ -31,60 +31,52 @@ export default function Home() {
     <main className="overflow-x-hidden">
 
       {/* ================= NAVBAR ================= */}
-      <nav className="fixed top-0 left-0 w-full z-50">
+     {/* ================= NAVBAR ================= */}
+<nav className="fixed top-0 left-0 w-full z-50">
 
-        {/* 🔵 TOP BLUE BAR - SOCIAL ICONS */}
-        <div className="w-full bg-blue-600 py-2">
-          <div className="max-w-7xl mx-auto px-6 flex justify-end space-x-6 text-white text-lg">
+  {/* 🔵 TOP BLUE BAR */}
+  <div className="w-full bg-blue-600 py-2">
+    <div className="max-w-7xl mx-auto px-6 flex justify-end space-x-6 text-white text-lg">
+      <a href="#"><FaFacebookF /></a>
+      <a href="#"><FaInstagram /></a>
+      <a href="#"><FaLinkedinIn /></a>
+      <a href="#"><FaWhatsapp /></a>
+    </div>
+  </div>
 
-            <a href="#" className="hover:text-gray-200 transition">
-              <FaFacebookF />
-            </a>
+  {/* ⚪ MAIN NAVBAR */}
+  <div className="w-full bg-white shadow-md">
+    <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
-            <a href="#" className="hover:text-gray-200 transition">
-              <FaInstagram />
-            </a>
+      {/* LOGO */}
+      <div className="relative w-32 h-12">
+        <Image
+          src="/logo.png"
+          alt="Company Logo"
+          fill
+          className="object-contain"
+        />
+      </div>
 
-            <a href="#" className="hover:text-gray-200 transition">
-              <FaLinkedinIn />
-            </a>
+      {/* NAV LINKS DESKTOP */}
+      <div className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
+        <a href="#" className="hover:text-blue-600">Home</a>
+        <a href="#" className="hover:text-blue-600">Services</a>
+        <a href="#" className="hover:text-blue-600">Resources</a>
+        <a href="#" className="hover:text-blue-600">Clients</a>
+        <a href="#" className="hover:text-blue-600">Contact</a>
+      </div>
 
-            <a href="#" className="hover:text-gray-200 transition">
-              <FaWhatsapp />
-            </a>
+      {/* MOBILE MENU ICON */}
+      <div className="md:hidden text-3xl cursor-pointer">
+        ☰
+      </div>
 
-          </div>
-        </div>
+    </div>
+  </div>
+</nav>
 
-        {/* ⚪ MAIN NAVBAR */}
-        <div className="w-full bg-white shadow-md">
-          <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            
-            {/* LOGO */}
-            <div className="relative w-40 h-12">
-              <Image
-                src="/logo.png"
-                alt="Company Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            {/* NAV LINKS */}
-            <div className="flex items-center space-x-8 text-gray-700 font-medium">
-              <a href="#" className="hover:text-blue-600 transition">Home</a>
-              <a href="#" className="hover:text-blue-600 transition">Services</a>
-              <a href="#" className="hover:text-blue-600 transition">Resources</a>
-              <a href="#" className="hover:text-blue-600 transition">Clients</a>
-              <a href="#" className="hover:text-blue-600 transition">Contact</a>
-            </div>
-
-          </div>
-        </div>
-      </nav>
-
-      {/* Spacer so content navbar ke niche aaye */}
-      <div className="h-32"></div>
+<div className="h-32"></div>
 
       {/* ================= HERO ================= */}
       <section className="py-24 text-center bg-gradient-to-br from-white via-blue-50 to-white">
@@ -128,8 +120,7 @@ export default function Home() {
 
     
 
-      {/* ================= TRA-CO MODULES ================= */}
-{/* ================= TRA-CO MODULES ================= */}
+      
 {/* ================= TRA-CO MODULES ================= */}
 <section className="py-24 bg-gradient-to-b from-white to-blue-50">
   <div className="max-w-7xl mx-auto px-6">
