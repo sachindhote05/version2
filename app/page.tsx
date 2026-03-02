@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 export default function Home() {
   const words = [
@@ -28,27 +30,64 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
 
-      {/* 🔵 TOP BLUE STRIP */}
-      <div className="w-full h-2 bg-blue-600 fixed top-0 z-50"></div>
-
       {/* ================= NAVBAR ================= */}
-      <nav className="w-full bg-white shadow-md fixed top-2 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-blue-600">LOGO</div>
-          <div className="space-x-6 font-medium">
-            <a href="#" className="hover:text-blue-600 transition">Home</a>
-            <a href="#" className="hover:text-blue-600 transition">Services</a>
-            <a href="#" className="hover:text-blue-600 transition">About</a>
-            <a href="#" className="hover:text-blue-600 transition">Contact</a>
+      <nav className="fixed top-0 left-0 w-full z-50">
+
+        {/* 🔵 TOP BLUE BAR - SOCIAL ICONS */}
+        <div className="w-full bg-blue-600 py-2">
+          <div className="max-w-7xl mx-auto px-6 flex justify-end space-x-6 text-white text-lg">
+
+            <a href="#" className="hover:text-gray-200 transition">
+              <FaFacebookF />
+            </a>
+
+            <a href="#" className="hover:text-gray-200 transition">
+              <FaInstagram />
+            </a>
+
+            <a href="#" className="hover:text-gray-200 transition">
+              <FaLinkedinIn />
+            </a>
+
+            <a href="#" className="hover:text-gray-200 transition">
+              <FaWhatsapp />
+            </a>
+
+          </div>
+        </div>
+
+        {/* ⚪ MAIN NAVBAR */}
+        <div className="w-full bg-white shadow-md">
+          <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            {/* LOGO */}
+            <div className="relative w-40 h-12">
+              <Image
+                src="/logo.png"
+                alt="Company Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* NAV LINKS */}
+            <div className="flex items-center space-x-8 text-gray-700 font-medium">
+              <a href="#" className="hover:text-blue-600 transition">Home</a>
+              <a href="#" className="hover:text-blue-600 transition">Services</a>
+              <a href="#" className="hover:text-blue-600 transition">Resources</a>
+              <a href="#" className="hover:text-blue-600 transition">Clients</a>
+              <a href="#" className="hover:text-blue-600 transition">Contact</a>
+            </div>
+
           </div>
         </div>
       </nav>
 
-      <div className="h-24"></div>
+      {/* Spacer so content navbar ke niche aaye */}
+      <div className="h-32"></div>
 
       {/* ================= HERO ================= */}
       <section className="py-24 text-center bg-gradient-to-br from-white via-blue-50 to-white">
-
         <div className="max-w-5xl mx-auto px-6">
 
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6">
@@ -70,10 +109,9 @@ export default function Home() {
             practical solutions, and measurable growth.
           </p>
 
-          {/* 🔥 RECTANGLE VIDEO (COMPACT) */}
+          {/* VIDEO */}
           <div className="mt-10 flex justify-center">
             <div className="w-[600px] h-[300px] rounded-3xl overflow-hidden shadow-lg border border-gray-200 bg-black">
-
               <video
                 src="/empowering-video.mp4"
                 controls
@@ -82,90 +120,82 @@ export default function Home() {
                 loop
                 className="w-full h-full object-cover"
               />
-
             </div>
           </div>
 
         </div>
       </section>
 
+    
+
       {/* ================= TRA-CO MODULES ================= */}
-<section className="py-20 bg-white">
+{/* ================= TRA-CO MODULES ================= */}
+{/* ================= TRA-CO MODULES ================= */}
+<section className="py-24 bg-gradient-to-b from-white to-blue-50">
   <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-blue-700">
-      Tra-Co Modules – Training and Coaching
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
+      Tra-Co Modules – Training & Coaching
     </h2>
 
-    <div className="grid md:grid-cols-4 gap-8">
+    <div className="grid md:grid-cols-4 gap-10">
 
-      {/* Module 1 */}
-      <div className="relative group overflow-hidden rounded-2xl shadow-lg">
-        <img
-          src="/module1.jpg"
-          alt="Leadership Development"
-          className="w-full h-64 object-cover transition duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/55 transition"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h3 className="text-white text-xl font-semibold text-center px-4">
-            Leadership Development
-          </h3>
-        </div>
-      </div>
+      {[
+        {
+          img: "/module1.jpg",
+          title: "Behavioral Mastery",
+          desc: "12-month mindset shift program for sustainable performance growth.",
+        },
+        {
+          img: "/module2.jpg",
+          title: "Momentum Mastery",
+          desc: "Mental fitness & resilience framework for emerging leaders.",
+        },
+        {
+          img: "/module3.jpg",
+          title: "Eagle Shift Framework",
+          desc: "CXO coaching model for clarity, regulation & strategic expansion.",
+        },
+        {
+          img: "/module4.jpg",
+          title: "Peak Performance Acceleration",
+          desc: "Execution excellence through identity & performance alignment.",
+        },
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-3xl overflow-hidden shadow-lg 
+                     transition duration-500 hover:shadow-2xl hover:-translate-y-3"
+        >
+          
+          {/* IMAGE TOP */}
+          <div className="overflow-hidden">
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-full h-64 object-cover transition duration-700 hover:scale-110"
+            />
+          </div>
 
-      {/* Module 2 */}
-      <div className="relative group overflow-hidden rounded-2xl shadow-lg">
-        <img
-          src="/module2.jpg"
-          alt="Skill Enhancement"
-          className="w-full h-64 object-cover transition duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/55 transition"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h3 className="text-white text-xl font-semibold text-center px-4">
-            Skill Enhancement
-          </h3>
-        </div>
-      </div>
+          {/* TEXT CONTENT */}
+          <div className="p-6 text-center">
+            <h3 className="text-xl font-bold text-blue-700 mb-3">
+              {item.title}
+            </h3>
 
-      {/* Module 3 */}
-      <div className="relative group overflow-hidden rounded-2xl shadow-lg">
-        <img
-          src="/module3.jpg"
-          alt="Corporate Training"
-          className="w-full h-64 object-cover transition duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/55 transition"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h3 className="text-white text-xl font-semibold text-center px-4">
-            Corporate Training
-          </h3>
-        </div>
-      </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              {item.desc}
+            </p>
+          </div>
 
-      {/* Module 4 */}
-      <div className="relative group overflow-hidden rounded-2xl shadow-lg">
-        <img
-          src="/module4.jpg"
-          alt="Business Coaching"
-          className="w-full h-64 object-cover transition duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/55 transition"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h3 className="text-white text-xl font-semibold text-center px-4">
-            Business Coaching
-          </h3>
         </div>
-      </div>
+      ))}
 
     </div>
-
   </div>
 </section>
-    
   {/* ================= POSH SECTION ================= */}
-<section className="py-24 bg-gradient-to-b from-white to-blue-50">
+<section className="py-22 bg-gradient-to-b from-white to-blue-50">
   <div className="max-w-7xl mx-auto px-6">
 
     <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
@@ -318,7 +348,7 @@ export default function Home() {
 </section>
 
 {/* ================= TRAIN THE TRAINER ================= */}
-<section className="py-24 bg-white">
+<section className="py-22 bg-white">
   <div className="max-w-7xl mx-auto px-6">
 
     <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
@@ -359,6 +389,79 @@ export default function Home() {
 
   </div>
 </section>
+  
+  {/* ================= OUR WORK ================= */}
+<section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
+      Our Work
+    </h2>
+
+    <div className="grid md:grid-cols-5 gap-8">
+
+      {[
+        { id: "VIDEO_ID1", title: "Corporate Training Session" },
+        { id: "VIDEO_ID2", title: "Leadership Workshop" },
+        { id: "VIDEO_ID3", title: "POSH Awareness Program" },
+        { id: "VIDEO_ID4", title: "Train The Trainer Event" },
+        { id: "VIDEO_ID5", title: "E-Learning Module Demo" },
+      ].map((video, index) => (
+        <div
+          key={index}
+          className="relative group rounded-2xl overflow-hidden shadow-lg 
+                     transform transition duration-500 hover:-translate-y-3 hover:shadow-2xl"
+        >
+          <div className="relative w-full h-60">
+
+            {/* Thumbnail */}
+            <img
+              src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+              alt={video.title}
+              className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
+
+            {/* Play Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8 text-blue-700"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Title */}
+          <div className="p-4 bg-white">
+            <h3 className="text-sm font-semibold text-center text-gray-700">
+              {video.title}
+            </h3>
+          </div>
+
+          {/* Click Link */}
+          <a
+            href={`https://www.youtube.com/watch?v=${video.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0"
+          ></a>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
       {/* ================= ABOUT FOUNDER ================= */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
