@@ -31,52 +31,77 @@ export default function Home() {
     <main className="overflow-x-hidden">
 
       {/* ================= NAVBAR ================= */}
-     {/* ================= NAVBAR ================= */}
-<nav className="fixed top-0 left-0 w-full z-50">
+"use client"
+import { useState } from "react"
+import Image from "next/image"
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
-  {/* 🔵 TOP BLUE BAR */}
-  <div className="w-full bg-blue-600 py-2">
-    <div className="max-w-7xl mx-auto px-6 flex justify-end space-x-6 text-white text-lg">
-      <a href="#"><FaFacebookF /></a>
-      <a href="#"><FaInstagram /></a>
-      <a href="#"><FaLinkedinIn /></a>
-      <a href="#"><FaWhatsapp /></a>
-    </div>
-  </div>
+export default function Navbar() {
 
-  {/* ⚪ MAIN NAVBAR */}
-  <div className="w-full bg-white shadow-md">
-    <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+  const [isOpen, setIsOpen] = useState(false)
 
-      {/* LOGO */}
-      <div className="relative w-32 h-12">
-        <Image
-          src="/logo.png"
-          alt="Company Logo"
-          fill
-          className="object-contain"
-        />
+  return (
+    <nav className="fixed top-0 left-0 w-full z-50">
+
+      {/* 🔵 TOP BLUE BAR */}
+      <div className="w-full bg-blue-600 py-2">
+        <div className="max-w-7xl mx-auto px-6 flex justify-end space-x-6 text-white text-lg">
+          <a href="#"><FaFacebookF /></a>
+          <a href="#"><FaInstagram /></a>
+          <a href="#"><FaLinkedinIn /></a>
+          <a href="#"><FaWhatsapp /></a>
+        </div>
       </div>
 
-      {/* NAV LINKS DESKTOP */}
-      <div className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
-        <a href="#" className="hover:text-blue-600">Home</a>
-        <a href="#" className="hover:text-blue-600">Services</a>
-        <a href="#" className="hover:text-blue-600">Resources</a>
-        <a href="#" className="hover:text-blue-600">Clients</a>
-        <a href="#" className="hover:text-blue-600">Contact</a>
+      {/* ⚪ MAIN NAVBAR */}
+      <div className="w-full bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+          {/* LOGO */}
+          <div className="relative w-32 h-12">
+            <Image
+              src="/logo.png"
+              alt="Company Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
+            <a href="#" className="hover:text-blue-600">Home</a>
+            <a href="#" className="hover:text-blue-600">Services</a>
+            <a href="#" className="hover:text-blue-600">Resources</a>
+            <a href="#" className="hover:text-blue-600">Clients</a>
+            <a href="#" className="hover:text-blue-600">Contact</a>
+          </div>
+
+          {/* MOBILE BUTTON */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-3xl"
+          >
+            ☰
+          </button>
+
+        </div>
+
+        {/* MOBILE DROPDOWN */}
+        {isOpen && (
+          <div className="md:hidden bg-white px-6 pb-6 space-y-4 text-center font-medium">
+            <a href="#" className="block">Home</a>
+            <a href="#" className="block">Services</a>
+            <a href="#" className="block">Resources</a>
+            <a href="#" className="block">Clients</a>
+            <a href="#" className="block">Contact</a>
+          </div>
+        )}
+
       </div>
 
-      {/* MOBILE MENU ICON */}
-      <div className="md:hidden text-3xl cursor-pointer">
-        ☰
-      </div>
-
-    </div>
-  </div>
-</nav>
-
-<div className="h-32"></div>
+    </nav>
+  )
+}
 
       {/* ================= HERO ================= */}
       <section className="py-24 text-center bg-gradient-to-br from-white via-blue-50 to-white">
