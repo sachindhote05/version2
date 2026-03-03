@@ -9,11 +9,16 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
 
+  const closeAll = () => {
+    setMenuOpen(false)
+    setServicesOpen(false)
+  }
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
 
       {/* 🔵 TOP BAR */}
-      <div className="w-full bg-blue-600 py-2">
+      <div className="bg-blue-600 py-2">
         <div className="max-w-7xl mx-auto px-6 flex justify-end gap-6 text-white text-lg">
           <FaFacebookF />
           <FaInstagram />
@@ -22,13 +27,13 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ⚪ MAIN NAVBAR */}
+      {/* ⚪ MAIN NAV */}
       <div className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
           {/* LOGO */}
-          <Link href="/" className="relative w-36 h-12">
-            <Image src="/logo.png" alt="Logo" fill className="object-contain" />
+          <Link href="/" onClick={closeAll} className="relative w-36 h-12">
+            <Image src="/logo.png" alt="Logo" fill className="object-contain" priority />
           </Link>
 
           {/* ================= DESKTOP MENU ================= */}
@@ -38,19 +43,18 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* 🔥 SERVICES DROPDOWN */}
+            {/* SERVICES DROPDOWN */}
             <div className="relative group">
-
               <button className="hover:text-blue-600 transition">
                 Services
               </button>
 
-              <div className="absolute left-0 top-10 w-80 bg-white shadow-xl rounded-lg
-                              opacity-0 invisible translate-y-3
+              <div className="absolute left-0 top-10 w-96 bg-white shadow-xl rounded-lg
+                              opacity-0 invisible translate-y-2
                               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-                              transition-all duration-300">
+                              transition-all duration-200 z-50">
 
-                <div className="flex flex-col py-4 text-sm">
+                <div className="flex flex-col py-3 text-sm">
 
                   <Link href="/services/leadership-performance" className="px-5 py-3 hover:bg-blue-50">
                     Leadership & Performance Excellence
@@ -94,74 +98,80 @@ export default function Navbar() {
 
           </div>
 
-          {/* MOBILE BUTTON */}
+          {/* ================= MOBILE BUTTON ================= */}
           <button
             onClick={() => {
-              setMenuOpen(true)
+              setMenuOpen(!menuOpen)
               setServicesOpen(false)
             }}
             className="md:hidden text-3xl"
           >
             ☰
           </button>
-
         </div>
-      </div>
 
-      {/* ================= MOBILE MENU ================= */}
-      {menuOpen && (
-        <div className="fixed inset-0 bg-white z-50 p-6">
+        {/* ================= MOBILE MENU ================= */}
+        {menuOpen && (
+          <div className="md:hidden bg-white px-6 py-6 space-y-5 font-medium shadow-lg">
 
-          <div className="flex justify-between items-center mb-10">
-            <p className="text-xl font-semibold">Menu</p>
-            <button onClick={() => setMenuOpen(false)} className="text-2xl">✕</button>
-          </div>
+            <Link onClick={closeAll} href="/" className="block">
+              Home
+            </Link>
 
-          {!servicesOpen && (
-            <div className="flex flex-col gap-6 text-lg font-medium">
+            {/* MOBILE SERVICES */}
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="w-full text-left"
+            >
+              Services
+            </button>
 
-              <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+            {servicesOpen && (
+              <div className="pl-4 space-y-3 text-sm text-gray-600">
 
-              <button
-                onClick={() => setServicesOpen(true)}
-                className="text-left"
-              >
-                Services
-              </button>
+                <Link onClick={closeAll} href="/services/leadership-performance">
+                  Leadership & Performance Excellence
+                </Link>
 
-              <Link href="/resources">Resources</Link>
-              <Link href="/clients">Clients</Link>
-              <Link href="/contact">Contact</Link>
+                <Link onClick={closeAll} href="/services/leadership-performance/compliance-posh">
+                  Compliance & Workplace Safety POSH
+                </Link>
 
-            </div>
-          )}
+                <Link onClick={closeAll} href="/services/leadership-performance/digital-learning">
+                  Digital Learning & Capability Systems
+                </Link>
 
-          {servicesOpen && (
-            <div className="absolute top-0 left-0 w-full h-full bg-white p-6">
+                <Link onClick={closeAll} href="/services/leadership-performance/organizational-interventions">
+                  Organizational Behavioural Interventions
+                </Link>
 
-              <button
-                onClick={() => setServicesOpen(false)}
-                className="mb-8 text-sm text-gray-500"
-              >
-                ← Back
-              </button>
+                <Link onClick={closeAll} href="/services/leadership-performance/train-the-trainer">
+                  Train the Trainer
+                </Link>
 
-              <div className="flex flex-col gap-5 text-base font-medium">
-
-                <Link href="/services/leadership-performance">Leadership & Performance Excellence</Link>
-                <Link href="/services/leadership-performance/compliance-posh">Compliance & Workplace Safety POSH</Link>
-                <Link href="/services/leadership-performance/digital-learning">Digital Learning & Capability Systems</Link>
-                <Link href="/services/leadership-performance/organizational-interventions">Organizational Behavioural Interventions</Link>
-                <Link href="/services/leadership-performance/train-the-trainer">Train the Trainer</Link>
-                <Link href="/services/leadership-performance/executive-events">Executive Events & Strategic Offsites</Link>
+                <Link onClick={closeAll} href="/services/leadership-performance/executive-events">
+                  Executive Events & Strategic Offsites
+                </Link>
 
               </div>
-            </div>
-          )}
+            )}
 
-        </div>
-      )}
+            <Link onClick={closeAll} href="/resources" className="block">
+              Resources
+            </Link>
 
+            <Link onClick={closeAll} href="/clients" className="block">
+              Clients
+            </Link>
+
+            <Link onClick={closeAll} href="/contact" className="block">
+              Contact
+            </Link>
+
+          </div>
+        )}
+
+      </div>
     </nav>
   )
 }
