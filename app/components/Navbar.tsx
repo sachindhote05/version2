@@ -43,7 +43,7 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* 🔥 SERVICES (HOVER OPEN) */}
+            {/* SERVICES */}
             <div className="relative group">
 
               <button className="hover:text-blue-600 transition">
@@ -51,41 +51,32 @@ export default function Navbar() {
               </button>
 
               {/* DROPDOWN */}
-              <div className="absolute left-0 top-14 w-96 bg-white rounded-xl shadow-xl border border-gray-100 
-                              opacity-0 invisible translate-y-3 
+              <div className="absolute left-0 top-14 w-[420px] bg-white rounded-2xl shadow-2xl border border-gray-100
+                              opacity-0 invisible translate-y-4
                               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                               transition-all duration-300">
 
                 <div className="flex flex-col py-4">
 
-                  <Link href="/services/leadership-performance" className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
-                    Leadership & Performance Excellence
-                  </Link>
-
-                  <Link href="/services/leadership-performance/compliance-posh" className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
-                    Compliance & Workplace Safety POSH
-                  </Link>
-
-                  <Link href="/services/leadership-performance/digital-learning" className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
-                    Digital Learning & Capability Systems
-                  </Link>
-
-                  <Link href="/services/leadership-performance/organizational-interventions" className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
-                    Organizational Behavioural Interventions
-                  </Link>
-
-                  <Link href="/services/leadership-performance/train-the-trainer" className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
-                    Train the Trainer
-                  </Link>
-
-                  <Link href="/services/leadership-performance/executive-events" className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition">
-                    Executive Events & Strategic Offsites
-                  </Link>
+                  {[
+                    { title: "Leadership & Performance Excellence", link: "/services/leadership-performance" },
+                    { title: "Compliance & Workplace Safety (POSH)", link: "/services/compliance-posh" },
+                    { title: "Digital Learning & Capability Systems", link: "/services/digital-learning" },
+                    { title: "Organizational Behavioural Interventions", link: "/services/organizational-behaviour" },
+                    { title: "Train the Trainer", link: "/services/train-the-trainer" },
+                    { title: "Executive Events & Strategic Offsites", link: "/services/executive-events" },
+                  ].map((item, i) => (
+                    <Link
+                      key={i}
+                      href={item.link}
+                      className="px-6 py-3 hover:bg-blue-50 hover:text-blue-600 transition rounded-lg"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
 
                 </div>
-
               </div>
-
             </div>
 
             <Link href="/resources" className="hover:text-blue-600 transition">
@@ -114,53 +105,51 @@ export default function Navbar() {
 
         {/* 📱 MOBILE MENU */}
         {menuOpen && (
-          <div className="md:hidden bg-white px-6 pb-6 space-y-4 font-medium shadow-lg">
+          <div className="md:hidden bg-white px-6 py-6 space-y-6 font-medium shadow-xl">
 
-            <Link href="/" className="block text-center">
+            <Link href="/" className="block text-center text-lg">
               Home
             </Link>
 
-            <div className="text-center space-y-2">
+            {/* SERVICES SECTION */}
+            <div>
+              <h3 className="text-xs tracking-widest text-gray-400 text-center mb-4">
+                SERVICES
+              </h3>
 
-              <p className="font-semibold">Services</p>
+              <div className="space-y-4">
 
-              <Link href="/services/leadership-performance" className="block text-sm text-gray-600">
-                Leadership & Performance Excellence
-              </Link>
+                {[
+                  { title: "Leadership & Performance Excellence", link: "/services/leadership-performance" },
+                  { title: "Compliance & Workplace Safety (POSH)", link: "/services/compliance-posh" },
+                  { title: "Digital Learning & Capability Systems", link: "/services/digital-learning" },
+                  { title: "Organizational Behavioural Interventions", link: "/services/organizational-behaviour" },
+                  { title: "Train the Trainer", link: "/services/train-the-trainer" },
+                  { title: "Executive Events & Strategic Offsites", link: "/services/executive-events" },
+                ].map((item, i) => (
+                  <Link
+                    key={i}
+                    href={item.link}
+                    className="block rounded-2xl bg-gradient-to-r from-blue-50 to-white
+                               border border-blue-100 px-5 py-4
+                               text-gray-800 text-center
+                               shadow-sm
+                               transition-all duration-300
+                               active:scale-95 hover:shadow-md hover:border-blue-300"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
 
-              <Link href="/services/compliance-posh" className="block text-sm text-gray-600">
-                Compliance & Workplace Safety POSH
-              </Link>
-
-              <Link href="/services/digital-learning" className="block text-sm text-gray-600">
-                Digital Learning & Capability Systems
-              </Link>
-
-              <Link href="/services/organizational-interventions" className="block text-sm text-gray-600">
-                Organizational Behavioural Interventions
-              </Link>
-
-              <Link href="/services/train-the-trainer" className="block text-sm text-gray-600">
-                Train the Trainer
-              </Link>
-
-              <Link href="/services/executive-events" className="block text-sm text-gray-600">
-                Executive Events & Strategic Offsites
-              </Link>
-
+              </div>
             </div>
 
-            <Link href="/resources" className="block text-center">
-              Resources
-            </Link>
-
-            <Link href="/clients" className="block text-center">
-              Clients
-            </Link>
-
-            <Link href="/contact" className="block text-center">
-              Contact
-            </Link>
+            <div className="pt-6 border-t space-y-4 text-center text-lg">
+              <Link href="/resources" onClick={() => setMenuOpen(false)}>Resources</Link>
+              <Link href="/clients" onClick={() => setMenuOpen(false)}>Clients</Link>
+              <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+            </div>
 
           </div>
         )}
