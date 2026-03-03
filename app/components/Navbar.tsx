@@ -5,17 +5,18 @@ import Link from "next/link"
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
+  const [servicesPanelOpen, setServicesPanelOpen] = useState(false)
+  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  // Close dropdown on outside click (desktop)
+  // Desktop outside click close
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target)
       ) {
-        setServicesOpen(false)
+        setDesktopServicesOpen(false)
       }
     }
     document.addEventListener("mousedown", handleClickOutside)
@@ -24,6 +25,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed w-full bg-white shadow z-50">
+
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
 
         {/* LOGO */}
@@ -34,20 +36,18 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-10 font-medium">
 
-          <Link href="/" className="nav-glow">
-            Home
-          </Link>
+          <Link href="/" className="nav-glow">Home</Link>
 
           {/* SERVICES (2nd Position) */}
           <div className="relative" ref={dropdownRef}>
             <button
-              onClick={() => setServicesOpen(!servicesOpen)}
+              onClick={() => setDesktopServicesOpen(!desktopServicesOpen)}
               className="nav-glow"
             >
               Services
             </button>
 
-            {servicesOpen && (
+            {desktopServicesOpen && (
               <div className="absolute top-12 left-0 w-[380px] bg-white rounded-xl shadow-xl border p-4 z-50">
                 {services.map((s) => (
                   <Link
@@ -62,77 +62,85 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/resources" className="nav-glow">
-            Resources
-          </Link>
-
-          <Link href="/clients" className="nav-glow">
-            Clients
-          </Link>
-
-          <Link href="/contact" className="nav-glow">
-            Contact
-          </Link>
+          <Link href="/resources" className="nav-glow">Resources</Link>
+          <Link href="/clients" className="nav-glow">Clients</Link>
+          <Link href="/contact" className="nav-glow">Contact</Link>
 
         </div>
 
         {/* MOBILE BUTTON */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => {
+            setMenuOpen(true)
+            setServicesPanelOpen(false)
+          }}
           className="md:hidden text-3xl"
         >
           ☰
         </button>
+
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE OVERLAY */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg p-6">
+        <div className="fixed inset-0 bg-black/40 z-50">
 
-          <div className="flex flex-col gap-6 text-lg">
+          {/* MAIN MENU (Right Slide) */}
+          <div className="absolute right-0 top-0 h-full w-[85%] bg-white p-6 animate-slide-right">
 
-            <Link href="/" onClick={() => setMenuOpen(false)}>
-              Home
-            </Link>
+            <div className="flex justify-between mb-6">
+              <h2 className="text-xl font-bold">Menu</h2>
+              <button onClick={() => setMenuOpen(false)}>✕</button>
+            </div>
 
-            <button
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="text-left font-semibold"
-            >
-              Services
-            </button>
+            <div className="flex flex-col gap-6 text-lg">
 
-            {servicesOpen && (
-              <div className="flex flex-col gap-4 pl-4 border-l-2 border-blue-500">
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                Home
+              </Link>
+
+              <button
+                onClick={() => setServicesPanelOpen(true)}
+                className="text-left font-semibold"
+              >
+                Services →
+              </button>
+
+              <Link href="/resources">Resources</Link>
+              <Link href="/clients">Clients</Link>
+              <Link href="/contact">Contact</Link>
+
+            </div>
+          </div>
+
+          {/* SERVICES PANEL (Left Slide) */}
+          {servicesPanelOpen && (
+            <div className="absolute left-0 top-0 h-full w-[85%] bg-white p-6 animate-slide-left">
+
+              <div className="flex justify-between mb-6">
+                <h2 className="text-xl font-bold">Services</h2>
+                <button onClick={() => setServicesPanelOpen(false)}>←</button>
+              </div>
+
+              <div className="flex flex-col gap-4">
                 {services.map((s) => (
                   <Link
                     key={s.slug}
                     href={s.href}
                     onClick={() => {
                       setMenuOpen(false)
-                      setServicesOpen(false)
+                      setServicesPanelOpen(false)
                     }}
-                    className="text-gray-600"
+                    className="p-3 rounded-lg bg-gray-50 hover:bg-blue-50 transition"
                   >
                     {s.title}
                   </Link>
                 ))}
               </div>
-            )}
 
-            <Link href="/resources" onClick={() => setMenuOpen(false)}>
-              Resources
-            </Link>
+            </div>
+          )}
 
-            <Link href="/clients" onClick={() => setMenuOpen(false)}>
-              Clients
-            </Link>
-
-            <Link href="/contact" onClick={() => setMenuOpen(false)}>
-              Contact
-            </Link>
-
-          </div>
         </div>
       )}
     </nav>
