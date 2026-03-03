@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
 
 export default function Navbar() {
@@ -9,7 +8,7 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  // Click outside close
+  // Close dropdown on outside click (desktop)
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (
@@ -39,7 +38,7 @@ export default function Navbar() {
             Home
           </Link>
 
-          {/* SERVICES 2nd Position */}
+          {/* SERVICES (2nd Position) */}
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
@@ -49,7 +48,7 @@ export default function Navbar() {
             </button>
 
             {servicesOpen && (
-              <div className="absolute top-12 left-0 w-[380px] bg-white rounded-xl shadow-xl border p-4 animate-fade">
+              <div className="absolute top-12 left-0 w-[380px] bg-white rounded-xl shadow-xl border p-4 z-50">
                 {services.map((s) => (
                   <Link
                     key={s.slug}
@@ -88,40 +87,52 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg p-6 space-y-6">
+        <div className="md:hidden bg-white shadow-lg p-6">
 
-          <Link href="/" onClick={() => setMenuOpen(false)}>
-            Home
-          </Link>
+          <div className="flex flex-col gap-6 text-lg">
 
-          <button
-            onClick={() => setServicesOpen(!servicesOpen)}
-            className="w-full text-left font-semibold"
-          >
-            Services
-          </button>
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              Home
+            </Link>
 
-          {servicesOpen && (
-            <div className="pl-4 space-y-3">
-              {services.map((s) => (
-                <Link
-                  key={s.slug}
-                  href={s.href}
-                  onClick={() => {
-                    setMenuOpen(false)
-                    setServicesOpen(false)
-                  }}
-                  className="block text-gray-600"
-                >
-                  {s.title}
-                </Link>
-              ))}
-            </div>
-          )}
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="text-left font-semibold"
+            >
+              Services
+            </button>
 
-          <Link href="/resources">Resources</Link>
-          <Link href="/clients">Clients</Link>
-          <Link href="/contact">Contact</Link>
+            {servicesOpen && (
+              <div className="flex flex-col gap-4 pl-4 border-l-2 border-blue-500">
+                {services.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={s.href}
+                    onClick={() => {
+                      setMenuOpen(false)
+                      setServicesOpen(false)
+                    }}
+                    className="text-gray-600"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <Link href="/resources" onClick={() => setMenuOpen(false)}>
+              Resources
+            </Link>
+
+            <Link href="/clients" onClick={() => setMenuOpen(false)}>
+              Clients
+            </Link>
+
+            <Link href="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </Link>
+
+          </div>
         </div>
       )}
     </nav>
