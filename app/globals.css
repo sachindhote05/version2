@@ -5,58 +5,68 @@
 body {
   scroll-behavior: smooth;
 }
-/* Glow + Underline Animation */
-.nav-link {
+.nav-glow {
   position: relative;
-  padding: 6px 0;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-.nav-link:hover {
+.nav-glow:hover {
   color: #2563eb;
-  text-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
-  transform: translateY(-2px);
 }
 
-.nav-link::after {
+.nav-glow::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -6px;
   width: 0%;
   height: 2px;
   background: #2563eb;
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-glow:hover::after {
   width: 100%;
 }
 
 /* Animations */
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideLeft {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-slideIn {
-  animation: slideIn 0.3s ease-out;
+.animate-slide {
+  animation: slide 0.35s ease forwards;
 }
 
-.animate-slideLeft {
-  animation: slideLeft 0.3s ease-out;
+.animate-slide-left {
+  animation: slideLeft 0.35s ease forwards;
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.2s ease-out;
+.animate-fade {
+  animation: fade 0.25s ease forwards;
 }
