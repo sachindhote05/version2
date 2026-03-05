@@ -20,12 +20,13 @@ export default function OrganizationalInterventions() {
 
       <div className="px-6 py-16 max-w-5xl mx-auto">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          We enable culture transformation through structured behavioural
-          and organizational development interventions.
+         "Behavioural Mastery (12-Month Intervention)
+ Culture Reset Framework
+ Psychological Safety Workshops
+ Strategic Behavioural Interventions"
         </p>
         <p className="text-lg text-gray-700 leading-relaxed">
-          Our approach focuses on leadership alignment, team effectiveness,
-          and sustainable change management strategies.
+         
         </p>
       </div>
 

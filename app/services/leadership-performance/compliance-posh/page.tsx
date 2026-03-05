@@ -20,12 +20,15 @@ export default function CompliancePOSH() {
 
       <div className="px-6 py-16 max-w-5xl mx-auto">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          We help organizations build legally compliant and ethically strong
-          workplace environments aligned with statutory requirements.
+        "POSH Employee & Manager Training
+ POSH for Internal Committees
+ External Member Services
+ Annual Compliance Documentation & Audit Readiness
+ SHE Box Registration Support
+ Quarterly IC Advisory"
         </p>
         <p className="text-lg text-gray-700 leading-relaxed">
-          From policy development to awareness programs and compliance audits,
-          we ensure safe, inclusive, and well-governed workplaces.
+        
         </p>
       </div>
 

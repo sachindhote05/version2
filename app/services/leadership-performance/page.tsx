@@ -27,14 +27,15 @@ export default function LeadershipPerformance() {
       <div className="px-6 py-16 max-w-5xl mx-auto">
 
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          We design and deliver high-impact leadership development
-          interventions that build confident, future-ready leaders.
+          "Leadership Development (6-Month Intervention)
+ New Manager Identity Transition
+ CXO Coaching – Eagle Shift Framework
+ Peak Performance Acceleration (9-Month Intervention)
+ Executive Coaching"
         </p>
 
         <p className="text-lg text-gray-700 leading-relaxed">
-          Through structured workshops, coaching, and measurable
-          performance frameworks, we enable organizations to drive
-          sustainable excellence.
+         
         </p>
 
       </div>

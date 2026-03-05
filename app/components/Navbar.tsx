@@ -2,14 +2,15 @@
 
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
 export default function Navbar() {
+
   const [menuOpen, setMenuOpen] = useState(false)
-  const [servicesPanelOpen, setServicesPanelOpen] = useState(false)
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false)
+
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  // Desktop outside click close
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (
@@ -24,56 +25,73 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="fixed w-full bg-white shadow z-50">
+
+    <nav className="w-full bg-white shadow-md fixed top-0 z-50">
 
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
 
         {/* LOGO */}
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          Version2
+        <Link href="/" className="flex items-center">
+          <img
+            src="/logo.png"
+            alt="Version2 Logo"
+            className="h-16 w-auto"
+          />
         </Link>
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-10 font-medium">
 
-          <Link href="/" className="nav-glow">Home</Link>
+          <Link href="/">Home</Link>
 
-          {/* SERVICES (2nd Position) */}
+          {/* SERVICES DROPDOWN */}
           <div className="relative" ref={dropdownRef}>
+
             <button
               onClick={() => setDesktopServicesOpen(!desktopServicesOpen)}
-              className="nav-glow"
             >
               Services
             </button>
 
             {desktopServicesOpen && (
-              <div className="absolute top-12 left-0 w-[380px] bg-white rounded-xl shadow-xl border p-4 z-50">
+
+              <div className="absolute top-12 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4">
+
                 {services.map((s) => (
                   <Link
                     key={s.slug}
                     href={s.href}
-                    className="block px-4 py-3 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-3 rounded-lg hover:bg-blue-50"
                   >
                     {s.title}
                   </Link>
                 ))}
+
               </div>
+
             )}
+
           </div>
 
-          <Link href="/resources" className="nav-glow">Resources</Link>
-          <Link href="/clients" className="nav-glow">Clients</Link>
-          <Link href="/contact" className="nav-glow">Contact</Link>
+          <Link href="/resources">Resources</Link>
+          <Link href="/clients">Clients</Link>
+          <Link href="/contact">Contact</Link>
 
         </div>
 
-        {/* MOBILE BUTTON */}
+        {/* SOCIAL ICONS */}
+        <div className="hidden md:flex items-center gap-4 text-lg">
+
+          <a href="#"><FaFacebookF /></a>
+          <a href="#"><FaInstagram /></a>
+          <a href="#"><FaLinkedinIn /></a>
+          <a href="#"><FaWhatsapp /></a>
+
+        </div>
+
+        {/* MOBILE MENU BUTTON */}
         <button
-          onClick={() => {
-            setMenuOpen(true)
-            setServicesPanelOpen(false)
-          }}
+          onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-3xl"
         >
           ☰
@@ -81,68 +99,25 @@ export default function Navbar() {
 
       </div>
 
-      {/* MOBILE OVERLAY */}
+      {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="fixed inset-0 bg-black/40 z-50">
 
-          {/* MAIN MENU (Right Slide) */}
-          <div className="absolute right-0 top-0 h-full w-[85%] bg-white p-6 animate-slide-right">
+        <div className="md:hidden bg-white border-t">
 
-            <div className="flex justify-between mb-6">
-              <h2 className="text-xl font-bold">Menu</h2>
-              <button onClick={() => setMenuOpen(false)}>✕</button>
-            </div>
+          <div className="flex flex-col p-6 gap-4">
 
-            <div className="flex flex-col gap-6 text-lg">
+            <Link href="/">Home</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/resources">Resources</Link>
+            <Link href="/clients">Clients</Link>
+            <Link href="/contact">Contact</Link>
 
-              <Link href="/" onClick={() => setMenuOpen(false)}>
-                Home
-              </Link>
-
-              <button
-                onClick={() => setServicesPanelOpen(true)}
-                className="text-left font-semibold"
-              >
-                Services →
-              </button>
-
-              <Link href="/resources">Resources</Link>
-              <Link href="/clients">Clients</Link>
-              <Link href="/contact">Contact</Link>
-
-            </div>
           </div>
 
-          {/* SERVICES PANEL (Left Slide) */}
-          {servicesPanelOpen && (
-            <div className="absolute left-0 top-0 h-full w-[85%] bg-white p-6 animate-slide-left">
-
-              <div className="flex justify-between mb-6">
-                <h2 className="text-xl font-bold">Services</h2>
-                <button onClick={() => setServicesPanelOpen(false)}>←</button>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                {services.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={s.href}
-                    onClick={() => {
-                      setMenuOpen(false)
-                      setServicesPanelOpen(false)
-                    }}
-                    className="p-3 rounded-lg bg-gray-50 hover:bg-blue-50 transition"
-                  >
-                    {s.title}
-                  </Link>
-                ))}
-              </div>
-
-            </div>
-          )}
-
         </div>
+
       )}
+
     </nav>
   )
 }
@@ -156,26 +131,26 @@ const services = [
   {
     title: "Compliance & Workplace Safety POSH",
     slug: "compliance-posh",
-    href: "/services/leadership-performance/compliance-posh",
+    href: "/services/compliance-posh",
   },
   {
     title: "Digital Learning & Capability Systems",
     slug: "digital-learning",
-    href: "/services/leadership-performance/digital-learning",
+    href: "/services/digital-learning",
   },
   {
     title: "Organizational Behavioural Interventions",
     slug: "organizational-interventions",
-    href: "/services/leadership-performance/organizational-interventions",
+    href: "/services/organizational-interventions",
   },
   {
     title: "Train the Trainer",
     slug: "train-the-trainer",
-    href: "/services/leadership-performance/train-the-trainer",
+    href: "/services/train-the-trainer",
   },
   {
     title: "Executive Events & Strategic Offsites",
     slug: "executive-events",
-    href: "/services/leadership-performance/executive-events",
+    href: "/services/executive-events",
   },
 ]

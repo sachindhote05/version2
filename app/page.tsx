@@ -37,7 +37,7 @@ export default function Home() {
       <div className="h-32"></div>
 
       {/* ================= HERO ================= */}
-      <section className="py-24 text-center bg-gradient-to-br from-white via-blue-50 to-white">
+      <section className="py-18 text-center bg-gradient-to-br from-white via-blue-50 to-white">
         <div className="max-w-5xl mx-auto px-6">
 
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6">
@@ -75,6 +75,48 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/*what make us different */}
+
+<section className="relative py-10 overflow-hidden">
+
+  {/* 🔵 Compact Blue Gradient */}
+  <div className="absolute inset-5 bg-gradient-to-r from-blue-700 to-indigo-700"></div>
+
+  {/* 🔵 Light Texture */}
+  <div className="absolute inset-9 opacity-10 
+    bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
+    bg-[size:25px_25px]">
+  </div>
+
+  {/* CONTENT */}
+  <div className="relative max-w-4xl mx-auto px-6 text-center text-white">
+
+    <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      WHAT MAKES US DIFFERENT
+    </h2>
+
+    <p className="text-base md:text-lg leading-relaxed opacity-90">
+      Research shows mindset drives performance more than skillset alone. 
+      If employees are your biggest asset, investing in their growth is not an expense — it’s strategy.
+    </p>
+
+    <p className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
+      Version2 designs neuroscience‑informed, mind‑body integrated interventions 
+      that work at the behavioural root — not just the surface.
+    </p>
+
+    <p className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
+      Through psychological safety frameworks, we create measurable and sustainable transformation — 
+      because real growth starts within.
+    </p>
+
+  <button className="mt-6 bg-green-600 text-white px-6 py-3 rounded-lg">
+  Download E‑Brochure
+</button>
+
+  </div>
+</section>
 
       {/* ================= TRA-CO MODULES ================= */}
       <section className="py-24 bg-gradient-to-b from-white to-blue-50">

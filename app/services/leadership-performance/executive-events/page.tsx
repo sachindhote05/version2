@@ -20,12 +20,12 @@ export default function ExecutiveEvents() {
 
       <div className="px-6 py-16 max-w-5xl mx-auto">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          We design and facilitate high-impact executive retreats
-          and strategic offsite engagements.
+         "Leadership Alignment Retreats
+ Culture-Building Outbounds
+ Strategic Reset Workshops"
         </p>
         <p className="text-lg text-gray-700 leading-relaxed">
-          Our sessions drive strategic alignment, innovation,
-          and leadership synergy for long-term growth.
+        
         </p>
       </div>
 

@@ -20,12 +20,13 @@ export default function TrainTheTrainer() {
 
       <div className="px-6 py-16 max-w-5xl mx-auto">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          We develop confident and impactful internal facilitators
-          equipped with advanced training and engagement skills.
+         "Certified Internal Trainer Program
+ SOP & Safety Training Systems
+ Scalable Skill Transfer Architecture
+ Audit-Ready Learning Ecosystem"
         </p>
         <p className="text-lg text-gray-700 leading-relaxed">
-          Our programs focus on facilitation mastery, learning psychology,
-          and structured delivery frameworks.
+          
         </p>
       </div>
 

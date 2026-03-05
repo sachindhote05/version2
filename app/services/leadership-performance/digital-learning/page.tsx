@@ -20,12 +20,13 @@ export default function DigitalLearning() {
 
       <div className="px-6 py-16 max-w-5xl mx-auto">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
-          We design scalable digital learning ecosystems that enable
-          capability development at speed and scale.
+         "POSH E-learning Modules (Licensing & Custom Development)
+ Mindset Reset Programs
+ Emotional Regulation Modules
+ Growth Skillset Mastery Framework"
         </p>
         <p className="text-lg text-gray-700 leading-relaxed">
-          Our solutions integrate LMS platforms, e-learning modules,
-          and measurable performance dashboards.
+         
         </p>
       </div>
 
