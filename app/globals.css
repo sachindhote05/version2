@@ -5,6 +5,7 @@
 body {
   scroll-behavior: smooth;
 }
+<<<<<<< HEAD
 .nav-glow {
   position: relative;
   transition: color 0.3s ease;
@@ -54,11 +55,20 @@ body {
     transform: translateY(10px);
   }
   to {
+=======
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+>>>>>>> cf8a99a (updated hero section)
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+<<<<<<< HEAD
 .animate-slide {
   animation: slide 0.35s ease forwards;
 }
@@ -91,3 +101,22 @@ body {
 .delay-500 { animation-delay: 0.5s; }
 .delay-700 { animation-delay: 0.7s; }
 
+=======
+.animate-fadeIn {
+  animation: fadeInUp 1s ease-out forwards;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease forwards;
+}
+>>>>>>> cf8a99a (updated hero section)

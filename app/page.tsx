@@ -6,27 +6,33 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/
 import Navbar from "./components/Navbar";
 
 export default function Home() {
-  const words = [
-    "Elevating Lives",
-    "Elevating Skills",
-    "Elevating Performance",
-    "Elevating Business",
-  ];
+const words = [
+  "Lives",
+  "Skills",
+  "Performance",
+  "Business",
+  "Growth",
+];
+  const videos = [];
 
   const [index, setIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % words.length);
-        setFade(true);
-      }, 400);
-    }, 2500);
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % words.length);
+  }, 2500);
 
-    return () => clearInterval(interval);
-  }, []);
+  return () => clearInterval(interval);
+}, []);
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setVideoIndex((prev) => (prev + 1) % videos.length);
+  }, 4000); // 4 second me video change
+
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <main className="overflow-x-hidden">
@@ -37,41 +43,83 @@ export default function Home() {
       <div className="h-32"></div>
 
       {/* ================= HERO ================= */}
-      <section className="py-18 text-center bg-gradient-to-br from-white via-blue-50 to-white">
-        <div className="max-w-5xl mx-auto px-6">
+      <section className="py-24 bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-200">
+       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6">
-            Empowering Minds
-          </h1>
+          <div>
+     <div className="mb-4 pl-4 border-l-4 border-blue-600">
+  <span className="text-gray-600 font-medium">
+    Welcome to Version2
+  </span>
+</div>
+  <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+    Empowering Minds
+  </h1>
 
-          <h2
-            className={`text-3xl md:text-5xl font-extrabold transition-all duration-500 ${
-              fade ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-            }`}
-          >
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 bg-clip-text text-transparent">
-              {words[index]}
-            </span>
-          </h2>
+<h2 className="text-3xl md:text-4xl font-extrabold flex items-baseline gap-3">
 
-          <p className="mt-8 text-gray-600 max-w-2xl mx-auto">
-            We empower individuals and organizations with innovative strategies,
-            practical solutions, and measurable growth.
-          </p>
+  <span>Elevating</span>
+
+  <span className="relative h-[50px] overflow-hidden">
+
+    <span
+      key={index}
+      className="block transition-all duration-700 ease-in-out translate-y-0"
+    >
+      <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        {words[index]}
+      </span>
+    </span>
+
+  </span>
+
+</h2>
+
+  <p className="mt-6 text-gray-600 max-w-xl">
+    We empower individuals and organizations with innovative strategies,
+    practical solutions, and measurable growth.
+  </p>
+</div>
 
           {/* VIDEO */}
-          <div className="mt-10 flex justify-center">
-            <div className="w-[600px] h-[300px] rounded-3xl overflow-hidden shadow-lg border border-gray-200 bg-black">
-              <video
-                src="/empowering-video.mp4"
-                controls
-                autoPlay
-                muted
-                loop
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+  <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
+
+  {/* SLIDER */}
+  <div
+    className="flex h-full transition-all duration-1000 ease-in-out"
+    style={{
+      transform: `translateX(-${videoIndex * 100}%)`
+    }}
+  >
+    {videos.map((video, i) => (
+      <div key={i} className="w-full h-full flex-shrink-0">
+        <video
+          src={video}
+          autoPlay
+          muted
+          playsInline
+          className="w-full h-full object-contain"
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* DOTS */}
+  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
+    {videos.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setVideoIndex(i)}
+        className={`h-3 w-3 rounded-full transition-all duration-300 ${
+          videoIndex === i
+            ? "bg-white scale-125"
+            : "bg-white/50 hover:bg-white"
+        }`}
+      />
+    ))}
+  </div>
+
+</div>
 
         </div>
       </section>
