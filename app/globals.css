@@ -5,103 +5,17 @@
 body {
   scroll-behavior: smooth;
 }
-<<<<<<< HEAD
-.nav-glow {
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-glow:hover {
-  color: #2563eb;
-}
-
-.nav-glow::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #2563eb;
-  transition: width 0.3s ease;
-}
-
-.nav-glow:hover::after {
-  width: 100%;
-}
-
-/* Animations */
-@keyframes slide {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-=======
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(20px);
   }
   100% {
->>>>>>> cf8a99a (updated hero section)
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-<<<<<<< HEAD
-.animate-slide {
-  animation: slide 0.35s ease forwards;
-}
-
-.animate-slide-left {
-  animation: slideLeft 0.35s ease forwards;
-}
-
-.animate-fade {
-  animation: fade 0.25s ease forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fadeUp 1s ease forwards;
-}
-
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-700 { animation-delay: 0.7s; }
-
-=======
 .animate-fadeIn {
   animation: fadeInUp 1s ease-out forwards;
 }
@@ -119,4 +33,16 @@ body {
 .animate-slideUp {
   animation: slideUp 0.6s ease forwards;
 }
->>>>>>> cf8a99a (updated hero section)
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}

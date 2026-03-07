@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import Navbar from "./components/Navbar";
+import { FaTools, FaLeaf, FaBolt, FaBrain, FaClock, FaUsers } from "react-icons/fa"
 
 export default function Home() {
 const words = [
@@ -73,15 +74,59 @@ const words = [
 
   </span>
 
+
 </h2>
 
   <p className="mt-6 text-gray-600 max-w-xl">
     We empower individuals and organizations with innovative strategies,
     practical solutions, and measurable growth.
   </p>
+  
+  {/* SLIDING FEATURES */}
+
+<div className="mt-10 overflow-hidden">
+
+  <div className="flex gap-10 whitespace-nowrap animate-marquee text-lg font-semibold text-gray-700">
+
+    <div className="flex items-center gap-2">
+      <FaTools className="text-blue-600" />
+      Proven Tools
+    </div>
+
+    <div className="flex items-center gap-2">
+      <FaLeaf className="text-green-600" />
+      Sustainable Results
+    </div>
+
+    <div className="flex items-center gap-2">
+      <FaBolt className="text-yellow-500" />
+      Simple Interventions
+    </div>
+
+    <div className="flex items-center gap-2">
+      <FaBrain className="text-purple-600" />
+      Mind Body Neuroscience
+    </div>
+
+    <div className="flex items-center gap-2">
+      <FaClock className="text-indigo-600" />
+      10+ Years
+    </div>
+
+    <div className="flex items-center gap-2">
+      <FaUsers className="text-pink-600" />
+      50+ Clients
+    </div>
+
+  </div>
+
 </div>
 
+</div>
+
+
           {/* VIDEO */}
+          
   <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
 
   {/* SLIDER */}
