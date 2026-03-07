@@ -233,8 +233,6 @@ const services = [
     title: "Executive Events & Strategic Offsites",
     slug: "executive-events",
     href: "/services/leadership-performance/executive-events",
-<<<<<<< HEAD
-=======
   },
 ]
 const resources = [
@@ -257,6 +255,5 @@ const resources = [
   {
     title: "Free Videos",
     href: "/resources/videos",
->>>>>>> 09a4152ef719df58a0d867e69fe11898ff22d495
   },
 ]
