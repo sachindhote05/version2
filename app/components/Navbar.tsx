@@ -131,26 +131,26 @@ const services = [
   {
     title: "Compliance & Workplace Safety POSH",
     slug: "compliance-posh",
-    href: "/services/compliance-posh",
+    href: "/services/leadership-performance/compliance-posh",
   },
   {
     title: "Digital Learning & Capability Systems",
     slug: "digital-learning",
-    href: "/services/digital-learning",
+    href: "/services/leadership-performance/digital-learning",
   },
   {
     title: "Organizational Behavioural Interventions",
     slug: "organizational-interventions",
-    href: "/services/organizational-interventions",
+    href: "/services/leadership-performance/organizational-interventions",
   },
   {
     title: "Train the Trainer",
     slug: "train-the-trainer",
-    href: "/services/train-the-trainer",
+    href: "/services/leadership-performance/train-the-trainer",
   },
   {
     title: "Executive Events & Strategic Offsites",
     slug: "executive-events",
-    href: "/services/executive-events",
+    href: "/services/leadership-performance/executive-events",
   },
 ]
