@@ -5,6 +5,7 @@
 body {
   scroll-behavior: smooth;
 }
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -19,6 +20,7 @@ body {
 .animate-fadeIn {
   animation: fadeInUp 1s ease-out forwards;
 }
+
 @keyframes slideUp {
   0% {
     transform: translateY(100%);
@@ -33,17 +35,12 @@ body {
 .animate-slideUp {
   animation: slideUp 0.6s ease forwards;
 }
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.animate-heroText {
-  animation: fadeSlideUp 1s ease-out forwards;
+.animate-marquee {
+  animation: marquee 15s linear infinite;
 }

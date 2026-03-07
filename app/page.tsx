@@ -93,6 +93,7 @@ useEffect(() => {
 
   </span>
 
+
 </h2>
 
  <p className="mt-6 text-indigo-100 max-w-xl">
@@ -100,7 +101,9 @@ useEffect(() => {
   </p>
 </div>
 
+
           {/* VIDEO */}
+          
   <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
 
   {/* SLIDER */}
