@@ -164,7 +164,7 @@ useEffect(() => {
 <section className="relative py-5 flex justify-center">
 
   {/* 🔵 Compact Blue Gradient */}
-<div className="absolute w-[900px] h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl"></div>
+<div className="absolute w-[900px] h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl"></div>
   <div className="absolute inset-9 opacity-10 
     bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
     bg-[size:25px_25px]">
