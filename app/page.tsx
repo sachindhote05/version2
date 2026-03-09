@@ -67,7 +67,7 @@ useEffect(() => {
       <div className="h-32"></div>
 
       {/* ================= HERO ================= */}
-      <section className="relative py-24 bg-gradient-to-r from-blue-600 to-indigo-600 overflow-hidden">
+    <section className="relative pt-24 pb-40 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] overflow-hidden">
        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
           <div>
@@ -148,7 +148,7 @@ useEffect(() => {
 <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
   <svg
     viewBox="0 0 1440 150"
-    className="w-full h-[120px]"
+    className="w-full h-[200px]"
     preserveAspectRatio="none"
   >
     <path
@@ -161,10 +161,10 @@ useEffect(() => {
 
       {/*what make us different */}
 
-<section className="relative py-5 flex justify-center">
+<section className="relative py-1 flex justify-center">
 
   {/* 🔵 Compact Blue Gradient */}
-<div className="absolute w-[900px] h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl"></div>
+<div className="absolute w-[900px] h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
   <div className="absolute inset-9 opacity-10 
     bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
     bg-[size:25px_25px]">
@@ -174,7 +174,7 @@ useEffect(() => {
  <div className="relative w-[800px] px-10 py-14 text-center text-white">
 
    <h2 data-aos="fade-up" data-aos-delay="100"
-className="text-3xl md:text-4xl font-bold mb-6">
+className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-200 to-purple-400 bg-clip-text text-transparent">
 WHAT MAKES US DIFFERENT
 </h2>
 
@@ -199,7 +199,7 @@ className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
   <button
 data-aos="zoom-in"
 data-aos-delay="800"
-className="mt-6 bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition">
+className="mt-6 bg-gradient-to-r from-cyan-200 to-purple-400 text-indigo-900 font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition">
 Download E-Brochure
 </button>
 
@@ -289,7 +289,7 @@ className="w-full h-64 object-cover transition duration-700 group-hover:scale-11
 />
 </div>
 
-<div className="p-6 text-center">
+<div className="p-6 text-left">
 
   <h3 className="text-xl font-bold text-blue-700 mb-3">
     {item.title}
@@ -300,7 +300,7 @@ className="w-full h-64 object-cover transition duration-700 group-hover:scale-11
   </p>
 
   {/* LIST */}
-  <ul className="text-gray-500 text-sm mt-3 list-disc list-inside space-y-1 max-h-0 overflow-hidden group-hover:max-h-60 transition-all duration-500">
+  <ul className="text-gray-500 text-sm mt-3 list-disc list-outside pl-5 space-y-1 text-left">
 
     {item.points.map((point, index) => (
       <li key={index}>{point}</li>
