@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { searchData } from "@/data/searchData"
 import Link from "next/link"
@@ -8,17 +8,14 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/
 
 export default function Navbar() {
 
-  const [menuOpen, setMenuOpen] = useState(false)
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false)
-const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
+  const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
+
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<any[]>([])
 
   const router = useRouter()
 
-  const dropdownRef = useRef<HTMLDivElement>(null)
-
-  // LIVE SEARCH
   const handleChange = (e:any) => {
     const value = e.target.value
     setQuery(value)
@@ -30,7 +27,6 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
     setResults(filtered)
   }
 
-  // ENTER PRESS SEARCH
   const handleSearch = (e:any) => {
     e.preventDefault()
 
@@ -39,23 +35,10 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
     }
   }
 
-  useEffect(() => {
-    function handleClickOutside(event:any) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
-        setDesktopServicesOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
-
   return (
     <nav className="w-full bg-white shadow-md fixed top-0 z-50">
 
+      {/* TOP NAVBAR */}
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
 
         {/* LOGO */}
@@ -67,7 +50,7 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
           />
         </Link>
 
-        {/* SEARCH BAR */}
+        {/* SEARCH */}
         <div className="relative hidden md:flex mx-6">
 
           <form onSubmit={handleSearch}>
@@ -80,9 +63,7 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
             />
           </form>
 
-          {/* DROPDOWN RESULTS */}
           {query && results.length > 0 && (
-
             <div className="absolute top-12 w-full bg-white border rounded-lg shadow-lg z-50">
 
               {results.map((item, index) => (
@@ -96,7 +77,6 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
               ))}
 
             </div>
-
           )}
 
         </div>
@@ -105,10 +85,10 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
         <div className="hidden md:flex items-center gap-6">
 
           <div className="flex items-center gap-4 text-lg">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaLinkedinIn /></a>
-            <a href="#"><FaWhatsapp /></a>
+            <FaFacebookF />
+            <FaInstagram />
+            <FaLinkedinIn />
+            <FaWhatsapp />
           </div>
 
           <Link
@@ -120,13 +100,6 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
 
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-3xl"
-        >
-          ☰
-        </button>
-
       </div>
 
       {/* SECOND NAVBAR */}
@@ -136,18 +109,16 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
 
           <Link href="/">Home</Link>
 
-         <div
-  className="relative"
-  onMouseEnter={() => setDesktopServicesOpen(true)}
-  onMouseLeave={() => setDesktopServicesOpen(false)}
->
+          {/* SERVICES */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDesktopServicesOpen(true)}
+            onMouseLeave={() => setDesktopServicesOpen(false)}
+          >
 
-  <button>
-    Services
-  </button>
+            <button>Services</button>
 
             {desktopServicesOpen && (
-
               <div className="absolute top-10 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4">
 
                 {services.map((s) => (
@@ -161,37 +132,37 @@ const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
                 ))}
 
               </div>
-
             )}
 
           </div>
-<div className="relative">
 
-  <button
-    onClick={() => setDesktopResourcesOpen(!desktopResourcesOpen)}
-  >
-    Resources
-  </button>
+          {/* RESOURCES */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDesktopResourcesOpen(true)}
+            onMouseLeave={() => setDesktopResourcesOpen(false)}
+          >
 
-  {desktopResourcesOpen && (
+            <button>Resources</button>
 
-    <div className="absolute top-10 left-0 w-[300px] bg-white shadow-xl rounded-xl border p-4">
+            {desktopResourcesOpen && (
+              <div className="absolute top-10 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4">
 
-      {resources.map((r) => (
-        <Link
-          key={r.title}
-          href={r.href}
-          className="block px-4 py-3 rounded-lg hover:bg-blue-50"
-        >
-          {r.title}
-        </Link>
-      ))}
+                {resources.map((r) => (
+                  <Link
+                    key={r.title}
+                    href={r.href}
+                    className="block px-4 py-3 rounded-lg hover:bg-blue-50"
+                  >
+                    {r.title}
+                  </Link>
+                ))}
 
-    </div>
+              </div>
+            )}
 
-  )}
+          </div>
 
-</div>
           <Link href="/clients">Clients</Link>
           <Link href="/contact">Contact</Link>
 
@@ -235,25 +206,11 @@ const services = [
     href: "/services/leadership-performance/executive-events",
   },
 ]
+
 const resources = [
-  {
-    title: "Downloads",
-    href: "/resources/downloads",
-  },
-  {
-    title: "Newsletters",
-    href: "/resources/newsletters",
-  },
-  {
-    title: "Blogs",
-    href: "/resources/blogs",
-  },
-  {
-    title: "Media",
-    href: "/resources/media",
-  },
-  {
-    title: "Free Videos",
-    href: "/resources/videos",
-  },
+  { title: "Downloads", href: "/resources/downloads" },
+  { title: "Newsletters", href: "/resources/newsletters" },
+  { title: "Blogs", href: "/resources/blogs" },
+  { title: "Media", href: "/resources/media" },
+  { title: "Free Videos", href: "/resources/videos" },
 ]
