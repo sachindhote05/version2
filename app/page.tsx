@@ -78,8 +78,8 @@ useEffect(() => {
 </h1>
 
 <h2 className="text-3xl md:text-4xl font-extrabold flex items-baseline gap-3">
-<span className="text-white">Elevating elevating
-  
+<span className="text-white">Elevating
+
 </span>
 
   <span className="relative h-[50px] overflow-hidden">
