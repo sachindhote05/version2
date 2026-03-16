@@ -1,68 +1,66 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import Navbar from "./components/Navbar";
+import { useEffect, useState, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Home() {
   const fullText = "Empowering Minds";
-const [displayText, setDisplayText] = useState("");
-const words = [
-  "Lives",
-  "Skills",
-  "Performance",
-  "Business",
-  "Growth",
-];
-  const videos = [];
+  const [displayText, setDisplayText] = useState("");
+  const words = useMemo(() => [
+    "Lives",
+    "Skills",
+    "Performance",
+    "Business",
+    "Growth",
+  ], []);
+  const videos = useMemo<string[]>(() => [], []);
 
   const [index, setIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
-  const [fade, setFade] = useState(true);
 
   useEffect(() => {
-  const interval = setInterval(() => {
-    setIndex((prev) => (prev + 1) % words.length);
-  }, 2500);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
 
-  return () => clearInterval(interval);
-}, []);
-useEffect(() => {
-  AOS.init({
-    duration: 1000,
-    once: false,
-  });
-}, []);
-useEffect(() => {
-  let i = 0;
+    return () => clearInterval(interval);
+  }, [words.length]);
 
-  const typing = setInterval(() => {
-    setDisplayText(fullText.slice(0, i + 1));
-    i++;
-
-    if (i === fullText.length) {
-      clearInterval(typing);
-    }
-  }, 80); // typing speed
-
-  return () => clearInterval(typing);
-}, []);
   useEffect(() => {
-  const interval = setInterval(() => {
-    setVideoIndex((prev) => (prev + 1) % videos.length);
-  }, 4000); // 4 second me video change
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    let i = 0;
+
+    const typing = setInterval(() => {
+      setDisplayText(fullText.slice(0, i + 1));
+      i++;
+
+      if (i === fullText.length) {
+        clearInterval(typing);
+      }
+    }, 80);
+
+    return () => clearInterval(typing);
+  }, []);
+
+  useEffect(() => {
+    if (videos.length === 0) return;
+    
+    const interval = setInterval(() => {
+      setVideoIndex((prev) => (prev + 1) % videos.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [videos.length]);
 
   return (
     <main className="overflow-x-hidden">
-
-      {/* ================= NAVBAR ================= */}
-      <Navbar />
 
       <div className="h-32"></div>
 

@@ -1,14 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import { useState, FormEvent } from "react"
+import type { Download } from "@/data/resourcesData"
 
-export default function DownloadModal({ file, close }: any) {
+interface DownloadModalProps {
+  file: Download | null
+  close: () => void
+}
+
+export default function DownloadModal({ file, close }: DownloadModalProps) {
 
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [phone,setPhone] = useState("")
 
-  const handleSubmit = (e:any)=>{
+  const handleSubmit = (e: FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
 
     const form = document.createElement("form")

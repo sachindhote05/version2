@@ -1,4 +1,14 @@
-export const resources = [
+export interface Resource {
+  title: string
+  href: string
+}
+
+export interface Download {
+  title: string
+  file?: string
+}
+
+export const resources: Resource[] = [
   {
     title: "Downloads",
     href: "/resources/downloads",
@@ -21,7 +31,7 @@ export const resources = [
   },
 ]
 
-export const downloads = [
+export const downloads: Download[] = [
   {
     title: "POSH Act",
   },

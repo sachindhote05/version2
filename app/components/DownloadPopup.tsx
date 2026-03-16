@@ -1,17 +1,25 @@
 "use client"
 
-import { useState } from "react"
+import { useState, FormEvent } from "react"
+import type { Download } from "@/data/resourcesData"
 
-export default function DownloadModal({ file, close }: any) {
+interface DownloadPopupProps {
+  file: Download | null
+  close: () => void
+}
+
+export default function DownloadPopup({ file, close }: DownloadPopupProps) {
 
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [phone,setPhone] = useState("")
 
-  const handleSubmit = (e:any)=>{
+  const handleSubmit = (e: FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
 
-    window.open(file.file,"_blank")
+    if (file?.file) {
+      window.open(file.file,"_blank")
+    }
 
     close()
   }
