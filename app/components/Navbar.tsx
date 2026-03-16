@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, FormEvent, ChangeEvent } from "react"
 import { useRouter } from "next/navigation"
-import { searchData } from "@/data/searchData"
+import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
@@ -12,11 +12,11 @@ export default function Navbar() {
   const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
 
   const [query, setQuery] = useState("")
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<SearchItem[]>([])
 
   const router = useRouter()
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setQuery(value)
 
@@ -27,7 +27,7 @@ export default function Navbar() {
     setResults(filtered)
   }
 
-  const handleSearch = (e:any) => {
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if(results.length > 0){

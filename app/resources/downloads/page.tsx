@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { resources, downloads } from "@/data/resourcesData"
+import { downloads, type Download } from "@/data/resourcesData"
 import DownloadModal from "../../components/DownloadModal"
 
 export default function DownloadsPage() {
 
-  const [file,setFile] = useState(null)
+  const [file, setFile] = useState<Download | null>(null)
 
   return (
     <div className="max-w-5xl mx-auto py-24 px-6">

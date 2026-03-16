@@ -1,4 +1,9 @@
-export const searchData = [
+export interface SearchItem {
+  title: string
+  link: string
+}
+
+export const searchData: SearchItem[] = [
 
   { title: "Home", link: "/" },
 
