@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ServicesSlider from "./components/ServicesSlider";
 
 export default function Home() {
   const fullText = "Empowering Minds";
@@ -202,6 +203,9 @@ Download E-Brochure
 
   </div>
 </section>
+
+      {/* ================= SERVICES SLIDER ================= */}
+      <ServicesSlider />
 
       {/* ================= TRA-CO MODULES ================= */}
       <section className="py-24 bg-gradient-to-b from-white to-blue-50">
