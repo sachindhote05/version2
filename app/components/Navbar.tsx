@@ -107,34 +107,16 @@ export default function Navbar() {
 
         <div className="max-w-7xl mx-auto px-6 flex gap-10 py-3 font-medium">
 
-          <Link href="/">Home</Link>
+          <a href="#home" className="hover:text-blue-500 transition">
+  Home
+</a>
 
           {/* SERVICES */}
-          <div
-            className="relative"
-            onMouseEnter={() => setDesktopServicesOpen(true)}
-            onMouseLeave={() => setDesktopServicesOpen(false)}
-          >
-
-            <button>Services</button>
-
-            {desktopServicesOpen && (
-              <div className="absolute top-10 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4">
-
-                {services.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={s.href}
-                    className="block px-4 py-3 rounded-lg hover:bg-blue-50"
-                  >
-                    {s.title}
-                  </Link>
-                ))}
-
-              </div>
-            )}
-
-          </div>
+         <a href="#services">
+  <button className="hover:text-blue-500 transition">
+    Services
+  </button>
+</a>
 
           {/* RESOURCES */}
           <div

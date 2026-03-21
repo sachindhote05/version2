@@ -15,7 +15,9 @@ export default function Home() {
     "Business",
     "Growth",
   ], []);
-  const videos = useMemo<string[]>(() => [], []);
+  const videos = useMemo<string[]>(() => [
+  "/sample.mp4"
+], []);
 
   const [index, setIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
@@ -66,12 +68,13 @@ export default function Home() {
       <div className="h-32"></div>
 
       {/* ================= HERO ================= */}
-    <section className="relative pt-24 pb-40 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] overflow-hidden">
+      <section id="home" className="relative pt-24 pb-40 ..."></section>
+    <section className="relative pt-20 pb-40 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] overflow-hidden">
        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
           <div>
    
-<h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 text-white">
+<h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-white whitespace-nowrap">
   {displayText}
   <span className="animate-pulse">|</span>
 </h1>
@@ -103,26 +106,20 @@ export default function Home() {
 </div>
 
 
-          {/* VIDEO */}<div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
-  {/* SLIDER */}
-  <div
-    className="flex h-full transition-all duration-1000 ease-in-out"
-    style={{
-      transform: `translateX(-${videoIndex * 100}%)`
-    }}
-  >
-    {videos.map((video, i) => (
-      <div key={i} className="w-full h-full flex-shrink-0">
-        <video
-          src={video}
-          autoPlay
-          muted
-          playsInline
-          className="w-full h-full object-contain"
-        />
-      </div>
-    ))}
-  </div>
+          {/* VIDEO */}
+          
+  <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
+
+ <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
+  <video
+    src="/sample.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  />
+</div>
 
   {/* DOTS */}
   <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
@@ -159,17 +156,17 @@ export default function Home() {
 
       {/*what make us different */}
 
-<section className="relative py-1 flex justify-center">
+<section className="relative py- flex justify-center">
 
   {/* 🔵 Compact Blue Gradient */}
-<div className="absolute w-full max-w-4xl h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
+<div className="absolute w-[900px] h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
   <div className="absolute inset-9 opacity-10 
     bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
     bg-[size:25px_25px]">
   </div>
 
   {/* CONTENT */}
- <div className="relative max-w-3xl px-6 sm:px-10 py-10 sm:py-14 text-center text-white">
+ <div className="relative w-[800px] px-10 py-14 text-center text-white">
 
    <h2 data-aos="fade-up" data-aos-delay="100"
 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-200 to-purple-400 bg-clip-text text-transparent">
@@ -205,7 +202,10 @@ Download E-Brochure
 </section>
 
       {/* ================= SERVICES SLIDER ================= */}
-      <ServicesSlider />
+     
+<div id="services" className="mt-24">
+  <ServicesSlider />
+</div>
 
       {/* ================= TRA-CO MODULES ================= */}
       <section className="py-24 bg-gradient-to-b from-white to-blue-50">
@@ -215,7 +215,7 @@ Download E-Brochure
             Tra-Co Modules – Training & Coaching
           </h2>
 
-         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+         <div className="grid md:grid-cols-4 gap-10 items-start">
 
             {[
              {
@@ -301,15 +301,13 @@ className="w-full h-64 object-cover transition duration-700 group-hover:scale-11
   </p>
 
   {/* LIST */}
- <ul className="text-gray-500 text-sm mt-3 list-disc list-outside pl-5 space-y-1 text-left 
-opacity-0 max-h-0 overflow-hidden transition-all duration-500 
-group-hover:opacity-100 group-hover:max-h-96">
+  <ul className="text-gray-500 text-sm mt-3 list-disc list-outside pl-5 space-y-1 text-left">
 
-  {item.points.map((point, index) => (
-    <li key={index}>{point}</li>
-  ))}
+    {item.points.map((point, index) => (
+      <li key={index}>{point}</li>
+    ))}
 
-</ul>
+  </ul>
 
 </div>
 </div>
@@ -386,7 +384,7 @@ more: "The POSH Act provides a statutory framework to prevent sexual harassment 
 
 <div
 key={i}
-className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-16 md:mb-24"
+className="grid md:grid-cols-2 gap-16 items-center mb-24"
 >
 
 {/* TEXT */}
@@ -443,7 +441,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
           </h2>
 
           {/* TOP 4 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <div className="grid md:grid-cols-4 gap-8 mb-10">
 
             {[
               { img: "/elearn1.jpg", title: "Custom Module Development" },
@@ -476,7 +474,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
           </div>
 
           {/* BOTTOM 3 CENTERED */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:px-20">
+          <div className="grid md:grid-cols-3 gap-8 md:px-32">
 
             {[
               { img: "/elearn5.jpg", title: "Microlearning Modules" },
@@ -518,7 +516,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
             Train The Trainer
           </h2>
 
-         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-5 gap-8">
 
             {[
               { img: "/trainer1.jpg", title: "Facilitation Skills" },
@@ -561,7 +559,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
             Our Work
           </h2>
 
-         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-5 gap-8">
 
             {[
               { id: "VIDEO_ID1", title: "Corporate Training Session" },
@@ -627,7 +625,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
 
       {/* ================= ABOUT FOUNDER ================= */}
       <section className="py-16">
-       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <img
             src="/founder.jpg"
             alt="Founder"
