@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Version2 - Leadership & Performance Excellence",
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className="bg-white text-black scroll-smooth">
         <Navbar />
         {children}
+         <Footer />
       </body>
+     
     </html>
   );
 }

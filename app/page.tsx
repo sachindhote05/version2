@@ -633,6 +633,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
 
           <div>
             <h2 className="text-3xl font-bold mb-6">About Our Founder</h2>
+            <h2 className="text-3xl font-bold mb-6">Dr. Shilpi Gupta</h2>
             <p className="text-gray-600 mb-4">
               Our founder brings years of expertise and a passion for empowering individuals and businesses.
             </p>
@@ -646,3 +647,6 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
     </main>
   );
 }
+
+
+
