@@ -65,10 +65,10 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
 
-      <div className="h-32"></div>
+      
 
       {/* ================= HERO ================= */}
-      <section id="home" className="relative pt-24 pb-40 ..."></section>
+      <section id="home" className="relative pt-0 pb-40 ..."></section>
     <section className="relative pt-20 pb-40 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] overflow-hidden">
        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 

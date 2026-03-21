@@ -143,7 +143,7 @@ export default function ServicesSlider() {
   // Get visible cards for carousel display
   const getVisibleCards = () => {
     const cards = []
-    for (let i = -2; i <= 2; i++) {
+    for (let i = -3; i <= 3; i++) {
       const index = (activeIndex + i + services.length) % services.length
       cards.push({ service: services[index], position: i })
     }
@@ -271,33 +271,7 @@ export default function ServicesSlider() {
           </motion.div>
 
           {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20
-                       w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm
-                       border border-white/20 flex items-center justify-center
-                       text-white hover:bg-white/20 transition-all duration-300
-                       hover:scale-110 active:scale-95"
-            aria-label="Previous service"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20
-                       w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm
-                       border border-white/20 flex items-center justify-center
-                       text-white hover:bg-white/20 transition-all duration-300
-                       hover:scale-110 active:scale-95"
-            aria-label="Next service"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+         
         </div>
 
         {/* Dot Navigation */}
