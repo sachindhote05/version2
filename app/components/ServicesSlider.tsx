@@ -125,7 +125,7 @@ export default function ServicesSlider() {
 
     const interval = setInterval(() => {
       nextSlide()
-    }, 3000)
+    }, 2320)
 
     return () => clearInterval(interval)
   }, [isPaused, nextSlide])

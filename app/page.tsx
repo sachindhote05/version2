@@ -552,77 +552,76 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
       </section>
 
       {/* ================= OUR WORK ================= */}
-      <section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
-        <div className="max-w-7xl mx-auto px-6">
+     {/* ================= OUR WORK ================= */}
+<section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
+  <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
-            Our Work
-          </h2>
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
+      Our Work
+    </h2>
 
-          <div className="grid md:grid-cols-5 gap-8">
+    <div className="grid md:grid-cols-5 gap-8">
 
-            {[
-              { id: "VIDEO_ID1", title: "Corporate Training Session" },
-              { id: "VIDEO_ID2", title: "Leadership Workshop" },
-              { id: "VIDEO_ID3", title: "POSH Awareness Program" },
-              { id: "VIDEO_ID4", title: "Train The Trainer Event" },
-              { id: "VIDEO_ID5", title: "E-Learning Module Demo" },
-            ].map((video, i) => (
-              <div
-                key={i}
-                className="relative group rounded-2xl overflow-hidden shadow-lg 
-                           transform transition duration-500 hover:-translate-y-3 hover:shadow-2xl"
-              >
-                <div className="relative w-full h-60">
+      {[
+        { id: "s6XEPyIUNhA", title: "Corporate Training Session" },
+        { id: "KDV9nJHEt6c", title: "Leadership Workshop" },
+        { id: "61d7ZAb90gY", title: "POSH Awareness Program" },
+        { id: "8NDiwqv00uE", title: "Train The Trainer Event" },
+        { id: "yJeMUB6BeK0", title: "E-Learning Module Demo" },
+      ].map((video, i) => (
+        <div
+          key={i}
+          className="relative group rounded-2xl overflow-hidden shadow-lg
+                     transform transition duration-500 hover:-translate-y-3 hover:shadow-2xl"
+        >
 
-                  {/* Thumbnail */}
-                  <img
-                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                    alt={video.title}
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-                  />
+          <div className="relative w-full h-60">
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
+            {/* Thumbnail */}
+            <img
+              src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+              alt={video.title}
+              className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+            />
 
-                  {/* Play Button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 text-blue-700"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
 
-                </div>
+            {/* Play Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition flex items-center justify-center">
 
-                {/* Title */}
-                <div className="p-4 bg-white">
-                  <h3 className="text-sm font-semibold text-center text-gray-700">
-                    {video.title}
-                  </h3>
-                </div>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="red"
+    className="w-8 h-8"
+  >
+    <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C15.8 4.8 12 4.8 12 4.8h0s-3.8 0-6.9.3c-.4.1-1.3.1-2.1.9-.6.6-.8 2-.8 2S2 9.6 2 11.3v1.5c0 1.7.2 3.3.2 3.3s.2 1.4.8 2c.8.8 1.9.8 2.4.9 1.7.2 6.6.3 6.6.3s3.8 0 6.9-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22 9.6 21.8 8 21.8 8zM9.8 14.5V9.5l5 2.5-5 2.5z" />
+  </svg>
 
-                {/* Click Link */}
-                <a
-                  href={`https://www.youtube.com/watch?v=${video.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0"
-                ></a>
+</div>
+            </div>
 
-              </div>
-            ))}
+            {/* CLICK → YOUTUBE */}
+            <a
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0"
+            ></a>
+
           </div>
 
-        </div>
-      </section>
+          
 
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+</section>
       {/* ================= ABOUT FOUNDER ================= */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
