@@ -5,6 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import ServicesSlider from "./components/ServicesSlider";
 
+
 export default function Home() {
   const fullText = "Empowering Minds";
   const [displayText, setDisplayText] = useState("");
@@ -645,8 +646,7 @@ className="rounded-2xl shadow-xl w-full h-[350px] object-cover hover:scale-105 t
       </section>
 
     </main>
+  
+
   );
 }
-
-
-

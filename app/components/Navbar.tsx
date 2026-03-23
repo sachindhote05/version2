@@ -84,12 +84,7 @@ export default function Navbar() {
         {/* RIGHT SIDE */}
         <div className="hidden md:flex items-center gap-6">
 
-          <div className="flex items-center gap-4 text-lg">
-            <FaFacebookF />
-            <FaInstagram />
-            <FaLinkedinIn />
-            <FaWhatsapp />
-          </div>
+          
 
           <Link
             href="/login"
@@ -107,9 +102,9 @@ export default function Navbar() {
 
         <div className="max-w-7xl mx-auto px-6 flex gap-10 py-3 font-medium">
 
-          <a href="#home" className="hover:text-blue-500 transition">
+       <Link href="/#home" className="hover:text-blue-500 transition">
   Home
-</a>
+</Link>
 
           {/* SERVICES */}
          <a href="#services">
@@ -119,32 +114,30 @@ export default function Navbar() {
 </a>
 
           {/* RESOURCES */}
-          <div
-            className="relative"
-            onMouseEnter={() => setDesktopResourcesOpen(true)}
-            onMouseLeave={() => setDesktopResourcesOpen(false)}
-          >
+         <div
+  className="relative group"
+>
+  <button className="hover:text-blue-500 transition">
+    Resources
+  </button>
 
-            <button>Resources</button>
-
-            {desktopResourcesOpen && (
-              <div className="absolute top-10 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4">
-
-                {resources.map((r) => (
-                  <Link
-                    key={r.title}
-                    href={r.href}
-                    className="block px-4 py-3 rounded-lg hover:bg-blue-50"
-                  >
-                    {r.title}
-                  </Link>
-                ))}
-
-              </div>
-            )}
-
-          </div>
-
+  {/* DROPDOWN */}
+  <div
+    className="absolute top-10 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4 
+    opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+    transition-all duration-300"
+  >
+    {resources.map((r) => (
+      <Link
+        key={r.title}
+        href={r.href}
+        className="block px-4 py-3 rounded-lg hover:bg-blue-50"
+      >
+        {r.title}
+      </Link>
+    ))}
+  </div>
+</div>
           <Link href="/clients">Clients</Link>
           <Link href="/contact">Contact</Link>
 

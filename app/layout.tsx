@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import FooterWrapper from "./components/FooterWrapper";
 
 export const metadata: Metadata = {
   title: "Version2 - Leadership & Performance Excellence",
-  description: "Training and Coaching made Structured and Sustainable for Businesses and Individuals. Empowering Minds, Elevating Performance.",
+  description:
+    "Training and Coaching made Structured and Sustainable for Businesses and Individuals.",
 };
 
 export const viewport: Viewport = {
@@ -22,9 +23,8 @@ export default function RootLayout({
       <body className="bg-white text-black scroll-smooth">
         <Navbar />
         {children}
-         <Footer />
+        <FooterWrapper /> {/* ✅ yaha lagana hai */}
       </body>
-     
     </html>
   );
 }
