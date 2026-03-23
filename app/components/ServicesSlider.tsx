@@ -15,8 +15,8 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    title: "Core Transformation Programs",
-    shortDesc: "Our programs are designed to shift identity, emotional responses, and behavioral patterns that directly impact performance and leadership effectiveness.",
+    title: "Leadership Development",
+    shortDesc: "Transform leaders into visionaries",
     fullDesc: "Our Leadership Development programs are designed to cultivate visionary leaders who inspire teams, drive innovation, and navigate complex business landscapes. Through executive coaching, 360-degree assessments, and immersive workshops, we help leaders unlock their full potential and create lasting organizational impact.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27,8 +27,8 @@ const services: Service[] = [
   },
   {
     id: 2,
-    title: "Compliance & Workplace Safety",
-    shortDesc: "Compliance is not just a legal requirement — it is the foundation of a safe and respectful workplace culture.  We go beyond checkbox compliance to build awareness, accountability, and cultural alignment.",
+    title: "POSH Compliance",
+    shortDesc: "Create safe workplaces",
     fullDesc: "Comprehensive Prevention of Sexual Harassment training and compliance services ensure your organization meets all statutory requirements while fostering a culture of respect and dignity. We provide IC training, employee awareness sessions, policy development, and ongoing compliance support.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,8 +39,8 @@ const services: Service[] = [
   },
   {
     id: 3,
-    title: "Digital Learning & Capability Systems",
-    shortDesc: "For organizations looking to scale learning and ensure consistency, we offer digitally enabled transformation systems.  Our modules are designed to create behavior change — not just information transfer.",
+    title: "Executive Coaching",
+    shortDesc: "Personalized growth journeys",
     fullDesc: "One-on-one executive coaching that combines neuroscience-informed techniques with proven leadership frameworks. Our certified coaches work with C-suite executives and senior leaders to enhance decision-making, emotional intelligence, and strategic thinking capabilities.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,8 +51,8 @@ const services: Service[] = [
   },
   {
     id: 4,
-    title: "Train the Trainer (Certification Programs)",
-    shortDesc: "We equip your teams with the skills, structure, and confidence to deliver impactful learning experiences within your organization.",
+    title: "Digital Learning",
+    shortDesc: "Learn anytime, anywhere",
     fullDesc: "Custom e-learning solutions including interactive modules, microlearning content, and gamified training experiences. Our digital learning platform integrates seamlessly with your LMS, providing scalable training solutions with detailed analytics and progress tracking.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,8 +63,8 @@ const services: Service[] = [
   },
   {
     id: 5,
-    title: "Executive Events & Strategic Offsites",
-    shortDesc: "These are not just offsites. They are designed interventions to reset culture, build trust, and align leadership.  We combine experiential learning with psychological insights to create real shifts in team dynamics.",
+    title: "Behavioral Training",
+    shortDesc: "Sustainable mindset shifts",
     fullDesc: "Our 12-month Behavioral Mastery program creates lasting performance improvements through structured interventions. Covering productivity, communication, conflict resolution, and interpersonal skills, we help teams develop the mindset foundation for sustainable success.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +73,30 @@ const services: Service[] = [
     ),
     gradient: "from-rose-500 to-red-400",
   },
-  
+  {
+    id: 6,
+    title: "Train The Trainer",
+    shortDesc: "Build internal expertise",
+    fullDesc: "Empower your internal teams to deliver impactful training programs. Our Train The Trainer certification covers facilitation skills, presentation mastery, instructional design, audience engagement techniques, and assessment methodologies for maximum knowledge transfer.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
+    gradient: "from-indigo-500 to-blue-400",
+  },
+  {
+    id: 7,
+    title: "Organizational Interventions",
+    shortDesc: "Transform culture & performance",
+    fullDesc: "Strategic organizational development interventions that address culture, structure, and processes. From team building and change management to psychological safety assessments and culture transformation, we design customized solutions for measurable organizational growth.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+    gradient: "from-cyan-500 to-blue-400",
+  },
 ]
 
 export default function ServicesSlider() {
@@ -102,7 +125,7 @@ export default function ServicesSlider() {
 
     const interval = setInterval(() => {
       nextSlide()
-    }, 2320)
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [isPaused, nextSlide])
@@ -120,7 +143,7 @@ export default function ServicesSlider() {
   // Get visible cards for carousel display
   const getVisibleCards = () => {
     const cards = []
-    for (let i = -2; i <= 2; i++) {
+    for (let i = -3; i <= 3; i++) {
       const index = (activeIndex + i + services.length) % services.length
       cards.push({ service: services[index], position: i })
     }
@@ -135,7 +158,7 @@ export default function ServicesSlider() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
-    <div className="relative w-full px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -154,7 +177,7 @@ export default function ServicesSlider() {
 
         {/* Carousel Container */}
         <div
-          className="relative h-[400px] sm:h-[380px]"
+          className="relative h-[320px] sm:h-[280px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -170,9 +193,9 @@ export default function ServicesSlider() {
               {getVisibleCards().map(({ service, position }) => {
                 const isActive = position === 0
                 const scale = isActive ? 1 : 0.85 - Math.abs(position) * 0.05
-                const opacity = isActive ? 1 : 0.8 - Math.abs(position) * 0.1
+                const opacity = isActive ? 1 : 0.6 - Math.abs(position) * 0.15
                 const zIndex = 10 - Math.abs(position)
-                const xOffset = position * 320
+                const xOffset = position * 220
 
                 return (
                   <motion.div
@@ -192,7 +215,7 @@ export default function ServicesSlider() {
                       damping: 30,
                     }}
                     onClick={() => !isActive && goToSlide(services.findIndex(s => s.id === service.id))}
-                    className={`absolute w-[300px] sm:w-[360px] ${!isActive ? "cursor-pointer" : ""}`}
+                    className={`absolute w-[280px] sm:w-[320px] ${!isActive ? "cursor-pointer" : ""}`}
                   >
                     <div
                       className={`
