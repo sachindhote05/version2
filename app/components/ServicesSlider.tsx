@@ -120,7 +120,7 @@ export default function ServicesSlider() {
   // Get visible cards for carousel display
   const getVisibleCards = () => {
     const cards = []
-    for (let i = -2; i <= 2 i++) {
+    for (let i = -2; i <= 2; i++) {
       const index = (activeIndex + i + services.length) % services.length
       cards.push({ service: services[index], position: i })
     }
