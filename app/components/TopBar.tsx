@@ -1,5 +1,3 @@
-"use client";
-
 export default function TopBar() {
   return (
     <div className="w-full bg-blue-600 text-white text-sm">
