@@ -138,8 +138,8 @@ export default function Navbar() {
     ))}
   </div>
 </div>
-          <Link href="/clients">Clients</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/clients">BOOK Consultation</Link>
+          <Link href="/contact">login</Link>
 
         </div>
 

@@ -15,7 +15,7 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    title: "Leadership Development",
+    title: "Core Transformation Programs",
     shortDesc: "Transform leaders into visionaries",
     fullDesc: "Our Leadership Development programs are designed to cultivate visionary leaders who inspire teams, drive innovation, and navigate complex business landscapes. Through executive coaching, 360-degree assessments, and immersive workshops, we help leaders unlock their full potential and create lasting organizational impact.",
     icon: (
@@ -27,7 +27,7 @@ const services: Service[] = [
   },
   {
     id: 2,
-    title: "POSH Compliance",
+    title: "Compliance & Workplace Safety",
     shortDesc: "Create safe workplaces",
     fullDesc: "Comprehensive Prevention of Sexual Harassment training and compliance services ensure your organization meets all statutory requirements while fostering a culture of respect and dignity. We provide IC training, employee awareness sessions, policy development, and ongoing compliance support.",
     icon: (
@@ -39,7 +39,7 @@ const services: Service[] = [
   },
   {
     id: 3,
-    title: "Executive Coaching",
+    title: "Digital Learning & Capability Systems",
     shortDesc: "Personalized growth journeys",
     fullDesc: "One-on-one executive coaching that combines neuroscience-informed techniques with proven leadership frameworks. Our certified coaches work with C-suite executives and senior leaders to enhance decision-making, emotional intelligence, and strategic thinking capabilities.",
     icon: (
@@ -51,7 +51,7 @@ const services: Service[] = [
   },
   {
     id: 4,
-    title: "Digital Learning",
+    title: "Train the Trainer (Certification Programs)",
     shortDesc: "Learn anytime, anywhere",
     fullDesc: "Custom e-learning solutions including interactive modules, microlearning content, and gamified training experiences. Our digital learning platform integrates seamlessly with your LMS, providing scalable training solutions with detailed analytics and progress tracking.",
     icon: (
@@ -63,7 +63,7 @@ const services: Service[] = [
   },
   {
     id: 5,
-    title: "Behavioral Training",
+    title: "Executive Events & Strategic Offsites",
     shortDesc: "Sustainable mindset shifts",
     fullDesc: "Our 12-month Behavioral Mastery program creates lasting performance improvements through structured interventions. Covering productivity, communication, conflict resolution, and interpersonal skills, we help teams develop the mindset foundation for sustainable success.",
     icon: (
@@ -73,30 +73,7 @@ const services: Service[] = [
     ),
     gradient: "from-rose-500 to-red-400",
   },
-  {
-    id: 6,
-    title: "Train The Trainer",
-    shortDesc: "Build internal expertise",
-    fullDesc: "Empower your internal teams to deliver impactful training programs. Our Train The Trainer certification covers facilitation skills, presentation mastery, instructional design, audience engagement techniques, and assessment methodologies for maximum knowledge transfer.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    gradient: "from-indigo-500 to-blue-400",
-  },
-  {
-    id: 7,
-    title: "Organizational Interventions",
-    shortDesc: "Transform culture & performance",
-    fullDesc: "Strategic organizational development interventions that address culture, structure, and processes. From team building and change management to psychological safety assessments and culture transformation, we design customized solutions for measurable organizational growth.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    gradient: "from-cyan-500 to-blue-400",
-  },
+  
 ]
 
 export default function ServicesSlider() {
@@ -143,7 +120,7 @@ export default function ServicesSlider() {
   // Get visible cards for carousel display
   const getVisibleCards = () => {
     const cards = []
-    for (let i = -3; i <= 3; i++) {
+    for (let i = -2; i <= 2 i++) {
       const index = (activeIndex + i + services.length) % services.length
       cards.push({ service: services[index], position: i })
     }

@@ -107,11 +107,14 @@ export default function Home() {
 </div>
 
 
+
+
+
           {/* VIDEO */}
           
-  <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
+  <div className="relative w-full h-[300px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
 
- <div className="relative w-full h-[450px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
+ <div className="relative w-full h-[400px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
   <video
     src="/sample.mp4"
     autoPlay
@@ -154,6 +157,9 @@ export default function Home() {
   </svg>
 </div>
       </section>
+
+
+      
 
       {/*what make us different */}
 
