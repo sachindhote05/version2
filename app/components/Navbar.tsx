@@ -1,12 +1,18 @@
 "use client"
 
-import { useState, FormEvent, ChangeEvent } from "react"
+import { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { useRouter } from "next/navigation"
 import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
+
+
+
 export default function Navbar() {
+
+  const [showNavbar, setShowNavbar] = useState(true);
+const [lastScrollY, setLastScrollY] = useState(0);
 
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false)
   const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false)
@@ -35,8 +41,27 @@ export default function Navbar() {
     }
   }
 
+  useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > lastScrollY) {
+      setShowNavbar(false); // scroll down → hide
+    } else {
+      setShowNavbar(true); // scroll up → show
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [lastScrollY]);
+
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 z-50">
+ <nav
+  className={`w-full bg-white/80 backdrop-blur-md shadow-md fixed top-0 z-50 transition-transform duration-300 ${
+    showNavbar ? "translate-y-0" : "-translate-y-full"
+  }`}
+>
 
       {/* TOP NAVBAR */}
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -98,17 +123,17 @@ export default function Navbar() {
       </div>
 
       {/* SECOND NAVBAR */}
-      <div className="border-t bg-gray-50 hidden md:block">
+     <div className="border-t bg-white/80 backdrop-blur-md hidden md:block">
 
         <div className="max-w-7xl mx-auto px-6 flex gap-10 py-3 font-medium">
 
-       <Link href="/#home" className="hover:text-blue-500 transition">
+       <Link href="/#home" className="text-gray-800 hover:text-blue-600 transition">
   Home
 </Link>
 
           {/* SERVICES */}
          <a href="#services">
-  <button className="hover:text-blue-500 transition">
+  <button className="text-gray-800 hover:text-blue-600 transition">
     Services
   </button>
 </a>
@@ -117,7 +142,7 @@ export default function Navbar() {
          <div
   className="relative group"
 >
-  <button className="hover:text-blue-500 transition">
+  <button className="text-gray-800 hover:text-blue-600 transition">
     Resources
   </button>
 
@@ -138,8 +163,8 @@ export default function Navbar() {
     ))}
   </div>
 </div>
-          <Link href="/clients">BOOK Consultation</Link>
-          <Link href="/contact">login</Link>
+        <Link href="/clients" className="text-gray-800 hover:text-blue-600">BOOK Consultation</Link>
+<Link href="/contact" className="text-gray-800 hover:text-blue-600">login</Link>
 
         </div>
 

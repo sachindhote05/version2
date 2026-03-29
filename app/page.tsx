@@ -4,6 +4,8 @@ import { useEffect, useState, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ServicesSlider from "./components/ServicesSlider";
+import CountUp from "react-countup";
+import { motion } from "framer-motion";
 
 
 export default function Home() {
@@ -104,6 +106,39 @@ export default function Home() {
  <p className="mt-6 text-indigo-100 max-w-xl">
    Training and Coaching made Structured and sustainable for Businesses and Individuals
   </p>
+
+<div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10 text-center text-white">
+  
+  <div>
+    <h3 className="text-3xl font-bold">
+      <CountUp end={98} duration={2} />%
+    </h3>
+    <p className="text-sm opacity-80">Client Satisfaction</p>
+  </div>
+
+  <div>
+    <h3 className="text-3xl font-bold">
+      <CountUp end={50} duration={2} />K+
+    </h3>
+    <p className="text-sm opacity-80">Employees Trained</p>
+  </div>
+
+  <div>
+    <h3 className="text-3xl font-bold">
+      <CountUp end={18} duration={2} />+
+    </h3>
+    <p className="text-sm opacity-80">Trained Industries</p>
+  </div>
+
+  <div>
+    <h3 className="text-3xl font-bold">
+      <CountUp end={16} duration={2} />+
+    </h3>
+    <p className="text-sm opacity-80">Years Of Experience</p>
+  </div>
+
+</div>
+  
 </div>
 
 
@@ -114,7 +149,7 @@ export default function Home() {
           
   <div className="relative w-full h-[300px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
 
- <div className="relative w-full h-[400px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
+ <div className="relative w-full h-[380px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
   <video
     src="/sample.mp4"
     autoPlay
@@ -145,35 +180,79 @@ export default function Home() {
         </div>
         {/* Bottom Curve */}
 <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-  <svg
-    viewBox="0 0 1440 150"
-    className="w-full h-[200px]"
-    preserveAspectRatio="none"
-  >
-    <path
-      d="M0,0 C480,150 960,150 1440,0 L1440,150 L0,150 Z"
-      fill="#f3f4f6"
-    />
-  </svg>
+  
 </div>
       </section>
 
+      {/* Why Most Training Programs Fail*/}
 
-      
+
+
+<section className="relative py-28 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100">
+
+  <div className="max-w-6xl mx-auto px-6 text-center">
+
+    <h2 className="text-4xl font-bold mb-16 text-gray-800">
+      Why Most Training Programs Fail
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-10">
+
+      {[
+        "Most training focuses on skills",
+        "Real change happens at mindset level",
+        "Identity drives long-term behavior",
+        "That’s why results don’t sustain"
+      ].map((text, i) => (
+
+        <motion.div
+          key={i}
+          initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: i * 0.25 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05, y: -10 }}
+          className="relative p-8 rounded-3xl
+          bg-white/60 backdrop-blur-xl border border-white/40
+          shadow-xl"
+        >
+
+          {/* gradient glow */}
+          <div className={`absolute -inset-1 rounded-3xl blur opacity-30 
+            ${i === 0 ? "bg-gradient-to-r from-cyan-300 to-blue-400" : ""}
+            ${i === 1 ? "bg-gradient-to-r from-pink-300 to-purple-400" : ""}
+            ${i === 2 ? "bg-gradient-to-r from-green-300 to-emerald-400" : ""}
+            ${i === 3 ? "bg-gradient-to-r from-orange-300 to-amber-400" : ""}
+          `}></div>
+
+          <div className="relative z-10">
+            <p className="text-lg font-semibold text-gray-700">
+              {text}
+            </p>
+          </div>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
 
       {/*what make us different */}
 
 <section className="relative py- flex justify-center">
 
   {/* 🔵 Compact Blue Gradient */}
-<div className="absolute w-[900px] h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
+<div className="absolute w-[800px] h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
   <div className="absolute inset-9 opacity-10 
     bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
-    bg-[size:25px_25px]">
+    bg-[size:0px_0px]">
   </div>
 
   {/* CONTENT */}
- <div className="relative w-[800px] px-10 py-14 text-center text-white">
+ <div className="relative w-[800px] px-10 py-16 text-center text-white">
 
    <h2 data-aos="fade-up" data-aos-delay="100"
 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-200 to-purple-400 bg-clip-text text-transparent">
@@ -210,7 +289,7 @@ Download E-Brochure
 
       {/* ================= SERVICES SLIDER ================= */}
      
-<div id="services" className="mt-24">
+<div id="services" className="mt-2">
   <ServicesSlider />
 </div>
 
