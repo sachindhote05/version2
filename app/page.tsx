@@ -71,43 +71,41 @@ export default function Home() {
       
 
       {/* ================= HERO ================= */}
-      <section id="home" className="relative pt-0 pb-40 ..."></section>
-    <section className="relative pt-20 pb-40 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] overflow-hidden">
-       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section id="home" className="bg-[#ECD9B9] pt-0 pb-40"></section>
+  <section className="relative pt-0 pb-40 bg-[#ECD9B9] overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center mt-20">
 
           <div>
    
-<h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-white whitespace-nowrap">
+<h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-black whitespace-nowrap">
   {displayText}
-  <span className="animate-pulse">|</span>
+  <span className="animate-pulse"></span>
 </h1>
 
 <h2 className="text-3xl md:text-4xl font-extrabold flex items-baseline gap-3">
-<span className="text-white">Elevating
+<span className="text-black">Elevating
 
 </span>
 
   <span className="relative h-[50px] overflow-hidden">
 
     <span
-      key={index}
-      className="block transition-all duration-700 ease-in-out translate-y-0"
-    >
-      <span className="bg-gradient-to-r from-cyan-300 via-blue-200 to-purple-300 bg-clip-text text-transparent">
-        {words[index]}
-      </span>
-    </span>
+  key={index}
+  className="block transition-all duration-700 ease-in-out translate-y-0 text-blue-900"
+>
+  {words[index]}
+</span>
 
   </span>
 
 
 </h2>
 
- <p className="mt-6 text-indigo-100 max-w-xl">
+ <p className="mt-6 text-black">
    Training and Coaching made Structured and sustainable for Businesses and Individuals
   </p>
 
-<div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10 text-center text-white">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10 text-center text-black">
   
   <div>
     <h3 className="text-3xl font-bold">
@@ -188,7 +186,7 @@ export default function Home() {
 
 
 
-<section className="relative py-28 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100">
+<section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100">
 
   <div className="max-w-6xl mx-auto px-6 text-center">
 
@@ -242,49 +240,68 @@ export default function Home() {
 
       {/*what make us different */}
 
-<section className="relative py- flex justify-center">
+<section className="relative py-10 flex justify-center">
 
   {/* 🔵 Compact Blue Gradient */}
-<div className="absolute w-[800px] h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
-  <div className="absolute inset-9 opacity-10 
-    bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
-    bg-[size:0px_0px]">
+<section className="relative py-20 flex justify-center bg-[#ECD9B9]">
+
+  {/* BEIGE BACKGROUND BOX */}
+<div className="absolute inset-0 bg-[#ECD9B9] rounded-[80px] shadow-2xl"></div>
+
+  {/* LIGHT TEXTURE (optional subtle dots) */}
+  <div className="absolute inset-0 opacity-10
+    bg-[radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)]
+    bg-[size:20px_20px]">
   </div>
 
   {/* CONTENT */}
- <div className="relative w-[800px] px-10 py-16 text-center text-white">
+<div className="relative w-[800px] px-10 py-16 text-center text-black overflow-hidden rounded-[60px]">
 
-   <h2 data-aos="fade-up" data-aos-delay="100"
-className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-200 to-purple-400 bg-clip-text text-transparent">
-WHAT MAKES US DIFFERENT
-</h2>
+    <h2
+      data-aos="fade-up"
+      data-aos-delay="100"
+      className="text-3xl md:text-4xl font-bold mb-6 text-[#1E3A8A]"
+    >
+      WHAT MAKES US DIFFERENT
+    </h2>
 
-   <p data-aos="fade-up" data-aos-delay="200"
-className="text-base md:text-lg leading-relaxed opacity-90">
-      Research shows mindset drives performance more than skillset alone. 
+    <p
+      data-aos="fade-up"
+      data-aos-delay="200"
+      className="text-base md:text-lg leading-relaxed opacity-80"
+    >
+      Research shows mindset drives performance more than skillset alone.
       If employees are your biggest asset, investing in their growth is not an expense — it’s strategy.
     </p>
 
-   <p data-aos="fade-up" data-aos-delay="400"
-className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
-      Version2 designs neuroscience‑informed, mind‑body integrated interventions 
+    <p
+      data-aos="fade-up"
+      data-aos-delay="400"
+      className="text-base md:text-lg leading-relaxed mt-4 opacity-80"
+    >
+      Version2 designs neuroscience‑informed, mind‑body integrated interventions
       that work at the behavioural root — not just the surface.
     </p>
 
-    <p data-aos="fade-up" data-aos-delay="600"
-className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
-      Through psychological safety frameworks, we create measurable and sustainable transformation — 
+    <p
+      data-aos="fade-up"
+      data-aos-delay="600"
+      className="text-base md:text-lg leading-relaxed mt-4 opacity-80"
+    >
+      Through psychological safety frameworks, we create measurable and sustainable transformation —
       because real growth starts within.
     </p>
 
-  <button
-data-aos="zoom-in"
-data-aos-delay="800"
-className="mt-6 bg-gradient-to-r from-cyan-200 to-purple-400 text-indigo-900 font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition">
-Download E-Brochure
-</button>
+    <button
+      data-aos="zoom-in"
+      data-aos-delay="800"
+      className="mt-6 bg-[#1E3A8A] text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition"
+    >
+      Download E-Brochure
+    </button>
 
   </div>
+</section>
 </section>
 
       {/* ================= SERVICES SLIDER ================= */}
