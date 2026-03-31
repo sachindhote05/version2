@@ -16,7 +16,7 @@ const services: Service[] = [
   {
     id: 1,
     title: "Core Transformation Programs",
-    shortDesc: "Transform leaders into visionaries",
+    shortDesc: "Our programs are designed to shift identity, emotional responses, and behavioral patterns that directly impact performance and leadership effectiveness.",
     fullDesc: "Our Leadership Development programs are designed to cultivate visionary leaders who inspire teams, drive innovation, and navigate complex business landscapes. Through executive coaching, 360-degree assessments, and immersive workshops, we help leaders unlock their full potential and create lasting organizational impact.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -28,7 +28,7 @@ const services: Service[] = [
   {
     id: 2,
     title: "Compliance & Workplace Safety",
-    shortDesc: "Create safe workplaces",
+    shortDesc: "Compliance is not just a legal requirement — it is the foundation of a safe and respectful workplace culture.  We go beyond checkbox compliance to build awareness, accountability, and cultural alignment.",
     fullDesc: "Comprehensive Prevention of Sexual Harassment training and compliance services ensure your organization meets all statutory requirements while fostering a culture of respect and dignity. We provide IC training, employee awareness sessions, policy development, and ongoing compliance support.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ const services: Service[] = [
   {
     id: 3,
     title: "Digital Learning & Capability Systems",
-    shortDesc: "Personalized growth journeys",
+    shortDesc: "For organizations looking to scale learning and ensure consistency, we offer digitally enabled transformation systems.  Our modules are designed to create behavior change — not just information transfer.",
     fullDesc: "One-on-one executive coaching that combines neuroscience-informed techniques with proven leadership frameworks. Our certified coaches work with C-suite executives and senior leaders to enhance decision-making, emotional intelligence, and strategic thinking capabilities.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@ const services: Service[] = [
   {
     id: 4,
     title: "Train the Trainer (Certification Programs)",
-    shortDesc: "Learn anytime, anywhere",
+    shortDesc: "We equip your teams with the skills, structure, and confidence to deliver impactful learning experiences within your organization.",
     fullDesc: "Custom e-learning solutions including interactive modules, microlearning content, and gamified training experiences. Our digital learning platform integrates seamlessly with your LMS, providing scalable training solutions with detailed analytics and progress tracking.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ const services: Service[] = [
   {
     id: 5,
     title: "Executive Events & Strategic Offsites",
-    shortDesc: "Sustainable mindset shifts",
+    shortDesc: "These are not just offsites. They are designed interventions to reset culture, build trust, and align leadership.  We combine experiential learning with psychological insights to create real shifts in team dynamics.",
     fullDesc: "Our 12-month Behavioral Mastery program creates lasting performance improvements through structured interventions. Covering productivity, communication, conflict resolution, and interpersonal skills, we help teams develop the mindset foundation for sustainable success.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
