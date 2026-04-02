@@ -83,127 +83,72 @@ export default function Home() {
 
       
 
-      {/* ================= HERO ================= */}
-      <section id="home" className="bg-white pt-0 pb-40"></section>
-  <section className="relative pt-0 pb-40 bg-white overflow-hidden">
-  <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center mt-20">
+      {/* 🔥 HERO SECTION */}
+<div className="bg-[#1E3A8A] text-white pt-40 pb-20 px-6 relative overflow-hidden">
 
-          <div>
-   
-<h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-black whitespace-nowrap">
-  {displayText}
-  <span className="animate-pulse"></span>
-</h1>
+  <div className="max-w-6xl mx-auto text-center">
 
-<h2 className="text-3xl md:text-4xl font-extrabold flex items-baseline gap-3">
-<span className="text-black">Elevating
+    {/* HEADING */}
+    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      Empowering Minds, Elevating Skills
+    </h1>
 
-</span>
+    {/* SUBTEXT */}
+    <p className="text-lg opacity-90 mb-6">
+      Training and Coaching made Structured and sustainable for Businesses and Individuals
+    </p>
 
-  <span className="relative h-[50px] overflow-hidden">
+    {/* TAGS */}
+    <div className="flex flex-wrap justify-center gap-4 text-sm mb-8 opacity-90">
+      <span>∞ Proven Tools</span>
+      <span>⚡ Sustainable Results</span>
+      <span>🌐 Simple Interventions</span>
+      <span>🧠 Mind Body Neuroscience</span>
+      <span>🏆 10+ Years</span>
+      <span>👥 50+ clients</span>
+    </div>
 
-    <span
-  key={index}
-  className="block transition-all duration-700 ease-in-out translate-y-0 text-[#1E3A8A]"
->
-  {words[index]}
-</span>
+    {/* CTA BUTTON */}
+    <button className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+      Download Brochure ☁️
+    </button>
 
-  </span>
+    {/* VIDEO */}
+    <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+      <iframe
+        className="w-full h-[200px] md:h-[350px]"
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+        title="Video"
+        allowFullScreen
+      ></iframe>
+    </div>
 
-
-</h2>
-
- <p className="mt-6 text-black">
-   Training and Coaching made Structured and sustainable for Businesses and Individuals
-  </p>
-
-<div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10 text-center text-black">
+  </div>
   
-  <div>
-    <h3 className="text-3xl font-bold">
-      <CountUp end={98} duration={2} />%
-    </h3>
-    <p className="text-sm opacity-80">Client Satisfaction</p>
   </div>
 
-  <div>
-    <h3 className="text-3xl font-bold">
-      <CountUp end={50} duration={2} />K+
-    </h3>
-    <p className="text-sm opacity-80">Employees Trained</p>
-  </div>
+ 
 
-  <div>
-    <h3 className="text-3xl font-bold">
-      <CountUp end={18} duration={2} />+
-    </h3>
-    <p className="text-sm opacity-80">Trained Industries</p>
-  </div>
-
-  <div>
-    <h3 className="text-3xl font-bold">
-      <CountUp end={16} duration={2} />+
-    </h3>
-    <p className="text-sm opacity-80">Years Of Experience</p>
-  </div>
-
-</div>
   
-</div>
 
 
-
-
-
-          {/* VIDEO */}
-          
-  <div className="relative w-full h-[300px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
-
- <div className="relative w-full h-[380px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
-  <video
-    src="/sample.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-  />
-</div>
-
-  {/* DOTS */}
-  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
-    {videos.map((_, i) => (
-      <button
-        key={i}
-        onClick={() => setVideoIndex(i)}
-        className={`h-3 w-3 rounded-full transition-all duration-300 ${
-          videoIndex === i
-            ? "bg-white scale-125"
-            : "bg-white/50 hover:bg-white"
-        }`}
+  {/* CURVE */}
+  <section className="relative py-20 bg-[#F0F5FF]">
+  <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+    <svg
+      viewBox="0 0 1440 320"
+      className="w-full h-[150px]"  // 👈 height badha di
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#F0F5FF"
+        d="M0,200 C360,300 1080,100 1440,200 L1440,0 L0,0 Z"
       />
-    ))}
+    </svg>
   </div>
+  <div className="max-w-6xl mx-auto px-6 text-center mt-10">
 
-</div>
-
-        </div>
-        {/* Bottom Curve */}
-<div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-  
-</div>
-      </section>
-
-      {/* Why Most Training Programs Fail*/}
-
-
-
-<section className="relative py-20 overflow-hidden bg-white">
-
-  <div className="max-w-6xl mx-auto px-6 text-center">
-
-    <h2 className="text-4xl font-bold mb-16 text-gray-800">
+    <h2 className="text-4xl font-bold mb-16 text-[#1E3A8A]">
       Why Most Training Programs Fail
     </h2>
 
@@ -217,25 +162,29 @@ export default function Home() {
       ].map((text, i) => (
 
         <motion.div
-          key={i}
-          initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: i * 0.25 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.05, y: -10 }}
-          className="relative p-8 rounded-3xl
-          bg-white border border-gray-200 shadow-md"
-        >
+  key={i}
+  initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  transition={{ duration: 1, delay: i * 0.25 }}
+  viewport={{ once: true }}
+  whileHover={{ scale: 1.05, y: -10 }}
+  className="relative p-8 rounded-3xl
+  bg-gradient-to-br from-[#EFF6FF] to-white
+  border border-[#BFDBFE]
+  shadow-md hover:shadow-2xl
+  transition-all duration-500"
+>
 
-          {/* gradient glow */}
+  {/* Glow effect */}
+  <div className="absolute inset-0 rounded-3xl opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-r from-blue-200/40 to-transparent blur-xl"></div>
 
-          <div className="relative z-10">
-            <p className="text-lg font-semibold text-gray-700">
-              {text}
-            </p>
-          </div>
+  <div className="relative z-10">
+    <p className="text-lg font-semibold text-[#1E3A8A]">
+      {text}
+    </p>
+  </div>
 
-        </motion.div>
+</motion.div>
 
       ))}
 
@@ -243,76 +192,35 @@ export default function Home() {
 
   </div>
 </section>
+    {/* 🔥 WHAT MAKES US DIFFERENT */}
+{/* 🔥 WHAT MAKES US DIFFERENT */}
+<section className="py- bg-white">
 
-      {/*what make us different */}
+  <div className="w-full ">
 
-<section className="relative py-10 flex justify-center">
+    <div className="bg-[#1E3A8A] 
+    
+    shadow-md px-10 py-8 text-white">
 
-  {/* 🔵 Compact Blue Gradient */}
-<section className="relative py-20 flex justify-center bg-[#1E3A8A]">
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+        What Makes Us Different
+      </h2>
 
-  {/* BEIGE BACKGROUND BOX */}
-<div className="absolute inset-0 bg-[#1E3A8A] rounded-[80px] shadow-2xl"></div>
-
-  {/* LIGHT TEXTURE (optional subtle dots) */}
-  <div className="absolute inset-0 opacity-10
-    bg-[radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)]
-    bg-[size:20px_20px]">
-  </div>
-
-  {/* CONTENT */}
-<div className="relative w-[800px] px-10 py-16 text-center text-white overflow-hidden rounded-[60px]">
-
-    <h2
-      data-aos="fade-up"
-      data-aos-delay="100"
-      className="text-3xl md:text-4xl font-bold mb-6 text-white"
-    >
-      WHAT MAKES US DIFFERENT
-    </h2>
-
-    <p
-      data-aos="fade-up"
-      data-aos-delay="200"
-      className="text-base md:text-lg leading-relaxed opacity-80"
-    >
-      Research shows mindset drives performance more than skillset alone.
-      If employees are your biggest asset, investing in their growth is not an expense — it’s strategy.
-    </p>
-
-    <p
-      data-aos="fade-up"
-      data-aos-delay="400"
-      className="text-base md:text-lg leading-relaxed mt-4 opacity-80"
-    >
-      Version2 designs neuroscience‑informed, mind‑body integrated interventions
-      that work at the behavioural root — not just the surface.
-    </p>
-
-    <p
-      data-aos="fade-up"
-      data-aos-delay="600"
-      className="text-base md:text-lg leading-relaxed mt-4 opacity-80"
-    >
-      Through psychological safety frameworks, we create measurable and sustainable transformation —
-      because real growth starts within.
-    </p>
-
-    <button
-      data-aos="zoom-in"
-      data-aos-delay="800"
-      className="mt-6 bg-[#1E3A8A] text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition"
-    >
-      Download E-Brochure
-    </button>
+      <p className="text-base md:text-lg leading-relaxed text-center whitespace-pre-line">
+  {`We don’t just focus on skill development\n
+   Our approach works at the level of mindset,
+  identity, and behavioral patterns to create long-term transformation.\n
+ Instead of short-term learning, we enable sustainable performance, stronger ownership, and real business impact through structured interventions.`}
+</p>
+    </div>
 
   </div>
-</section>
+
 </section>
 
       {/* ================= SERVICES SLIDER ================= */}
      
-<div id="services" className="mt-2">
+<div id="services" className="mt-">
   <ServicesSlider />
 </div>
 

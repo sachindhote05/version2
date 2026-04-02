@@ -135,7 +135,7 @@ export default function ServicesSlider() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="relative w-full px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -154,7 +154,7 @@ export default function ServicesSlider() {
 
         {/* Carousel Container */}
         <div
-          className="relative h-[320px] sm:h-[280px]"
+          className="relative h-[400px] sm:h-[380px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -170,9 +170,9 @@ export default function ServicesSlider() {
               {getVisibleCards().map(({ service, position }) => {
                 const isActive = position === 0
                 const scale = isActive ? 1 : 0.85 - Math.abs(position) * 0.05
-                const opacity = isActive ? 1 : 0.6 - Math.abs(position) * 0.15
+                const opacity = isActive ? 1 : 0.8 - Math.abs(position) * 0.1
                 const zIndex = 10 - Math.abs(position)
-                const xOffset = position * 220
+                const xOffset = position * 320
 
                 return (
                   <motion.div
@@ -192,7 +192,7 @@ export default function ServicesSlider() {
                       damping: 30,
                     }}
                     onClick={() => !isActive && goToSlide(services.findIndex(s => s.id === service.id))}
-                    className={`absolute w-[280px] sm:w-[320px] ${!isActive ? "cursor-pointer" : ""}`}
+                    className={`absolute w-[300px] sm:w-[360px] ${!isActive ? "cursor-pointer" : ""}`}
                   >
                     <div
                       className={`

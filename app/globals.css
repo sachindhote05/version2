@@ -51,8 +51,8 @@ html {
 }
 
 body {
-  background-color: #0f172a; /* dark blue */
-  color: white; /* text white ho jayega */
+  background-color: #ffffff; /* dark blue */
+  color: rgb(0, 0, 0); /* text white ho jayega */
 }
 
 @keyframes float {
