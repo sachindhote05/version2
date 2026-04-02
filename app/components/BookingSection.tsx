@@ -1,9 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function BookingSection() {
 
+  const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
 
   return (
@@ -12,17 +15,26 @@ export default function BookingSection() {
       <h2 className="text-2xl font-bold text-center text-[#1E3A8A] mb-6">
         Book Consultation
       </h2>
+      
 
       {/* DATE */}
-      <div className="flex justify-center mb-8">
-        <input
-  type="date"
-  className="custom-date bg-[#F5E6D3] border border-[#1E3A8A]/20
-  rounded-xl px-5 py-3 text-[#1E3A8A]
-  focus:ring-2 focus:ring-[#1E3A8A] outline-none"
-/>
-      </div>
-
+     
+        <input type="date" />
+ <div className="flex justify-center mb-6">
+  <DatePicker
+    selected={selectedDate}
+    onChange={(date) => setSelectedDate(date)}
+    dateFormat="dd-MM-yyyy"
+    placeholderText="dd-mm-yyyy"
+    className="px-6 py-3 rounded-xl
+               border-2 border-[#1E3A8A]
+               bg-[#F5EEDD]
+               text-gray-700
+               focus:outline-none
+               focus:border-[#1E3A8A]
+               w-full text-center cursor-pointer"
+  />
+</div>
       {/* TIME */}
       <div className="flex flex-wrap justify-center gap-4 mb-10">
         {["10:00 AM","11:00 AM","12:00 PM","02:00 PM","03:00 PM"].map((time) => (

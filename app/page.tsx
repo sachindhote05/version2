@@ -84,8 +84,8 @@ export default function Home() {
       
 
       {/* ================= HERO ================= */}
-      <section id="home" className="bg-[#ECD9B9] pt-0 pb-40"></section>
-  <section className="relative pt-0 pb-40 bg-[#ECD9B9] overflow-hidden">
+      <section id="home" className="bg-white pt-0 pb-40"></section>
+  <section className="relative pt-0 pb-40 bg-white overflow-hidden">
   <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center mt-20">
 
           <div>
@@ -104,7 +104,7 @@ export default function Home() {
 
     <span
   key={index}
-  className="block transition-all duration-700 ease-in-out translate-y-0 text-blue-900"
+  className="block transition-all duration-700 ease-in-out translate-y-0 text-[#1E3A8A]"
 >
   {words[index]}
 </span>
@@ -199,7 +199,7 @@ export default function Home() {
 
 
 
-<section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100">
+<section className="relative py-20 overflow-hidden bg-white">
 
   <div className="max-w-6xl mx-auto px-6 text-center">
 
@@ -224,17 +224,10 @@ export default function Home() {
           viewport={{ once: true }}
           whileHover={{ scale: 1.05, y: -10 }}
           className="relative p-8 rounded-3xl
-          bg-white/60 backdrop-blur-xl border border-white/40
-          shadow-xl"
+          bg-white border border-gray-200 shadow-md"
         >
 
           {/* gradient glow */}
-          <div className={`absolute -inset-1 rounded-3xl blur opacity-30 
-            ${i === 0 ? "bg-gradient-to-r from-cyan-300 to-blue-400" : ""}
-            ${i === 1 ? "bg-gradient-to-r from-pink-300 to-purple-400" : ""}
-            ${i === 2 ? "bg-gradient-to-r from-green-300 to-emerald-400" : ""}
-            ${i === 3 ? "bg-gradient-to-r from-orange-300 to-amber-400" : ""}
-          `}></div>
 
           <div className="relative z-10">
             <p className="text-lg font-semibold text-gray-700">
@@ -256,10 +249,10 @@ export default function Home() {
 <section className="relative py-10 flex justify-center">
 
   {/* 🔵 Compact Blue Gradient */}
-<section className="relative py-20 flex justify-center bg-[#ECD9B9]">
+<section className="relative py-20 flex justify-center bg-[#1E3A8A]">
 
   {/* BEIGE BACKGROUND BOX */}
-<div className="absolute inset-0 bg-[#ECD9B9] rounded-[80px] shadow-2xl"></div>
+<div className="absolute inset-0 bg-[#1E3A8A] rounded-[80px] shadow-2xl"></div>
 
   {/* LIGHT TEXTURE (optional subtle dots) */}
   <div className="absolute inset-0 opacity-10
@@ -268,12 +261,12 @@ export default function Home() {
   </div>
 
   {/* CONTENT */}
-<div className="relative w-[800px] px-10 py-16 text-center text-black overflow-hidden rounded-[60px]">
+<div className="relative w-[800px] px-10 py-16 text-center text-white overflow-hidden rounded-[60px]">
 
     <h2
       data-aos="fade-up"
       data-aos-delay="100"
-      className="text-3xl md:text-4xl font-bold mb-6 text-[#1E3A8A]"
+      className="text-3xl md:text-4xl font-bold mb-6 text-white"
     >
       WHAT MAKES US DIFFERENT
     </h2>
@@ -326,7 +319,7 @@ export default function Home() {
       {/* =================Core Transformation Programs================= */}
 
 
-<section className="py-24 bg-[#ECD9B9]">
+<section className="py-24 bg-white">
   <div className="max-w-7xl mx-auto px-6 text-center">
 
     <h2 className="text-4xl md:text-5xl font-extrabold mb-20 text-[#1E3A8A]">
@@ -353,11 +346,11 @@ export default function Home() {
             rotateX: 6,
             rotateY: -6
           }}
-          className="group relative rounded-3xl p-[2px] bg-gradient-to-r from-[#1E3A8A] to-[#2563EB]"
+          className="group relative rounded-3xl bg-white border border-gray-200 shadow-md"
         >
 
           {/* CARD */}
-          <div className="relative h-full rounded-3xl bg-white/80 backdrop-blur-xl p-6 flex flex-col justify-between shadow-xl">
+          <div className="relative h-full rounded-3xl bg-white p-6 flex flex-col justify-between shadow-xl">
 
             {/* GLOW */}
            
@@ -369,7 +362,7 @@ export default function Home() {
 
             {/* BUTTON */}
            <Link href="/core-details">
-  <button className="mt-4 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-600 transition">
+  <button className="mt-4 px-4 py-2 bg-[#1E3A8A] text-white rounded-lg hover:bg-blue-600 transition">
     Learn More →
   </button>
 </Link>
@@ -384,7 +377,7 @@ export default function Home() {
 </section>
 
       {/* ================= Compliance & Workplace Safety ================= */}
- <section className="py-20 bg-gradient-to-b from-[#F8FAFF] via-white to-[#EEF4FF]">
+ <section className="py-20 bg-white">
 
   <div className="max-w-7xl mx-auto px-6">
 
@@ -407,9 +400,7 @@ export default function Home() {
         <div
           key={i}
           className="group rounded-2xl 
-          bg-white/70 backdrop-blur-md
-          border border-[#1E3A8A]/10
-          shadow-sm hover:shadow-xl
+          bg-white border border-gray-200 shadow-md
           overflow-hidden
           transition-all duration-500 hover:-translate-y-2"
         >
@@ -431,16 +422,11 @@ export default function Home() {
             </h3>
 
             {/* BUTTON */}
-            <button
-              className="mt-3 inline-flex items-center gap-2
-              text-xs font-medium text-white
-              px-3 py-2 rounded-lg
-              bg-[#1E3A8A]
-              hover:bg-[#162d63]
-              transition-all duration-300"
-            >
-              Learn More →
-            </button>
+            <Link href="/compliance-details">
+  <button className="mt-4 bg-[#1E3A8A] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+    Learn More →
+  </button>
+</Link>
 
           </div>
 
@@ -454,7 +440,7 @@ export default function Home() {
 
 </section>
       {/* ================= E-LEARNING MODULES ================= */}
-      <section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
@@ -574,7 +560,7 @@ export default function Home() {
 
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
-<section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
+<section className="py-24 bg-white">
   <div className="max-w-7xl mx-auto px-6">
 
     <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
