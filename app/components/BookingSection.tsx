@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function BookingSection() {
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
 
   return (
@@ -23,7 +23,7 @@ export default function BookingSection() {
  <div className="flex justify-center mb-6">
   <DatePicker
     selected={selectedDate}
-    onChange={(date) => setSelectedDate(date)}
+    onChange={(date: Date | null) => setSelectedDate(date)}
     dateFormat="dd-MM-yyyy"
     placeholderText="dd-mm-yyyy"
     className="px-6 py-3 rounded-xl
