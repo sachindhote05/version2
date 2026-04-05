@@ -12,12 +12,13 @@ interface Service {
   gradient: string
    outcomes: string[];
 
-}
+} 
 
 const services: Service[] = [
   {
     id: 1,
     title: "Core Transformation Programs",
+
     shortDesc: "Our programs are designed to shift identity, emotional responses, and behavioral patterns that directly impact performance and leadership effectiveness",
      outcomes: [
       "Increased ownership mindset",
@@ -329,14 +330,20 @@ export default function ServicesSlider() {
   ))}
 </ul>
                 
-                <button className={`
-                  mt-6 px-6 py-3 rounded-xl font-semibold text-white
-                  bg-gradient-to-r ${services[activeIndex].gradient}
-                  hover:opacity-90 transition-opacity duration-300
-                  shadow-lg hover:shadow-xl
-                `}>
-                  Learn More
-                </button>
+                <button
+  onClick={() => {
+    const section = document.getElementById("services");
+    section?.scrollIntoView({ behavior: "smooth" });
+  }}
+  className={`
+    mt-6 px-6 py-3 rounded-xl font-semibold text-white
+    bg-gradient-to-r ${services[activeIndex].gradient}
+    hover:opacity-90 transition-opacity duration-300
+    shadow-lg hover:shadow-xl
+  `}
+>
+  Learn More
+</button>
               </div>
             </div>
           </div>
