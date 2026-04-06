@@ -4,11 +4,22 @@ import { useEffect, useState, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ServicesSlider from "./components/ServicesSlider";
-import { useRouter } from "next/navigation";
-import CompliancesSlider from "./components/CompliancesSlider";
+import CountUp from "react-countup";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import CoreSection from "./components/CoreSection";
+
+
+
 
 export default function Home() {
-  const router = useRouter();
+
+ const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  const toggle = (i: number) => {
+    setOpenIndex(openIndex === i ? null : i)
+  }
+
   const fullText = "Empowering Minds";
   const [displayText, setDisplayText] = useState("");
   const words = useMemo(() => [
@@ -70,301 +81,392 @@ export default function Home() {
 
       
 
-      {/* ================= HERO ================= */}
-      <section id="home" className="relative pt-0 pb-40 ..."></section>
-    <section className="relative pt-20 pb-40 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] overflow-hidden">
-       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      
 
-          <div>
-   
-<h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-white whitespace-nowrap">
-  {displayText}
-  <span className="animate-pulse">|</span>
-</h1>
+      {/* 🔥 HERO SECTION */}
+<div className="bg-[#1E3A8A] text-white pt-40 pb-20 px-6 relative overflow-hidden">
 
-<h2 className="text-3xl md:text-4xl font-extrabold flex items-baseline gap-3">
-<span className="text-white">Elevating
+  <div className="max-w-6xl mx-auto text-center">
 
-</span>
+    {/* HEADING */}
+    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      Empowering Minds, Elevating Skills
+    </h1>
 
-  <span className="relative h-[50px] overflow-hidden">
+    {/* SUBTEXT */}
+    <p className="text-lg opacity-90 mb-6">
+      Training and Coaching made Structured and sustainable for Businesses and Individuals
+    </p>
 
-    <span
-      key={index}
-      className="block transition-all duration-700 ease-in-out translate-y-0"
+    {/* TAGS */}
+    <div className="flex flex-wrap justify-center gap-4 text-sm mb-8 opacity-90">
+      <span>∞ Proven Tools</span>
+      <span>⚡ Sustainable Results</span>
+      <span>🌐 Simple Interventions</span>
+      <span>🧠 Mind Body Neuroscience</span>
+      <span>🏆 10+ Years</span>
+      <span>👥 50+ clients</span>
+    </div>
+
+    {/* CTA BUTTON */}
+    <button className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+      Download Brochure ☁️
+    </button>
+
+    {/* VIDEO */}
+    <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+      <iframe
+        className="w-full h-[200px] md:h-[350px]"
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+        title="Video"
+        allowFullScreen
+      ></iframe>
+    </div>
+
+  </div>
+  
+  </div>
+
+ 
+
+  
+
+
+  {/* CURVE */}
+  <section className="relative py-20 bg-[#F0F5FF]">
+  <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+    <svg
+      viewBox="0 0 1440 320"
+      className="w-full h-[150px]"  // 👈 height badha di
+      preserveAspectRatio="none"
     >
-      <span className="bg-gradient-to-r from-cyan-300 via-blue-200 to-purple-300 bg-clip-text text-transparent">
-        {words[index]}
-      </span>
-    </span>
-
-  </span>
-
-
-</h2>
-
- <p className="mt-6 text-indigo-100 max-w-xl">
-   Training and Coaching made Structured and sustainable for Businesses and Individuals
-  </p>
-</div>
-
-
-          {/* VIDEO */}
-          
-  <div className="relative w-full h-[300px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
-
- <div className="relative w-full h-[400px] overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-black">
-  <video
-    src="/sample.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-  />
-</div>
-
-  {/* DOTS */}
-  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
-    {videos.map((_, i) => (
-      <button
-        key={i}
-        onClick={() => setVideoIndex(i)}
-        className={`h-3 w-3 rounded-full transition-all duration-300 ${
-          videoIndex === i
-            ? "bg-white scale-125"
-            : "bg-white/50 hover:bg-white"
-        }`}
+      <path
+        fill="#F0F5FF"
+        d="M0,200 C360,300 1080,100 1440,200 L1440,0 L0,0 Z"
       />
-    ))}
+    </svg>
+  </div>
+  <div className="max-w-6xl mx-auto px-6 text-center mt-10">
+
+    <h2 className="text-4xl font-bold mb-16 text-[#1E3A8A]">
+      Why Most Training Programs Fail
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-10">
+
+      {[
+        "Most training focuses on skills",
+        "Real change happens at mindset level",
+        "Identity drives long-term behavior",
+        "That’s why results don’t sustain"
+      ].map((text, i) => (
+
+        <motion.div
+  key={i}
+  initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  transition={{ duration: 1, delay: i * 0.25 }}
+  viewport={{ once: true }}
+  whileHover={{ scale: 1.05, y: -10 }}
+  className="relative p-8 rounded-3xl
+  bg-gradient-to-br from-[#EFF6FF] to-white
+  border border-[#BFDBFE]
+  shadow-md hover:shadow-2xl
+  transition-all duration-500"
+>
+
+  {/* Glow effect */}
+  <div className="absolute inset-0 rounded-3xl opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-r from-blue-200/40 to-transparent blur-xl"></div>
+
+  <div className="relative z-10">
+    <p className="text-lg font-semibold text-[#1E3A8A]">
+      {text}
+    </p>
   </div>
 
-</div>
+</motion.div>
 
-        </div>
-        {/* Bottom Curve */}
-<div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-  <svg
-    viewBox="0 0 1440 150"
-    className="w-full h-[200px]"
-    preserveAspectRatio="none"
-  >
-    <path
-      d="M0,0 C480,150 960,150 1440,0 L1440,150 L0,150 Z"
-      fill="#f3f4f6"
-    />
-  </svg>
-</div>
-      </section>
+      ))}
 
-      {/*what make us different */}
-
-<section className="relative py- flex justify-center">
-
-  {/* 🔵 Compact Blue Gradient */}
-<div className="absolute w-[900px] h-full bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl"></div>
-  <div className="absolute inset-9 opacity-10 
-    bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] 
-    bg-[size:25px_25px]">
-  </div>
-
-  {/* CONTENT */}
- <div className="relative w-[800px] px-10 py-14 text-center text-white">
-
-   <h2 data-aos="fade-up" data-aos-delay="100"
-className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-200 to-purple-400 bg-clip-text text-transparent">
-WHAT MAKES US DIFFERENT
-</h2>
-
-   <p data-aos="fade-up" data-aos-delay="200"
-className="text-base md:text-lg leading-relaxed opacity-90">
-      Research shows mindset drives performance more than skillset alone. 
-      If employees are your biggest asset, investing in their growth is not an expense — it’s strategy.
-    </p>
-
-   <p data-aos="fade-up" data-aos-delay="400"
-className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
-      Version2 designs neuroscience‑informed, mind‑body integrated interventions 
-      that work at the behavioural root — not just the surface.
-    </p>
-
-    <p data-aos="fade-up" data-aos-delay="600"
-className="text-base md:text-lg leading-relaxed mt-4 opacity-90">
-      Through psychological safety frameworks, we create measurable and sustainable transformation — 
-      because real growth starts within.
-    </p>
-
-  <button
-data-aos="zoom-in"
-data-aos-delay="800"
-className="mt-6 bg-gradient-to-r from-cyan-200 to-purple-400 text-indigo-900 font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition">
-Download E-Brochure
-</button>
+    </div>
 
   </div>
+</section>
+    {/* 🔥 WHAT MAKES US DIFFERENT */}
+{/* 🔥 WHAT MAKES US DIFFERENT */}
+<section className="py- bg-white">
+
+  <div className="w-full ">
+
+    <div className="bg-[#1E3A8A] 
+    
+    shadow-md px-10 py-8 text-white">
+
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+        What Makes Us Different
+      </h2>
+
+      <p className="text-base md:text-lg leading-relaxed text-center whitespace-pre-line">
+  {`We don’t just focus on skill development\n
+   Our approach works at the level of mindset,
+  identity, and behavioral patterns to create long-term transformation.\n
+ Instead of short-term learning, we enable sustainable performance, stronger ownership, and real business impact through structured interventions.`}
+</p>
+    </div>
+
+  </div>
+
 </section>
 
       {/* ================= SERVICES SLIDER ================= */}
      
-<div id="services" className="mt-24">
+<div id="services" className="mt-">
   <ServicesSlider />
 </div>
 
-      {/* ================= TRA-CO MODULES ================= */}
-      <section className="py-24 bg-gradient-to-b from-white to-blue-50">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* =================Core Transformation Programs================= */}
 
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
-           Core Transformation Program
-          </h2>
 
-         <div className="grid md:grid-cols-5 gap-10 items-start">
+<section className="py-20 bg-gray-100">
+  <div className="max-w-7xl mx-auto px-6 text-center">
 
-       {[
-  {
-    img: "/module1.jpg",
-    title: "Behavioral Mastery",
-    link: "/modules#behavioral"
-  },
-  {
-    img: "/module2.jpg",
-    title: "Momentum Mastery",
-    link: "/modules#momentum"
-  },
-  {
-    img: "/module3.jpg",
-    title: "Eagle Shift Framework",
-    link: "/modules#eagle"
-  },
-  {
-    img: "/module4.jpg",
-    title: "Peak Performance Acceleration",
-    link: "/modules#peak"
-  },
-  {
-    img: "/module5.jpg",
-    title: "Leadership Transformation",
-    link: "/modules#leadership"
-  }
-].map((item, i) => (
+    <h2 className="text-4xl font-extrabold mb-14 text-[#1E3A8A]">
+      Core Transformation Programs
+    </h2>
 
-  <div
-    key={i}
-    className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition"
-  >
+    {/* GRID */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
 
-    {/* IMAGE */}
-    <div className="overflow-hidden">
-      <img
-        src={item.img}
-        alt={item.title}
-        className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
-      />
-    </div>
+      {[
+        {
+          title: "Leadership Identity Shift Programs",
+          img: "/images/core1.jpg"
+        },
+        {
+          title: "Behavioral Pattern Transformation Interventions",
+          img: "/images/core2.jpg"
+        },
+        {
+          title: "CXO Coaching – Eagle Shift Framework",
+          img: "/images/core3.jpg"
+        },
+        {
+          title: "Peak Performance Acceleration",
+          img: "/images/core4.jpg"
+        },
+        {
+          title: "Emotional Pattern Rewiring for Employees",
+          img: "/images/core5.jpg"
+        }
+      ].map((item, i) => (
 
-    {/* TITLE + BUTTON */}
-    <div className="p-6 text-center">
+        <div
+          key={i}
+          className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
+        >
 
-      <h3 className="text-xl font-bold text-blue-700 mb-4">
-        {item.title}
-      </h3>
+          {/* IMAGE */}
+          <img
+            src={item.img}
+            alt={item.title}
+            className="w-full h-40 object-cover"
+          />
 
-      <button
-        onClick={() => router.push(item.link)}
-        className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
-      >
-        Learn More
-      </button>
+          {/* CONTENT */}
+          <div className="p-4 flex flex-col justify-between h-[140px]">
+
+            <h3 className="text-md font-semibold text-[#1E3A8A] leading-snug">
+              {item.title}
+            </h3>
+
+            <Link href="/core-details">
+              <button className="mt-3 text-sm font-semibold text-[#1E3A8A] hover:underline">
+                Learn More →
+              </button>
+            </Link>
+
+          </div>
+
+        </div>
+
+      ))}
 
     </div>
 
   </div>
+</section>
 
-))}
-            
+      {/* ================= Compliance & Workplace Safety ================= */}
+ <section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
 
-          </div>
+    {/* TITLE */}
+    <h2 className="text-4xl font-bold text-center mb-16 text-[#1E3A8A]">
+      Compliance & Workplace Safety
+    </h2>
+
+    {/* GRID (NO SCROLL) */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+      {/* CARD 1 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <img
+          src="/posh.jpg"
+          alt="POSH"
+          className="h-44 w-full object-cover rounded-t-2xl"
+        />
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-[#1E3A8A]">
+            POSH: End-to-End Implementation & Training
+          </h3>
+          <button className="mt-4 text-blue-600 font-medium hover:underline">
+            Learn More →
+          </button>
         </div>
-      </section>
+      </div>
 
-      {/* ================= POSH SECTION ================= */}
-      <CompliancesSlider />
+      {/* CARD 2 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <img
+          src="/posco.jpg"
+          alt="POSCO"
+          className="h-44 w-full object-cover rounded-t-2xl"
+        />
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-[#1E3A8A]">
+            POSCO Awareness Programs
+          </h3>
+          <button className="mt-4 text-blue-600 font-medium hover:underline">
+            Learn More →
+          </button>
+        </div>
+      </div>
 
+      {/* CARD 3 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <img
+          src="/psychological.jpg"
+          alt="Psychological Safety"
+          className="h-44 w-full object-cover rounded-t-2xl"
+        />
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-[#1E3A8A]">
+            Psychological Safety & Inclusive Culture Training
+          </h3>
+          <button className="mt-4 text-blue-600 font-medium hover:underline">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      {/* CARD 4 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <img
+          src="/ethics.jpg"
+          alt="Ethics"
+          className="h-44 w-full object-cover rounded-t-2xl"
+        />
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-[#1E3A8A]">
+            Workplace Ethics & Conduct Programs
+          </h3>
+          <button className="mt-4 text-blue-600 font-medium hover:underline">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      {/* CARD 5 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <img
+          src="/mental.jpg"
+          alt="Mental Wellness"
+          className="h-44 w-full object-cover rounded-t-2xl"
+        />
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-[#1E3A8A]">
+            Mental Wellness Interventions
+          </h3>
+          <button className="mt-4 text-blue-600 font-medium hover:underline">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      {/* CARD 6 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <img
+          src="/safety.jpg"
+          alt="Physical Safety"
+          className="h-44 w-full object-cover rounded-t-2xl"
+        />
+        <div className="p-6 text-center">
+          <h3 className="text-lg font-semibold text-[#1E3A8A]">
+            Physical Safety Trainings
+          </h3>
+          <button className="mt-4 text-blue-600 font-medium hover:underline">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* ================= E-LEARNING MODULES ================= */}
-      <section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
-        <div className="max-w-7xl mx-auto px-6">
+  <section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
 
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
-            E-learning Modules Licensing and Development
-          </h2>
+    {/* TITLE */}
+    <h2 className="text-4xl font-bold text-center mb-16 text-[#1E3A8A]">
+      E-learning Modules Licensing and Development
+    </h2>
 
-          {/* TOP 4 */}
-          <div className="grid md:grid-cols-4 gap-8 mb-10">
+    {/* GRID */}
+    <div className="grid grid-cols-12 gap-8">
 
-            {[
-              { img: "/elearn1.jpg", title: "Custom Module Development" },
-              { img: "/elearn2.jpg", title: "Content Licensing" },
-              { img: "/elearn3.jpg", title: "Interactive Learning Design" },
-              { img: "/elearn4.jpg", title: "LMS Integration" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="relative group rounded-3xl overflow-hidden shadow-xl 
-                           transform transition duration-500 hover:-translate-y-4 hover:shadow-2xl"
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
-                />
+      {/* ===== ROW 1 (4 CARDS) ===== */}
 
-                {/* Premium Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-
-                {/* Text */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-white text-lg font-semibold">
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
+      {[
+        { img: "elearning/custom.jpg", title: "Custom Module Development" },
+        { img: "elearning/licensing.jpg", title: "Content Licensing" },
+        { img: "elearning/learning.jpg", title: "Interactive Learning Design" },
+        { img: "elearning/lms.jpg", title: "LMS Integration" },
+      ].map((item, i) => (
+        <div key={i} className="col-span-12 sm:col-span-6 md:col-span-3 bg-white rounded-2xl shadow-md hover:shadow-xl transition">
+          <img src={item.img} className="h-40 w-full object-cover rounded-t-2xl" />
+          <div className="p-5 text-center">
+            <h3 className="font-semibold text-[#1E3A8A]">{item.title}</h3>
+            <button className="mt-3 text-blue-600 hover:underline">Learn More →</button>
           </div>
+        </div>
+      ))}
 
-          {/* BOTTOM 3 CENTERED */}
-          <div className="grid md:grid-cols-3 gap-8 md:px-32">
+      {/* ===== ROW 2 (3 CARDS CENTERED) ===== */}
 
-            {[
-              { img: "/elearn5.jpg", title: "Microlearning Modules" },
-              { img: "/elearn6.jpg", title: "Certification Programs" },
-              { img: "/elearn7.jpg", title: "Performance Tracking Systems" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="relative group rounded-3xl overflow-hidden shadow-xl 
-                           transform transition duration-500 hover:-translate-y-4 hover:shadow-2xl"
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
-                />
+      <div className="col-span-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:w-[75%] mx-auto">
 
-                {/* Premium Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-
-                {/* Text */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-white text-lg font-semibold">
-                    {item.title}
-                  </h3>
-                </div>
+          {[
+            { img: "elearning/micro.jpg", title: "Microlearning Modules" },
+            { img: "elearning/certification.jpg", title: "Certification Programs" },
+            { img: "elearning/tracking.jpg", title: "Performance Tracking Systems" },
+          ].map((item, i) => (
+            <div key={i} className="bg-white rounded-2xl shadow-md hover:shadow-xl transition">
+              <img src={item.img} className="h-40 w-full object-cover rounded-t-2xl" />
+              <div className="p-5 text-center">
+                <h3 className="font-semibold text-[#1E3A8A]">{item.title}</h3>
+                <button className="mt-3 text-blue-600 hover:underline">Learn More →</button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
 
         </div>
-      </section>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* ================= TRAIN THE TRAINER ================= */}
       <section className="py-24 bg-white">
@@ -411,7 +513,7 @@ Download E-Brochure
 
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
-<section className="py-24 bg-gradient-to-b from-white via-blue-50 to-white">
+<section className="py-24 bg-white">
   <div className="max-w-7xl mx-auto px-6">
 
     <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
