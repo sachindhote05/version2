@@ -8,6 +8,8 @@ import CountUp from "react-countup"
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link"
 import CoreSection from "./components/CoreSection"
+import { FaWhatsapp } from "react-icons/fa";
+import CoreSlider from "./components/CoreSlider";
 
 
 
@@ -83,7 +85,7 @@ export default function Home() {
       
 
       {/* 🔥 HERO SECTION */}
-<div className="bg-[#1E3A8A] text-white pt-40 pb-20 px-6 relative overflow-hidden">
+<div className="bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-40 pb-20 px-6 relative overflow-hidden">
 
   <div className="max-w-6xl mx-auto text-center">
 
@@ -150,7 +152,7 @@ export default function Home() {
 
 
   {/* CURVE */}
-  <section className="relative py-20 bg-[#F0F5FF]">
+  <section className="relative pt-8 pb-6 bg-[#F0F5FF]">
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
     <svg
       viewBox="0 0 1440 320"
@@ -163,151 +165,126 @@ export default function Home() {
       />
     </svg>
   </div>
-  <div className="max-w-6xl mx-auto px-6 text-center mt-10">
+  </section>
+ <section className="py-10 bg-gray-100">
 
-    <h2 className="text-4xl font-bold mb-16 text-[#1E3A8A]">
+  <div className="max-w-5xl mx-auto px-6 text-center">
+
+    {/* TITLE */}
+    <h2 className="text-3xl md:text-4xl font-bold mb-10 text-[#1E3A8A]">
       Why Most Training Programs Fail
     </h2>
 
-    <div className="grid md:grid-cols-2 gap-10">
+    {/* GRID */}
+    <div className="grid md:grid-cols-2 gap-6">
 
       {[
         "Most training focuses on skills",
+        "That’s why results don’t sustain",
         "Real change happens at mindset level",
-        "Identity drives long-term behavior",
-        "That’s why results don’t sustain"
+        "Identity drives long-term behavior"
       ].map((text, i) => (
 
         <motion.div
-  key={i}
-  initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
-  transition={{ duration: 1, delay: i * 0.25 }}
-  viewport={{ once: true }}
-  whileHover={{ scale: 1.05, y: -10 }}
-  className="relative p-8 rounded-3xl
-  bg-gradient-to-br from-[#EFF6FF] to-white
-  border border-[#BFDBFE]
-  shadow-md hover:shadow-2xl
-  transition-all duration-500"
->
+          key={i}
+          initial={{ x: i % 2 === 0 ? -60 : 60, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: i * 0.15 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.04, y: -6 }}
+          className="relative p-5 rounded-2xl
+          bg-gradient-to-br from-[#EFF6FF] to-white
+          border border-[#BFDBFE]
+          shadow-sm hover:shadow-lg
+          transition-all duration-300"
+        >
 
-  {/* Glow effect */}
-  <div className="absolute inset-0 rounded-3xl opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-r from-blue-200/40 to-transparent blur-xl"></div>
+          {/* Glow */}
+          <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition duration-300 bg-gradient-to-r from-blue-200/30 to-transparent blur-lg"></div>
 
-  <div className="relative z-10">
-    <p className="text-lg font-semibold text-[#1E3A8A]">
-      {text}
-    </p>
-  </div>
+          <div className="relative z-10">
+            <p className="text-base md:text-lg font-medium text-[#1E3A8A]">
+              {text}
+            </p>
+          </div>
 
-</motion.div>
+        </motion.div>
 
       ))}
 
     </div>
 
   </div>
+
+
 </section>
     {/* 🔥 WHAT MAKES US DIFFERENT */}
 {/* 🔥 WHAT MAKES US DIFFERENT */}
-<section className="py-0 bg-transparent">
-  <div className="w-full ">
+<section className="pt-20 pb-32 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
+  <div className="max-w-4xl mx-auto px-6">
 
-   <div className="bg-gradient-to-b from-[#1E3A8A] via-[#162d6b] to-[#0f172a] shadow-md px-10 py-16 text-white">
-      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-        What Makes Us Different
-      </h2>
+    <h2 
+      data-aos="fade-up"
+      className="text-4xl font-bold mb-6"
+    >
+      What Makes Us Different
+    </h2>
 
-      <p className="text-base md:text-lg leading-relaxed text-center whitespace-pre-line">
-  {`We don’t just focus on skill development\n
-   Our approach works at the level of mindset,
-  identity, and behavioral patterns to create long-term transformation.\n
- Instead of short-term learning, we enable sustainable performance, stronger ownership, and real business impact through structured interventions.`}
-</p>
-    </div>
+    <p 
+      data-aos="fade-up"
+      data-aos-delay="200"
+      className="text-lg mb-6"
+    >
+      We don’t just focus on skill development
+    </p>
+
+    <p 
+      data-aos="fade-up"
+      data-aos-delay="400"
+      className="text-lg mb-6"
+    >
+      Our approach works at the level of mindset, identity, and behavioral patterns to create long-term transformation.
+    </p>
+
+    <p 
+      data-aos="fade-up"
+      data-aos-delay="600"
+      className="text-lg"
+    >
+      Instead of short-term learning, we enable sustainable performance, stronger ownership, and real business impact through structured interventions.
+    </p>
 
   </div>
-
 </section>
+<div className="h-20 bg-white"></div>
 
       {/* ================= SERVICES SLIDER ================= */}
      
 <div id="services" className="mt-">
   <ServicesSlider />
 </div>
-
+<div className="h-20 bg-white"></div>
+ 
       {/* =================Core Transformation Programs================= */}
 
 
-<section className="py-20 bg-gray-100">
-  <div className="max-w-7xl mx-auto px-6 text-center">
+{/* ================= Core Transformation ================= */}
+<section className="py-20 bg-gradient-to-r from-[#0f172a] via-[#1e3a8a] to-[#0f172a]">
 
-    <h2 className="text-4xl font-extrabold mb-14 text-[#1E3A8A]">
+  <div className="max-w-6xl mx-auto px-6">
+
+    <h2 className="text-4xl font-bold text-center mb-16 text-white">
       Core Transformation Programs
     </h2>
 
-    {/* GRID */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+   
 
-      {[
-        {
-          title: "Leadership Identity Shift Programs",
-          img: "/images/core1.jpg"
-        },
-        {
-          title: "Behavioral Pattern Transformation Interventions",
-          img: "/images/core2.jpg"
-        },
-        {
-          title: "CXO Coaching – Eagle Shift Framework",
-          img: "/images/core3.jpg"
-        },
-        {
-          title: "Peak Performance Acceleration",
-          img: "/images/core4.jpg"
-        },
-        {
-          title: "Emotional Pattern Rewiring for Employees",
-          img: "/images/core5.jpg"
-        }
-      ].map((item, i) => (
-
-        <div
-          key={i}
-          className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
-        >
-
-          {/* IMAGE */}
-          <img
-            src={item.img}
-            alt={item.title}
-            className="w-full h-40 object-cover"
-          />
-
-          {/* CONTENT */}
-          <div className="p-4 flex flex-col justify-between h-[140px]">
-
-            <h3 className="text-md font-semibold text-[#1E3A8A] leading-snug min-h-[60px]">
-  {item.title}
-</h3>
-
-            <Link href="/core-details">
-             <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-            </Link>
-
-          </div>
-
-        </div>
-
-      ))}
-
-    </div>
+    <CoreSlider />
 
   </div>
 </section>
+
+
 
       {/* ================= Compliance & Workplace Safety ================= */}
  <section className="py-20 bg-white">
@@ -427,7 +404,7 @@ export default function Home() {
   </div>
 </section>
       {/* =================Digital Learning & Capability Systems================= */}
-  <section className="py-20 bg-white">
+ <section className="py-20 bg-white">
   <div className="max-w-6xl mx-auto px-6">
 
     {/* TITLE */}
@@ -435,52 +412,65 @@ export default function Home() {
       Digital Learning & Capability Systems
     </h2>
 
-    {/* GRID */}
-    <div className="grid grid-cols-12 gap-8">
+    {/* GRID - 4 CARDS */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 
-      {/* ===== ROW 1 (4 CARDS) ===== */}
-
-      {[
-        { img: "elearning/custom.jpg", title: "Custom Module Development" },
-        { img: "elearning/licensing.jpg", title: "Content Licensing" },
-        { img: "elearning/learning.jpg", title: "Interactive Learning Design" },
-        { img: "elearning/lms.jpg", title: "LMS Integration" },
-      ].map((item, i) => (
-        <div key={i} className="col-span-12 sm:col-span-6 md:col-span-3 bg-white rounded-2xl shadow-md hover:shadow-xl transition">
-          <img src={item.img} className="h-40 w-full object-cover rounded-t-2xl" />
-          <div className="p-5 text-center">
-            <h3 className="font-semibold text-[#1E3A8A]">{item.title}</h3>
-            <button className="mt-3 text-blue-600 hover:underline">Learn More →</button>
-          </div>
+      {/* CARD 1 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+        <img src="/elearning/posh.jpg" className="h-44 w-full object-cover" />
+        <div className="p-5 text-center flex flex-col flex-grow">
+          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
+            POSH E-learning Modules <br />
+            (Licensing & Custom Development)
+          </h3>
+          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+            Learn More →
+          </button>
         </div>
-      ))}
+      </div>
 
-      {/* ===== ROW 2 (3 CARDS CENTERED) ===== */}
+      {/* CARD 2 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+        <img src="/elearning/mindset.jpg" className="h-44 w-full object-cover" />
+        <div className="p-5 text-center flex flex-col flex-grow">
+          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
+            Mindset Reset Programs
+          </h3>
+          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+            Learn More →
+          </button>
+        </div>
+      </div>
 
-      <div className="col-span-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:w-[75%] mx-auto">
+      {/* CARD 3 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+        <img src="/elearning/emotional.jpg" className="h-44 w-full object-cover" />
+        <div className="p-5 text-center flex flex-col flex-grow">
+          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
+            Emotional Regulation Modules
+          </h3>
+          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+            Learn More →
+          </button>
+        </div>
+      </div>
 
-          {[
-            { img: "elearning/micro.jpg", title: "Microlearning Modules" },
-            { img: "elearning/certification.jpg", title: "Certification Programs" },
-            { img: "elearning/tracking.jpg", title: "Performance Tracking Systems" },
-          ].map((item, i) => (
-            <div key={i} className="bg-white rounded-2xl shadow-md hover:shadow-xl transition">
-              <img src={item.img} className="h-40 w-full object-cover rounded-t-2xl" />
-              <div className="p-5 text-center">
-                <h3 className="font-semibold text-[#1E3A8A]">{item.title}</h3>
-                <button className="mt-3 text-blue-600 hover:underline">Learn More →</button>
-              </div>
-            </div>
-          ))}
-
+      {/* CARD 4 */}
+      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+        <img src="/elearning/growth.jpg" className="h-44 w-full object-cover" />
+        <div className="p-5 text-center flex flex-col flex-grow">
+          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
+            Growth Skillset Mastery Framework
+          </h3>
+          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+            Learn More →
+          </button>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-
       {/* ================= Train the Trainer (Certification Programs) ================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -595,6 +585,104 @@ export default function Home() {
 
   </div>
 </section>
+<section className="py-28 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <h2 className="text-4xl font-bold text-center mb-20">
+      What Clients Say
+    </h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+
+      {[
+        {
+          name: "Ranjith P",
+          company: "Assistant Manager - Futurisk Insurance",
+          feedback:
+            "The POSH training session was highly informative and well-structured. The trainer demonstrated deep knowledge and used real-life examples, making it engaging and easy to understand.",
+        },
+        {
+          name: "Dominic Francis",
+          company: "Finance Manager",
+          feedback:
+            "The POSH & team-building session created strong awareness and engagement among employees. Participants actively interacted, and overall the session was very useful and impactful.",
+        },
+        {
+          name: "Arun",
+          company: "Momentum Mastery Program",
+          feedback:
+            "The training program received an excellent rating of 4.71. Content quality, engagement, and delivery were highly appreciated across all parameters.",
+        },
+        {
+          name: "Boomi Team",
+          company: "Women in Tech Initiative",
+          feedback:
+            "The session emphasized mindset, boundaries, and team reciprocity. It created a reflective space and encouraged balanced giving and receiving within teams.",
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="relative bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-lg hover:scale-105 transition duration-300 flex flex-col h-full"
+        >
+          {/* QUOTE */}
+          <div className="text-4xl text-cyan-400 absolute top-3 left-5">“</div>
+
+          {/* FEEDBACK */}
+          <p className="text-gray-200 leading-relaxed mb-6 mt-6 flex-grow">
+            {item.feedback}
+          </p>
+
+          {/* LINE */}
+          <div className="h-[1px] bg-white/20 mb-4"></div>
+
+          {/* INFO */}
+          <h3 className="font-semibold text-white">{item.name}</h3>
+          <p className="text-sm text-gray-400">{item.company}</p>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+<section className="py-20 bg-white text-center">
+  <div className="max-w-4xl mx-auto px-6">
+
+    {/* HEADING */}
+    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#1E3A8A]">
+    Ready to move beyond surface-level training?
+    </h2>
+
+    {/* TEXT */}
+    <p className="text-gray-600 mb-10">
+      Let’s work together to build strong mindsets, improve performance,
+      and create lasting impact in your organization.
+    </p>
+
+    {/* BUTTONS */}
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+      {/* PRIMARY BUTTON */}
+      <button className="bg-[#1E3A8A] text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-800 transition">
+        Book a Consultation
+      </button>
+
+      {/* SECONDARY BUTTON */}
+      <button className="border border-[#1E3A8A] text-[#1E3A8A] px-6 py-3 rounded-xl font-semibold hover:bg-[#1E3A8A] hover:text-white transition">
+        Explore Programs
+      </button>
+
+    </div>
+
+  </div>
+</section>
+ <a
+        href="https://wa.me/917022621235"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg text-2xl z-50"
+      >
+        <FaWhatsapp />
+      </a>
       {/* ================= ABOUT FOUNDER ================= */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
