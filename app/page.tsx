@@ -1,14 +1,13 @@
-"use client";
+"use client"
 
-import { useEffect, useState, useMemo } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import ServicesSlider from "./components/ServicesSlider";
-import CountUp from "react-countup";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import CoreSection from "./components/CoreSection";
-
+import { useEffect, useState, useMemo } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import ServicesSlider from "./components/ServicesSlider"
+import CountUp from "react-countup"
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link"
+import CoreSection from "./components/CoreSection"
 
 
 
@@ -89,12 +88,30 @@ export default function Home() {
   <div className="max-w-6xl mx-auto text-center">
 
     {/* HEADING */}
-    <h1 className="text-4xl md:text-5xl font-bold mb-4">
-      Empowering Minds, Elevating Skills
-    </h1>
+<h1 className="text-4xl md:text-5xl font-bold text-center">
+  <span>Empowering Minds, Elevating </span>
 
+  <span className="relative inline-block">
+    {/* invisible biggest word for spacing */}
+    <span className="invisible">Performance</span>
+
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={words[index]}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.4 }}
+        className="absolute left-0 top-0"
+      >
+        {words[index]}
+      </motion.span>
+    </AnimatePresence>
+  </span>
+</h1>
     {/* SUBTEXT */}
-    <p className="text-lg opacity-90 mb-6">
+
+   <p className="text-lg opacity-90 mb-6 mt-4">
       Training and Coaching made Structured and sustainable for Businesses and Individuals
     </p>
 
@@ -271,14 +288,14 @@ export default function Home() {
           {/* CONTENT */}
           <div className="p-4 flex flex-col justify-between h-[140px]">
 
-            <h3 className="text-md font-semibold text-[#1E3A8A] leading-snug">
-              {item.title}
-            </h3>
+            <h3 className="text-md font-semibold text-[#1E3A8A] leading-snug min-h-[60px]">
+  {item.title}
+</h3>
 
             <Link href="/core-details">
-              <button className="mt-3 text-sm font-semibold text-[#1E3A8A] hover:underline">
-                Learn More →
-              </button>
+             <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
             </Link>
 
           </div>
@@ -311,13 +328,13 @@ export default function Home() {
           alt="POSH"
           className="h-44 w-full object-cover rounded-t-2xl"
         />
-        <div className="p-6 text-center">
+       <div className="p-6 flex flex-col justify-between h-[150px] text-center">
           <h3 className="text-lg font-semibold text-[#1E3A8A]">
             POSH: End-to-End Implementation & Training
           </h3>
-          <button className="mt-4 text-blue-600 font-medium hover:underline">
-            Learn More →
-          </button>
+          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
         </div>
       </div>
 
@@ -328,13 +345,13 @@ export default function Home() {
           alt="POSCO"
           className="h-44 w-full object-cover rounded-t-2xl"
         />
-        <div className="p-6 text-center">
+         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
           <h3 className="text-lg font-semibold text-[#1E3A8A]">
             POSCO Awareness Programs
           </h3>
-          <button className="mt-4 text-blue-600 font-medium hover:underline">
-            Learn More →
-          </button>
+          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
         </div>
       </div>
 
@@ -345,13 +362,13 @@ export default function Home() {
           alt="Psychological Safety"
           className="h-44 w-full object-cover rounded-t-2xl"
         />
-        <div className="p-6 text-center">
+         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
           <h3 className="text-lg font-semibold text-[#1E3A8A]">
             Psychological Safety & Inclusive Culture Training
           </h3>
-          <button className="mt-4 text-blue-600 font-medium hover:underline">
-            Learn More →
-          </button>
+          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
         </div>
       </div>
 
@@ -362,13 +379,13 @@ export default function Home() {
           alt="Ethics"
           className="h-44 w-full object-cover rounded-t-2xl"
         />
-        <div className="p-6 text-center">
+         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
           <h3 className="text-lg font-semibold text-[#1E3A8A]">
             Workplace Ethics & Conduct Programs
           </h3>
-          <button className="mt-4 text-blue-600 font-medium hover:underline">
-            Learn More →
-          </button>
+          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
         </div>
       </div>
 
@@ -379,13 +396,13 @@ export default function Home() {
           alt="Mental Wellness"
           className="h-44 w-full object-cover rounded-t-2xl"
         />
-        <div className="p-6 text-center">
+         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
           <h3 className="text-lg font-semibold text-[#1E3A8A]">
             Mental Wellness Interventions
           </h3>
-          <button className="mt-4 text-blue-600 font-medium hover:underline">
-            Learn More →
-          </button>
+          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
         </div>
       </div>
 
@@ -396,26 +413,26 @@ export default function Home() {
           alt="Physical Safety"
           className="h-44 w-full object-cover rounded-t-2xl"
         />
-        <div className="p-6 text-center">
+         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
           <h3 className="text-lg font-semibold text-[#1E3A8A]">
             Physical Safety Trainings
           </h3>
-          <button className="mt-4 text-blue-600 font-medium hover:underline">
-            Learn More →
-          </button>
+          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+  Learn More →
+</button>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-      {/* ================= E-LEARNING MODULES ================= */}
+      {/* =================Digital Learning & Capability Systems================= */}
   <section className="py-20 bg-white">
   <div className="max-w-6xl mx-auto px-6">
 
     {/* TITLE */}
     <h2 className="text-4xl font-bold text-center mb-16 text-[#1E3A8A]">
-      E-learning Modules Licensing and Development
+      Digital Learning & Capability Systems
     </h2>
 
     {/* GRID */}
@@ -464,12 +481,12 @@ export default function Home() {
   </div>
 </section>
 
-      {/* ================= TRAIN THE TRAINER ================= */}
+      {/* ================= Train the Trainer (Certification Programs) ================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
-            Train The Trainer
+            Train the Trainer (Certification Programs)
           </h2>
 
           <div className="grid md:grid-cols-5 gap-8">

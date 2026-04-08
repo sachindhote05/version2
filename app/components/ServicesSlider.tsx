@@ -15,6 +15,7 @@ const services: Service[] = [
     id: 1,
     title: "Core Transformation Programs",
     shortDesc: "Our programs are designed to shift identity, emotional responses, and behavioral patterns that directly impact performance and leadership effectiveness.",
+<<<<<<< HEAD
     outcomes: [
       "Increased ownership mindset",
       "Higher confidence and decision-making ability",
@@ -22,6 +23,10 @@ const services: Service[] = [
       "Sustainable performance improvement",
     ],
     icon:(
+=======
+    fullDesc: "Our Leadership Development programs are designed to cultivate visionary leaders who inspire teams, drive innovation, and navigate complex business landscapes. Through executive coaching, 360-degree assessments, and immersive workshops, we help leaders unlock their full potential and create lasting organizational impact.",
+    icon: (
+>>>>>>> 80778149b742d40de6f8925dfdfb78004abf36fa
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
@@ -32,6 +37,7 @@ const services: Service[] = [
     id: 2,
     title: "Compliance & Workplace Safety",
     shortDesc: "Compliance is not just a legal requirement — it is the foundation of a safe and respectful workplace culture.  We go beyond checkbox compliance to build awareness, accountability, and cultural alignment.",
+<<<<<<< HEAD
  outcomes: [
       "Strong compliance framework",
       "Reduced workplace conflicts and risks",
@@ -39,6 +45,10 @@ const services: Service[] = [
       "Culture aligned with organizational values",
     ],
         icon: (
+=======
+    fullDesc: "Comprehensive Prevention of Sexual Harassment training and compliance services ensure your organization meets all statutory requirements while fostering a culture of respect and dignity. We provide IC training, employee awareness sessions, policy development, and ongoing compliance support.",
+    icon: (
+>>>>>>> 80778149b742d40de6f8925dfdfb78004abf36fa
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -49,6 +59,7 @@ const services: Service[] = [
     id: 3,
     title: "Digital Learning & Capability Systems",
     shortDesc: "For organizations looking to scale learning and ensure consistency, we offer digitally enabled transformation systems.  Our modules are designed to create behavior change — not just information transfer.",
+<<<<<<< HEAD
 outcomes: [
       "Scalable training across teams",
       "Consistent learning experience",
@@ -56,6 +67,10 @@ outcomes: [
       "Cost-effective capability building",
     ],
         icon: (
+=======
+    fullDesc: "One-on-one executive coaching that combines neuroscience-informed techniques with proven leadership frameworks. Our certified coaches work with C-suite executives and senior leaders to enhance decision-making, emotional intelligence, and strategic thinking capabilities.",
+    icon: (
+>>>>>>> 80778149b742d40de6f8925dfdfb78004abf36fa
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
@@ -66,6 +81,7 @@ outcomes: [
     id: 4,
     title: "Train the Trainer (Certification Programs)",
     shortDesc: "We equip your teams with the skills, structure, and confidence to deliver impactful learning experiences within your organization.",
+<<<<<<< HEAD
  outcomes: [
       "Strong internal training ecosystem",
       "Reduced dependency on external trainers",
@@ -73,6 +89,10 @@ outcomes: [
       "Long-term cultural reinforcement",
     ],
         icon: (
+=======
+    fullDesc: "Custom e-learning solutions including interactive modules, microlearning content, and gamified training experiences. Our digital learning platform integrates seamlessly with your LMS, providing scalable training solutions with detailed analytics and progress tracking.",
+    icon: (
+>>>>>>> 80778149b742d40de6f8925dfdfb78004abf36fa
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
@@ -83,6 +103,7 @@ outcomes: [
     id: 5,
     title: "Executive Events & Strategic Offsites",
     shortDesc: "These are not just offsites. They are designed interventions to reset culture, build trust, and align leadership.  We combine experiential learning with psychological insights to create real shifts in team dynamics.",
+<<<<<<< HEAD
 outcomes: [
       "Stronger collaboration and alignment",
       "Alignment across teams and leadership",
@@ -90,6 +111,10 @@ outcomes: [
       "Renewed clarity and direction",
     ],
         icon: (
+=======
+    fullDesc: "Our 12-month Behavioral Mastery program creates lasting performance improvements through structured interventions. Covering productivity, communication, conflict resolution, and interpersonal skills, we help teams develop the mindset foundation for sustainable success.",
+    icon: (
+>>>>>>> 80778149b742d40de6f8925dfdfb78004abf36fa
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>

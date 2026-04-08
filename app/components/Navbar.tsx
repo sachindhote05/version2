@@ -124,7 +124,7 @@ export default function Navbar() {
         </Link>
 
         {/* SEARCH */}
-        <div className="relative hidden md:flex mx-6">
+        <div className="relative  flex mx-6">
           <form onSubmit={handleSearch}>
             <input
               type="text"
@@ -151,7 +151,7 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="flex items-center gap-6">
           <Link
             href="/login"
             className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
@@ -162,7 +162,7 @@ export default function Navbar() {
       </div>
 
       {/* SECOND NAVBAR */}
-      <div className="border-t bg-white/80 backdrop-blur-md hidden md:block">
+      <div className="border-t bg-white/80 backdrop-blur-md block">
         <div className="max-w-7xl mx-auto px-6 flex gap-10 py-3 font-medium">
           <Link href="/#home" className="text-gray-800 hover:text-blue-600 transition">
             Home
