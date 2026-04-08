@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence, PanInfo } from "framer-motion"
 
@@ -7,18 +5,23 @@ interface Service {
   id: number
   title: string
   shortDesc: string
-  fullDesc: string
-  icon: React.ReactNode
+outcomes: string[]   
+icon: React.ReactNode
   gradient: string
 }
 
 const services: Service[] = [
   {
     id: 1,
-    title: "Leadership Development",
-    shortDesc: "Transform leaders into visionaries",
-    fullDesc: "Our Leadership Development programs are designed to cultivate visionary leaders who inspire teams, drive innovation, and navigate complex business landscapes. Through executive coaching, 360-degree assessments, and immersive workshops, we help leaders unlock their full potential and create lasting organizational impact.",
-    icon: (
+    title: "Core Transformation Programs",
+    shortDesc: "Our programs are designed to shift identity, emotional responses, and behavioral patterns that directly impact performance and leadership effectiveness.",
+    outcomes: [
+      "Increased ownership mindset",
+      "Higher confidence and decision-making ability",
+      "Reduced self-doubt and internal resistance",
+      "Sustainable performance improvement",
+    ],
+    icon:(
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
@@ -27,10 +30,15 @@ const services: Service[] = [
   },
   {
     id: 2,
-    title: "POSH Compliance",
-    shortDesc: "Create safe workplaces",
-    fullDesc: "Comprehensive Prevention of Sexual Harassment training and compliance services ensure your organization meets all statutory requirements while fostering a culture of respect and dignity. We provide IC training, employee awareness sessions, policy development, and ongoing compliance support.",
-    icon: (
+    title: "Compliance & Workplace Safety",
+    shortDesc: "Compliance is not just a legal requirement — it is the foundation of a safe and respectful workplace culture.  We go beyond checkbox compliance to build awareness, accountability, and cultural alignment.",
+ outcomes: [
+      "Strong compliance framework",
+      "Reduced workplace conflicts and risks",
+      "Increased employee trust and safety",
+      "Culture aligned with organizational values",
+    ],
+        icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -39,10 +47,15 @@ const services: Service[] = [
   },
   {
     id: 3,
-    title: "Executive Coaching",
-    shortDesc: "Personalized growth journeys",
-    fullDesc: "One-on-one executive coaching that combines neuroscience-informed techniques with proven leadership frameworks. Our certified coaches work with C-suite executives and senior leaders to enhance decision-making, emotional intelligence, and strategic thinking capabilities.",
-    icon: (
+    title: "Digital Learning & Capability Systems",
+    shortDesc: "For organizations looking to scale learning and ensure consistency, we offer digitally enabled transformation systems.  Our modules are designed to create behavior change — not just information transfer.",
+outcomes: [
+      "Scalable training across teams",
+      "Consistent learning experience",
+      "Measurable impact and tracking",
+      "Cost-effective capability building",
+    ],
+        icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
@@ -51,10 +64,15 @@ const services: Service[] = [
   },
   {
     id: 4,
-    title: "Digital Learning",
-    shortDesc: "Learn anytime, anywhere",
-    fullDesc: "Custom e-learning solutions including interactive modules, microlearning content, and gamified training experiences. Our digital learning platform integrates seamlessly with your LMS, providing scalable training solutions with detailed analytics and progress tracking.",
-    icon: (
+    title: "Train the Trainer (Certification Programs)",
+    shortDesc: "We equip your teams with the skills, structure, and confidence to deliver impactful learning experiences within your organization.",
+ outcomes: [
+      "Strong internal training ecosystem",
+      "Reduced dependency on external trainers",
+      "Consistent knowledge transfer",
+      "Long-term cultural reinforcement",
+    ],
+        icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
@@ -63,40 +81,22 @@ const services: Service[] = [
   },
   {
     id: 5,
-    title: "Behavioral Training",
-    shortDesc: "Sustainable mindset shifts",
-    fullDesc: "Our 12-month Behavioral Mastery program creates lasting performance improvements through structured interventions. Covering productivity, communication, conflict resolution, and interpersonal skills, we help teams develop the mindset foundation for sustainable success.",
-    icon: (
+    title: "Executive Events & Strategic Offsites",
+    shortDesc: "These are not just offsites. They are designed interventions to reset culture, build trust, and align leadership.  We combine experiential learning with psychological insights to create real shifts in team dynamics.",
+outcomes: [
+      "Stronger collaboration and alignment",
+      "Alignment across teams and leadership",
+      "Reduced internal friction",
+      "Renewed clarity and direction",
+    ],
+        icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>
     ),
     gradient: "from-rose-500 to-red-400",
   },
-  {
-    id: 6,
-    title: "Train The Trainer",
-    shortDesc: "Build internal expertise",
-    fullDesc: "Empower your internal teams to deliver impactful training programs. Our Train The Trainer certification covers facilitation skills, presentation mastery, instructional design, audience engagement techniques, and assessment methodologies for maximum knowledge transfer.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    gradient: "from-indigo-500 to-blue-400",
-  },
-  {
-    id: 7,
-    title: "Organizational Interventions",
-    shortDesc: "Transform culture & performance",
-    fullDesc: "Strategic organizational development interventions that address culture, structure, and processes. From team building and change management to psychological safety assessments and culture transformation, we design customized solutions for measurable organizational growth.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    gradient: "from-cyan-500 to-blue-400",
-  },
+  
 ]
 
 export default function ServicesSlider() {
@@ -125,7 +125,7 @@ export default function ServicesSlider() {
 
     const interval = setInterval(() => {
       nextSlide()
-    }, 3000)
+    }, 2320)
 
     return () => clearInterval(interval)
   }, [isPaused, nextSlide])
@@ -143,7 +143,7 @@ export default function ServicesSlider() {
   // Get visible cards for carousel display
   const getVisibleCards = () => {
     const cards = []
-    for (let i = -3; i <= 3; i++) {
+    for (let i = -2; i <= 2; i++) {
       const index = (activeIndex + i + services.length) % services.length
       cards.push({ service: services[index], position: i })
     }
@@ -158,7 +158,7 @@ export default function ServicesSlider() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="relative w-full px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ export default function ServicesSlider() {
 
         {/* Carousel Container */}
         <div
-          className="relative h-[320px] sm:h-[280px]"
+          className="relative h-[400px] sm:h-[380px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -193,9 +193,9 @@ export default function ServicesSlider() {
               {getVisibleCards().map(({ service, position }) => {
                 const isActive = position === 0
                 const scale = isActive ? 1 : 0.85 - Math.abs(position) * 0.05
-                const opacity = isActive ? 1 : 0.6 - Math.abs(position) * 0.15
+                const opacity = isActive ? 1 : 0.8 - Math.abs(position) * 0.1
                 const zIndex = 10 - Math.abs(position)
-                const xOffset = position * 220
+                const xOffset = position * 320
 
                 return (
                   <motion.div
@@ -215,7 +215,7 @@ export default function ServicesSlider() {
                       damping: 30,
                     }}
                     onClick={() => !isActive && goToSlide(services.findIndex(s => s.id === service.id))}
-                    className={`absolute w-[280px] sm:w-[320px] ${!isActive ? "cursor-pointer" : ""}`}
+                    className={`absolute w-[300px] sm:w-[360px] ${!isActive ? "cursor-pointer" : ""}`}
                   >
                     <div
                       className={`
@@ -318,9 +318,14 @@ export default function ServicesSlider() {
                 <h4 className="text-2xl font-bold text-white mb-3">
                   {services[activeIndex].title}
                 </h4>
-                <p className="text-slate-300 leading-relaxed">
-                  {services[activeIndex].fullDesc}
-                </p>
+               <ul className="text-slate-300 space-y-2 mt-2">
+  {services[activeIndex].outcomes.map((item, i) => (
+    <li key={i} className="flex items-start gap-2">
+      <span className="text-green-400 mt-1">✔</span>
+      <span>{item}</span>
+    </li>
+  ))}
+</ul>
                 
                 <button className={`
                   mt-6 px-6 py-3 rounded-xl font-semibold text-white

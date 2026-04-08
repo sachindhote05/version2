@@ -194,14 +194,10 @@ export default function Home() {
 </section>
     {/* 🔥 WHAT MAKES US DIFFERENT */}
 {/* 🔥 WHAT MAKES US DIFFERENT */}
-<section className="py- bg-white">
-
+<section className="py-0 bg-transparent">
   <div className="w-full ">
 
-    <div className="bg-[#1E3A8A] 
-    
-    shadow-md px-10 py-8 text-white">
-
+   <div className="bg-gradient-to-b from-[#1E3A8A] via-[#162d6b] to-[#0f172a] shadow-md px-10 py-16 text-white">
       <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
         What Makes Us Different
       </h2>
