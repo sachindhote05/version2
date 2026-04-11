@@ -6,7 +6,7 @@ interface Service {
   title: string
   shortDesc: string
 outcomes: string[]   
-   icon: JSX.Element
+   icon: React.ReactNode
   gradient: string
 }
 
