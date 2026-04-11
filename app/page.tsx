@@ -5,15 +5,9 @@ import AOS from "aos"
 import ServicesSlider from "./components/ServicesSlider"
 import { motion } from "framer-motion";
 import Link from "next/link"
-<<<<<<< HEAD
-import CoreSection from "./components/CoreSection"
-import { FaWhatsapp } from "react-icons/fa";
-import CoreSlider from "./components/CoreSlider";
-=======
 import TypewriterText from "./components/TypewriterText";
->>>>>>> 931de49 (new uifinal)
-
-
+import CoreSlider from "./components/CoreSlider";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Home() 
 {
@@ -84,13 +78,8 @@ const words = [
 
       
 
-<<<<<<< HEAD
       {/* 🔥 HERO SECTION */}
 <div className="bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-40 pb-20 px-6 relative overflow-hidden">
-=======
-{/* 🔥 HERO SECTION */}
-<div className="relative bg-[#1E3A8A] text-white pt-40 pb-32 px-6 overflow-hidden">
->>>>>>> 931de49 (new uifinal)
 
   <div className="max-w-6xl mx-auto text-center">
 
@@ -163,7 +152,6 @@ const words = [
 </div>
 
 
-<<<<<<< HEAD
   {/* CURVE */}
   <section className="relative pt-8 pb-6 bg-[#F0F5FF]">
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
@@ -180,15 +168,6 @@ const words = [
   </div>
   </section>
  <section className="py-10 bg-gray-100">
-=======
-
-
-
-
-  {/*  Why Most Training Programs Fail */}
-  <section className="relative py-20 bg-[#F0F5FF]">
-   <div className="max-w-6xl mx-auto px-6 text-center mt-10">
->>>>>>> 931de49 (new uifinal)
 
   <div className="max-w-5xl mx-auto px-6 text-center">
 
