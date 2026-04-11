@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import NavbarWrapper from "./components/NavbarWrapper";
 import FooterWrapper from "./components/FooterWrapper";
 
 export const metadata: Metadata = {
@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-black scroll-smooth">
-        <Navbar />
+       <NavbarWrapper />
         {children}
-        <FooterWrapper /> {/* ✅ yaha lagana hai */}
+        <FooterWrapper />
       </body>
     </html>
   );

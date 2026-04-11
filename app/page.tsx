@@ -2,34 +2,34 @@
 
 import { useEffect, useState, useMemo } from "react"
 import AOS from "aos"
-import "aos/dist/aos.css"
 import ServicesSlider from "./components/ServicesSlider"
-import CountUp from "react-countup"
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link"
+<<<<<<< HEAD
 import CoreSection from "./components/CoreSection"
 import { FaWhatsapp } from "react-icons/fa";
 import CoreSlider from "./components/CoreSlider";
+=======
+import TypewriterText from "./components/TypewriterText";
+>>>>>>> 931de49 (new uifinal)
 
 
 
-export default function Home() {
+export default function Home() 
+{
 
- const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i)
-  }
-
-  const fullText = "Empowering Minds";
-  const [displayText, setDisplayText] = useState("");
-  const words = useMemo(() => [
-    "Lives",
+const words = [
+     "Lives",
     "Skills",
     "Performance",
     "Business",
-    "Growth",
-  ], []);
+    "Growth"
+];
+
+  const fullText = "Empowering Minds";
+  const [displayText, setDisplayText] = useState("");
+  
+
   const videos = useMemo<string[]>(() => [
   "/sample.mp4"
 ], []);
@@ -84,58 +84,57 @@ export default function Home() {
 
       
 
+<<<<<<< HEAD
       {/* 🔥 HERO SECTION */}
 <div className="bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-40 pb-20 px-6 relative overflow-hidden">
+=======
+{/* 🔥 HERO SECTION */}
+<div className="relative bg-[#1E3A8A] text-white pt-40 pb-32 px-6 overflow-hidden">
+>>>>>>> 931de49 (new uifinal)
 
   <div className="max-w-6xl mx-auto text-center">
 
     {/* HEADING */}
-<h1 className="text-4xl md:text-5xl font-bold text-center">
-  <span>Empowering Minds, Elevating </span>
+    <h1 className="text-4xl font-bold">
+      Empowering Minds, Elevating{" "}
+      <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
+    </h1>
 
-  <span className="relative inline-block">
-    {/* invisible biggest word for spacing */}
-    <span className="invisible">Performance</span>
-
-    <AnimatePresence mode="wait">
-      <motion.span
-        key={words[index]}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.4 }}
-        className="absolute left-0 top-0"
-      >
-        {words[index]}
-      </motion.span>
-    </AnimatePresence>
-  </span>
-</h1>
-    {/* SUBTEXT */}
-
-   <p className="text-lg opacity-90 mb-6 mt-4">
-      Training and Coaching made Structured and sustainable for Businesses and Individuals
+    <p className="mt-4 text-base md:text-lg text-blue-100 font-normal tracking-wide">
+      Transforming mindset and identity to drive performance and workplace culture
     </p>
 
-    {/* TAGS */}
-    <div className="flex flex-wrap justify-center gap-4 text-sm mb-8 opacity-90">
-      <span>∞ Proven Tools</span>
-      <span>⚡ Sustainable Results</span>
-      <span>🌐 Simple Interventions</span>
-      <span>🧠 Mind Body Neuroscience</span>
-      <span>🏆 10+ Years</span>
-      <span>👥 50+ clients</span>
+    {/* TRUST STRIP */}
+    <div className="flex justify-center mt-6 px-4">
+      <div className="flex flex-wrap items-center justify-center gap-5
+      text-blue-100 text-sm md:text-base font-normal tracking-wide">
+
+        <span>1000+ Professionals Impacted</span>
+        <span className="opacity-40">|</span>
+
+        <span>50+ Companies</span>
+        <span className="opacity-40">|</span>
+
+        <span>10 Years of Experience</span>
+        <span className="opacity-40">|</span>
+
+        <span>End-to-End Workplace Solutions</span>
+        <span className="opacity-40">|</span>
+
+        <span>NGO Association</span>
+
+      </div>
     </div>
 
-    {/* CTA BUTTON */}
-    <button className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+    {/* CTA */}
+    <button className="mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
       Download Brochure ☁️
     </button>
 
-    {/* VIDEO */}
-    <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+ {/* VIDEO */}
+    <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl relative z-10">
       <iframe
-        className="w-full h-[200px] md:h-[350px]"
+        className="w-full h-[220px] md:h-[350px]"
         src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
         title="Video"
         allowFullScreen
@@ -143,14 +142,28 @@ export default function Home() {
     </div>
 
   </div>
-  
-  </div>
 
  
+{/* 🔥 PERFECT CLEAN U CURVE */}
+<div className="absolute bottom-0 left-0 w-full z-0">
+  <svg
+    viewBox="0 0 1440 120"
+    className="w-full h-[80px]"
+    preserveAspectRatio="none"
+  >
+    <path
+      fill="#F0F5FF"
+      d="M0,0 
+         C480,100 960,100 1440,0 
+         L1440,120 
+         L0,120 Z"
+    />
+  </svg>
+</div>
+</div>
 
-  
 
-
+<<<<<<< HEAD
   {/* CURVE */}
   <section className="relative pt-8 pb-6 bg-[#F0F5FF]">
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
@@ -167,6 +180,15 @@ export default function Home() {
   </div>
   </section>
  <section className="py-10 bg-gray-100">
+=======
+
+
+
+
+  {/*  Why Most Training Programs Fail */}
+  <section className="relative py-20 bg-[#F0F5FF]">
+   <div className="max-w-6xl mx-auto px-6 text-center mt-10">
+>>>>>>> 931de49 (new uifinal)
 
   <div className="max-w-5xl mx-auto px-6 text-center">
 

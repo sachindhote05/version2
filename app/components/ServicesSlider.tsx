@@ -275,10 +275,10 @@ export default function ServicesSlider() {
 
         {/* Dot Navigation */}
         <div className="flex justify-center gap-2 mt-8">
-          {services.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
+          {services.map((item, index) => (
+  <button
+    key={index}
+    onClick={() => goToSlide(index)}
               className={`
                 h-2 rounded-full transition-all duration-300
                 ${activeIndex === index 
@@ -318,7 +318,7 @@ export default function ServicesSlider() {
                   {services[activeIndex].title}
                 </h4>
                <ul className="text-slate-300 space-y-2 mt-2">
-  {services[activeIndex].outcomes.map((item, i) => (
+ {services[activeIndex].shortDesc.split(".").map((item, i) => (
     <li key={i} className="flex items-start gap-2">
       <span className="text-green-400 mt-1">✔</span>
       <span>{item}</span>

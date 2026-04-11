@@ -47,7 +47,10 @@ const resources = [
   { title: "Free Videos", href: "/resources/videos" },
 ]
 
+
+
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -113,7 +116,7 @@ export default function Navbar() {
       }`}
     >
       {/* TOP NAVBAR */}
-      <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+     <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
         {/* LOGO */}
         <Link href="/" className="flex items-center">
           <img
@@ -124,7 +127,7 @@ export default function Navbar() {
         </Link>
 
         {/* SEARCH */}
-        <div className="relative  flex mx-6">
+        <div className="relative hidden md:flex mx-6">
           <form onSubmit={handleSearch}>
             <input
               type="text"
@@ -151,13 +154,13 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex items-center gap-6">
-          <Link
-            href="/login"
-            className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
-          >
-            Login
-          </Link>
+        <div className="flex items-center gap-3">
+         <Link
+  href="/login"
+  className="bg-black text-white px-4 py-1.5 rounded-lg text-sm"
+>
+  Login
+</Link>
         </div>
       </div>
 
