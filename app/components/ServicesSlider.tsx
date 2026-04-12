@@ -151,7 +151,7 @@ export default function ServicesSlider() {
   }
 
   return (
-<section className="relative py-24 overflow-hidden bg-gradient-to-r from-[#1e3a8a] to-[#0f172a]">      {/* Background decoration */}
+<section className="relative py-16 overflow-hidden bg-gradient-to-r from-[#1e3a8a] to-[#0f172a]">      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
@@ -176,7 +176,7 @@ export default function ServicesSlider() {
 
         {/* Carousel Container */}
         <div
-          className="relative h-[400px] sm:h-[380px]"
+          className="relative h-[320px] sm:h-[300px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -194,7 +194,7 @@ export default function ServicesSlider() {
                 const scale = isActive ? 1 : 0.85 - Math.abs(position) * 0.05
                 const opacity = isActive ? 1 : 0.8 - Math.abs(position) * 0.1
                 const zIndex = 10 - Math.abs(position)
-                const xOffset = position * 320
+                const xOffset = position * 260
 
                 return (
                   <motion.div
@@ -214,7 +214,7 @@ export default function ServicesSlider() {
                       damping: 30,
                     }}
                     onClick={() => !isActive && goToSlide(services.findIndex(s => s.id === service.id))}
-                    className={`absolute w-[300px] sm:w-[360px] ${!isActive ? "cursor-pointer" : ""}`}
+                    className={`absolute w-[260px] sm:w-[300px] ${!isActive ? "cursor-pointer" : ""}`}
                   >
                     <div
                       className={`
@@ -235,7 +235,7 @@ export default function ServicesSlider() {
                       <div className="relative">
                         {/* Icon */}
                         <div className={`
-                          w-16 h-16 rounded-2xl flex items-center justify-center mb-4
+                          w-12 h-12 rounded-2xl flex items-center justify-center mb-4
                           bg-gradient-to-br ${service.gradient}
                           shadow-lg ${isActive ? "shadow-lg" : ""}
                         `}>
@@ -245,7 +245,7 @@ export default function ServicesSlider() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-xl font-bold text-white mb-2">
+                        <h3 className="text-lg font-bold text-white mb-2">
                           {service.title}
                         </h3>
 
@@ -297,15 +297,15 @@ export default function ServicesSlider() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-12 max-w-3xl mx-auto"
+          className="mt-8 max-w-2xl mx-auto"
         >
-          <div className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
+          <div className="relative p-5 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
             {/* Gradient accent */}
             <div className={`absolute top-0 left-8 right-8 h-1 rounded-full bg-gradient-to-r ${services[activeIndex].gradient}`} />
             
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-3">
               <div className={`
-                hidden sm:flex w-14 h-14 rounded-xl items-center justify-center shrink-0
+                hidden sm:flex w-10 h-10 rounded-xl items-center justify-center shrink-0
                 bg-gradient-to-br ${services[activeIndex].gradient}
               `}>
                 <div className="text-white">
@@ -314,10 +314,10 @@ export default function ServicesSlider() {
               </div>
               
               <div>
-                <h4 className="text-2xl font-bold text-white mb-3">
+                <h4 className="text-xl font-bold text-white mb-3">
                   {services[activeIndex].title}
                 </h4>
-               <ul className="text-slate-300 space-y-2 mt-2">
+               <ul className="text-slate-300 space-y-1 mt-1">
  {services[activeIndex].shortDesc.split(".").map((item, i) => (
     <li key={i} className="flex items-start gap-2">
       <span className="text-green-400 mt-1">✔</span>
@@ -327,7 +327,7 @@ export default function ServicesSlider() {
 </ul>
                 
                 <button className={`
-                  mt-6 px-6 py-3 rounded-xl font-semibold text-white
+                  mt-6 px-4 py-2 rounded-xl font-semibold text-white
                   bg-gradient-to-r ${services[activeIndex].gradient}
                   hover:opacity-90 transition-opacity duration-300
                   shadow-lg hover:shadow-xl
