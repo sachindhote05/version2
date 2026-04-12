@@ -6,50 +6,27 @@ import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
-const services = [
-  {
-    title: "Leadership & Performance Excellence",
-    slug: "leadership-performance",
-    href: "/services/leadership-performance",
-  },
-  {
-    title: "Compliance & Workplace Safety POSH",
-    slug: "compliance-posh",
-    href: "/services/leadership-performance/compliance-posh",
-  },
-  {
-    title: "Digital Learning & Capability Systems",
-    slug: "digital-learning",
-    href: "/services/leadership-performance/digital-learning",
-  },
-  {
-    title: "Organizational Behavioural Interventions",
-    slug: "organizational-interventions",
-    href: "/services/leadership-performance/organizational-interventions",
-  },
-  {
-    title: "Train the Trainer",
-    slug: "train-the-trainer",
-    href: "/services/leadership-performance/train-the-trainer",
-  },
-  {
-    title: "Executive Events & Strategic Offsites",
-    slug: "executive-events",
-    href: "/services/leadership-performance/executive-events",
-  },
-]
-
 const resources = [
-  { title: "Downloads", href: "/resources/downloads" },
-  { title: "Newsletters", href: "/resources/newsletters" },
-  { title: "Blogs", href: "/resources/blogs" },
-  { title: "Media", href: "/resources/media" },
-  { title: "Free Videos", href: "/resources/videos" },
-]
+  {
+    title: "Downloads",
+    items: ["POSH Act", "POSH Posters", "POSH Score Card", "Company E-Brochure"]
+  },
+  {
+    title: "Blogs",
+    items: ["PoSH", "Inclusive Diversity", "Employee Assistance Program"]
+  },
+  {
+    title: "Newsletters",
+    items: ["Monthly Update", "HR Insights"]
+  }
+];
+
 
 
 
 export default function Navbar() {
+  const [showDropdown, setShowDropdown] = useState(false);
+ const [activeResource, setActiveResource] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -175,30 +152,51 @@ export default function Navbar() {
           <Link href="/#services" className="text-gray-800 hover:text-blue-600 transition">
             Services
           </Link>
+<div
+  className="relative inline-block"
+  onMouseEnter={() => setShowDropdown(true)}
+  onMouseLeave={() => {
+    setShowDropdown(false);
+    setActiveResource(null);
+  }}
+>
+  <button className="text-gray-800 hover:text-blue-600 transition">
+    Resources
+  </button>
 
-          {/* RESOURCES */}
-          <div className="relative group">
-            <button className="text-gray-800 hover:text-blue-600 transition">
-              Resources
-            </button>
+  {showDropdown && (
+    <div className="absolute top-full left-0 mt-1 flex bg-black text-white rounded-xl shadow-xl">
 
-            {/* DROPDOWN */}
-            <div
-              className="absolute top-10 left-0 w-[350px] bg-white shadow-xl rounded-xl border p-4 
-              opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-              transition-all duration-300"
-            >
-              {resources.map((r) => (
-                <Link
-                  key={r.title}
-                  href={r.href}
-                  className="block px-4 py-3 rounded-lg hover:bg-blue-50"
-                >
-                  {r.title}
-                </Link>
-              ))}
-            </div>
+      {/* LEFT SIDE */}
+      <div className="w-56 border-r border-gray-700">
+        {resources.map((r, index) => (
+          <div
+            key={r.title}
+            onMouseEnter={() => setActiveResource(index)}
+            className="px-4 py-3 cursor-pointer hover:bg-gray-700"
+          >
+            {r.title}
           </div>
+        ))}
+      </div>
+
+      {/* RIGHT SIDE */}
+      {activeResource !== null && (
+        <div className="w-64 p-4">
+          {resources[activeResource].items?.map((item, i) => (
+            <div
+              key={i}
+              className="py-2 hover:text-yellow-400 cursor-pointer"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
+
+    </div>
+  )}
+</div>
 
           <Link href="/clients" className="text-gray-800 hover:text-blue-600 transition">
             Book Consultation
