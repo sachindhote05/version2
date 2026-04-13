@@ -12,6 +12,9 @@ import ComplianceSafetySlider from "./components/ComplianceSafetySlider";
 import DigitalLearningSection from "./components/DigitalLearningSection";
 import CountUp from "react-countup";
 import ClientFeedbackScroll from "./components/ClientFeedbackScroll";
+import TrainTrainerSlider from "./components/TrainTrainerSlider";
+
+
 
 export default function Home() 
 {
@@ -286,48 +289,8 @@ const words = [
 
  
       {/* ================= Train the Trainer (Certification Programs) ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
-            Train the Trainer (Certification Programs)
-          </h2>
-
-          <div className="grid md:grid-cols-5 gap-8">
-
-            {[
-              { img: "/trainer1.jpg", title: "Facilitation Skills" },
-              { img: "/trainer2.jpg", title: "Presentation Mastery" },
-              { img: "/trainer3.jpg", title: "Instructional Techniques" },
-              { img: "/trainer4.jpg", title: "Audience Engagement" },
-              { img: "/trainer5.jpg", title: "Assessment & Feedback" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="relative group overflow-hidden rounded-2xl shadow-lg"
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-60 object-cover transition duration-500 group-hover:scale-110"
-                />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
-
-                {/* Text */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-white text-lg font-semibold text-center px-4">
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
+     <div className="h-20 bg-white"></div>
+<TrainTrainerSlider />
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
 <section className="py-24 bg-white">
