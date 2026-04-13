@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 
+import Link from "next/link";
+
+
 const cards = [
   {
     img: "/images/core1.jpg",
@@ -91,11 +94,11 @@ export default function CoreSlider() {
                   </h3>
 
                   {/* ✅ WORKING BUTTON */}
-                  <a href={item.link}>
-                    <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-                      Learn More →
-                    </button>
-                  </a>
+                <Link href="/core-details">
+  <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+    Learn More →
+  </button>
+</Link>
 
                 </div>
               </div>

@@ -281,6 +281,8 @@ const words = [
    
 
     <CoreSlider />
+    
+
 
   </div>
 </section>
