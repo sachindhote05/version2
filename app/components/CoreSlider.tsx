@@ -2,14 +2,16 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import Link from "next/link";
 
 interface Service {
   id: number;
   title: string;
   shortDesc: string;
-  outcomes: string[];
+    outcomes: string[];
   icon: React.ReactNode;
   gradient: string;
+  link: string;
 }
 
 const services: Service[] = [
@@ -17,61 +19,67 @@ const services: Service[] = [
     id: 1,
     title: "Leadership Identity Shift Programs",
     shortDesc: "Transform leadership identity and ownership mindset.",
-    outcomes: [
+   outcomes: [
       "Stronger leadership presence",
       "Better decision making",
       "Ownership mindset",
     ],
-    icon: <div className="text-white text-xl">1</div>,
+    icon: <span>🧠</span>,
+    
     gradient: "from-blue-500 to-cyan-400",
+    link: "/leadership",
   },
   {
     id: 2,
-    title: "Behavioral Pattern Transformation Interventions",
-    shortDesc: "Break limiting behaviors and build productive habits.",
+    title: "Behavioral Pattern Transformation",
+    shortDesc: "Break limiting behaviors and build habits.",
     outcomes: [
-      "Improved behavior",
-      "Emotional control",
-      "Sustainable habits",
+      "Improved self-awareness",
+      "Stronger discipline",
+      "Sustainable behavior change",
     ],
-    icon: <div className="text-white text-xl">2</div>,
+    icon: <span>🔄</span>,
     gradient: "from-emerald-500 to-teal-400",
+    link: "/behavior",
   },
   {
     id: 3,
-    title: "CXO Coaching – Eagle Shift Framework",
-    shortDesc: "High-level transformation for leadership.",
+    title: "CXO Coaching – Eagle Shift",
+    shortDesc: "High-level transformation for leaders.",
     outcomes: [
-      "Strategic clarity",
-      "Better decisions",
-      "Leadership vision",
+      "Enhanced strategic thinking",
+      "Improved executive presence",
+      "Stronger decision-making capabilities",
     ],
-    icon: <div className="text-white text-xl">3</div>,
+    icon: <span>🦅</span>,
     gradient: "from-purple-500 to-pink-400",
+    link: "/cxo",
   },
   {
     id: 4,
     title: "Peak Performance Acceleration",
     shortDesc: "Unlock team performance.",
     outcomes: [
-      "High productivity",
-      "Focused execution",
-      "Better results",
+      "Enhanced team collaboration",
+      "Improved productivity",
+      "Sustainable performance gains",
     ],
-    icon: <div className="text-white text-xl">4</div>,
+    icon: <span>🚀</span>,
     gradient: "from-orange-500 to-amber-400",
+    link: "/performance",
   },
   {
     id: 5,
-    title: "Emotional Pattern Rewiring for Employees",
+    title: "Emotional Pattern Rewiring",
     shortDesc: "Build emotional resilience.",
     outcomes: [
-      "Less stress",
-      "Better relationships",
-      "Higher engagement",
+      "Enhanced emotional intelligence",
+      "Improved stress management",
+      "Stronger resilience",
     ],
-    icon: <div className="text-white text-xl">5</div>,
+    icon: <span>💡</span>,
     gradient: "from-rose-500 to-red-400",
+    link: "/emotional",
   },
 ];
 
@@ -108,16 +116,16 @@ export default function CoreSlider() {
   };
 
   return (
-    <section className="relative py-12 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
-      
-      <div className="text-center mb-8">
+    <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
+
+      <div className="text-center mb-10">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Core <span className="text-cyan-400">Transformation Programs</span>
         </h2>
       </div>
 
       <div
-        className="relative h-[260px]"
+        className="relative h-[300px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -130,29 +138,48 @@ export default function CoreSlider() {
           <AnimatePresence>
             {getVisibleCards().map(({ service, position }) => {
               const isActive = position === 0;
+
               return (
                 <motion.div
                   key={service.id}
                   animate={{
-                    scale: isActive ? 1 : 0.8,
-                    x: position * 240,
+                    scale: isActive ? 1 : 0.85,
+                    x: position * 260,
                     opacity: isActive ? 1 : 0.5,
                   }}
-                  className="absolute w-[300px]"
+                  className="absolute w-[285px]"
                 >
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
-                    
-                    <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-r ${service.gradient}`}>
+                  <div className="h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
+
+                    {/* ICON */}
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}
                     </div>
 
-                    <h3 className="font-bold text-lg mb-2">
+                    {/* TITLE */}
+                    <h3 className="font-bold text-xl mb-2 text-">
                       {service.title}
                     </h3>
 
+                    {/* DESC */}
                     <p className="text-sm text-slate-300">
                       {service.shortDesc}
                     </p>
+
+                    <ul className="mt-3 text-sm text-slate-300 space-y-1 text-">
+    {service.outcomes.map((item, i) => (
+      <li key={i}>• {item}</li>
+    ))}
+  </ul>
+
+                    {/* BUTTON */}
+                    <div className="mt-auto pt-4">
+  <Link href={service.link}>
+    <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
+      Learn More →
+    </button>
+  </Link>
+</div>
                   </div>
                 </motion.div>
               );

@@ -78,117 +78,90 @@ const words = [
   return (
     <main className="overflow-x-hidden">
 
-      
+    
 
       
 
       {/* 🔥 HERO SECTION */}
-<div className="bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-40 pb-20 px-6 relative overflow-hidden">
+      <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-48 px-6 overflow-visible">
+        
+        <div className="max-w-6xl mx-auto text-center">
 
-  <div className="max-w-6xl mx-auto text-center">
+          {/* HEADING */}
+          <h1 className="text-5xl md:text-5xl font-bold leading-tight mb-4">
+            Empowering Minds, Elevating{" "}
+            <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
+          </h1>
 
-    {/* HEADING */}
-    <h1 className="text-4xl font-bold">
-      Empowering Minds, Elevating{" "}
-      <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
-    </h1>
-
-    <p className="mt-4 text-base md:text-lg text-blue-100 font-normal tracking-wide">
-      Transforming mindset and identity to drive performance and workplace culture
-    </p>
-
-    {/* TRUST STRIP */}
-   <section className="py-8">
-
-  <div className="max-w-6xl mx-auto px-6">
-
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-
-      {[
-        { number: 98, suffix: "%", label: "Client Satisfaction" },
-        { number: 50, suffix: "K+", label: "Employees Trained" },
-        { number: 18, suffix: "+", label: "Trained Industries" },
-        { number: 16, suffix: "+", label: "Years Of Experience" },
-      ].map((item, i) => (
-        <div key={i} className="py-2">
-
-          {/* Number Smaller */}
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
-            <CountUp
-              end={item.number}
-              duration={2}
-              enableScrollSpy
-              scrollSpyOnce
-            />
-            {item.suffix}
-          </h3>
-
-          {/* Label Smaller */}
-          <p className="text-xs md:text-sm text-white/80 leading-relaxed">
-            {item.label}
+          {/* SUBTEXT */}
+          <p className="text-base md:text-lg text-blue-100 font-normal tracking-wide max-w-3xl mx-auto">
+            Transforming mindset and identity to drive performance and workplace culture
           </p>
 
+          {/* TRUST STRIP - STATS */}
+          <div className="mt-10 py-">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { number: 98, suffix: "%", label: "Client Satisfaction" },
+                { number: 50, suffix: "K+", label: "Employees Trained" },
+                { number: 18, suffix: "+", label: "Trained Industries" },
+                { number: 16, suffix: "+", label: "Years Of Experience" },
+              ].map((item, i) => (
+                <div key={i}>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                    <CountUp
+                      end={item.number}
+                      duration={2}
+                      enableScrollSpy
+                      scrollSpyOnce
+                    />
+                    {item.suffix}
+                  </h3>
+                  <p className="text-xs md:text-sm text-white/80">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA BUTTON */}
+          <button className="mt-8 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300">
+            Download Brochure ☁️
+          </button>
+
+          {/* VIDEO SECTION - OVERLAPS CURVE */}
+          <div className="relative mt-14 z-30">
+            <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
+              <iframe
+                className="w-full h-[220px] md:h-[380px] bg-black"
+                src="Sample.mp4"
+                title="Company Overview Video"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+
         </div>
-      ))}
 
-    </div>
+        {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
+        <div className="absolute bottom-0 left-0 w-full z-10 overflow-hidden">
+          <svg
+            viewBox="0 0 1440 120"
+            className="w-full h-auto"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#ffffff"
+              d="M0,40 Q360,100 720,100 Q1080,100 1440,40 L1440,120 L0,120 Z"
+            />
+          </svg>
+        </div>
 
-  </div>
-</section>
+      </div>
 
-    {/* CTA */}
-    <button className="mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-      Download Brochure ☁️
-    </button>
-
- {/* VIDEO */}
-    <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl relative z-10">
-      <iframe
-        className="w-full h-[220px] md:h-[350px]"
-        src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-        title="Video"
-        allowFullScreen
-      ></iframe>
-    </div>
-
-  </div>
-
- 
-{/* 🔥 PERFECT CLEAN U CURVE */}
-<div className="absolute bottom-0 left-0 w-full z-0">
-  <svg
-    viewBox="0 0 1440 120"
-    className="w-full h-[80px]"
-    preserveAspectRatio="none"
-  >
-    <path
-      fill="#F0F5FF"
-      d="M0,0 
-         C480,100 960,100 1440,0 
-         L1440,120 
-         L0,120 Z"
-    />
-  </svg>
-</div>
-</div>
-
-
-  {/* CURVE */}
-  <section className="relative pt-8 pb-6 bg-[#F0F5FF]">
-  <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-    <svg
-      viewBox="0 0 1440 320"
-      className="w-full h-[150px]"  // 👈 height badha di
-      preserveAspectRatio="none"
-    >
-      <path
-        fill="#F0F5FF"
-        d="M0,200 C360,300 1080,100 1440,200 L1440,0 L0,0 Z"
-      />
-    </svg>
-  </div>
-  </section>
- <section className="py-10 bg-gray-100">
+  
+ <section className="py-10 bg-white">
 
   <div className="max-w-5xl mx-auto px-6 text-center">
 
@@ -282,7 +255,7 @@ const words = [
 
       {/* ================= SERVICES SLIDER ================= */}
      
-<div id="services" className="mt-">
+<div id="services" className="mt- mb-">
   <ServicesSlider />
 </div>
 <div className="h-20 bg-white"></div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { FaShieldAlt, FaUsers, FaBalanceScale, FaHeartbeat, FaHardHat, FaBook } from "react-icons/fa";
 
 interface Service {
   id: number;
@@ -9,81 +10,50 @@ interface Service {
   shortDesc: string;
   outcomes: string[];
   icon: React.ReactNode;
-  gradient: string;
 }
 
 const services: Service[] = [
   {
     id: 1,
-    title: "POSH: End-to-End Implementation & Training",
-    shortDesc: "Complete POSH compliance setup and training programs.",
-    outcomes: [
-      "Legal compliance ensured",
-      "Safe workplace environment",
-      "Clear policies & procedures",
-    ],
-    icon: <div className="text-white text-xl">1</div>,
-    gradient: "from-blue-500 to-cyan-400",
+    title: "POSH Implementation & Training",
+    shortDesc: "Complete POSH compliance setup.",
+    outcomes: ["Legal compliance", "Safe workplace", "Clear policies"],
+    icon: <FaShieldAlt />,
   },
   {
     id: 2,
     title: "POSCO Awareness Programs",
-    shortDesc: "Awareness programs focused on POSCO guidelines.",
-    outcomes: [
-      "Improved awareness",
-      "Safer workplace culture",
-      "Reduced violations",
-    ],
-    icon: <div className="text-white text-xl">2</div>,
-    gradient: "from-emerald-500 to-teal-400",
+    shortDesc: "Awareness of POSCO guidelines.",
+    outcomes: ["Better awareness", "Safer culture", "Reduced violations"],
+    icon: <FaBook />,
   },
   {
     id: 3,
-    title: "Psychological Safety & Inclusive Culture Training",
-    shortDesc: "Build a safe and inclusive work environment.",
-    outcomes: [
-      "Better team trust",
-      "Inclusive culture",
-      "Open communication",
-    ],
-    icon: <div className="text-white text-xl">3</div>,
-    gradient: "from-purple-500 to-pink-400",
+    title: "Psychological Safety",
+    shortDesc: "Build inclusive environment.",
+    outcomes: ["Team trust", "Open communication", "Inclusion"],
+    icon: <FaUsers />,
   },
   {
     id: 4,
-    title: "Workplace Ethics & Conduct Programs",
-    shortDesc: "Strengthen ethical behavior across teams.",
-    outcomes: [
-      "Improved ethics",
-      "Reduced conflicts",
-      "Better conduct",
-    ],
-    icon: <div className="text-white text-xl">4</div>,
-    gradient: "from-orange-500 to-amber-400",
+    title: "Workplace Ethics",
+    shortDesc: "Strengthen ethical behavior.",
+    outcomes: ["Better ethics", "Less conflict", "Professional conduct"],
+    icon: <FaBalanceScale />,
   },
   {
     id: 5,
-    title: "Mental Wellness Interventions",
-    shortDesc: "Support employee mental well-being.",
-    outcomes: [
-      "Reduced stress",
-      "Better engagement",
-      "Healthier workforce",
-    ],
-    icon: <div className="text-white text-xl">5</div>,
-    gradient: "from-rose-500 to-red-400",
+    title: "Mental Wellness",
+    shortDesc: "Support employee wellbeing.",
+    outcomes: ["Less stress", "Better engagement", "Healthy teams"],
+    icon: <FaHeartbeat />,
   },
   {
     id: 6,
-    title: "Physical Safety Trainings",
-    shortDesc: "Ensure physical safety practices at workplace.",
-    outcomes: [
-      "Reduced accidents",
-      "Safety awareness",
-      "Compliance with standards",
-    ],
-    icon: <div className="text-white text-xl">6</div>,
-    gradient: "from-indigo-500 to-blue-400",
+    title: "Physical Safety",
+    shortDesc: "Ensure workplace safety.",
+    outcomes: ["Fewer accidents", "Safety awareness", "Compliance"],
+    icon: <FaHardHat />,
   },
 ];
 
@@ -101,7 +71,7 @@ export default function ComplianceSlider() {
 
   useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 2500);
+    const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
 
@@ -120,15 +90,17 @@ export default function ComplianceSlider() {
   };
 
   return (
-    <section className="relative py-12 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
+    <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
 
-        <div className="text-center mb-8">
+      {/* TITLE */}
+      <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
-          Compliance  <span className="text-cyan-400">& Workplace safety</span>
+          Compliance <span className="text-cyan-400">& Workplace Safety</span>
         </h2>
       </div>
+
       <div
-        className="relative h-[260px]"
+        className="relative h-[380px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -141,31 +113,47 @@ export default function ComplianceSlider() {
           <AnimatePresence>
             {getVisibleCards().map(({ service, position }) => {
               const isActive = position === 0;
+
               return (
                 <motion.div
                   key={service.id}
                   animate={{
-                    scale: isActive ? 1 : 0.8,
-                    x: position * 240,
-                    opacity: isActive ? 1 : 0.5,
-                      zIndex: isActive ? 20 : 10 - Math.abs(position),
-
+                    scale: isActive ? 1 : 0.85,
+                    x: position * 300,
+                    opacity: isActive ? 1 : 0.4,
+                    zIndex: isActive ? 20 : 10,
                   }}
-                  className="absolute w-[260px]"
+                  className="absolute w-[320px]"
                 >
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
-                    
-                    <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-r ${service.gradient}`}>
+                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white h-[320px] flex flex-col justify-between">
+
+                    {/* ICON */}
+                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-xl mb-4">
                       {service.icon}
                     </div>
 
-                    <h3 className="font-bold text-lg mb-2">
+                    {/* TITLE */}
+                    <h3 className="font-bold text-xl mb-2">
                       {service.title}
                     </h3>
 
-                    <p className="text-sm text-slate-300">
+                    {/* DESC */}
+                    <p className="text-lg text-slate-300 mb-3">
                       {service.shortDesc}
                     </p>
+
+                    {/* OUTCOMES */}
+                    <ul className="text-sm text-slate-200 space-y-1 mb-4">
+                      {service.outcomes.map((o, i) => (
+                        <li key={i}>✔ {o}</li>
+                      ))}
+                    </ul>
+
+                    {/* BUTTON */}
+                    <button className="mt-auto bg-cyan-400 text-black px-4 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
+                      Learn More →
+                    </button>
+
                   </div>
                 </motion.div>
               );
