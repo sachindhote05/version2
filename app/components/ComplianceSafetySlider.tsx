@@ -15,67 +15,79 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    title: "Leadership Identity Shift Programs",
-    shortDesc: "Transform leadership identity and ownership mindset.",
+    title: "POSH: End-to-End Implementation & Training",
+    shortDesc: "Complete POSH compliance setup and training programs.",
     outcomes: [
-      "Stronger leadership presence",
-      "Better decision making",
-      "Ownership mindset",
+      "Legal compliance ensured",
+      "Safe workplace environment",
+      "Clear policies & procedures",
     ],
     icon: <div className="text-white text-xl">1</div>,
     gradient: "from-blue-500 to-cyan-400",
   },
   {
     id: 2,
-    title: "Behavioral Pattern Transformation Interventions",
-    shortDesc: "Break limiting behaviors and build productive habits.",
+    title: "POSCO Awareness Programs",
+    shortDesc: "Awareness programs focused on POSCO guidelines.",
     outcomes: [
-      "Improved behavior",
-      "Emotional control",
-      "Sustainable habits",
+      "Improved awareness",
+      "Safer workplace culture",
+      "Reduced violations",
     ],
     icon: <div className="text-white text-xl">2</div>,
     gradient: "from-emerald-500 to-teal-400",
   },
   {
     id: 3,
-    title: "CXO Coaching – Eagle Shift Framework",
-    shortDesc: "High-level transformation for leadership.",
+    title: "Psychological Safety & Inclusive Culture Training",
+    shortDesc: "Build a safe and inclusive work environment.",
     outcomes: [
-      "Strategic clarity",
-      "Better decisions",
-      "Leadership vision",
+      "Better team trust",
+      "Inclusive culture",
+      "Open communication",
     ],
     icon: <div className="text-white text-xl">3</div>,
     gradient: "from-purple-500 to-pink-400",
   },
   {
     id: 4,
-    title: "Peak Performance Acceleration",
-    shortDesc: "Unlock team performance.",
+    title: "Workplace Ethics & Conduct Programs",
+    shortDesc: "Strengthen ethical behavior across teams.",
     outcomes: [
-      "High productivity",
-      "Focused execution",
-      "Better results",
+      "Improved ethics",
+      "Reduced conflicts",
+      "Better conduct",
     ],
     icon: <div className="text-white text-xl">4</div>,
     gradient: "from-orange-500 to-amber-400",
   },
   {
     id: 5,
-    title: "Emotional Pattern Rewiring for Employees",
-    shortDesc: "Build emotional resilience.",
+    title: "Mental Wellness Interventions",
+    shortDesc: "Support employee mental well-being.",
     outcomes: [
-      "Less stress",
-      "Better relationships",
-      "Higher engagement",
+      "Reduced stress",
+      "Better engagement",
+      "Healthier workforce",
     ],
     icon: <div className="text-white text-xl">5</div>,
     gradient: "from-rose-500 to-red-400",
   },
+  {
+    id: 6,
+    title: "Physical Safety Trainings",
+    shortDesc: "Ensure physical safety practices at workplace.",
+    outcomes: [
+      "Reduced accidents",
+      "Safety awareness",
+      "Compliance with standards",
+    ],
+    icon: <div className="text-white text-xl">6</div>,
+    gradient: "from-indigo-500 to-blue-400",
+  },
 ];
 
-export default function CoreSlider() {
+export default function ComplianceSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -109,13 +121,12 @@ export default function CoreSlider() {
 
   return (
     <section className="relative py-12 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
-      
-      <div className="text-center mb-8">
+
+        <div className="text-center mb-8">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
-          Core <span className="text-cyan-400">Transformation Programs</span>
+          Compliance  <span className="text-cyan-400">& Workplace safety</span>
         </h2>
       </div>
-
       <div
         className="relative h-[260px]"
         onMouseEnter={() => setIsPaused(true)}
@@ -137,8 +148,10 @@ export default function CoreSlider() {
                     scale: isActive ? 1 : 0.8,
                     x: position * 240,
                     opacity: isActive ? 1 : 0.5,
+                      zIndex: isActive ? 20 : 10 - Math.abs(position),
+
                   }}
-                  className="absolute w-[300px]"
+                  className="absolute w-[260px]"
                 >
                   <div className="p-6 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
                     

@@ -8,6 +8,10 @@ import Link from "next/link"
 import TypewriterText from "./components/TypewriterText";
 import CoreSlider from "./components/CoreSlider";
 import { FaWhatsapp } from "react-icons/fa";
+import ComplianceSafetySlider from "./components/ComplianceSafetySlider";
+import DigitalLearningSection from "./components/DigitalLearningSection";
+import CountUp from "react-countup";
+import ClientFeedbackScroll from "./components/ClientFeedbackScroll";
 
 export default function Home() 
 {
@@ -94,26 +98,43 @@ const words = [
     </p>
 
     {/* TRUST STRIP */}
-    <div className="flex justify-center mt-6 px-4">
-      <div className="flex flex-wrap items-center justify-center gap-5
-      text-blue-100 text-sm md:text-base font-normal tracking-wide">
+   <section className="py-8">
 
-        <span>1000+ Professionals Impacted</span>
-        <span className="opacity-40">|</span>
+  <div className="max-w-6xl mx-auto px-6">
 
-        <span>50+ Companies</span>
-        <span className="opacity-40">|</span>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
-        <span>10 Years of Experience</span>
-        <span className="opacity-40">|</span>
+      {[
+        { number: 98, suffix: "%", label: "Client Satisfaction" },
+        { number: 50, suffix: "K+", label: "Employees Trained" },
+        { number: 18, suffix: "+", label: "Trained Industries" },
+        { number: 16, suffix: "+", label: "Years Of Experience" },
+      ].map((item, i) => (
+        <div key={i} className="py-2">
 
-        <span>End-to-End Workplace Solutions</span>
-        <span className="opacity-40">|</span>
+          {/* Number Smaller */}
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+            <CountUp
+              end={item.number}
+              duration={2}
+              enableScrollSpy
+              scrollSpyOnce
+            />
+            {item.suffix}
+          </h3>
 
-        <span>NGO Association</span>
+          {/* Label Smaller */}
+          <p className="text-xs md:text-sm text-white/80 leading-relaxed">
+            {item.label}
+          </p>
 
-      </div>
+        </div>
+      ))}
+
     </div>
+
+  </div>
+</section>
 
     {/* CTA */}
     <button className="mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
@@ -270,13 +291,6 @@ const words = [
 
 
 {/* ================= Core Transformation ================= */}
-<section className="py-20 bg-gradient-to-r from-[#0f172a] via-[#1e3a8a] to-[#0f172a]">
-
-  <div className="max-w-6xl mx-auto px-6">
-
-    <h2 className="text-4xl font-bold text-center mb-16 text-white">
-      Core Transformation Programs
-    </h2>
 
    
 
@@ -284,196 +298,20 @@ const words = [
     
 
 
-  </div>
-</section>
 
-
+<div className="h-20 bg-white"></div>
 
       {/* ================= Compliance & Workplace Safety ================= */}
- <section className="py-20 bg-white">
-  <div className="max-w-6xl mx-auto px-6">
 
-    {/* TITLE */}
-    <h2 className="text-4xl font-bold text-center mb-16 text-[#1E3A8A]">
-      Compliance & Workplace Safety
-    </h2>
-
-    {/* GRID (NO SCROLL) */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-
-      {/* CARD 1 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-        <img
-          src="/posh.jpg"
-          alt="POSH"
-          className="h-44 w-full object-cover rounded-t-2xl"
-        />
-       <div className="p-6 flex flex-col justify-between h-[150px] text-center">
-          <h3 className="text-lg font-semibold text-[#1E3A8A]">
-            POSH: End-to-End Implementation & Training
-          </h3>
-          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-        </div>
-      </div>
-
-      {/* CARD 2 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-        <img
-          src="/posco.jpg"
-          alt="POSCO"
-          className="h-44 w-full object-cover rounded-t-2xl"
-        />
-         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
-          <h3 className="text-lg font-semibold text-[#1E3A8A]">
-            POSCO Awareness Programs
-          </h3>
-          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-        </div>
-      </div>
-
-      {/* CARD 3 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-        <img
-          src="/psychological.jpg"
-          alt="Psychological Safety"
-          className="h-44 w-full object-cover rounded-t-2xl"
-        />
-         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
-          <h3 className="text-lg font-semibold text-[#1E3A8A]">
-            Psychological Safety & Inclusive Culture Training
-          </h3>
-          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-        </div>
-      </div>
-
-      {/* CARD 4 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-        <img
-          src="/ethics.jpg"
-          alt="Ethics"
-          className="h-44 w-full object-cover rounded-t-2xl"
-        />
-         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
-          <h3 className="text-lg font-semibold text-[#1E3A8A]">
-            Workplace Ethics & Conduct Programs
-          </h3>
-          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-        </div>
-      </div>
-
-      {/* CARD 5 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-        <img
-          src="/mental.jpg"
-          alt="Mental Wellness"
-          className="h-44 w-full object-cover rounded-t-2xl"
-        />
-         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
-          <h3 className="text-lg font-semibold text-[#1E3A8A]">
-            Mental Wellness Interventions
-          </h3>
-          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-        </div>
-      </div>
-
-      {/* CARD 6 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-        <img
-          src="/safety.jpg"
-          alt="Physical Safety"
-          className="h-44 w-full object-cover rounded-t-2xl"
-        />
-         <div className="p-6 flex flex-col justify-between h-[150px] text-center">
-          <h3 className="text-lg font-semibold text-[#1E3A8A]">
-            Physical Safety Trainings
-          </h3>
-          <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
-  Learn More →
-</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+    
+    <ComplianceSafetySlider />
+  
+<div className="h-20 bg-white"></div>
       {/* =================Digital Learning & Capability Systems================= */}
- <section className="py-20 bg-white">
-  <div className="max-w-6xl mx-auto px-6">
 
-    {/* TITLE */}
-    <h2 className="text-4xl font-bold text-center mb-16 text-[#1E3A8A]">
-      Digital Learning & Capability Systems
-    </h2>
+    <DigitalLearningSection />
 
-    {/* GRID - 4 CARDS */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-
-      {/* CARD 1 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
-        <img src="/elearning/posh.jpg" className="h-44 w-full object-cover" />
-        <div className="p-5 text-center flex flex-col flex-grow">
-          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
-            POSH E-learning Modules <br />
-            (Licensing & Custom Development)
-          </h3>
-          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
-            Learn More →
-          </button>
-        </div>
-      </div>
-
-      {/* CARD 2 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
-        <img src="/elearning/mindset.jpg" className="h-44 w-full object-cover" />
-        <div className="p-5 text-center flex flex-col flex-grow">
-          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
-            Mindset Reset Programs
-          </h3>
-          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
-            Learn More →
-          </button>
-        </div>
-      </div>
-
-      {/* CARD 3 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
-        <img src="/elearning/emotional.jpg" className="h-44 w-full object-cover" />
-        <div className="p-5 text-center flex flex-col flex-grow">
-          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
-            Emotional Regulation Modules
-          </h3>
-          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
-            Learn More →
-          </button>
-        </div>
-      </div>
-
-      {/* CARD 4 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col h-full">
-        <img src="/elearning/growth.jpg" className="h-44 w-full object-cover" />
-        <div className="p-5 text-center flex flex-col flex-grow">
-          <h3 className="font-semibold text-[#1E3A8A] min-h-[70px]">
-            Growth Skillset Mastery Framework
-          </h3>
-          <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
-            Learn More →
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+ 
       {/* ================= Train the Trainer (Certification Programs) ================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -588,65 +426,9 @@ const words = [
 
   </div>
 </section>
-<section className="py-28 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-  <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-20">
-      What Clients Say
-    </h2>
+<ClientFeedbackScroll />
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-
-      {[
-        {
-          name: "Ranjith P",
-          company: "Assistant Manager - Futurisk Insurance",
-          feedback:
-            "The POSH training session was highly informative and well-structured. The trainer demonstrated deep knowledge and used real-life examples, making it engaging and easy to understand.",
-        },
-        {
-          name: "Dominic Francis",
-          company: "Finance Manager",
-          feedback:
-            "The POSH & team-building session created strong awareness and engagement among employees. Participants actively interacted, and overall the session was very useful and impactful.",
-        },
-        {
-          name: "Arun",
-          company: "Momentum Mastery Program",
-          feedback:
-            "The training program received an excellent rating of 4.71. Content quality, engagement, and delivery were highly appreciated across all parameters.",
-        },
-        {
-          name: "Boomi Team",
-          company: "Women in Tech Initiative",
-          feedback:
-            "The session emphasized mindset, boundaries, and team reciprocity. It created a reflective space and encouraged balanced giving and receiving within teams.",
-        },
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="relative bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-lg hover:scale-105 transition duration-300 flex flex-col h-full"
-        >
-          {/* QUOTE */}
-          <div className="text-4xl text-cyan-400 absolute top-3 left-5">“</div>
-
-          {/* FEEDBACK */}
-          <p className="text-gray-200 leading-relaxed mb-6 mt-6 flex-grow">
-            {item.feedback}
-          </p>
-
-          {/* LINE */}
-          <div className="h-[1px] bg-white/20 mb-4"></div>
-
-          {/* INFO */}
-          <h3 className="font-semibold text-white">{item.name}</h3>
-          <p className="text-sm text-gray-400">{item.company}</p>
-        </div>
-      ))}
-
-    </div>
-  </div>
-</section>
 <section className="py-20 bg-white text-center">
   <div className="max-w-4xl mx-auto px-6">
 
@@ -665,14 +447,11 @@ const words = [
     <div className="flex flex-col sm:flex-row justify-center gap-4">
 
       {/* PRIMARY BUTTON */}
-      <button className="bg-[#1E3A8A] text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-800 transition">
+      <button className="bg-[#1E3A8A] text-white px-9 py-7 rounded-xl font-semibold hover:bg-blue-800 transition">
         Book a Consultation
       </button>
 
-      {/* SECONDARY BUTTON */}
-      <button className="border border-[#1E3A8A] text-[#1E3A8A] px-6 py-3 rounded-xl font-semibold hover:bg-[#1E3A8A] hover:text-white transition">
-        Explore Programs
-      </button>
+    
 
     </div>
 
