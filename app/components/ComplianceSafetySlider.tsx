@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import Link from "next/link";
 import { FaShieldAlt, FaUsers, FaBalanceScale, FaHeartbeat, FaHardHat, FaBook } from "react-icons/fa";
 
 interface Service {
@@ -10,6 +11,8 @@ interface Service {
   shortDesc: string;
   outcomes: string[];
   icon: React.ReactNode;
+  gradient: string;
+  link: string;
 }
 
 const services: Service[] = [
@@ -19,6 +22,8 @@ const services: Service[] = [
     shortDesc: "Complete POSH compliance setup.",
     outcomes: ["Legal compliance", "Safe workplace", "Clear policies"],
     icon: <FaShieldAlt />,
+    gradient: "from-blue-500 to-cyan-400",
+    link: "/posh",
   },
   {
     id: 2,
@@ -26,6 +31,8 @@ const services: Service[] = [
     shortDesc: "Awareness of POSCO guidelines.",
     outcomes: ["Better awareness", "Safer culture", "Reduced violations"],
     icon: <FaBook />,
+    gradient: "from-emerald-500 to-teal-400",
+    link: "/posco",
   },
   {
     id: 3,
@@ -33,6 +40,8 @@ const services: Service[] = [
     shortDesc: "Build inclusive environment.",
     outcomes: ["Team trust", "Open communication", "Inclusion"],
     icon: <FaUsers />,
+    gradient: "from-purple-500 to-pink-400",
+    link: "/psychological",
   },
   {
     id: 4,
@@ -40,6 +49,8 @@ const services: Service[] = [
     shortDesc: "Strengthen ethical behavior.",
     outcomes: ["Better ethics", "Less conflict", "Professional conduct"],
     icon: <FaBalanceScale />,
+    gradient: "from-orange-500 to-amber-400",
+    link: "/ethics",
   },
   {
     id: 5,
@@ -47,6 +58,8 @@ const services: Service[] = [
     shortDesc: "Support employee wellbeing.",
     outcomes: ["Less stress", "Better engagement", "Healthy teams"],
     icon: <FaHeartbeat />,
+    gradient: "from-rose-500 to-red-400",
+    link: "/wellness",
   },
   {
     id: 6,
@@ -54,10 +67,12 @@ const services: Service[] = [
     shortDesc: "Ensure workplace safety.",
     outcomes: ["Fewer accidents", "Safety awareness", "Compliance"],
     icon: <FaHardHat />,
+    gradient: "from-indigo-500 to-blue-400",
+    link: "/safety",
   },
 ];
 
-export default function ComplianceSlider() {
+export default function CoreSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -71,7 +86,7 @@ export default function ComplianceSlider() {
 
   useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 2500);
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
 
@@ -92,15 +107,14 @@ export default function ComplianceSlider() {
   return (
     <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
 
-      {/* TITLE */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-10">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Compliance <span className="text-cyan-400">& Workplace Safety</span>
         </h2>
       </div>
 
       <div
-        className="relative h-[380px]"
+        className="relative h-[300px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -119,40 +133,38 @@ export default function ComplianceSlider() {
                   key={service.id}
                   animate={{
                     scale: isActive ? 1 : 0.85,
-                    x: position * 300,
-                    opacity: isActive ? 1 : 0.4,
-                    zIndex: isActive ? 20 : 10,
+                    x: position * 260,
+                    opacity: isActive ? 1 : 0.5,
                   }}
-                  className="absolute w-[320px]"
+                  className="absolute w-[285px]"
                 >
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white h-[320px] flex flex-col justify-between">
+                  <div className="h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
 
-                    {/* ICON */}
-                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-xl mb-4">
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}
                     </div>
 
-                    {/* TITLE */}
                     <h3 className="font-bold text-xl mb-2">
                       {service.title}
                     </h3>
 
-                    {/* DESC */}
-                    <p className="text-lg text-slate-300 mb-3">
+                    <p className="text-sm text-slate-300">
                       {service.shortDesc}
                     </p>
 
-                    {/* OUTCOMES */}
-                    <ul className="text-sm text-slate-200 space-y-1 mb-4">
-                      {service.outcomes.map((o, i) => (
-                        <li key={i}>✔ {o}</li>
+                    <ul className="mt-3 text-sm text-slate-300 space-y-1">
+                      {service.outcomes.map((item, i) => (
+                        <li key={i}>• {item}</li>
                       ))}
                     </ul>
 
-                    {/* BUTTON */}
-                    <button className="mt-auto bg-cyan-400 text-black px-4 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
-                      Learn More →
-                    </button>
+                    <div className="mt-auto pt-4">
+                      <Link href={service.link}>
+                        <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
+                          Learn More →
+                        </button>
+                      </Link>
+                    </div>
 
                   </div>
                 </motion.div>

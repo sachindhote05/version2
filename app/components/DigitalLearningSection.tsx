@@ -2,83 +2,93 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import Link from "next/link";
 
 const services = [
   {
     id: 1,
     title: "POSH E-learning Modules",
-    desc: "(Licensing & Custom Development)",
+    shortDesc: "(Licensing & Custom Development)",
     outcomes: ["Better compliance", "Scalable learning", "Cost effective"],
     gradient: "from-blue-500 to-cyan-400",
-    icon: "💻",
+    icon: <span>💻</span>,
+    link: "/elearning",
   },
   {
     id: 2,
     title: "Mindset Reset Programs",
-    desc: "Build growth mindset & performance thinking",
+    shortDesc: "Build growth mindset & performance thinking",
     outcomes: ["Growth mindset", "Better thinking", "High performance"],
     gradient: "from-emerald-500 to-teal-400",
-    icon: "🧠",
+    icon: <span>🧠</span>,
+    link: "/mindset",
   },
   {
     id: 3,
     title: "Emotional Regulation Modules",
-    desc: "Develop emotional control & resilience",
+    shortDesc: "Develop emotional control & resilience",
     outcomes: ["Less stress", "Better control", "Strong mindset"],
     gradient: "from-purple-500 to-pink-400",
-    icon: "❤️",
+    icon: <span>❤️</span>,
+    link: "/emotional",
   },
   {
     id: 4,
     title: "Growth Skillset Mastery Framework",
-    desc: "Enhance skills for long-term success",
+    shortDesc: "Enhance skills for long-term success",
     outcomes: ["Skill growth", "Better execution", "Career boost"],
     gradient: "from-orange-500 to-amber-400",
-    icon: "🚀",
+    icon: <span>🚀</span>,
+    link: "/skills",
   },
 ];
 
-export default function DigitalSlider() {
+export default function CoreSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const next = useCallback(() => {
+  const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % services.length);
   }, []);
 
-  const prev = useCallback(() => {
+  const prevSlide = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + services.length) % services.length);
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(next, 2500);
+    if (isPaused) return;
+    const interval = setInterval(nextSlide, 2500);
     return () => clearInterval(interval);
-  }, [next]);
+  }, [isPaused, nextSlide]);
 
   const handleDragEnd = (_: any, info: PanInfo) => {
-    if (info.offset.x < -50) next();
-    else if (info.offset.x > 50) prev();
+    if (info.offset.x < -50) nextSlide();
+    else if (info.offset.x > 50) prevSlide();
   };
 
   const getVisibleCards = () => {
     const cards = [];
-    for (let i = -1; i <= 1; i++) {
+    for (let i = -1; i <= 1; i++) { // ✅ ONLY CHANGE
       const index = (activeIndex + i + services.length) % services.length;
-      cards.push({ ...services[index], position: i });
+      cards.push({ service: services[index], position: i });
     }
     return cards;
   };
 
   return (
-    <section className="py-12 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-visible">
+    <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
 
-      {/* HEADING */}
-      <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-10">
-        Digital <span className="text-cyan-400">Learning & Capability Systems</span>
-      </h2>
+      <div className="text-center mb-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-white">
+          Digital <span className="text-cyan-400">Learning & Capability Systems</span>
+        </h2>
+      </div>
 
-      {/* SLIDER */}
-      <div className="relative min-h-[360px] flex items-center justify-center">
-
+      <div
+        className="relative h-[300px]"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <motion.div
           className="flex items-center justify-center h-full"
           drag="x"
@@ -86,59 +96,50 @@ export default function DigitalSlider() {
           onDragEnd={handleDragEnd}
         >
           <AnimatePresence>
-            {getVisibleCards().map((card) => {
-              const isActive = card.position === 0;
+            {getVisibleCards().map(({ service, position }) => {
+              const isActive = position === 0;
 
               return (
                 <motion.div
-                  key={card.id}
+                  key={service.id}
                   animate={{
-                    scale: isActive ? 1.08 : 0.85,
-                    x: card.position * 340,
-                    opacity: isActive ? 1 : 0.4,
-                    zIndex: isActive ? 20 : 10 - Math.abs(card.position),
+                    scale: isActive ? 1 : 0.85,
+                    x: position * 260, // ✅ SAME AS OLD
+                    opacity: isActive ? 1 : 0.5,
                   }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute w-[320px]"
+                  className="absolute w-[285px]" // ✅ SAME
                 >
-                  {/* CARD */}
-                  <div
-                    className={`p-6 rounded-2xl border text-white flex flex-col h-[280px] transition-all
-                    ${
-                      isActive
-                        ? "bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20"
-                        : "bg-white/5 border-white/10"
-                    }`}
-                  >
+                  <div className="h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
+
                     {/* ICON */}
-                    <div
-                      className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-r ${card.gradient}`}
-                    >
-                      <span className="text-xl">{card.icon}</span>
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
+                      {service.icon}
                     </div>
 
                     {/* TITLE */}
-                    <h3 className="font-bold text-lg mb-2 leading-tight">
-                      {card.title}
+                    <h3 className="font-bold text-xl mb-2">
+                      {service.title}
                     </h3>
 
                     {/* DESC */}
-                    <p className="text-sm text-slate-300 mb-2">
-                      {card.desc}
+                    <p className="text-sm text-slate-300">
+                      {service.shortDesc}
                     </p>
 
                     {/* OUTCOMES */}
-                    <ul className="text-xs text-slate-300 mb-3 space-y-1">
-                      {card.outcomes.map((o, i) => (
-                        <li key={i}>• {o}</li>
+                    <ul className="mt-3 text-sm text-slate-300 space-y-1">
+                      {service.outcomes.map((item, i) => (
+                        <li key={i}>• {item}</li>
                       ))}
                     </ul>
 
-                    {/* BUTTON BOTTOM */}
-                    <div className="mt-auto pt-3">
-                      <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
-                        Learn More →
-                      </button>
+                    {/* BUTTON */}
+                    <div className="mt-auto pt-4">
+                      <Link href={service.link}>
+                        <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
+                          Learn More →
+                        </button>
+                      </Link>
                     </div>
 
                   </div>
