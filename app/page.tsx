@@ -91,11 +91,11 @@ const words = [
         <div className="max-w-6xl mx-auto text-center">
 
           {/* HEADING */}
-          <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4">
-            Empowering Minds, Elevating{" "}
-            <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
-          </h1>
-
+         <h1 className="text-4xl md:text-6xl font-bold text-white text-center leading-tight">
+  <span className="md:whitespace-nowrap">
+    Empowering Minds, Elevating Lives
+  </span>
+</h1>
           {/* SUBTEXT */}
           <p className="text-base md:text-lg text-blue-100 font-normal tracking-wide max-w-3xl mx-auto">
             Transforming mindset and identity to drive performance and workplace culture
@@ -148,12 +148,12 @@ const words = [
         </div>
 
         {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
-        <div className="absolute bottom-0 left-0 w-full z-10 overflow-hidden">
-          <svg
-            viewBox="0 0 1440 120"
-            className="w-full h-auto"
-            preserveAspectRatio="none"
-          >
+       <div className="absolute bottom-[-2px] left-0 w-full z-10 overflow-hidden">
+         <svg
+  viewBox="0 0 1440 120"
+  className="w-full h-auto block"
+  preserveAspectRatio="none"
+>
             <path
               fill="#ffffff"
               d="M0,40 Q360,100 720,100 Q1080,100 1440,40 L1440,120 L0,120 Z"
@@ -164,7 +164,7 @@ const words = [
       </div>
 
   
- <section className="py-10 bg-white">
+ <section className="py-10 bg-white -mt-2">
 
   <div className="max-w-5xl mx-auto px-6 text-center">
 
