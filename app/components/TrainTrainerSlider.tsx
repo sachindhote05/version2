@@ -102,8 +102,7 @@ export default function CoreSlider() {
         </h2>
       </div>
 
-      <div
-        className="relative h-[300px]"
+     <div className="relative min-h-[360px] md:min-h-[420px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -127,7 +126,7 @@ export default function CoreSlider() {
                   }}
                   className="absolute w-[285px]" // ✅ EXACT
                 >
-                  <div className="h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
+                 <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
 
                     {/* ICON */}
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
