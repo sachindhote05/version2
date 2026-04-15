@@ -129,19 +129,21 @@ export default function CoreSlider() {
                 whileTap={{ scale: 0.98 }}
                 style={{ zIndex: isActive ? 20 : 10 }}
               >
-                <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
-                  <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
-                    {service.icon}
-                  </div>
+                <div className="h-[360px] flex flex-col justify-between rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white p-5">
+                  <div className="flex-1 space-y-4">
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
+                      {service.icon}
+                    </div>
 
-                  <div>
-                    <h3 className="font-bold text-xl mb-2">{service.title}</h3>
-                    <p className="text-sm text-slate-300">{service.shortDesc}</p>
-                    <ul className="mt-3 text-sm text-slate-300 space-y-1">
-                      {service.outcomes.map((item, i) => (
-                        <li key={i}>• {item}</li>
-                      ))}
-                    </ul>
+                    <div>
+                      <h3 className="font-bold text-xl mb-2 line-clamp-2">{service.title}</h3>
+                      <p className="text-sm text-slate-300 line-clamp-2">{service.shortDesc}</p>
+                      <ul className="mt-3 text-sm text-slate-300 space-y-1">
+                        {service.outcomes.map((item, i) => (
+                          <li key={i} className="line-clamp-1">• {item}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="mt-auto pt-4">

@@ -151,18 +151,18 @@ export default function TrainTrainerSlider() {
                 style={{ zIndex: isActive ? 20 : 10 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="min-h-[300px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
-                  <div className="space-y-4">
+                <div className="h-[360px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
+                  <div className="flex-1 space-y-4">
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">{service.title}</h3>
-                      <p className="text-sm text-slate-300">{service.shortDesc}</p>
+                      <h3 className="font-bold text-xl mb-2 line-clamp-2">{service.title}</h3>
+                      <p className="text-sm text-slate-300 line-clamp-2">{service.shortDesc}</p>
                     </div>
                     <ul className="mt-3 space-y-2 text-sm text-slate-300">
                       {service.outcomes.map((item, i) => (
-                        <li key={i}>• {item}</li>
+                        <li key={i} className="line-clamp-1">• {item}</li>
                       ))}
                     </ul>
                   </div>
