@@ -86,12 +86,12 @@ const words = [
       
 
       {/* 🔥 HERO SECTION */}
-     <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-48 px-6 overflow-visible">
+     <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white min-h-[100dvh] pt-20 pb-24 md:pt-32 md:pb-48 px-6">
 
   <div className="max-w-6xl mx-auto text-center">
 
     {/* HEADING */}
-    <h1 className="mt-6 md:mt-10 text-4xl md:text-6xl font-bold leading-snug mb-6">
+    <h1 className="mt-6 md:mt-10 text-4xl md:text-5xl font-bold leading-snug mb-6">
 
       <span className="block md:inline">
         Empowering Minds,

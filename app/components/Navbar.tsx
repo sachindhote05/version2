@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation"
 import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
@@ -19,6 +20,13 @@ const resources = [
     title: "Newsletters",
     items: ["Monthly Update", "HR Insights"]
   }
+];
+
+const mobileMenuItems = [
+  { label: "Home", href: "/#home" },
+  { label: "Services", href: "/#services" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Contact", href: "/contact" },
 ];
 
 
