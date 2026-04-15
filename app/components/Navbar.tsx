@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, FormEvent, ChangeEvent } from "react";
-import { useRouter } from "next/navigation"
+import { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
+import { useRouter, usePathname } from "next/navigation"
 import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
@@ -35,7 +35,11 @@ export default function Navbar() {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchItem[]>([])
 
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+
   const router = useRouter()
+  const pathname = usePathname()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -55,6 +59,41 @@ export default function Navbar() {
       router.push(results[0].link)
     }
   }
+
+  const toggleMobileMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
+
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+  }
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(event.target as Node)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,7 +134,7 @@ export default function Navbar() {
       {/* TOP NAVBAR */}
      <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
         {/* LOGO */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center" onClick={closeMobileMenu}>
           <img
             src="/logo.png"
             alt="Version2 Logo"
@@ -132,17 +171,60 @@ export default function Navbar() {
 
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-3">
+          {/* MOBILE SEARCH */}
+          <div className="relative md:hidden">
+            <form onSubmit={handleSearch}>
+              <input
+                type="text"
+                placeholder="Search..."
+                value={query}
+                onChange={handleChange}
+                className="w-[150px] border rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </form>
+
+            {query && results.length > 0 && (
+              <div className="absolute top-10 w-full bg-white border rounded-lg shadow-lg z-50">
+                {results.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => router.push(item.link)}
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                  >
+                    {item.title}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* LOGIN BUTTON */}
          <Link
   href="/login"
-  className="bg-black text-white px-4 py-1.5 rounded-lg text-sm"
+  className="bg-black text-white px-4 py-1.5 rounded-lg text-sm hidden sm:block"
+  onClick={closeMobileMenu}
 >
   Login
 </Link>
+
+          {/* HAMBURGER MENU */}
+          <button
+            ref={hamburgerRef}
+            onClick={toggleMobileMenu}
+            className="md:hidden text-gray-800 hover:text-blue-600 transition-colors p-2"
+            aria-label="Toggle mobile menu"
+          >
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <span className={`block h-0.5 w-6 bg-current transform transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
+              <span className={`block h-0.5 w-6 bg-current transform transition-all duration-300 ${menuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`block h-0.5 w-6 bg-current transform transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+            </div>
+          </button>
         </div>
       </div>
 
-      {/* SECOND NAVBAR */}
-      <div className="border-t bg-white/80 backdrop-blur-md block">
+      {/* SECOND NAVBAR - DESKTOP ONLY */}
+      <div className="border-t bg-white/80 backdrop-blur-md hidden md:block">
         <div className="max-w-7xl mx-auto px-6 flex gap-10 py-3 font-medium">
           <Link href="/#home" className="text-gray-800 hover:text-blue-600 transition">
             Home
@@ -207,6 +289,89 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
+
+      {/* MOBILE MENU OVERLAY */}
+      {menuOpen && (
+        <div
+          ref={mobileMenuRef}
+          className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-t transform transition-all duration-300 ease-in-out"
+        >
+          <div className="max-w-7xl mx-auto px-6 py-6 space-y-4">
+            {/* MOBILE LOGIN BUTTON */}
+            <Link
+              href="/login"
+              className="block sm:hidden bg-black text-white px-4 py-2 rounded-lg text-sm text-center w-full"
+              onClick={closeMobileMenu}
+            >
+              Login
+            </Link>
+
+            {/* NAVIGATION LINKS */}
+            <Link
+              href="/#home"
+              className="block text-gray-800 hover:text-blue-600 transition py-3 border-b border-gray-100"
+              onClick={closeMobileMenu}
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/#services"
+              className="block text-gray-800 hover:text-blue-600 transition py-3 border-b border-gray-100"
+              onClick={closeMobileMenu}
+            >
+              Services
+            </Link>
+
+            {/* MOBILE RESOURCES DROPDOWN */}
+            <div className="border-b border-gray-100">
+              <button
+                onClick={() => setShowDropdown(!showDropdown)}
+                className="w-full text-left text-gray-800 hover:text-blue-600 transition py-3 flex justify-between items-center"
+              >
+                Resources
+                <span className={`transform transition-transform ${showDropdown ? 'rotate-180' : ''}`}>▼</span>
+              </button>
+
+              {showDropdown && (
+                <div className="pl-4 space-y-2 pb-3">
+                  {resources.map((resource, index) => (
+                    <div key={resource.title}>
+                      <div className="font-medium text-gray-700 py-2">{resource.title}</div>
+                      <div className="pl-4 space-y-1">
+                        {resource.items.map((item, i) => (
+                          <div
+                            key={i}
+                            className="text-gray-600 hover:text-blue-600 cursor-pointer py-1"
+                          >
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/clients"
+              className="block text-gray-800 hover:text-blue-600 transition py-3 border-b border-gray-100"
+              onClick={closeMobileMenu}
+            >
+              Book Consultation
+            </Link>
+
+            <Link
+              href="/contact"
+              className="block text-gray-800 hover:text-blue-600 transition py-3"
+              onClick={closeMobileMenu}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

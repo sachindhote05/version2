@@ -86,30 +86,59 @@ const words = [
       
 
       {/* 🔥 HERO SECTION */}
-      <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-48 px-6 overflow-visible">
-        
-        <div className="max-w-6xl mx-auto text-center">
+     <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-48 px-6 overflow-visible">
 
-        {/* HEADING */}
-<h1 className="text-4xl md:text-6xl font-bold text-white text-center leading-snug">
+  <div className="max-w-6xl mx-auto text-center">
 
-  {/* TOP LINE */}
-  <span className="block md:inline">
-    Empowering Minds, Elevating
-  </span>
+    {/* HEADING */}
+    <h1 className="mt-6 md:mt-10 text-4xl md:text-6xl font-bold leading-snug mb-6">
 
-  {/* MOBILE BREAK (less gap) */}
-  <br className="block md:hidden" />
+      <span className="block md:inline">
+        Empowering Minds,
+      </span>
 
-  {/* ROTATING WORDS */}
-  <span className="block md:inline min-w-[110px] mt-[-45px]">
-    <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
-  </span>
+      <span className="block md:inline mt-2 md:mt-0">
+          Elevating
+      </span>
 
-</h1>
+      <br className="block md:hidden" />
 
-          {/* CTA BUTTON */}
-       
+      <span className="block md:inline min-w-[110px] mt-[-45px]">
+        <TypewriterText words={[" Lives", " Skills", " Performance", " Leaders"]} />
+      </span>
+
+    </h1>
+
+    {/* TRUST STRIP */}
+    <div className="mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+        {[
+          { number: 98, suffix: "%", label: "Client Satisfaction" },
+          { number: 50, suffix: "K+", label: "Employees Trained" },
+          { number: 18, suffix: "+", label: "Trained Industries" },
+          { number: 16, suffix: "+", label: "Years Of Experience" },
+        ].map((item, i) => (
+          <div key={i}>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+              <CountUp
+                end={item.number}
+                duration={2}
+                enableScrollSpy
+                scrollSpyOnce
+              />
+              {item.suffix}
+            </h3>
+            <p className="text-xs md:text-sm text-white/80">
+              {item.label}
+            </p>
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+  </div>
 
           {/* VIDEO SECTION - OVERLAPS CURVE */}
           <div className="relative mt-14 z-30">
@@ -122,11 +151,11 @@ const words = [
               ></iframe>
             </div>
           </div>
-   <button className="mt-8 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300">
-            Download Brochure ☁️
-          </button>
-        </div>
-
+          <div className="mt-6 flex justify-center items-center">
+  <button className="mx-auto bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+    Download Brochure ☁️
+  </button>
+</div>
         {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
        <div className="absolute bottom-[-2px] left-0 w-full z-10 overflow-hidden">
          <svg
