@@ -97,9 +97,7 @@ const words = [
   </span>
 </h1>
           {/* SUBTEXT */}
-          <p className="text-base md:text-lg text-blue-100 font-normal tracking-wide max-w-3xl mx-auto">
-            Transforming mindset and identity to drive performance and workplace culture
-          </p>
+        
 
           {/* TRUST STRIP - STATS */}
           <div className="mt-10 py-">
@@ -129,9 +127,7 @@ const words = [
           </div>
 
           {/* CTA BUTTON */}
-          <button className="mt-8 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300">
-            Download Brochure ☁️
-          </button>
+       
 
           {/* VIDEO SECTION - OVERLAPS CURVE */}
           <div className="relative mt-14 z-30">
@@ -144,7 +140,9 @@ const words = [
               ></iframe>
             </div>
           </div>
-
+   <button className="mt-8 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300">
+            Download Brochure ☁️
+          </button>
         </div>
 
         {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
@@ -293,7 +291,7 @@ const words = [
 <TrainTrainerSlider />
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
-<section className="py-24 bg-white">
+<section className="py-12 bg-white">
   <div className="max-w-7xl mx-auto px-6">
 
     <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
@@ -363,31 +361,29 @@ const words = [
   </div>
 </section>
 
+
 <ClientFeedbackScroll />
 
-<section className="py-20 bg-white text-center">
-  <div className="max-w-4xl mx-auto px-6">
+<section className="py-10 bg-white">
+  <div className="max-w-5xl mx-auto px-6">
 
-    {/* HEADING */}
-    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#1E3A8A]">
-    Ready to move beyond surface-level training?
-    </h2>
+    <div className="border-4 border-[#1E3A8A]  rounded-3xl p-12 text-center bg-white shadow-sm">
 
-    {/* TEXT */}
-    <p className="text-gray-600 mb-10">
-      Let’s work together to build strong mindsets, improve performance,
-      and create lasting impact in your organization.
-    </p>
+      {/* HEADING */}
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#1E3A8A]">
+        Ready to move beyond surface-level training?
+      </h2>
 
-    {/* BUTTONS */}
-    <div className="flex flex-col sm:flex-row justify-center gap-4">
+      {/* SUBTEXT */}
+      <p className="text-gray-600 mb-8 text-lg">
+        Let’s work together to build strong mindsets, improve performance,
+        and create lasting impact in your organization.
+      </p>
 
-      {/* PRIMARY BUTTON */}
-      <button className="bg-[#1E3A8A] text-white px-9 py-7 rounded-xl font-semibold hover:bg-blue-800 transition">
+      {/* BUTTON */}
+      <button className="bg-[#1E3A8A] text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-800 transition">
         Book a Consultation
       </button>
-
-    
 
     </div>
 
@@ -402,26 +398,54 @@ const words = [
         <FaWhatsapp />
       </a>
       {/* ================= ABOUT FOUNDER ================= */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <img
-            src="/founder.jpg"
-            alt="Founder"
-            className="rounded-xl shadow-lg"
-          />
+  <section className="py-12 bg-white">
+  <div className="max-w-full mx-auto px-6">
 
-          <div>
-            <h2 className="text-3xl font-bold mb-6">About Our Founder</h2>
-            <h2 className="text-3xl font-bold mb-6">Dr. Shilpi Gupta</h2>
-            <p className="text-gray-600 mb-4">
-              Our founder brings years of expertise and a passion for empowering individuals and businesses.
-            </p>
-            <p className="text-gray-600">
-              With strong leadership and strategic vision, we continue to drive innovation and sustainable growth.
-            </p>
-          </div>
+    {/* BOX */}
+    <div className="border-4 border-[#1E3A8A] rounded-3xl p-10 bg-white shadow-sm">
+
+      <div className="grid md:grid-cols-2 gap-10 items-center">
+
+        {/* IMAGE */}
+        <img
+          src="/founder.jpg"
+          alt="Founder"
+          className="rounded-2xl shadow-md w-full max-w-md mx-auto"
+        />
+
+        {/* CONTENT */}
+        <div>
+          <h2 className="text-2xl md:text-3xl font-semibold text-[#1E3A8A] mb-2 underline itallic">
+            About Our Founder
+          </h2>
+
+          <h3 className="text-xl font-bold text-[#1E3A8A] mb-4">
+            Dr. Shilpi Gupta
+          </h3>
+
+          <p className="text-gray-1000 mb-8">
+           Version2 is inspired by the eagle’s extraordinary journey of self-renewal, the eagle, sheds its old feathers to fly higher, breaks its beak to have newer, changes itself to soar highest and achieve maximum potential. we embrace the belief that to soar, you must first rise above the storm.
+          </p>
+
+          <p className="text-gray-1000 mb-8">
+           We empower individuals & organizations to undergo Transformational Change. We guide you through the process to unlock your Version2.
+          </p>
+
+          <p className="text-gray-1000 mb-8">
+            We help our clients break free from limiting beliefs & reprogram their mindset for growth. At Version2, it’s change followed by transformation that takes you to greater heights.
+          </p>
+
+          <p className="text-gray-1000">
+We are UNIQUE to use Coaching, Training, Counselling, Healing & Therapeutic interventions at various platforms to empower individuals and organizations discover their true purpose by shared accountability, time bound ROI Based coaching and training to transform every thing around them, Health, Relationship, Career and Money.          </p>
         </div>
-      </section>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 
     </main>
   

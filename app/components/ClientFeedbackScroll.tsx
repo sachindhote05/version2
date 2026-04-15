@@ -60,12 +60,12 @@ export default function ClientFeedbackScroll() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-12 bg-white overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-[#1E3A8A] mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-[#1E3A8A] mb-16 underline">
           What Clients Say
         </h2>
 
