@@ -90,41 +90,23 @@ const words = [
         
         <div className="max-w-6xl mx-auto text-center">
 
-          {/* HEADING */}
-         <h1 className="text-4xl md:text-6xl font-bold text-white text-center leading-tight">
-  <span className="md:whitespace-nowrap">
-    Empowering Minds, Elevating Lives
-  </span>
-</h1>
-          {/* SUBTEXT */}
-        
+        {/* HEADING */}
+<h1 className="text-4xl md:text-6xl font-bold text-white text-center leading-snug">
 
-          {/* TRUST STRIP - STATS */}
-          <div className="mt-10 py-">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {[
-                { number: 98, suffix: "%", label: "Client Satisfaction" },
-                { number: 50, suffix: "K+", label: "Employees Trained" },
-                { number: 18, suffix: "+", label: "Trained Industries" },
-                { number: 16, suffix: "+", label: "Years Of Experience" },
-              ].map((item, i) => (
-                <div key={i}>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
-                    <CountUp
-                      end={item.number}
-                      duration={2}
-                      enableScrollSpy
-                      scrollSpyOnce
-                    />
-                    {item.suffix}
-                  </h3>
-                  <p className="text-xs md:text-sm text-white/80">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+  {/* TOP LINE */}
+  <span className="block md:inline">
+    Empowering Minds, Elevating
+  </span>
+
+  {/* MOBILE BREAK (less gap) */}
+  <br className="block md:hidden" />
+
+  {/* ROTATING WORDS */}
+  <span className="block md:inline min-w-[110px] mt-[-45px]">
+    <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
+  </span>
+
+</h1>
 
           {/* CTA BUTTON */}
        
