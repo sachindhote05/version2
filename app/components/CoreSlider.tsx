@@ -84,6 +84,7 @@ const services: Service[] = [
 ];
 
 export default function CoreSlider() {
+  const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -95,6 +96,19 @@ export default function CoreSlider() {
     setActiveIndex((prev) => (prev - 1 + services.length) % services.length);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+  if (typeof window !== "undefined") {
+    setIsMobile(window.innerWidth < 768);
+  }
+};
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+    
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(nextSlide, 2500);
@@ -143,10 +157,11 @@ export default function CoreSlider() {
                   key={service.id}
                   animate={{
                     scale: isActive ? 1 : 0.85,
-                    x: position * (window.innerWidth < 768 ? 180 : 260),
+                   
+x: position * 260,
                     opacity: isActive ? 1 : 0.5,
                   }}
-                  className="absolute w-[280px] md:w-[300px]"
+                  className="absolute w-[260px] md:w-[300px]"
                 >
                 <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
 
@@ -156,7 +171,7 @@ export default function CoreSlider() {
                     </div>
 
                     {/* TITLE */}
-                    <h3 className="font-bold text-xl mb-2 text-">
+                   <h3 className="font-bold text-xl mb-2">
                       {service.title}
                     </h3>
 

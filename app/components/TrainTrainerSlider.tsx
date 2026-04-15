@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 import Link from "next/link";
 
 const services = [
@@ -61,9 +61,10 @@ const services = [
   },
 ];
 
-export default function CoreSlider() {
+export default function TrainTrainerSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % services.length);
@@ -74,95 +75,109 @@ export default function CoreSlider() {
   }, []);
 
   useEffect(() => {
+    const updateMobile = () => setIsMobile(window.innerWidth < 768);
+    updateMobile();
+    window.addEventListener("resize", updateMobile);
+    return () => window.removeEventListener("resize", updateMobile);
+  }, []);
+
+  useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 2500);
-    return () => clearInterval(interval);
+    const interval = window.setInterval(nextSlide, 3200);
+    return () => window.clearInterval(interval);
   }, [isPaused, nextSlide]);
 
+  const handleDragStart = () => setIsPaused(true);
+
   const handleDragEnd = (_: any, info: PanInfo) => {
-    if (info.offset.x < -50) nextSlide();
-    else if (info.offset.x > 50) prevSlide();
+    const swipePower = info.offset.x + info.velocity.x * 0.22;
+    const threshold = 110;
+
+    if (swipePower < -threshold) {
+      nextSlide();
+    } else if (swipePower > threshold) {
+      prevSlide();
+    }
+
+    setIsPaused(false);
   };
 
-  const getVisibleCards = () => {
-    const cards = [];
-    for (let i = -2; i <= 2; i++) {
-      const index = (activeIndex + i + services.length) % services.length;
-      cards.push({ service: services[index], position: i });
-    }
-    return cards;
+  const visibleCards = () => {
+    return [-1, 0, 1].map((position) => {
+      const index = (activeIndex + position + services.length) % services.length;
+      return { service: services[index], position };
+    });
   };
+
+  const cardOffset = isMobile ? 170 : 260;
 
   return (
     <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
-
       <div className="text-center mb-20 md:mb-24">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Train The Trainer <span className="text-cyan-400">Programs</span>
         </h2>
       </div>
 
-    <div className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
+      <div
+        className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <motion.div className="flex justify-center pt-10 md:pt-14"
+        <motion.div
+          className="relative mx-auto flex h-full w-full max-w-[980px] items-center justify-center"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.14}
+          dragMomentum={false}
+          onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
+          whileTap={{ cursor: "grabbing" }}
+          initial={false}
         >
-          <AnimatePresence>
-            {getVisibleCards().map(({ service, position }) => {
-              const isActive = position === 0;
+          {visibleCards().map(({ service, position }) => {
+            const isActive = position === 0;
 
-              return (
-                <motion.div
-                  key={service.id}
-                  animate={{
-                    scale: isActive ? 1 : 0.85, // ✅ EXACT
-                    x: position * 260,          // ✅ EXACT
-                    opacity: isActive ? 1 : 0.5,
-                  }}
-                  className="absolute w-[285px]" // ✅ EXACT
-                >
-                 <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
-
-                    {/* ICON */}
+            return (
+              <motion.div
+                key={service.id}
+                className="absolute top-0 left-1/2 h-full w-[260px] md:w-[285px] -translate-x-1/2"
+                animate={{
+                  x: position * cardOffset,
+                  scale: isActive ? 1 : 0.88,
+                  opacity: isActive ? 1 : 0.55,
+                }}
+                transition={{ duration: 0.45, ease: "easeInOut" }}
+                style={{ zIndex: isActive ? 20 : 10 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="min-h-[300px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
+                  <div className="space-y-4">
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}
                     </div>
-
-                    {/* TITLE */}
-                    <h3 className="font-bold text-xl mb-2">
-                      {service.title}
-                    </h3>
-
-                    {/* DESC */}
-                    <p className="text-sm text-slate-300">
-                      {service.shortDesc}
-                    </p>
-
-                    {/* OUTCOMES */}
-                    <ul className="mt-3 text-sm text-slate-300 space-y-1">
+                    <div>
+                      <h3 className="font-bold text-xl mb-2">{service.title}</h3>
+                      <p className="text-sm text-slate-300">{service.shortDesc}</p>
+                    </div>
+                    <ul className="mt-3 space-y-2 text-sm text-slate-300">
                       {service.outcomes.map((item, i) => (
                         <li key={i}>• {item}</li>
                       ))}
                     </ul>
-
-                    {/* BUTTON */}
-                    <div className="mt-auto pt-4">
-                      <Link href={service.link}>
-                        <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
-                          Learn More →
-                        </button>
-                      </Link>
-                    </div>
-
                   </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+
+                  <div className="mt-auto pt-4">
+                    <Link href={service.link}>
+                      <button className="w-full rounded-2xl bg-cyan-400 px-4 py-3 text-sm font-semibold text-black transition hover:bg-cyan-300">
+                        Learn More →
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

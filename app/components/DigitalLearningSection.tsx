@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 import Link from "next/link";
 
 const services = [
@@ -44,6 +44,7 @@ const services = [
 ];
 
 export default function CoreSlider() {
+  const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -56,14 +57,28 @@ export default function CoreSlider() {
   }, []);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 2500);
-    return () => clearInterval(interval);
+
+    const interval = window.setInterval(nextSlide, 2500);
+    return () => window.clearInterval(interval);
   }, [isPaused, nextSlide]);
 
   const handleDragEnd = (_: any, info: PanInfo) => {
-    if (info.offset.x < -50) nextSlide();
-    else if (info.offset.x > 50) prevSlide();
+    if (info.offset.x < -80) {
+      nextSlide();
+    } else if (info.offset.x > 80) {
+      prevSlide();
+    }
   };
 
   const getVisibleCards = () => {
@@ -78,72 +93,68 @@ export default function CoreSlider() {
   return (
     <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
 
-      <div className="text-center mb-20 md:mb-24">
+      <div className="text-center mb-16 md:mb-20">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Digital <span className="text-cyan-400">Learning & Capability Systems</span>
         </h2>
       </div>
 
-    <div className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
+      <div
+        className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-       <motion.div className="flex justify-center pt-10 md:pt-14"
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={handleDragEnd}
-        >
-          <AnimatePresence>
-            {getVisibleCards().map(({ service, position }) => {
-              const isActive = position === 0;
+        <motion.div
+  className="relative mx-auto flex h-full items-center justify-center"
+  drag="x"
+  dragConstraints={{ left: 0, right: 0 }}
+  onDragEnd={handleDragEnd}
+  dragElastic={0.2}      // 👈 ADD THIS
+  dragMomentum={false}   // 👈 ADD THIS
+>
+          {getVisibleCards().map(({ service, position }) => {
+            const isActive = position === 0;
+            const offset = isMobile ? 170 : 260;
 
-              return (
-                <motion.div
-                  key={service.id}
-                  animate={{
-                    scale: isActive ? 1 : 0.85,
-                    x: position * 260, // ✅ SAME AS OLD
-                    opacity: isActive ? 1 : 0.5,
-                  }}
-                  className="absolute w-[285px]" // ✅ SAME
-                >
-                 <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
-                    {/* ICON */}
-                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
-                      {service.icon}
-                    </div>
+            return (
+              <motion.div
+                key={service.id}
+                className="absolute top-0 left-1/2 h-full w-[260px] md:w-[285px] -translate-x-1/2"
+                animate={{
+                  x: position * offset,
+                  scale: isActive ? 1 : 0.8,
+                  opacity: isActive ? 1 : 0.4,
+                }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                whileTap={{ scale: 0.98 }}
+                style={{ zIndex: isActive ? 20 : 10 }}
+              >
+                <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
+                  <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
+                    {service.icon}
+                  </div>
 
-                    {/* TITLE */}
-                    <h3 className="font-bold text-xl mb-2">
-                      {service.title}
-                    </h3>
-
-                    {/* DESC */}
-                    <p className="text-sm text-slate-300">
-                      {service.shortDesc}
-                    </p>
-
-                    {/* OUTCOMES */}
+                  <div>
+                    <h3 className="font-bold text-xl mb-2">{service.title}</h3>
+                    <p className="text-sm text-slate-300">{service.shortDesc}</p>
                     <ul className="mt-3 text-sm text-slate-300 space-y-1">
                       {service.outcomes.map((item, i) => (
                         <li key={i}>• {item}</li>
                       ))}
                     </ul>
-
-                    {/* BUTTON */}
-                    <div className="mt-auto pt-4">
-                      <Link href={service.link}>
-                        <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
-                          Learn More →
-                        </button>
-                      </Link>
-                    </div>
-
                   </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+
+                  <div className="mt-auto pt-4">
+                    <Link href={service.link}>
+                      <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition duration-200">
+                        Learn More →
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

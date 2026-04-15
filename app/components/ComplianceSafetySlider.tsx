@@ -73,6 +73,7 @@ const services: Service[] = [
 ];
 
 export default function CoreSlider() {
+  const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -84,7 +85,25 @@ export default function CoreSlider() {
     setActiveIndex((prev) => (prev - 1 + services.length) % services.length);
   }, []);
 
-  useEffect(() => {
+
+ 
+
+
+ // ✅ mobile detect
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  handleResize();
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+
+// ✅ auto slider
+
+useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(nextSlide, 2500);
     return () => clearInterval(interval);
@@ -132,10 +151,10 @@ export default function CoreSlider() {
                   key={service.id}
                   animate={{
                     scale: isActive ? 1 : 0.85,
-                    x: position * 260,
+                 x: position * (isMobile ? 180 : 260),
                     opacity: isActive ? 1 : 0.5,
                   }}
-                  className="absolute w-[285px]"
+                  className="absolute w-[280px] md:w-[300px]"
                 >
                  <div className="min-h-[300px] flex flex-col justify-between p-5 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white">
 
