@@ -78,18 +78,17 @@ export default function CoreSlider() {
   return (
     <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
 
-      <div className="text-center mb-10">
+      <div className="text-center mb-20 md:mb-24">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Digital <span className="text-cyan-400">Learning & Capability Systems</span>
         </h2>
       </div>
 
-     <div className="relative min-h-[360px] md:min-h-[420px]"
+    <div className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <motion.div
-          className="flex items-center justify-center h-full"
+       <motion.div className="flex justify-center pt-10 md:pt-14"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
