@@ -150,8 +150,9 @@ useEffect(() => {
                 <motion.div
                   key={service.id}
                   animate={{
-                    scale: isActive ? 1 : 0.85,
-                 x: position * (isMobile ? 180 : 260),
+                   scale: isActive ? 1 : 0.85,
+                   
+x: position * 260,
                     opacity: isActive ? 1 : 0.5,
                   }}
                   className="absolute w-[280px] md:w-[300px]"

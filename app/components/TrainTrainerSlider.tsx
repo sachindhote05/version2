@@ -143,20 +143,10 @@ export default function TrainTrainerSlider() {
                 key={service.id}
                className="absolute top-0 left-1/2 h-full w-[260px] md:w-[280px] -translate-x-1/2"
                animate={{
-  x: position * cardOffset,
-  scale:
-  position === 0
-    ? 1.05
-    : Math.abs(position) === 1
-    ? 0.9
-    : 0.8,
-
-opacity:
-  position === 0
-    ? 1
-    : Math.abs(position) === 1
-    ? 0.6
-    : 0.3,
+ scale: isActive ? 1 : 0.85,
+                   
+x: position * 260,
+opacity: isActive ? 1 : 0.4,
 }}
                 transition={{ duration: 0.45, ease: "easeInOut" }}
                

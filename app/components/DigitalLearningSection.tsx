@@ -121,8 +121,9 @@ export default function CoreSlider() {
                 key={service.id}
                 className="absolute top-0 left-1/2 h-full w-[260px] md:w-[285px] -translate-x-1/2"
                 animate={{
-                  x: position * offset,
-                  scale: isActive ? 1 : 0.8,
+                 scale: isActive ? 1 : 0.85,
+                   
+x: position * 260,
                   opacity: isActive ? 1 : 0.4,
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
