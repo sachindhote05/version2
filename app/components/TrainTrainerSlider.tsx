@@ -103,13 +103,13 @@ export default function TrainTrainerSlider() {
   };
 
   const visibleCards = () => {
-    return [-1, 0, 1].map((position) => {
+  return [-2, -1, 0, 1, 2].map((position) => {
       const index = (activeIndex + position + services.length) % services.length;
       return { service: services[index], position };
     });
   };
 
-  const cardOffset = isMobile ? 170 : 260;
+  const cardOffset = isMobile ? 140 : 240;
 
   return (
     <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
@@ -125,7 +125,7 @@ export default function TrainTrainerSlider() {
         onMouseLeave={() => setIsPaused(false)}
       >
         <motion.div
-          className="relative mx-auto flex h-full w-full max-w-[980px] items-center justify-center"
+          className="relative mx-auto flex h-full w-full max-w-[1100px] items-center justify-center"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.14}
@@ -141,17 +141,31 @@ export default function TrainTrainerSlider() {
             return (
               <motion.div
                 key={service.id}
-                className="absolute top-0 left-1/2 h-full w-[260px] md:w-[285px] -translate-x-1/2"
-                animate={{
-                  x: position * cardOffset,
-                  scale: isActive ? 1 : 0.88,
-                  opacity: isActive ? 1 : 0.55,
-                }}
+               className="absolute top-0 left-1/2 h-full w-[260px] md:w-[280px] -translate-x-1/2"
+               animate={{
+  x: position * cardOffset,
+  scale:
+  position === 0
+    ? 1.05
+    : Math.abs(position) === 1
+    ? 0.9
+    : 0.8,
+
+opacity:
+  position === 0
+    ? 1
+    : Math.abs(position) === 1
+    ? 0.6
+    : 0.3,
+}}
                 transition={{ duration: 0.45, ease: "easeInOut" }}
-                style={{ zIndex: isActive ? 20 : 10 }}
+               
+style={{ zIndex: 10 - Math.abs(position) }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="h-[360px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
+               <div className={`h-[360px] flex flex-col justify-between rounded-3xl p-6 text-white 
+${isActive ? "bg-white/20 border border-white/20 shadow-2xl scale-105" : "bg-white/10 border border-white/10"}
+backdrop-blur transition-all duration-500`}>
                   <div className="flex-1 space-y-4">
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}
@@ -169,7 +183,11 @@ export default function TrainTrainerSlider() {
 
                   <div className="mt-auto pt-4">
                     <Link href={service.link}>
-                      <button className="w-full rounded-2xl bg-cyan-400 px-4 py-3 text-sm font-semibold text-black transition hover:bg-cyan-300">
+                      <button className={`w-full rounded-2xl px-4 py-3 text-sm font-semibold transition
+${isActive 
+  ? "bg-cyan-400 text-black hover:bg-cyan-300" 
+  : "bg-white/20 text-white hover:bg-white/30"
+}`}>
                         Learn More →
                       </button>
                     </Link>

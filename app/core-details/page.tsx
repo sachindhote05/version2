@@ -1,29 +1,29 @@
+﻿"use client";
+import { useState } from "react";
 import BookingSection from "../components/BookingSection"
 import { FaUserTie, FaBrain, FaCrown, FaRocket, FaHeart, FaSearch, FaPenFancy, FaChalkboardTeacher, FaSyncAlt } from "react-icons/fa";
 
-
-
 export default function CoreDetailsPage() {
+  const [showBooking, setShowBooking] = useState(false);
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F5E6D3] to-white pt-32 px-6">
+    <div className="min-h-screen bg-gradient-to-b from-[#1e3a8a] to-[#0f172a] pt-32 px-6 text-white">
 
       <div className="max-w-6xl mx-auto">
-      
 
         {/* 🔥 HEADER */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Core Transformation Programs
           </h1>
 
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-slate-300 max-w-2xl mx-auto">
             Transform mindset, identity & performance with deep behavioral interventions
           </p>
         </div>
 
         {/* 🔥 HERO CARD */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 mb-12 border border-[#1E3A8A]/20 hover:shadow-2xl transition">
-          <p className="text-center text-gray-700 text-lg">
+        <div className="bg-white/10 rounded-3xl shadow-xl shadow-slate-900/30 p-8 mb-12 border border-white/10 hover:shadow-2xl transition">
+          <p className="text-center text-slate-200 text-lg">
             We go beyond skill building to shift mindset, identity, and emotional patterns
             that drive leadership, decision-making, and performance.
           </p>
@@ -31,25 +31,43 @@ export default function CoreDetailsPage() {
         
 
 {/* 🔥 CALENDLY SECTION */}
- <BookingSection />
+{/* BUTTON */}
+<div className="text-center mb-10">
+  <button
+    onClick={() => setShowBooking(!showBooking)}
+    className="px-10 py-4 rounded-full 
+    bg-gradient-to-r from-cyan-400 to-blue-500 
+    text-black font-semibold
+    hover:scale-110 transition-all duration-300"
+  >
+    Book Consultation
+  </button>
+</div>
+
+{/* BOOKING SECTION */}
+{showBooking && (
+  <div className="mt-6 animate-fadeIn">
+    <BookingSection />
+  </div>
+)}
  
  {/* 🔥 VIDEO SECTION */}
-<div className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] rounded-3xl p-8 text-white shadow-xl mb-16">
+<div className="bg-white/10 rounded-3xl p-8 text-white shadow-xl shadow-slate-900/30 mb-16 border border-white/10 backdrop-blur">
 
-  <h3 className="text-2xl font-bold text-center mb-6">
+  <h3 className="text-2xl font-bold text-center mb-6 text-white">
     See How Transformation Works
   </h3>
 
-  <p className="text-center mb-8 opacity-90">
+  <p className="text-center mb-8 text-slate-300">
     Watch how our programs create real impact
   </p>
 
   {/* VIDEO */}
-  <div className="relative w-full max-w-xl mx-auto aspect-video rounded-xl overflow-hidden shadow-lg">
+  <div className="relative w-full max-w-xl mx-auto aspect-video rounded-xl overflow-hidden shadow-lg border border-white/10">
 
     <iframe
       className="w-full h-full"
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID" // 👈 apna video link
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
       title="YouTube video"
       allowFullScreen
     ></iframe>
@@ -67,45 +85,35 @@ export default function CoreDetailsPage() {
       {
         title: "Problem Statement",
         desc: "Leaders lack ownership\nEmployees struggle with confidence & decisions\nPerformance drops due to internal resistance",
-        color: "border-red-400",
       },
       {
         title: "Our Approach",
         desc: "Identity-level work\nMindset restructuring\nEmotional pattern transformation",
-        color: "border-blue-500",
       },
       {
         title: "What We Offer",
         desc: "Leadership Identity Shift\nBehavioral Transformation\nCXO Coaching\nPeak Performance",
-        color: "border-indigo-500",
       },
       {
         title: "Outcomes",
         desc: "Ownership mindset\nFaster decisions\nConfidence\nConsistent performance",
-        color: "border-green-500",
       },
       {
         title: "Who It’s For",
         desc: "Leaders\nManagers\nHigh-potential employees\nCXOs",
-        color: "border-purple-500",
       },
     ].map((item, i) => (
 
       <div
         key={i}
-        className={`group p-5 rounded-2xl 
-        bg-white
-        ${item.color} border-2
-        shadow-md
-        hover:shadow-2xl hover:-translate-y-2 hover:scale-105
-        transition-all duration-500`}
+        className="group p-5 rounded-2xl bg-white/10 border border-white/10 shadow-md shadow-slate-900/20 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-500"
       >
 
-        <h3 className="text-sm font-bold text-[#1E3A8A] mb-3">
+        <h3 className="text-sm font-bold text-white mb-3">
           {item.title}
         </h3>
 
-        <p className="text-gray-600 text-xs whitespace-pre-line leading-relaxed">
+        <p className="text-slate-300 text-xs whitespace-pre-line leading-relaxed">
           {item.desc}
         </p>
 
@@ -117,10 +125,65 @@ export default function CoreDetailsPage() {
 
 </div>
 
-{/* 🔥 CORE OFFERINGS SECTION */}
-<div className="bg-white rounded-3xl shadow-xl p-10 mb-16 border border-[#1E3A8A]/10">
+{/* 🔥 CASE STUDY SECTION */}
+<div className="mt-20 mb-20">
 
-  <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1E3A8A] mb-12">
+  {/* HEADING */}
+  <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+    Case Studies
+  </h2>
+
+  {/* VIDEOS */}
+  <div className="grid md:grid-cols-3 gap-8">
+
+    {[1,2,3].map((item, i) => (
+      <div
+        key={i}
+        className="rounded-2xl overflow-hidden bg-white/10 border border-white/10 backdrop-blur shadow-lg"
+      >
+        <div className="aspect-video">
+          <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            title="Case Study Video"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    ))}
+
+  </div>
+
+  {/* 🔥 BUTTON */}
+  <div className="text-center mt-12">
+    <button
+      onClick={() => setShowBooking(!showBooking)}
+      className="px-10 py-4 rounded-full
+      bg-gradient-to-r from-cyan-400 to-blue-500
+      text-black font-semibold
+      hover:scale-110 hover:shadow-lg
+      transition-all duration-300"
+    >
+      {showBooking ? "Close Booking" : "Book Consultation"}
+    </button>
+  </div>
+
+  {/* 🔥 BOOKING SECTION */}
+  {showBooking && (
+    <div className="mt-10 animate-fadeIn">
+      <BookingSection />
+    </div>
+  )}
+
+</div>
+
+
+
+
+{/* 🔥 CORE OFFERINGS SECTION */}
+<div className="bg-white/10 rounded-3xl shadow-xl shadow-slate-900/30 p-10 mb-16 border border-white/10 backdrop-blur">
+
+  <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
     Our Core Transformation Areas
   </h2>
 
@@ -147,22 +210,18 @@ export default function CoreDetailsPage() {
 
       <div
         key={i}
-        className="group p-6 rounded-2xl
-        bg-gradient-to-br from-white to-[#F0F5FF]
-        border border-[#1E3A8A]/10
-        shadow-md hover:shadow-xl
-        hover:-translate-y-2 transition duration-500"
+        className="group p-6 rounded-2xl bg-white/10 border border-white/10 shadow-md shadow-slate-900/20 hover:shadow-xl hover:-translate-y-2 transition duration-500"
       >
 
-        <div className="text-[#1E3A8A] text-2xl mb-4">
+        <div className="text-cyan-400 text-2xl mb-4">
           {item.icon}
         </div>
 
-        <h3 className="text-lg font-bold text-[#1E3A8A] mb-3">
+        <h3 className="text-lg font-bold text-white mb-3">
           {item.title}
         </h3>
 
-        <p className="text-gray-600 text-sm">
+        <p className="text-slate-300 text-sm">
           {item.desc}
         </p>
 
@@ -190,22 +249,18 @@ export default function CoreDetailsPage() {
 
       <div
         key={i}
-        className="w-[320px] group p-6 rounded-2xl
-        bg-gradient-to-br from-white to-[#F0F5FF]
-        border border-[#1E3A8A]/10
-        shadow-md hover:shadow-xl
-        hover:-translate-y-2 transition duration-500"
+        className="w-[320px] group p-6 rounded-2xl bg-white/10 border border-white/10 shadow-md shadow-slate-900/20 hover:shadow-xl hover:-translate-y-2 transition duration-500"
       >
 
-        <div className="text-[#1E3A8A] text-2xl mb-4">
+        <div className="text-cyan-400 text-2xl mb-4">
           {item.icon}
         </div>
 
-        <h3 className="text-lg font-bold text-[#1E3A8A] mb-3">
+        <h3 className="text-lg font-bold text-white mb-3">
           {item.title}
         </h3>
 
-        <p className="text-gray-600 text-sm">
+        <p className="text-slate-300 text-sm">
           {item.desc}
         </p>
 
@@ -218,17 +273,18 @@ export default function CoreDetailsPage() {
 </div>
      
 
+
 {/* 🔥 HOW WE WORK - FLOWCHART */}
 <div className="py-20">
 
-  <h3 className="text-3xl font-bold text-center text-[#1E3A8A] mb-16">
+  <h3 className="text-3xl font-bold text-center text-white mb-16">
     How We Work
   </h3>
 
   <div className="relative max-w-6xl mx-auto">
 
     {/* LINE */}
-    <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-[#1E3A8A]/20 -translate-y-1/2"></div>
+    <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-white/10 -translate-y-1/2"></div>
 
     <div className="grid md:grid-cols-4 gap-10 relative z-10">
 
@@ -255,26 +311,22 @@ export default function CoreDetailsPage() {
         }
       ].map((step, i) => (
 
-        <div key={i} className="text-center group">
+        <div key={i} className="text-center group bg-white/5 p-6 rounded-3xl border border-white/10 shadow-lg shadow-slate-900/20">
 
           {/* ICON CIRCLE */}
-          <div className="w-16 h-16 mx-auto mb-4 
-          flex items-center justify-center 
-          rounded-full bg-white border-4 border-[#1E3A8A] 
-          text-[#1E3A8A] text-xl shadow-md
-          group-hover:scale-110 transition duration-300">
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-white/10 border border-white/10 text-cyan-400 text-xl shadow-md group-hover:scale-110 transition duration-300">
 
             {step.icon}
 
           </div>
 
           {/* TITLE */}
-          <h4 className="text-lg font-bold text-[#1E3A8A] mb-2">
+          <h4 className="text-lg font-bold text-white mb-2">
             {step.title}
           </h4>
 
           {/* DESC */}
-          <p className="text-sm text-gray-600 max-w-[200px] mx-auto">
+          <p className="text-sm text-slate-300 max-w-[200px] mx-auto">
             {step.desc}
           </p>
 
