@@ -172,7 +172,7 @@ backdrop-blur transition-all duration-500`}>
                   </div>
 
                   <div className="mt-auto pt-4">
-                    <Link href={service.link}>
+                    <Link href="trainer-details">
                       <button className={`w-full rounded-2xl px-4 py-3 text-sm font-semibold transition
 ${isActive 
   ? "bg-cyan-400 text-black hover:bg-cyan-300" 
