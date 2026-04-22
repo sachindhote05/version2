@@ -143,12 +143,13 @@ const words = [
           {/* VIDEO SECTION - OVERLAPS CURVE */}
           <div className="relative mt-14 z-30">
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
-              <video
-  className="w-full h-[220px] md:h-[380px] bg-black rounded-3xl"
+             <video
+  className="w-full h-[220px] md:h-[380px] object-cover bg-black rounded-3xl"
   src="/sample.mp4"
   autoPlay
   muted
   loop
+  playsInline
   controls
 />
             </div>
@@ -332,7 +333,7 @@ const words = [
             <img
               src={`https://www.youtube.com/watch?v=${video.id}`}
               alt={video.title}
-              className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+              className="w-full h-full object-contain bg-black transition duration-500 group-hover:scale-110"
             />
 
             {/* Overlay */}
