@@ -328,7 +328,7 @@ const words = [
 
             {/* Thumbnail */}
             <img
-              src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+              src={`https://www.youtube.com/watch?v=${video.id}`}
               alt={video.title}
               className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
             />
