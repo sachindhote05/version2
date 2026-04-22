@@ -143,12 +143,14 @@ const words = [
           {/* VIDEO SECTION - OVERLAPS CURVE */}
           <div className="relative mt-14 z-30">
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
-              <iframe
-                className="w-full h-[220px] md:h-[380px] bg-black"
-                src="Sample.mp4"
-                title="Company Overview Video"
-                allowFullScreen
-              ></iframe>
+              <video
+  className="w-full h-[220px] md:h-[380px] bg-black rounded-3xl"
+  src="/sample.mp4"
+  autoPlay
+  muted
+  loop
+  controls
+/>
             </div>
           </div>
           <div className="mt-6 flex justify-center items-center">
