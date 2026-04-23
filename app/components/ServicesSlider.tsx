@@ -166,10 +166,10 @@ export default function ServicesSlider() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Our <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Services</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base max-w-2xl mx-auto">
             Comprehensive solutions designed to transform minds, elevate performance, and drive sustainable growth.
           </p>
         </motion.div>
@@ -245,12 +245,12 @@ export default function ServicesSlider() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-lg font-bold text-white mb-2">
+                        <h3 className="text-base font-semibold text-white mb-2">
                           {service.title}
                         </h3>
 
                         {/* Short Description */}
-                        <p className="text-slate-400 text-sm leading-relaxed">
+                        <p className="text-slate-400 text-xs leading-relaxed">
                           {service.shortDesc}
                         </p>
 
@@ -314,10 +314,10 @@ export default function ServicesSlider() {
               </div>
               
               <div>
-                <h4 className="text-xl font-bold text-white mb-3">
+                <h4 className="text-lg font-semibold text-white mb-3">
                   {services[activeIndex].title}
                 </h4>
-               <ul className="text-slate-300 space-y-1 mt-1">
+               <ul className="text-slate-300 text-sm space-y-1 mt-1">
  {services[activeIndex].shortDesc.split(".").map((item, i) => (
     <li key={i} className="flex items-start gap-2">
       <span className="text-green-400 mt-1">✔</span>

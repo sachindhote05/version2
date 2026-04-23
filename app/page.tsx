@@ -80,19 +80,18 @@ const words = [
   }, [videos.length]);
 
   return (
-    <main className="overflow-x-hidden">
-
+    <main className="overflow-x-hidden pt-24">
     
 
       
 
       {/* 🔥 HERO SECTION */}
-      <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-48 px-6 overflow-visible">
+      <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-20 px-6 overflow-visible">
         
         <div className="max-w-6xl mx-auto text-center">
 
           {/* HEADING */}
-          <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4">
+          <h1 className="text-3xl md:text-2xl font-bold leading-tight mb-4">
             Empowering Minds, Elevating{" "}
             <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
           </h1>
@@ -110,7 +109,7 @@ const words = [
                 { number: 16, suffix: "+", label: "Years Of Experience" },
               ].map((item, i) => (
                 <div key={i}>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
                     <CountUp
                       end={item.number}
                       duration={2}
@@ -144,7 +143,7 @@ const words = [
 />
             </div>
           </div>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-4 flex justify-center">
 <a
   href="/brochure.pdf"
   download
@@ -175,12 +174,12 @@ const words = [
       </div>
 
   
- <section className="py-10 bg-white">
+ <section className="pt-6 pb-20 bg-white">
 
   <div className="max-w-5xl mx-auto px-6 text-center">
 
     {/* TITLE */}
-    <h2 className="text-3xl md:text-4xl font-bold mb-10 text-[#1E3A8A]">
+    <h2 className="text-2xl md:text-2xl font-bold mb-10 text-[#1E3A8A]">
       Why Most Training Programs Fail
     </h2>
 
@@ -212,7 +211,7 @@ const words = [
           <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition duration-300 bg-gradient-to-r from-blue-200/30 to-transparent blur-lg"></div>
 
           <div className="relative z-10">
-            <p className="text-base md:text-lg font-medium text-[#1E3A8A]">
+            <p className="text-sm md:text-base font-medium text-[#1E3A8A]">
               {text}
             </p>
           </div>
@@ -230,7 +229,7 @@ const words = [
     {/* 🔥 WHAT MAKES US DIFFERENT */}
 {/* 🔥 WHAT MAKES US DIFFERENT */}
 <section className="py-10 md:py-12 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
-  <div className="max-w-4xl mx-auto px-6">
+  <div className="max-w-3xl mx-auto px-6">
 
     <h2 
       data-aos="fade-up"
@@ -242,7 +241,7 @@ const words = [
     <p 
       data-aos="fade-up"
       data-aos-delay="200"
-      className="text-lg mb-6"
+      className="text-base mb-6"
     >
       We don’t just focus on skill development
     </p>
@@ -250,7 +249,7 @@ const words = [
     <p 
       data-aos="fade-up"
       data-aos-delay="400"
-      className="text-lg mb-6"
+      className="text-base mb-6"
     >
       Our approach works at the level of mindset, identity, and behavioral patterns to create long-term transformation.
     </p>
@@ -258,21 +257,21 @@ const words = [
     <p 
       data-aos="fade-up"
       data-aos-delay="600"
-      className="text-lg"
+      className="text-base"
     >
       Instead of short-term learning, we enable sustainable performance, stronger ownership, and real business impact through structured interventions.
     </p>
 
   </div>
 </section>
-<div className="h-20 bg-white"></div>
+<div className="h-10 bg-white"></div>
 
       {/* ================= SERVICES SLIDER ================= */}
      
 <div id="services" className="mt- mb-">
   <ServicesSlider />
 </div>
-<div className="h-20 bg-white"></div>
+<div className="h-10 bg-white"></div>
  
       {/* =================Core Transformation Programs================= */}
 
@@ -286,25 +285,25 @@ const words = [
 
 
 
-<div className="h-20 bg-white"></div>
+<div className="h-10 bg-white"></div>
 
       {/* ================= Compliance & Workplace Safety ================= */}
 
     
     <ComplianceSafetySlider />
   
-<div className="h-20 bg-white"></div>
+<div className="h-10 bg-white"></div>
       {/* =================Digital Learning & Capability Systems================= */}
 
     <DigitalLearningSection />
 
  
       {/* ================= Train the Trainer (Certification Programs) ================= */}
-     <div className="h-20 bg-white"></div>
+     <div className="h-10 bg-white"></div>
 <TrainTrainerSlider />
 
 
-<div className="h-20 bg-white"></div>
+<div className="h-10 bg-white"></div>
  {/* ================= Executive Events & Strategic Offsites ================= */}
 
  <ExecutiveSlider />
@@ -314,7 +313,7 @@ const words = [
 <section className="py-12 bg-white">
   <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-700">
       Our Work
     </h2>
 
@@ -384,7 +383,9 @@ const words = [
   <div className="max-w-7xl mx-auto px-6 text-center">
 
     {/* TITLE */}
-    <h2 className="text-3xl md:text-4xl font-bold mb-10 text-black">
+    <div className="border-4 border-[#1E3A8A] rounded-3xl p-10 bg-white shadow-sm">
+
+    <h2 className="text-2xl md:text-3xl font-bold mb-10 text-black">
       Our Clients
     </h2>
 
@@ -416,20 +417,20 @@ const words = [
 
         <div
           key={i}
-          className="bg-gray-100 p-4 rounded-lg flex items-center justify-center
+          className="bg-gray-100 p-0 rounded-lg flex items-center justify-center
                      hover:shadow-md transition"
         >
           <img
             src={logo}
             alt="client"
-            className="h-10 object-contain"
+            className="h-8 md:h-10 object-contain"
           />
         </div>
 
       ))}
 
     </div>
-
+</div>
   </div>
 </section>
 
