@@ -227,7 +227,11 @@ const words = [
 
 
 </section>
-    {/* 🔥 WHAT MAKES US DIFFERENT */}
+   
+
+
+
+
 {/* 🔥 WHAT MAKES US DIFFERENT */}
 <section className="py-10 md:py-12 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
   <div className="max-w-4xl mx-auto px-6">
@@ -265,7 +269,29 @@ const words = [
 
   </div>
 </section>
-<div className="h-20 bg-white"></div>
+
+ {/* 🔥 cta */}
+
+<div className="h-0 bg-white"></div>
+
+
+<div className="text-center mt-10 mb-6">
+  <button className="
+    relative px-8 py-3 rounded-xl font-semibold text-white
+    bg-gradient-to-r from-indigo-500 to-purple-600
+    overflow-hidden group
+  ">
+    
+    <span className="relative z-10">Book Consultation</span>
+
+    {/* animated shine */}
+    <span className="
+      absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100
+      transition duration-500
+    "></span>
+
+  </button>
+</div>
 
       {/* ================= SERVICES SLIDER ================= */}
      
