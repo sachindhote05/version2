@@ -121,8 +121,9 @@ export default function CoreSlider() {
                 key={service.id}
                 className="absolute top-0 left-1/2 h-full w-[260px] md:w-[285px] -translate-x-1/2"
                 animate={{
-                  x: position * offset,
-                  scale: isActive ? 1 : 0.8,
+                 scale: isActive ? 1 : 0.85,
+                   
+x: position * 260,
                   opacity: isActive ? 1 : 0.4,
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -147,7 +148,7 @@ export default function CoreSlider() {
                   </div>
 
                   <div className="mt-auto pt-4">
-                    <Link href={service.link}>
+                    <Link href="digital-details">
                       <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition duration-200">
                         Learn More →
                       </button>

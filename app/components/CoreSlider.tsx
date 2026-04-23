@@ -188,8 +188,17 @@ x: position * 260,
                   </div>
 
                     {/* BUTTON */}
-                    <div className="mt-auto pt-4">
-  <Link href={service.link}>
+                   <div className="mt-auto pt-4">
+  <Link
+    href={{
+      pathname: "/core-details",
+      query: {
+        title: service.title,
+        desc: service.shortDesc,
+        outcomes: JSON.stringify(service.outcomes),
+      },
+    }}
+  >
     <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
       Learn More →
     </button>

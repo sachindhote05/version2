@@ -150,8 +150,9 @@ useEffect(() => {
                 <motion.div
                   key={service.id}
                   animate={{
-                    scale: isActive ? 1 : 0.85,
-                 x: position * (isMobile ? 180 : 260),
+                   scale: isActive ? 1 : 0.85,
+                   
+x: position * 260,
                     opacity: isActive ? 1 : 0.5,
                   }}
                   className="absolute w-[280px] md:w-[300px]"
@@ -180,7 +181,7 @@ useEffect(() => {
                   </div>
 
                   <div className="mt-auto pt-4">
-                    <Link href={service.link}>
+                    <Link href="/compliance-details">
                       <button className="w-full bg-cyan-400 text-black px-3 py-2 rounded-lg text-sm font-semibold hover:bg-cyan-300 transition">
                         Learn More →
                       </button>

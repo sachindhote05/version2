@@ -10,16 +10,15 @@ export default function BookingSection() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
 
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-10 border mb-16">
+    <div className="max-w-4xl mx-auto bg-white/10 rounded-3xl shadow-xl shadow-slate-900/30 p-10 border border-white/10 backdrop-blur mb-16">
 
-      <h2 className="text-2xl font-bold text-center text-[#1E3A8A] mb-6">
+      <h2 className="text-2xl font-bold text-center text-white mb-6">
         Book Consultation
       </h2>
       
 
       {/* DATE */}
      
-        <input type="date" />
  <div className="flex justify-center mb-6">
   <DatePicker
     selected={selectedDate}
@@ -27,12 +26,14 @@ export default function BookingSection() {
     dateFormat="dd-MM-yyyy"
     placeholderText="dd-mm-yyyy"
     className="px-6 py-3 rounded-xl
-               border-2 border-[#1E3A8A]
-               bg-[#F5EEDD]
-               text-gray-700
+               border border-white/20
+               bg-white/10
+               text-slate-300
+               placeholder-slate-400
                focus:outline-none
-               focus:border-[#1E3A8A]
-               w-full text-center cursor-pointer"
+               focus:border-cyan-400
+               w-full text-center cursor-pointer
+               backdrop-blur"
   />
 </div>
       {/* TIME */}
@@ -41,10 +42,10 @@ export default function BookingSection() {
           <button
             key={time}
             onClick={() => setSelectedTime(time)}
-            className={`px-6 py-3 rounded-xl border ${
+            className={`px-6 py-3 rounded-xl border transition-all duration-300 ${
               selectedTime === time
-                ? "bg-[#1E3A8A] text-white"
-                : "bg-[#F5E6D3] text-[#1E3A8A]"
+                ? "bg-cyan-400 text-black border-cyan-400"
+                : "bg-white/10 text-slate-300 border-white/10 hover:border-white/20"
             }`}
           >
             {time}
@@ -55,9 +56,9 @@ export default function BookingSection() {
       <div className="text-center">
        <button
   onClick={() => alert("Booking Confirmed ✅")}
-  className="bg-[#1E3A8A] text-white
-  px-10 py-3 rounded-xl shadow-md
-  hover:bg-[#162d63] hover:scale-105
+  className="bg-cyan-400 text-black
+  px-10 py-3 rounded-xl shadow-lg shadow-cyan-500/30
+  hover:bg-cyan-300 hover:scale-105
   transition-all duration-300 font-semibold"
 >
   Confirm Booking

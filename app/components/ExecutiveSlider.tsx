@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, PanInfo } from "framer-motion";
@@ -7,61 +7,43 @@ import Link from "next/link";
 const services = [
   {
     id: 1,
-    title: "POSH Train the Trainer",
-    shortDesc: "Master engaging training delivery",
-    outcomes: ["Better sessions", "Audience engagement", "Confidence"],
+    title: "Team Cohesion & Trust-Building Offsites",
+    shortDesc: "Build stronger team bonding & trust",
+    outcomes: ["Better collaboration", "Trust building", "Stronger teams"],
     gradient: "from-blue-500 to-cyan-400",
-    icon: <span>🎤</span>,
-    link: "/posh-ttt",
+    icon: <span>🤝</span>,
+    link: "/offsite-cohesion",
   },
   {
     id: 2,
-    title: "Psychological Safety Facilitator Training",
-    shortDesc: "Deliver impactful presentations",
-    outcomes: ["Clear communication", "Strong presence", "Better impact"],
+    title: "Culture-Building Outbounds",
+    shortDesc: "Strengthen company culture",
+    outcomes: ["Shared values", "Team alignment", "Positive culture"],
     gradient: "from-emerald-500 to-teal-400",
-    icon: <span>📊</span>,
-    link: "/psychological-ttt",
+    icon: <span>🌱</span>,
+    link: "/culture-outbound",
   },
   {
     id: 3,
-    title: "Emotional Intelligence Trainer Certification",
-    shortDesc: "Structure effective training content",
-    outcomes: ["Better learning", "Structured delivery", "Clarity"],
+    title: "Strategic Reset Workshops",
+    shortDesc: "Realign business direction",
+    outcomes: ["Clear goals", "Better strategy", "Focused execution"],
     gradient: "from-purple-500 to-pink-400",
-    icon: <span>📘</span>,
-    link: "/ei-ttt",
+    icon: <span>🎯</span>,
+    link: "/strategic-reset",
   },
   {
     id: 4,
-    title: "Mental Wellness Facilitator Training",
-    shortDesc: "Keep participants active & involved",
-    outcomes: ["High interaction", "Better retention", "Energy"],
+    title: "Ethics, Integrity & Leadership Interventions",
+    shortDesc: "Build ethical leadership",
+    outcomes: ["Strong values", "Better decisions", "Leadership growth"],
     gradient: "from-orange-500 to-amber-400",
-    icon: <span>🔥</span>,
-    link: "/wellness-ttt",
-  },
-  {
-    id: 5,
-    title: "Workplace Ethics & Conduct TTT",
-    shortDesc: "Measure and improve learning outcomes",
-    outcomes: ["Clear feedback", "Performance tracking", "Improvement"],
-    gradient: "from-rose-500 to-red-400",
-    icon: <span>✅</span>,
-    link: "/ethics-ttt",
-  },
-  {
-    id: 6,
-    title: "Leadership & Manager Capability TTT",
-    shortDesc: "Become a certified professional trainer",
-    outcomes: ["Certification", "Credibility", "Career growth"],
-    gradient: "from-indigo-500 to-blue-400",
-    icon: <span>🏆</span>,
-    link: "/leadership-ttt",
+    icon: <span>⚖️</span>,
+    link: "/ethics-leadership",
   },
 ];
 
-export default function TrainTrainerSlider() {
+export default function ExecutiveSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -103,7 +85,7 @@ export default function TrainTrainerSlider() {
   };
 
   const visibleCards = () => {
-  return [-2, -1, 0, 1, 2].map((position) => {
+ return [-1, 0, 1].map((position) => {
       const index = (activeIndex + position + services.length) % services.length;
       return { service: services[index], position };
     });
@@ -112,20 +94,20 @@ export default function TrainTrainerSlider() {
   const cardOffset = isMobile ? 140 : 240;
 
   return (
-    <section className="relative py-12 md:py-12 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
-      <div className="text-center mb-12 md:mb-16">
+    <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
+      <div className="text-center mb-20 md:mb-24">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
-          Train The Trainer <span className="text-cyan-400">Programs</span>
+          Executive <span className="text-cyan-400">Events & Strategic Offsites</span> 
         </h2>
       </div>
 
       <div
-        className="relative min-h-[320px] md:min-h-[360px] mt-6 md:mt-8"
+        className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <motion.div
-         className="relative mx-auto flex h-full w-full items-center justify-center"
+          className="relative mx-auto flex h-full w-full max-w-[1100px] items-center justify-center"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.14}
@@ -145,15 +127,17 @@ export default function TrainTrainerSlider() {
                animate={{
  scale: isActive ? 1 : 0.85,
                    
-x: position * 260,
-opacity: isActive ? 1 : 0.4,
+x: position * (isMobile ? 160 : 300),
+opacity: isActive ? 1 : 0.5,
 }}
                 transition={{ duration: 0.45, ease: "easeInOut" }}
                
 style={{ zIndex: 10 - Math.abs(position) }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="h-[320px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
+               <div className={`h-[360px] flex flex-col justify-between rounded-3xl p-6 text-white 
+${isActive ? "bg-white/20 border border-white/20 shadow-2xl scale-105" : "bg-white/10 border border-white/10"}
+backdrop-blur transition-all duration-500`}>
                   <div className="flex-1 space-y-4">
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}

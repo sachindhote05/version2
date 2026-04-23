@@ -21,18 +21,18 @@ export default function ComplianceDetailsPage() {
         {/* 🔥 HEADER */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            COMPLIANCE & WORKPLACE SAFETY
+            TRAIN THE TRAINER (CERTIFICATION PROGRAMS)
           </h1>
 
           <p className="text-slate-300 max-w-2xl mx-auto">
-           Build a Safe, Compliant, and Trust-Driven Workplace
+           Build Internal Capability That Sustains Transformation
           </p>
         </div>
 
         {/* 🔥 HERO CARD */}
         <div className="bg-white/10 rounded-3xl shadow-xl shadow-slate-900/30 p-8 mb-12 border border-white/10 hover:shadow-2xl transition backdrop-blur">
           <p className="text-center text-slate-200 text-lg">
-            We go beyond compliance to create awareness, accountability, and a culture of safety that employees trust.
+            We equip your teams with the mindset, structure, and facilitation skills to deliver impactful learning — consistently and at scale.
           </p>
         </div>
         
@@ -91,27 +91,27 @@ export default function ComplianceDetailsPage() {
     {[
       {
         title: "Problem Statement",
-        desc: " • Compliance seen as checkbox\n • Lack of awareness\n • Unsafe culture",
+        desc: " • Organizations invest in training.\n • But impact fades over time.\n • Dependence on external trainers increases. \n • Internal sessions lack depth and consistency \n • Learning doesn’t sustain. \n •  Because capability is not built within ",
         color: "border-red-400",
       },
       {
         title: "Our Approach",
-        desc: "• We move from compliance → culture",
+        desc: ".• At Version2, we don’t just train trainers.\n• We build: \n• Facilitation capability\n• Mindset and presence\n• Structured delivery frameworks\n• 👉 So learning becomes internal, consistent, and scalable.",
         color: "border-blue-500",
       },
       {
         title: "What We Offer",
-        desc: " • POSH End-to-End\n• POCSO\n• Psychological Safety\n• Workplace Ethics\n• Mental Wellness\n• Physical Safety ",
+        desc: " •  POSH E-learning\n• Mindset Reset Modules\n•  Emotional Regulation Modules\n• Growth Skillset Framework",
         color: "border-indigo-500",
       },
       {
         title: "Outcomes",
-        desc: "• Strong legal compliance\n• Increased employee awareness and confidence\n• Reduced workplace risks and conflicts\n• Improved trust and psychological safety\n• Culture aligned with organizational values",
+        desc: "• Strong internal trainer ecosystem\n• Consistent and scalable learning delivery\n•  Reduced dependency on external trainers\n•  Enhanced engagement in internal programs\n•  Sustainable capability development",
         color: "border-green-500",
       },
       {
         title: "Who It’s For",
-        desc: "• Organizations across industries\n• HR & Compliance Teams\n• Internal Committee (IC) Members\n• Leadership Teams",
+        desc: "• HR & L&D Teams\n•  Internal Trainers\n•  Managers & Leaders\n•  Organizations building internal capability ",
         color: "border-purple-500",
       },
     ].map((item, i) => (
@@ -194,7 +194,7 @@ export default function ComplianceDetailsPage() {
 <div className="bg-white/10 rounded-3xl shadow-xl shadow-slate-900/30 p-10 mb-16 border border-white/10 backdrop-blur">
 
   <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-   Compliance & Workplace Safety Programs
+   TRAIN THE TRAINER (CERTIFICATION PROGRAMS)
   </h2>
 
   {/* TOP 3 */}
@@ -203,18 +203,18 @@ export default function ComplianceDetailsPage() {
 
   {[
     {
-      title: "POSH (End-to-End Implementation & Training)",
-      desc: "Ensures complete compliance through policy setup, IC formation, training, and ongoing support.",
+      title: "Psychological Safety Facilitator Training",
+      desc: "Builds capability to create safe spaces for open communication and team engagement.",
       icon: <FaUserTie />
     },
     {
-      title: "POSCO Awareness Programs",
-      desc: "Builds awareness around child protection laws and responsible behavior in relevant environments.",
+      title: "Emotional Intelligence Trainer Certification",
+      desc: "Develops the ability to deliver impactful sessions on emotional awareness and regulation.",
       icon: <FaBrain />
     },
     {
-      title: "Psychological Safety & Culture Programs",
-      desc: "Enables employees to speak up, collaborate, and contribute without fear.",
+      title: "Mental Wellness Facilitator Training",
+      desc: "Equips facilitators to support employee well-being and emotional resilience.",
       icon: <FaCrown />
     }
   ].map((item, i) => (
@@ -248,13 +248,13 @@ export default function ComplianceDetailsPage() {
 
   {[
     {
-      title: "Workplace Ethics & Conduct Training",
-      desc: "Strengthens ethical decision-making and responsible workplace behavior.",
+      title: "Workplace Ethics & Conduct TTT",
+      desc: "Enables managers to effectively train teams on leadership and performance practices.",
       icon: <FaRocket />
     },
     {
-      title: "Mental Wellness Interventions",
-      desc: "Supports emotional well-being to improve safety, focus, and productivity.",
+      title: "Leadership & Manager Capability TTT",
+      desc: "Enables managers to effectively train teams on leadership and performance practices.",
       icon: <FaHeart />
     },
     {
@@ -307,24 +307,24 @@ export default function ComplianceDetailsPage() {
 
       {[
         {
-          title: "Assess",
+          title: "Assess Capability",
           icon: <FaSearch />,
-          desc: "We evaluate current compliance status and gaps"
+          desc: "We evaluate current trainer readiness and gaps"
         },
         {
-          title: "Structure",
+          title: "Design Framework",
           icon: <FaPenFancy />,
-          desc: "We establish policies, systems, and frameworks"
+          desc: "We structure programs aligned to organizational needs"
         },
         {
-          title: " Train",
+          title: " Train & Certify",
           icon: <FaChalkboardTeacher />,
-          desc: "We conduct awareness and capability-building sessions"
+          desc: "We build facilitation skills, mindset, and delivery capability"
         },
         {
-          title: "Sustain",
+          title: "Reinforce",
           icon: <FaSyncAlt />,
-          desc: "We provide ongoing support, audits, and reinforcement"
+          desc: "We provide tools, frameworks, and ongoing support"
         }
       ].map((step, i) => (
 

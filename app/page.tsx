@@ -13,6 +13,7 @@ import DigitalLearningSection from "./components/DigitalLearningSection";
 import CountUp from "react-countup";
 import ClientFeedbackScroll from "./components/ClientFeedbackScroll";
 import TrainTrainerSlider from "./components/TrainTrainerSlider";
+import ExecutiveSlider from "./components/ExecutiveSlider";
 
 
 
@@ -41,7 +42,7 @@ const words = [
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, [words.length]);
@@ -63,7 +64,7 @@ const words = [
       if (i === fullText.length) {
         clearInterval(typing);
       }
-    }, 80);
+    }, 40);
 
     return () => clearInterval(typing);
   }, []);
@@ -130,25 +131,32 @@ const words = [
        
 
           {/* VIDEO SECTION - OVERLAPS CURVE */}
-          <div className="relative mt-14 z-30">
+          <div className="relative mt-8 z-30">
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
-              <iframe
-                className="w-full h-[220px] md:h-[380px] bg-black"
-                src="Sample.mp4"
-                title="Company Overview Video"
-                allowFullScreen
-              ></iframe>
+             <video
+  className="w-full h-[280px] md:h-[300px] object-cover bg-black rounded-3xl"
+  src="/sample.mp4"
+  autoPlay
+  muted
+  loop
+  playsInline
+  controls
+/>
             </div>
           </div>
+          <div className="mt-8 flex justify-center">
 <a
   href="/brochure.pdf"
+  download
   target="_blank"
   className="inline-block px-6 py-3 rounded-full text-white font-semibold 
              bg-gradient-to-r from-purple-500 to-indigo-500 
              hover:scale-105 transition"
 >
   Download Brochure ☁️
-</a>        </div>
+</a>    
+</div>
+ </div>
 
         {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
         <div className="absolute bottom-0 left-0 w-full z-10 overflow-hidden">
@@ -221,7 +229,7 @@ const words = [
 </section>
     {/* 🔥 WHAT MAKES US DIFFERENT */}
 {/* 🔥 WHAT MAKES US DIFFERENT */}
-<section className="pt-20 pb-32 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
+<section className="py-10 md:py-12 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
   <div className="max-w-4xl mx-auto px-6">
 
     <h2 
@@ -294,6 +302,13 @@ const words = [
       {/* ================= Train the Trainer (Certification Programs) ================= */}
      <div className="h-20 bg-white"></div>
 <TrainTrainerSlider />
+
+
+<div className="h-20 bg-white"></div>
+ {/* ================= Executive Events & Strategic Offsites ================= */}
+
+ <ExecutiveSlider />
+
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
 <section className="py-12 bg-white">
@@ -322,9 +337,9 @@ const words = [
 
             {/* Thumbnail */}
             <img
-              src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+              src={`https://www.youtube.com/watch?v=${video.id}`}
               alt={video.title}
-              className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+              className="w-full h-full object-contain bg-black transition duration-500 group-hover:scale-110"
             />
 
             {/* Overlay */}
