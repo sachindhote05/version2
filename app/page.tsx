@@ -145,7 +145,7 @@ const words = [
           <div className="relative mt-8 z-30">
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
              <video
-  className="w-full h-[220px] md:h-[380px] object-cover bg-black rounded-3xl"
+  className="w-full h-[280px] md:h-[300px] object-cover bg-black rounded-3xl"
   src="/sample.mp4"
   autoPlay
   muted
@@ -231,7 +231,7 @@ const words = [
 </section>
     {/* 🔥 WHAT MAKES US DIFFERENT */}
 {/* 🔥 WHAT MAKES US DIFFERENT */}
-<section className="pt-20 pb-32 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
+<section className="py-10 md:py-12 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
   <div className="max-w-4xl mx-auto px-6">
 
     <h2 
