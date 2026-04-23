@@ -92,7 +92,7 @@ const words = [
   <div className="max-w-6xl mx-auto text-center">
 
     {/* HEADING */}
-    <h1 className="mt-6 md:mt-10 text-4xl md:text-5xl font-bold leading-snug mb-6">
+    <h1 className="mt0 md:mt-2 text-4xl md:text-5xl font-bold leading-snug mb-6">
 
       <span className="block md:inline">
         Empowering Minds,
@@ -111,7 +111,7 @@ const words = [
     </h1>
 
     {/* TRUST STRIP */}
-    <div className="mt-8">
+    <div className="mt-6">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
         {[
@@ -142,7 +142,7 @@ const words = [
   </div>
 
           {/* VIDEO SECTION - OVERLAPS CURVE */}
-          <div className="relative mt-14 z-30">
+          <div className="relative mt-8 z-30">
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
              <video
   className="w-full h-[220px] md:h-[380px] object-cover bg-black rounded-3xl"
