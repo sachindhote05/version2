@@ -226,7 +226,11 @@ const words = [
 
 
 </section>
-    {/* 🔥 WHAT MAKES US DIFFERENT */}
+   
+
+
+
+
 {/* 🔥 WHAT MAKES US DIFFERENT */}
 <section className="py-10 md:py-12 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
   <div className="max-w-3xl mx-auto px-6">
@@ -265,6 +269,24 @@ const words = [
   </div>
 </section>
 <div className="h-10 bg-white"></div>
+
+ {/* 🔥 cta */}
+ <div className="flex justify-center mb-12">
+  <button
+  onClick={() => setOpen(true)}
+  className="px-8 py-3 rounded-full text-white font-semibold 
+             bg-gradient-to-r from-cyan-400 to-blue-500
+             hover:from-cyan-300 hover:to-blue-400
+             shadow-lg hover:shadow-cyan-500/40
+             transition-all duration-300 
+             hover:scale-105 active:scale-95"
+>
+  Book Consultation →
+</button>
+
+</div>
+
+
 
       {/* ================= SERVICES SLIDER ================= */}
      

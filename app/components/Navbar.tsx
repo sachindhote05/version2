@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation"
 import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
-
+import ConsultationModal from "./ConsultationModal";
 const resources = [
   {
     title: "Downloads",
@@ -39,7 +39,7 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
-
+const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchItem[]>([])
 
@@ -207,6 +207,17 @@ export default function Navbar() {
           </div>
 
           {/* LOGIN BUTTON */}
+      <button
+  onClick={() => setOpen(true)}
+  className="bg-black text-white px-4 py-1.5 rounded-lg text-sm
+             hover:bg-gray-800 transition"
+>
+  Book Consultation
+</button>
+     <ConsultationModal 
+  isOpen={open} 
+  onClose={() => setOpen(false)} 
+/>
          <Link
   href="/login"
   className="bg-black text-white px-4 py-1.5 rounded-lg text-sm hidden sm:block"
@@ -288,9 +299,6 @@ export default function Navbar() {
   )}
 </div>
 
-          <Link href="/clients" className="text-gray-800 hover:text-blue-600 transition">
-            Book Consultation
-          </Link>
 
           <Link href="/contact" className="text-gray-800 hover:text-blue-600 transition">
             Contact
@@ -306,6 +314,9 @@ export default function Navbar() {
         >
           <div className="max-w-7xl mx-auto px-6 py-6 space-y-4">
             {/* MOBILE LOGIN BUTTON */}
+          
+
+
             <Link
               href="/login"
               className="block sm:hidden bg-black text-white px-4 py-2 rounded-lg text-sm text-center w-full"
@@ -380,6 +391,9 @@ export default function Navbar() {
           </div>
         </div>
       )}
+    
     </nav>
+ 
+
   )
 }
