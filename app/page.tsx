@@ -86,59 +86,48 @@ const words = [
       
 
       {/* 🔥 HERO SECTION */}
-     <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white min-h-[100dvh] pt-20 pb-24 md:pt-32 md:pb-48 px-6">
+      <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-48 px-6 overflow-visible">
+        
+        <div className="max-w-6xl mx-auto text-center">
 
-  <div className="max-w-6xl mx-auto text-center">
+          {/* HEADING */}
+          <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4">
+            Empowering Minds, Elevating{" "}
+            <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
+          </h1>
 
-    {/* HEADING */}
-    <h1 className="mt-6 md:mt-10 text-4xl md:text-5xl font-bold leading-snug mb-6">
+          {/* SUBTEXT */}
+        
 
-      <span className="block md:inline">
-        Empowering Minds,
-      </span>
-
-      <span className="block md:inline mt-2 md:mt-0">
-          Elevating
-      </span>
-
-      <br className="block md:hidden" />
-
-      <span className="block md:inline min-w-[110px] mt-[-45px]">
-        <TypewriterText words={[" Lives", " Skills", " Performance", " Leaders"]} />
-      </span>
-
-    </h1>
-
-    {/* TRUST STRIP */}
-    <div className="mt-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-
-        {[
-          { number: 98, suffix: "%", label: "Client Satisfaction" },
-          { number: 50, suffix: "K+", label: "Employees Trained" },
-          { number: 18, suffix: "+", label: "Trained Industries" },
-          { number: 16, suffix: "+", label: "Years Of Experience" },
-        ].map((item, i) => (
-          <div key={i}>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
-              <CountUp
-                end={item.number}
-                duration={2}
-                enableScrollSpy
-                scrollSpyOnce
-              />
-              {item.suffix}
-            </h3>
-            <p className="text-xs md:text-sm text-white/80">
-              {item.label}
-            </p>
+          {/* TRUST STRIP - STATS */}
+          <div className="mt-10 py-">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { number: 98, suffix: "%", label: "Client Satisfaction" },
+                { number: 50, suffix: "K+", label: "Employees Trained" },
+                { number: 18, suffix: "+", label: "Trained Industries" },
+                { number: 16, suffix: "+", label: "Years Of Experience" },
+              ].map((item, i) => (
+                <div key={i}>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                    <CountUp
+                      end={item.number}
+                      duration={2}
+                      enableScrollSpy
+                      scrollSpyOnce
+                    />
+                    {item.suffix}
+                  </h3>
+                  <p className="text-xs md:text-sm text-white/80">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
 
-      </div>
-    </div>
-
-  </div>
+          {/* CTA BUTTON */}
+       
 
           {/* VIDEO SECTION - OVERLAPS CURVE */}
           <div className="relative mt-14 z-30">
@@ -151,18 +140,23 @@ const words = [
               ></iframe>
             </div>
           </div>
-          <div className="mt-6 flex justify-center items-center">
-  <button className="mx-auto bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-    Download Brochure ☁️
-  </button>
-</div>
-        {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
-       <div className="absolute bottom-[-2px] left-0 w-full z-10 overflow-hidden">
-         <svg
-  viewBox="0 0 1440 120"
-  className="w-full h-auto block"
-  preserveAspectRatio="none"
+<a
+  href="/brochure.pdf"
+  target="_blank"
+  className="inline-block px-6 py-3 rounded-full text-white font-semibold 
+             bg-gradient-to-r from-purple-500 to-indigo-500 
+             hover:scale-105 transition"
 >
+  Download Brochure ☁️
+</a>        </div>
+
+        {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
+        <div className="absolute bottom-0 left-0 w-full z-10 overflow-hidden">
+          <svg
+            viewBox="0 0 1440 120"
+            className="w-full h-auto"
+            preserveAspectRatio="none"
+          >
             <path
               fill="#ffffff"
               d="M0,40 Q360,100 720,100 Q1080,100 1440,40 L1440,120 L0,120 Z"
@@ -173,7 +167,7 @@ const words = [
       </div>
 
   
- <section className="py-10 bg-white -mt-2">
+ <section className="py-10 bg-white">
 
   <div className="max-w-5xl mx-auto px-6 text-center">
 
@@ -426,7 +420,7 @@ const words = [
 
         {/* CONTENT */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#1E3A8A] mb-2 underline itallic">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[#1E3A8A] mb-2 underline">
             About Our Founder
           </h2>
 

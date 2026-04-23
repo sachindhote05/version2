@@ -112,20 +112,20 @@ export default function TrainTrainerSlider() {
   const cardOffset = isMobile ? 170 : 260;
 
   return (
-    <section className="relative py-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
-      <div className="text-center mb-20 md:mb-24">
+    <section className="relative py-12 md:py-12 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
+      <div className="text-center mb-12 md:mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Train The Trainer <span className="text-cyan-400">Programs</span>
         </h2>
       </div>
 
       <div
-        className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
+        className="relative min-h-[320px] md:min-h-[360px] mt-6 md:mt-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <motion.div
-          className="relative mx-auto flex h-full w-full max-w-[980px] items-center justify-center"
+         className="relative mx-auto flex h-full w-full items-center justify-center"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.14}
@@ -151,7 +151,7 @@ export default function TrainTrainerSlider() {
                 style={{ zIndex: isActive ? 20 : 10 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="h-[360px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
+                <div className="h-[320px] flex h-full flex-col justify-between rounded-3xl bg-white/10 p-5 text-white shadow-xl shadow-slate-900/20 backdrop-blur border border-white/10">
                   <div className="flex-1 space-y-4">
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
                       {service.icon}

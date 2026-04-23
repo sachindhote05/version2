@@ -130,20 +130,20 @@ export default function CoreSlider() {
   };
 
   return (
-    <section className="relative pt-16 pb-16 md:pt-20 md:pb-20 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
+    <section className="relative pt-12 pb-12 md:pt-16 md:pb-16 bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] overflow-hidden">
 
-    <div className="text-center mb-20 md:mb-24">
+    <div className="text-center mb-12 md:mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Core <span className="text-cyan-400">Transformation Programs</span>
         </h2>
       </div>
 
-     <div className="relative min-h-[360px] md:min-h-[420px] mt-10 md:mt-14"
+     <div className="relative min-h-[320px] md:min-h-[360px] mt-6 md:mt-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <motion.div
-          className="flex justify-center pt-10 md:pt-14"
+          className="flex justify-center pt-6 md:pt-8"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
@@ -163,7 +163,7 @@ x: position * 260,
                   }}
                   className="absolute w-[260px] md:w-[300px]"
                 >
-                <div className="h-[360px] flex flex-col justify-between rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white p-5">
+                <div className="h-[320px] flex flex-col justify-between rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-white p-5">
                   <div className="flex-1 space-y-4">
                     {/* ICON */}
                     <div className={`w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r ${service.gradient}`}>
