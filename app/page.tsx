@@ -14,7 +14,7 @@ import CountUp from "react-countup";
 import ClientFeedbackScroll from "./components/ClientFeedbackScroll";
 import TrainTrainerSlider from "./components/TrainTrainerSlider";
 import ExecutiveSlider from "./components/ExecutiveSlider";
-
+import ConsultationModal from "./components/ConsultationModal";
 
 
 export default function Home() 
@@ -30,7 +30,7 @@ const words = [
 
   const fullText = "Empowering Minds";
   const [displayText, setDisplayText] = useState("");
-  
+  const [open, setOpen] = useState(false);
 
   const videos = useMemo<string[]>(() => [
   "/sample.mp4"
@@ -380,6 +380,58 @@ const words = [
 
   </div>
 </section>
+<section className="py-12 bg-white">
+  <div className="max-w-7xl mx-auto px-6 text-center">
+
+    {/* TITLE */}
+    <h2 className="text-3xl md:text-4xl font-bold mb-10 text-black">
+      Our Clients
+    </h2>
+
+    {/* LOGO GRID */}
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+
+      {[
+        "/clients/mahindra.png",
+        "/clients/pinnacle.png",
+        "/clients/unifocus.png",
+        "/clients/ascenthr.png",
+        "/clients/alyve.png",
+        "/clients/ciel.png",
+        "/clients/boomi.png",
+        "/clients/vvdn.png",
+        "/clients/zinavo.png",
+        "/clients/abhayahasta.png",
+        "/clients/paradise.png",
+        "/clients/tdps.png",
+        "/clients/amc.png",
+        "/clients/digicomm.png",
+        "/clients/pnrao.png",
+        "/clients/buywow.png",
+        "/clients/online.png",
+        "/clients/xitadel.png",
+        "/clients/letzryd.png",
+        "/clients/park.png",
+      ].map((logo, i) => (
+
+        <div
+          key={i}
+          className="bg-gray-100 p-4 rounded-lg flex items-center justify-center
+                     hover:shadow-md transition"
+        >
+          <img
+            src={logo}
+            alt="client"
+            className="h-10 object-contain"
+          />
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
 
 
 <ClientFeedbackScroll />
@@ -401,11 +453,24 @@ const words = [
       </p>
 
       {/* BUTTON */}
-      <button className="bg-[#1E3A8A] text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-800 transition">
-        Book a Consultation
-      </button>
+     <button
+  onClick={() => setOpen(true)}
+  className="px-8 py-3 rounded-full text-white font-semibold 
+             bg-gradient-to-r from-cyan-400 to-blue-500
+             hover:from-cyan-300 hover:to-blue-400
+             shadow-lg hover:shadow-cyan-500/40
+             transition-all duration-300 
+             hover:scale-105 active:scale-95"
+>
+  Book Consultation →
+</button>
+<ConsultationModal 
+  isOpen={open} 
+  onClose={() => setOpen(false)} 
+/>
 
     </div>
+    
 
   </div>
 </section>

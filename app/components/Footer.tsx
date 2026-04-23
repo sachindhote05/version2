@@ -51,11 +51,27 @@ export default function Footer() {
 
 {/* SOCIAL ICONS */}
 <div className="flex justify-center items-center gap-6 py-6 border-t border-gray-700 mt-10">
-  <FaFacebookF className="text-gray-400 hover:text-white cursor-pointer text-lg" />
-  <FaInstagram className="text-gray-400 hover:text-white cursor-pointer text-lg" />
-  <FaYoutube className="text-gray-400 hover:text-white cursor-pointer text-lg" />
-  <FaXTwitter className="text-gray-400 hover:text-white cursor-pointer text-lg" />
-  <FaLinkedinIn className="text-gray-400 hover:text-white cursor-pointer text-lg" />
+
+  <a href="https://www.facebook.com/share/1FcsNxZm8M/" target="_blank" rel="noopener noreferrer">
+    <FaFacebookF className="text-gray-400 hover:text-white cursor-pointer text-lg" />
+  </a>
+
+  <a href="https://www.instagram.com/drshilpigupta.version2?igsh=OWFzbGg1N2hhMmNz" target="_blank" rel="noopener noreferrer">
+    <FaInstagram className="text-gray-400 hover:text-white cursor-pointer text-lg" />
+  </a>
+
+  <a href="https://www.youtube.com/@DrShilpigupta" target="_blank" rel="noopener noreferrer">
+    <FaYoutube className="text-gray-400 hover:text-white cursor-pointer text-lg" />
+  </a>
+
+  <a href="https://twitter.com/yourpage" target="_blank" rel="noopener noreferrer">
+    <FaXTwitter className="text-gray-400 hover:text-white cursor-pointer text-lg" />
+  </a>
+
+  <a href="https://www.linkedin.com/company/105609761/admin/dashboard/" target="_blank" rel="noopener noreferrer">
+    <FaLinkedinIn className="text-gray-400 hover:text-white cursor-pointer text-lg" />
+  </a>
+
 </div>
 
   {/* Bottom */}
