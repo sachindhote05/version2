@@ -13,6 +13,7 @@ import DigitalLearningSection from "./components/DigitalLearningSection";
 import CountUp from "react-countup";
 import ClientFeedbackScroll from "./components/ClientFeedbackScroll";
 import TrainTrainerSlider from "./components/TrainTrainerSlider";
+import ExecutiveSlider from "./components/ExecutiveSlider";
 
 
 
@@ -41,7 +42,7 @@ const words = [
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, [words.length]);
@@ -63,7 +64,7 @@ const words = [
       if (i === fullText.length) {
         clearInterval(typing);
       }
-    }, 80);
+    }, 40);
 
     return () => clearInterval(typing);
   }, []);
@@ -303,6 +304,13 @@ const words = [
       {/* ================= Train the Trainer (Certification Programs) ================= */}
      <div className="h-20 bg-white"></div>
 <TrainTrainerSlider />
+
+
+<div className="h-20 bg-white"></div>
+ {/* ================= Executive Events & Strategic Offsites ================= */}
+
+ <ExecutiveSlider />
+
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
 <section className="py-12 bg-white">
