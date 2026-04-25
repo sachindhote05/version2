@@ -7,6 +7,9 @@ import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 import ConsultationModal from "./ConsultationModal";
+import { FaBell } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+
 const resources = [
   {
     title: "Downloads",
@@ -206,26 +209,39 @@ const [open, setOpen] = useState(false);
             )}
           </div>
 
-          {/* LOGIN BUTTON */}
-      <button
-  onClick={() => setOpen(true)}
-  className="bg-black text-white px-4 py-1.5 rounded-lg text-sm
-             hover:bg-gray-800 transition"
->
-  Book Consultation
-</button>
-     <ConsultationModal 
-  isOpen={open} 
-  onClose={() => setOpen(false)} 
-/>
-         <Link
-  href="/login"
-  className="bg-black text-white px-4 py-1.5 rounded-lg text-sm hidden sm:block"
-  onClick={closeMobileMenu}
->
-  Login
-</Link>
+          
 
+{/* LOGIN */}
+         <div className="hidden md:flex items-center gap-3">
+
+  {/* LOGIN */}
+  <Link href="/login">
+    <button
+      className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md 
+      bg-gradient-to-r from-cyan-500 to-blue-500 text-white
+      transition-all duration-300 ease-in-out
+      hover:from-cyan-400 hover:to-blue-400 
+      hover:scale-105 hover:shadow-lg"
+    >
+      <FaBell className="text-xs transition-transform duration-300 group-hover:rotate-12" />
+      Log in
+    </button>
+  </Link>
+
+  {/* SIGN UP */}
+  <Link href="/signup">
+    <button
+     className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md 
+      bg-gradient-to-r from-cyan-500 to-blue-500 text-white
+      transition-all duration-300 ease-in-out
+      hover:from-cyan-400 hover:to-blue-400 
+      hover:scale-105 hover:shadow-lg"
+    >
+      Sign up
+    </button>
+  </Link>
+
+</div>
           {/* HAMBURGER MENU */}
           <button
             ref={hamburgerRef}
@@ -317,13 +333,20 @@ const [open, setOpen] = useState(false);
           
 
 
-            <Link
-              href="/login"
-              className="block sm:hidden bg-black text-white px-4 py-2 rounded-lg text-sm text-center w-full"
-              onClick={closeMobileMenu}
-            >
-              Login
-            </Link>
+           {/* MOBILE LOGIN ICONS */}
+<div className="flex md:hidden items-center gap-3">
+
+  {/* BELL ICON */}
+  <FaBell className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition" />
+
+  {/* USER ICON */}
+  <Link href="/login">
+    <div className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition">
+      <FaUser />
+    </div>
+  </Link>
+
+</div>
 
             {/* NAVIGATION LINKS */}
             <Link
