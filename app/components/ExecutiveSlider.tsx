@@ -177,7 +177,7 @@ x: position * 320,
                    <div className="mt-auto pt-4">
   <Link
     href={{
-      pathname: "/core-details",
+      pathname: "/Executive-details",
       query: {
         title: service.title,
         desc: service.shortDesc,

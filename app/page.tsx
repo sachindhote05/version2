@@ -36,16 +36,18 @@ const words = [
   "/sample.mp4"
 ], []);
 
-  const [index, setIndex] = useState(0);
+
   const [videoIndex, setVideoIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 1200);
+ const [index, setIndex] = useState(0);
 
-    return () => clearInterval(interval);
-  }, [words.length]);
+useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % words.length);
+  }, 1200);
+
+  return () => clearInterval(interval);
+}, [words.length]);
 
   useEffect(() => {
     AOS.init({
@@ -80,7 +82,7 @@ const words = [
   }, [videos.length]);
 
   return (
-    <main className="overflow-x-hidden pt-24">
+    <main className="overflow-x-hidden pt-6">
     
 
       
@@ -88,12 +90,13 @@ const words = [
       {/* 🔥 HERO SECTION */}
       <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-20 px-6 overflow-visible">
         
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
 
           {/* HEADING */}
-          <h1 className="text-3xl md:text-2xl font-bold leading-tight mb-4">
+          <h1 className="text-4xl md:text-4
+          xl font-bold leading-tight mb-4">
             Empowering Minds, Elevating{" "}
-            <TypewriterText words={["Lives", "Skills", "Performance", "Leaders"]} />
+           <TypewriterText words={[" Lives", " Skills", " Performance", " Leaders"]} />
           </h1>
 
           {/* SUBTEXT */}
