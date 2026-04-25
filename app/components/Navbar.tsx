@@ -242,6 +242,22 @@ const [open, setOpen] = useState(false);
   </Link>
 
 </div>
+
+  {/* MOBILE LOGIN ICONS */}
+<div className="flex md:hidden items-center gap-3">
+
+  {/* BELL ICON */}
+  <FaBell className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition" />
+
+  {/* USER ICON */}
+  <Link href="/login">
+    <div className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition">
+      <FaUser />
+    </div>
+  </Link>
+
+</div>
+
           {/* HAMBURGER MENU */}
           <button
             ref={hamburgerRef}
@@ -333,20 +349,7 @@ const [open, setOpen] = useState(false);
           
 
 
-           {/* MOBILE LOGIN ICONS */}
-<div className="flex md:hidden items-center gap-3">
-
-  {/* BELL ICON */}
-  <FaBell className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition" />
-
-  {/* USER ICON */}
-  <Link href="/login">
-    <div className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition">
-      <FaUser />
-    </div>
-  </Link>
-
-</div>
+         
 
             {/* NAVIGATION LINKS */}
             <Link
