@@ -9,6 +9,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/
 import ConsultationModal from "./ConsultationModal";
 import { FaBell } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import AuthModal from "./AuthModal";
 
 const resources = [
   {
@@ -36,6 +37,7 @@ const mobileMenuItems = [
 
 
 export default function Navbar() {
+  const [showAuth, setShowAuth] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
  const [activeResource, setActiveResource] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -230,15 +232,15 @@ const [open, setOpen] = useState(false);
 
   {/* SIGN UP */}
   <Link href="/signup">
-    <button
-     className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md 
-      bg-gradient-to-r from-cyan-500 to-blue-500 text-white
-      transition-all duration-300 ease-in-out
-      hover:from-cyan-400 hover:to-blue-400 
-      hover:scale-105 hover:shadow-lg"
-    >
-      Sign up
-    </button>
+   <button
+  className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
+  bg-gradient-to-r from-cyan-500 to-blue-500 text-white
+  transition-all duration-300 ease-in-out
+  hover:from-cyan-400 hover:to-blue-400
+  hover:scale-105 hover:shadow-lg"
+>
+  Sign up
+</button>
   </Link>
 
 </div>
@@ -417,7 +419,7 @@ const [open, setOpen] = useState(false);
           </div>
         </div>
       )}
-    
+  
     </nav>
  
 
