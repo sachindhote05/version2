@@ -10,6 +10,8 @@ import ConsultationModal from "./ConsultationModal";
 import { FaBell } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import AuthModal from "./AuthModal";
+import SignupModal from "./SignupModal";
+import LoginModal from "./LoginModal";
 
 const resources = [
   {
@@ -38,18 +40,23 @@ const mobileMenuItems = [
 
 export default function Navbar() {
   const [showAuth, setShowAuth] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
- const [activeResource, setActiveResource] = useState<number | null>(null);
+  const [activeResource, setActiveResource] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
-const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchItem[]>([])
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  
+  // Refs to track scroll state without causing re-renders
+  const lastScrollY = useRef(0);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const isScrollingDown = useRef(false);
+  const minScrollDistance = useRef(10); // Minimum pixels to scroll before triggering logic
 
   const router = useRouter()
   const pathname = usePathname()
@@ -108,42 +115,59 @@ const [open, setOpen] = useState(false);
     closeMobileMenu();
   }, [pathname]);
 
+  // Optimized scroll handler with proper debouncing and state management
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
 
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
+      // Ignore small scroll movements to prevent flickering
+      if (scrollDifference < minScrollDistance.current) {
+        return;
       }
 
-      const timeout = setTimeout(() => {
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          setShowNavbar(false); // Hide when scrolling down past 100px
-        } else {
-          setShowNavbar(true); // Show when scrolling up
-        }
-        setLastScrollY(currentScrollY);
-      }, 100); // Debounce for 100ms to prevent flicker
+      const nowScrollingDown = currentScrollY > lastScrollY.current;
 
-      setScrollTimeout(timeout);
+      // Clear existing timeout to prevent multiple state updates
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      // Debounce the state update
+      scrollTimeout.current = setTimeout(() => {
+        // Only update state if scroll direction actually changed
+        if (nowScrollingDown !== isScrollingDown.current) {
+          isScrollingDown.current = nowScrollingDown;
+          
+          // Hide navbar when scrolling down past 100px, show when scrolling up or at top
+          if (nowScrollingDown && currentScrollY > 100) {
+            setShowNavbar(false);
+          } else {
+            setShowNavbar(true);
+          }
+        }
+        lastScrollY.current = currentScrollY;
+      }, 50); // Reduced debounce time for snappier response
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Use passive event listener for better scroll performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
       }
     };
-  }, [lastScrollY, scrollTimeout]);
+  }, []); // Empty dependency array - no re-runs needed
 
   return (
-    <nav
-      className={`w-full bg-white/80 backdrop-blur-md shadow-md fixed top-0 z-50 transition-transform duration-500 ease-in-out ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
+    <>
+      <nav
+        className={`w-full bg-white/80 backdrop-blur-md shadow-md fixed top-0 z-50 transition-transform duration-500 ease-in-out ${
+          showNavbar ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
       {/* TOP NAVBAR */}
      <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
         {/* LOGO */}
@@ -216,32 +240,19 @@ const [open, setOpen] = useState(false);
 {/* LOGIN */}
          <div className="hidden md:flex items-center gap-3">
 
-  {/* LOGIN */}
-  <Link href="/login">
-    <button
-      className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md 
-      bg-gradient-to-r from-cyan-500 to-blue-500 text-white
-      transition-all duration-300 ease-in-out
-      hover:from-cyan-400 hover:to-blue-400 
-      hover:scale-105 hover:shadow-lg"
-    >
-      <FaBell className="text-xs transition-transform duration-300 group-hover:rotate-12" />
-      Log in
-    </button>
-  </Link>
+ 
 
-  {/* SIGN UP */}
-  <Link href="/signup">
-   <button
-  className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
+  {/* LOG IN */}
+  <button
+    onClick={() => setShowLoginModal(true)}
+   className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
   bg-gradient-to-r from-cyan-500 to-blue-500 text-white
   transition-all duration-300 ease-in-out
   hover:from-cyan-400 hover:to-blue-400
   hover:scale-105 hover:shadow-lg"
 >
-  Sign up
+  Log In
 </button>
-  </Link>
 
 </div>
 
@@ -252,11 +263,12 @@ const [open, setOpen] = useState(false);
   <FaBell className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition" />
 
   {/* USER ICON */}
-  <Link href="/login">
-    <div className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition">
-      <FaUser />
-    </div>
-  </Link>
+  <button 
+    onClick={() => setShowLoginModal(true)}
+    className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition"
+  >
+    <FaUser />
+  </button>
 
 </div>
 
@@ -419,9 +431,13 @@ const [open, setOpen] = useState(false);
           </div>
         </div>
       )}
-  
-    </nav>
- 
+      </nav>
 
+      {/* Login Modal - Rendered Outside Nav */}
+      <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
+
+      {/* Signup Modal - Rendered Outside Nav */}
+      <SignupModal isOpen={showSignupModal} onClose={() => setShowSignupModal(false)} />
+    </>
   )
 }
