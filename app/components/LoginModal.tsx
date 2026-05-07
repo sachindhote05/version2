@@ -72,10 +72,10 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       // reset
       setType(null);
 
-    } catch (err) {
-      console.error(err);
-      setError("Login failed");
-    } finally {
+    }  catch (err: any) {
+  console.error(err);
+  setError(err.message);
+} finally {
       setIsLoading(false);
     }
   };

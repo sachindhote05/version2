@@ -161,7 +161,7 @@ useEffect(() => {
  </div>
 
         {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
-        <div className="absolute bottom-0 left-0 w-full z-10 overflow-hidden">
+       <div className="absolute bottom-0 left-0 w-full z-0 overflow-hidden pointer-events-none">
           <svg
             viewBox="0 0 1440 120"
             className="w-full h-auto"
