@@ -39,6 +39,7 @@ const mobileMenuItems = [
 
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -243,8 +244,7 @@ export default function Navbar() {
  
 
   {/* LOG IN */}
-  <button
-    onClick={() => setShowLoginModal(true)}
+  <button onClick={() => setShowLoginModal(true)}
    className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
   bg-gradient-to-r from-cyan-500 to-blue-500 text-white
   transition-all duration-300 ease-in-out
@@ -264,7 +264,7 @@ export default function Navbar() {
 
   {/* USER ICON */}
   <button 
-    onClick={() => setShowLoginModal(true)}
+    onClick={() => setOpen(true)}
     className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition"
   >
     <FaUser />
@@ -437,7 +437,13 @@ export default function Navbar() {
       <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
 
       {/* Signup Modal - Rendered Outside Nav */}
+      
       <SignupModal isOpen={showSignupModal} onClose={() => setShowSignupModal(false)} />
+    
+    <button onClick={() => setOpen(true)}></button>
+    
     </>
+
+    
   )
 }
