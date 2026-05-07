@@ -39,6 +39,14 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      localStorage.setItem(
+  "user",
+  JSON.stringify({
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL,
+  })
+);
 
       // ✅ Firestore save
       await setDoc(
@@ -56,9 +64,10 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       onClose();
 
       // ✅ Success message
-      setTimeout(() => {
-        alert("You have logged in successfully ✅");
-      }, 200);
+     setTimeout(() => {
+  alert("You have logged in successfully ✅");
+  window.location.reload();
+}, 200);
 
       // reset
       setType(null);

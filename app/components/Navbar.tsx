@@ -49,7 +49,7 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchItem[]>([])
-
+  const [user, setUser] = useState<any>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   
@@ -115,7 +115,14 @@ export default function Navbar() {
   useEffect(() => {
     closeMobileMenu();
   }, [pathname]);
+   
+  useEffect(() => {
+  const storedUser = localStorage.getItem("user");
 
+  if (storedUser) {
+    setUser(JSON.parse(storedUser));
+  }
+}, []);
   // Optimized scroll handler with proper debouncing and state management
   useEffect(() => {
     const handleScroll = () => {
@@ -244,15 +251,29 @@ export default function Navbar() {
  
 
   {/* LOG IN */}
-  <button onClick={() => setShowLoginModal(true)}
-   className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
-  bg-gradient-to-r from-cyan-500 to-blue-500 text-white
-  transition-all duration-300 ease-in-out
-  hover:from-cyan-400 hover:to-blue-400
-  hover:scale-105 hover:shadow-lg"
->
-  Log In
-</button>
+  {
+  user ? (
+    <div className="flex items-center gap-2">
+      
+      <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">
+        {user.name?.charAt(0)}
+      </div>
+
+     
+    </div>
+  ) : (
+    <button
+      onClick={() => setShowLoginModal(true)}
+      className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
+      bg-gradient-to-r from-cyan-500 to-blue-500 text-white
+      transition-all duration-300 ease-in-out
+      hover:from-cyan-400 hover:to-blue-400
+      hover:scale-105 hover:shadow-lg"
+    >
+      Log In
+    </button>
+  )
+}
 
 </div>
 
