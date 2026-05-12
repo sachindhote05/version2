@@ -1,17 +1,14 @@
 "use client"
 
 import { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { useRouter, usePathname } from "next/navigation"
 import { searchData, type SearchItem } from "@/data/searchData"
 import Link from "next/link"
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
-import ConsultationModal from "./ConsultationModal";
-import { FaBell } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
-import AuthModal from "./AuthModal";
+import { FaBell, FaUser } from "react-icons/fa";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
+import { auth } from "@/lib/firebase";
 
 const resources = [
   {
@@ -39,8 +36,6 @@ const mobileMenuItems = [
 
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [showAuth, setShowAuth] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -49,8 +44,10 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchItem[]>([])
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   
   // Refs to track scroll state without causing re-renders
@@ -117,12 +114,42 @@ export default function Navbar() {
   }, [pathname]);
    
   useEffect(() => {
-  const storedUser = localStorage.getItem("user");
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+    });
 
-  if (storedUser) {
-    setUser(JSON.parse(storedUser));
-  }
-}, []);
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(event.target as Node)
+      ) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    if (userMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [userMenuOpen]);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      setUserMenuOpen(false);
+      setUser(null);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   // Optimized scroll handler with proper debouncing and state management
   useEffect(() => {
     const handleScroll = () => {
@@ -247,35 +274,46 @@ export default function Navbar() {
 
 {/* LOGIN */}
          <div className="hidden md:flex items-center gap-3">
+          {user ? (
+            <div className="relative" ref={userMenuRef}>
+              <button
+                type="button"
+                onClick={() => setUserMenuOpen((prev) => !prev)}
+                className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold transition-shadow shadow-sm hover:shadow-lg"
+              >
+                {((user.displayName || user.email || "")
+                  .trim()
+                  .charAt(0)
+                  .toUpperCase()) || "U"}
+              </button>
 
- 
-
-  {/* LOG IN */}
-  {
-  user ? (
-    <div className="flex items-center gap-2">
-      
-      <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">
-        {user.name?.charAt(0)}
-      </div>
-
-     
-    </div>
-  ) : (
-    <button
-      onClick={() => setShowLoginModal(true)}
-      className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md
-      bg-gradient-to-r from-cyan-500 to-blue-500 text-white
-      transition-all duration-300 ease-in-out
-      hover:from-cyan-400 hover:to-blue-400
-      hover:scale-105 hover:shadow-lg"
-    >
-      Log In
-    </button>
-  )
-}
-
-</div>
+              {userMenuOpen && (
+                <div className="absolute right-0 mt-3 w-56 rounded-2xl bg-white shadow-xl border border-slate-200 text-slate-900 overflow-hidden z-50">
+                  <div className="px-4 py-4 border-b border-slate-200">
+                    <p className="text-sm text-slate-500">Signed in as</p>
+                    <p className="font-semibold text-slate-900 truncate">
+                      {user.displayName || user.email}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleSignOut}
+                    className="w-full text-left px-4 py-3 text-sm text-slate-700 hover:bg-slate-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowLoginModal(true)}
+              className="flex items-center gap-2 px-4 py-1.5 text-sm rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white transition-all duration-300 ease-in-out hover:from-cyan-400 hover:to-blue-400 hover:scale-105 hover:shadow-lg"
+            >
+              Log In
+            </button>
+          )}
+        </div>
 
   {/* MOBILE LOGIN ICONS */}
 <div className="flex md:hidden items-center gap-3">
@@ -285,7 +323,7 @@ export default function Navbar() {
 
   {/* USER ICON */}
   <button 
-    onClick={() => setOpen(true)}
+    onClick={() => setShowLoginModal(true)}
     className="text-gray-700 text-lg cursor-pointer hover:text-blue-500 transition"
   >
     <FaUser />
@@ -460,8 +498,6 @@ export default function Navbar() {
       {/* Signup Modal - Rendered Outside Nav */}
       
       <SignupModal isOpen={showSignupModal} onClose={() => setShowSignupModal(false)} />
-    
-    <button onClick={() => setOpen(true)}></button>
     
     </>
 
