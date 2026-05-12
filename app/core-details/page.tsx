@@ -1,10 +1,15 @@
 ﻿"use client";
 import { useState } from "react";
-import BookingSection from "../components/BookingSection"
 import { FaUserTie, FaBrain, FaCrown, FaRocket, FaHeart, FaSearch, FaPenFancy, FaChalkboardTeacher, FaSyncAlt } from "react-icons/fa";
 
 export default function CoreDetailsPage() {
-  const [showBooking, setShowBooking] = useState(false);
+const [showBooking, setShowBooking] = useState(false);
+
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  date: "",
+});
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1e3a8a] to-[#0f172a] pt-32 px-6 text-white">
 
@@ -30,11 +35,10 @@ export default function CoreDetailsPage() {
         </div>
         
 
-{/* 🔥 CALENDLY SECTION */}
-{/* BUTTON */}
+{/* 🔥 BOOK CONSULTATION BUTTON */}
 <div className="text-center mb-10">
   <button
-    onClick={() => setShowBooking(!showBooking)}
+    onClick={() => setShowBooking(true)}
     className="px-10 py-4 rounded-full 
     bg-gradient-to-r from-cyan-400 to-blue-500 
     text-black font-semibold
@@ -43,13 +47,6 @@ export default function CoreDetailsPage() {
     Book Consultation
   </button>
 </div>
-
-{/* BOOKING SECTION */}
-{showBooking && (
-  <div className="mt-6 animate-fadeIn">
-    <BookingSection />
-  </div>
-)}
  
  {/* 🔥 VIDEO SECTION */}
 <div className="bg-white/10 rounded-3xl p-8 text-white shadow-xl shadow-slate-900/30 mb-16 border border-white/10 backdrop-blur">
@@ -155,25 +152,18 @@ export default function CoreDetailsPage() {
   </div>
 
   {/* 🔥 BUTTON */}
-  <div className="text-center mt-12">
-    <button
-      onClick={() => setShowBooking(!showBooking)}
-      className="px-10 py-4 rounded-full
-      bg-gradient-to-r from-cyan-400 to-blue-500
-      text-black font-semibold
-      hover:scale-110 hover:shadow-lg
-      transition-all duration-300"
-    >
-      {showBooking ? "Close Booking" : "Book Consultation"}
-    </button>
-  </div>
-
-  {/* 🔥 BOOKING SECTION */}
-  {showBooking && (
-    <div className="mt-10 animate-fadeIn">
-      <BookingSection />
-    </div>
-  )}
+<div className="text-center mt-12">
+  <button
+    onClick={() => setShowBooking(true)}
+    className="px-10 py-4 rounded-full
+    bg-gradient-to-r from-cyan-400 to-blue-500
+    text-black font-semibold
+    hover:scale-110 hover:shadow-lg
+    transition-all duration-300"
+  >
+    Book Consultation
+  </button>
+</div>
 
 </div>
 
@@ -339,6 +329,154 @@ export default function CoreDetailsPage() {
   </div>
 
 </div>
+{/* 🔥 BOOKING POPUP */}
+{showBooking && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+
+    <div className="w-full max-w-lg rounded-3xl border border-white/10 bg-[#24345f] p-8 shadow-2xl relative">
+
+      {/* CLOSE BUTTON */}
+      <button
+        onClick={() => setShowBooking(false)}
+        className="absolute top-4 right-5 text-white text-3xl"
+      >
+        ×
+      </button>
+
+      <h2 className="text-3xl font-bold text-center text-white mb-8">
+        Book Consultation
+      </h2>
+
+      <div className="space-y-5">
+
+        {/* NAME */}
+        <div>
+          <label className="block text-white mb-2">
+            Name
+          </label>
+
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
+            className="w-full rounded-xl bg-white/10 border border-white/10 px-5 py-4 text-white placeholder:text-slate-400 outline-none"
+          />
+        </div>
+
+        {/* EMAIL */}
+        <div>
+          <label className="block text-white mb-2">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+            className="w-full rounded-xl bg-white/10 border border-white/10 px-5 py-4 text-white placeholder:text-slate-400 outline-none"
+          />
+        </div>
+
+       {/* DATE */}
+<div>
+  <label className="block text-white mb-2">
+    Date
+  </label>
+
+  <input
+    type="date"
+    min={new Date().toISOString().split("T")[0]}
+    value={formData.date}
+    onChange={(e) =>
+      setFormData({ ...formData, date: e.target.value })
+    }
+    className="w-full rounded-xl bg-white/10 border border-white/10 px-5 py-4 text-white outline-none"
+  />
+</div>
+
+{/* EMAIL ERROR */}
+{formData.email &&
+  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && (
+    <p className="text-red-400 text-sm">
+      Invalid email format
+    </p>
+)}
+
+{/* BUTTONS */}
+<div className="flex gap-4 pt-4">
+
+  {/* CANCEL */}
+  <button
+    onClick={() => setShowBooking(false)}
+    className="flex-1 rounded-xl bg-white/10 py-4 text-white font-semibold"
+  >
+    Cancel
+  </button>
+
+  {/* SUBMIT */}
+ 
+<button
+  type="button"
+  disabled={
+    !formData.name ||
+    !formData.email ||
+    !formData.date ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+  }
+  onClick={() => {
+
+    // EMAIL BODY
+    const subject = "New Consultation Booking";
+
+    const body = `
+Name: ${formData.name}
+
+Email: ${formData.email}
+
+Date: ${formData.date}
+    `;
+
+    // OPEN MAIL
+    window.location.href = `mailto:sampadabrijpuriya@gmail.com.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // CLOSE POPUP
+    setShowBooking(false);
+
+    // RESET FORM
+    setFormData({
+      name: "",
+      email: "",
+      date: "",
+    });
+  }}
+  className={`flex-1 rounded-xl py-4 font-semibold transition-all duration-300
+    ${
+      !formData.name ||
+      !formData.email ||
+      !formData.date ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+        ? "bg-gray-500 cursor-not-allowed text-white"
+        : "bg-gradient-to-r from-cyan-400 to-blue-500 text-black hover:scale-105"
+    }
+  `}
+>
+  Submit
+</button>
+
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+)}
  </div>
 </div>
 
