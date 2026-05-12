@@ -26,60 +26,48 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     if (e.key === "Escape") onClose();
   };
 
-  const handleGoogleLogin = async () => {
-    if (!type) {
-      setError("Please select Corporate or Individual");
-      return;
-    }
+const handleGoogleLogin = async () => {
+  if (!type) {
+    setError("Please select Corporate or Individual");
+    return;
+  }
 
-    try {
-      setIsLoading(true);
-      setError("");
+  setIsLoading(true);
+  setError("");
 
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      localStorage.setItem(
-  "user",
-  JSON.stringify({
-    name: user.displayName,
-    email: user.email,
-    photo: user.photoURL,
-  })
-);
+  try {
+    const provider = new GoogleAuthProvider();
 
-      // ✅ Firestore save
-      await setDoc(
-        doc(db, "users", user.uid),
-        {
-          name: user.displayName,
-          email: user.email,
-          type: type,
-          createdAt: new Date(),
-        },
-        { merge: true }
-      );
+    // ✅ GOOGLE POPUP LOGIN (NO PASSWORD)
+    const result = await signInWithPopup(auth, provider);
 
-      // ✅ Close modal
-      onClose();
+    const user = result.user;
 
-      // ✅ Success message
-     setTimeout(() => {
-  alert("You have logged in successfully ✅");
-  window.location.reload();
-}, 200);
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        name: user.displayName,
+        email: user.email,
+        type: type,
+        createdAt: new Date(),
+      },
+      { merge: true }
+    );
 
-      // reset
-      setType(null);
+    alert("Login successful ✅");
+    onClose();
 
-    }  catch (err: any) {
-  console.error(err);
-  setError(err.message);
-} finally {
-      setIsLoading(false);
-    }
-  };
+  } catch (error: any) {
+    if (error.code === "auth/popup-closed-by-user") return;
 
+    console.log(error);
+    setError("Login failed");
+  }
+  
+  finally {
+    setIsLoading(false);
+  }
+};
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"

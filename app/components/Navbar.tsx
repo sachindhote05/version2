@@ -10,6 +10,9 @@ import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
 import { auth } from "@/lib/firebase";
 
+
+
+
 const resources = [
   {
     title: "Downloads",
@@ -36,6 +39,8 @@ const mobileMenuItems = [
 
 
 export default function Navbar() {
+  const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -44,8 +49,6 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchItem[]>([])
-  const [user, setUser] = useState<FirebaseUser | null>(null);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
