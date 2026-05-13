@@ -148,15 +148,16 @@ useEffect(() => {
           </div>
           <div className="mt-4 flex justify-center">
 <a
-  href="/brochure.pdf"
+  href="/Brochure.pdf"
   download
   target="_blank"
+  rel="noopener noreferrer"
   className="inline-block px-6 py-3 rounded-full text-white font-semibold 
-             bg-gradient-to-r from-purple-500 to-indigo-500 
-             hover:scale-105 transition"
+  bg-gradient-to-r from-purple-500 to-indigo-500 
+  hover:scale-105 transition"
 >
   Download Brochure ☁️
-</a>    
+</a>  
 </div>
  </div>
 
