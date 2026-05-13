@@ -9,6 +9,13 @@ outcomes: string[]
    icon: React.ReactNode
   gradient: string
 }
+const sectionMap: Record<number, string> = {
+  1: "core-transformation",
+  2: "compliance-safety",
+  3: "digital-learning",
+  4: "train-trainer",
+  5: "executive-events",
+};
 
 const services: Service[] = [
   {
@@ -317,23 +324,53 @@ export default function ServicesSlider() {
                 <h4 className="text-lg font-semibold text-white mb-3">
                   {services[activeIndex].title}
                 </h4>
-               <ul className="text-slate-300 text-sm space-y-1 mt-1">
- {services[activeIndex].shortDesc.split(".").map((item, i) => (
-    <li key={i} className="flex items-start gap-2">
-      <span className="text-green-400 mt-1">✔</span>
-      <span>{item}</span>
+              <ul className="text-slate-300 text-sm space-y-4 mt-3">
+
+  {services[activeIndex].outcomes.map((item, i) => (
+
+    <li
+      key={i}
+      className="flex items-start gap-3"
+    >
+
+      <span className="text-cyan-400 mt-1 text-sm">
+        ✔
+      </span>
+
+      <span className="leading-relaxed">
+        {item}
+      </span>
+
     </li>
+
   ))}
+
 </ul>
                 
-                <button className={`
-                  mt-6 px-4 py-2 rounded-xl font-semibold text-white
-                  bg-gradient-to-r ${services[activeIndex].gradient}
-                  hover:opacity-90 transition-opacity duration-300
-                  shadow-lg hover:shadow-xl
-                `}>
-                  Learn More
-                </button>
+                <button
+  onClick={() => {
+    const sectionId = sectionMap[services[activeIndex].id];
+
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }}
+  className={`
+    mt-6 px-8 py-4 rounded-2xl font-semibold text-white text-base
+    cursor-pointer
+    bg-gradient-to-r ${services[activeIndex].gradient}
+    hover:opacity-90 transition-all duration-300
+    hover:scale-105
+    shadow-lg hover:shadow-xl
+  `}
+>
+  Learn More
+</button>
               </div>
             </div>
           </div>

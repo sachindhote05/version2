@@ -305,7 +305,9 @@ useEffect(() => {
 
    
 
-    <CoreSlider />
+   <div id="core-transformation">
+  <CoreSlider />
+</div>
     
 
 
@@ -315,23 +317,31 @@ useEffect(() => {
       {/* ================= Compliance & Workplace Safety ================= */}
 
     
-    <ComplianceSafetySlider />
+   <div id="compliance-safety">
+  <ComplianceSafetySlider />
+</div>
   
 <div className="h-10 bg-white"></div>
       {/* =================Digital Learning & Capability Systems================= */}
 
-    <DigitalLearningSection />
+   <div id="digital-learning">
+  <DigitalLearningSection />
+</div>
 
  
       {/* ================= Train the Trainer (Certification Programs) ================= */}
      <div className="h-10 bg-white"></div>
-<TrainTrainerSlider />
+<div id="train-trainer">
+  <TrainTrainerSlider />
+</div>
 
 
 <div className="h-10 bg-white"></div>
  {/* ================= Executive Events & Strategic Offsites ================= */}
 
- <ExecutiveSlider />
+ <div id="executive-events">
+  <ExecutiveSlider />
+</div>
 
       {/* ================= OUR WORK ================= */}
      {/* ================= OUR WORK ================= */}
