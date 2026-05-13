@@ -92,7 +92,7 @@ const handleGoogleLogin = async () => {
             Login to get full access &
           </h2>
           <p className="text-blue-600 text-sm">
-            be a part of the conversation ✍️
+            be a part of the conversations ✍️
           </p>
         </div>
 
