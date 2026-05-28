@@ -459,9 +459,11 @@ export default function Navbar() {
               {showDropdown && (
                 <div className="pl-4 space-y-2 pb-3">
                   {resources.map((resource, index) => (
-                    <div key={resource.title}>
-                      <div className="font-medium text-gray-700 py-2">{resource.title}</div>
-                      <div className="pl-4 space-y-1">
+                   <div key={resource.name}>
+<div className="font-medium text-gray-700 py-2">
+  {resource.name}
+</div>                     
+ <div className="pl-4 space-y-1">
                         {resource.items.map((item, i) => (
                           <div
                             key={i}
