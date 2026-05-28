@@ -463,16 +463,14 @@ export default function Navbar() {
 <div className="font-medium text-gray-700 py-2">
   {resource.name}
 </div>                     
- <div className="pl-4 space-y-1">
-                        {resource.items.map((item, i) => (
-                          <div
-                            key={i}
-                            className="text-gray-600 hover:text-blue-600 cursor-pointer py-1"
-                          >
-                            {item}
-                          </div>
-                        ))}
-                      </div>
+<a
+  href={resource.file}
+  target="_blank"
+  download
+  className="block text-gray-700 hover:text-blue-600 py-2"
+>
+  {resource.name}
+</a>
                     </div>
                   ))}
                 </div>
