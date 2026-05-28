@@ -25,6 +25,7 @@ export default function ContactModal({
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async () => {
 
