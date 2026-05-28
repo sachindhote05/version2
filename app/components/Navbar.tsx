@@ -378,32 +378,28 @@ export default function Navbar() {
 <div
   className="relative inline-block"
   onMouseEnter={() => setShowDropdown(true)}
-  onMouseLeave={() => {
-    setShowDropdown(false);
-    setActiveResource(null);
-  }}
+  onMouseLeave={() => setShowDropdown(false)}
 >
   <button className="text-gray-800 hover:text-blue-600 transition">
     Resources
   </button>
 
   {showDropdown && (
-  <div className="pl-4 space-y-2 pb-3">
-    {resources.map((resource, index) => (
-      <a
-        key={index}
-        href={resource.file}
-        target="_blank"
-        download
-        className="block text-gray-700 hover:text-blue-600 py-2"
-      >
-        {resource.name}
-      </a>
-    ))}
-  </div>
-)}
+    <div className="absolute top-full left-0 mt-2 bg-black text-white rounded-xl shadow-xl w-72 p-3 z-50">
+      {resources.map((item, index) => (
+        <a
+          key={index}
+          href={item.file}
+          target="_blank"
+          download
+          className="block px-3 py-3 rounded-lg hover:bg-gray-800 transition"
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  )}
 </div>
-
 
          <button
   onClick={() => setShowContactModal(true)}

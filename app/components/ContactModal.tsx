@@ -34,7 +34,7 @@ export default function ContactModal({
 
       await emailjs.send(
         "service_qbd7hus",
-        "template_th4u5q9",
+        "template_6y3j8bk",
         {
           name: formData.name,
           email: formData.email,
