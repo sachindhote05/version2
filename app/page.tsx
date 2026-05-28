@@ -137,7 +137,7 @@ useEffect(() => {
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
              <video
   className="w-full h-[280px] md:h-[300px] object-cover bg-black rounded-3xl"
-  src="/sample.mp4"
+  src="/sample1.mp4"
   autoPlay
   muted
   loop

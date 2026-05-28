@@ -61,7 +61,7 @@ const handleGoogleLogin = async () => {
     if (error.code === "auth/popup-closed-by-user") return;
 
     console.log(error);
-    setError("Login failed");
+    setError(error.code);
   }
   
   finally {
