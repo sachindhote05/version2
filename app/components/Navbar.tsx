@@ -8,6 +8,7 @@ import Link from "next/link"
 import { FaBell, FaUser } from "react-icons/fa";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
+import ContactModal from "./ContactModal";
 import { auth } from "@/lib/firebase";
 
 
@@ -15,17 +16,29 @@ import { auth } from "@/lib/firebase";
 
 const resources = [
   {
-    title: "Downloads",
-    items: ["POSH Act", "POSH Posters", "POSH Score Card", "Company E-Brochure"]
+    name: "POSH Act Download",
+    file: "/resources/posh-act.pdf",
   },
   {
-    title: "Blogs",
-    items: ["PoSH", "Inclusive Diversity", "Employee Assistance Program"]
+    name: "POSH FAQ's",
+    file: "/resources/posh-faq.docx",
   },
   {
-    title: "Newsletters",
-    items: ["Monthly Update", "HR Insights"]
-  }
+    name: "Mindset vs Skillset",
+    file: "/resources/mindset-vs-skillset.docx",
+  },
+  {
+    name: "POSH Poster 1",
+    file: "/resources/posh-poster1.jpg",
+  },
+  {
+    name: "POSH Poster 2",
+    file: "/resources/posh-poster2.jpg",
+  },
+  {
+    name: "Psychological Safety Assessment",
+    file: "/resources/psychological-safety.docx",
+  },
 ];
 
 const mobileMenuItems = [
@@ -43,6 +56,7 @@ export default function Navbar() {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeResource, setActiveResource] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -374,43 +388,31 @@ export default function Navbar() {
   </button>
 
   {showDropdown && (
-    <div className="absolute top-full left-0 mt-1 flex bg-black text-white rounded-xl shadow-xl">
+  <div className="absolute top-full left-0 mt-1 bg-black text-white rounded-xl shadow-xl w-72 p-4">
 
-      {/* LEFT SIDE */}
-      <div className="w-56 border-r border-gray-700">
-        {resources.map((r, index) => (
-          <div
-            key={r.title}
-            onMouseEnter={() => setActiveResource(index)}
-            className="px-4 py-3 cursor-pointer hover:bg-gray-700"
-          >
-            {r.title}
-          </div>
-        ))}
-      </div>
+    {resources.map((item, index) => (
+      <a
+        key={index}
+        href={item.file}
+        target="_blank"
+        download
+        className="block py-3 px-2 hover:bg-gray-800 rounded-lg transition"
+      >
+        {item.name}
+      </a>
+    ))}
 
-      {/* RIGHT SIDE */}
-      {activeResource !== null && (
-        <div className="w-64 p-4">
-          {resources[activeResource].items?.map((item, i) => (
-            <div
-              key={i}
-              className="py-2 hover:text-yellow-400 cursor-pointer"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      )}
-
-    </div>
-  )}
+  </div>
+)}
 </div>
 
 
-          <Link href="/contact" className="text-gray-800 hover:text-blue-600 transition">
-            Contact
-          </Link>
+         <button
+  onClick={() => setShowContactModal(true)}
+  className="text-gray-800 hover:text-blue-600 transition"
+>
+  Contact
+</button>
         </div>
       </div>
 
@@ -499,7 +501,10 @@ export default function Navbar() {
       <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
 
       {/* Signup Modal - Rendered Outside Nav */}
-      
+      <ContactModal
+  isOpen={showContactModal}
+  onClose={() => setShowContactModal(false)}
+/>
       <SignupModal isOpen={showSignupModal} onClose={() => setShowSignupModal(false)} />
     
     </>
