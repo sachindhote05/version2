@@ -13,6 +13,8 @@ export default function ConsultationModal({
   onClose,
 }: Props) {
 
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -145,8 +147,13 @@ export default function ConsultationModal({
   )
 
   .then(() => {
+    
+    setSuccessMessage("Consultation Booked Successfully ✅");
 
-    alert("Consultation Booked Successfully!");
+setTimeout(() => {
+  setSuccessMessage("");
+  onClose();
+}, 2000);
 
     onClose();
 
