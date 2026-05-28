@@ -388,20 +388,18 @@ export default function Navbar() {
   </button>
 
   {showDropdown && (
-  <div className="absolute top-full left-0 mt-1 bg-black text-white rounded-xl shadow-xl w-72 p-4">
-
-    {resources.map((item, index) => (
+  <div className="pl-4 space-y-2 pb-3">
+    {resources.map((resource, index) => (
       <a
         key={index}
-        href={item.file}
+        href={resource.file}
         target="_blank"
         download
-        className="block py-3 px-2 hover:bg-gray-800 rounded-lg transition"
+        className="block text-gray-700 hover:text-blue-600 py-2"
       >
-        {item.name}
+        {resource.name}
       </a>
     ))}
-
   </div>
 )}
 </div>
@@ -459,19 +457,15 @@ export default function Navbar() {
               {showDropdown && (
                 <div className="pl-4 space-y-2 pb-3">
                   {resources.map((resource, index) => (
-                   <div key={resource.name}>
-<div className="font-medium text-gray-700 py-2">
-  {resource.name}
-</div>                     
-<a
-  href={resource.file}
-  target="_blank"
-  download
-  className="block text-gray-700 hover:text-blue-600 py-2"
->
-  {resource.name}
-</a>
-                    </div>
+                    <a
+    key={index}
+    href={resource.file}
+    target="_blank"
+    download
+    className="block text-gray-700 hover:text-blue-600 py-2"
+  >
+    {resource.name}
+  </a>
                   ))}
                 </div>
               )}
@@ -485,13 +479,15 @@ export default function Navbar() {
               Book Consultation
             </Link>
 
-            <Link
-              href="/contact"
-              className="block text-gray-800 hover:text-blue-600 transition py-3"
-              onClick={closeMobileMenu}
-            >
-              Contact
-            </Link>
+            <button
+  onClick={() => {
+    setShowContactModal(true);
+    closeMobileMenu();
+  }}
+  className="block text-gray-800 hover:text-blue-600 transition py-3"
+>
+  Contact
+</button>
           </div>
         </div>
       )}
