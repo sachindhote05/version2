@@ -131,39 +131,39 @@ export default function ConsultationModal({
                 !formData.date ||
                 !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
               }
-              onClick={() => {
+             onClick={() => {
 
-                emailjs.send(
-                  "YOUR_SERVICE_ID",
-                  "YOUR_TEMPLATE_ID",
-                  {
-                    name: formData.name,
-                    email: formData.email,
-                    date: formData.date,
-                  },
-                  "YOUR_PUBLIC_KEY"
-                )
+  emailjs.send(
+    "service_qbd7hus",
+    "template_th4u5q9",
+    {
+      name: formData.name,
+      email: formData.email,
+      date: formData.date,
+    },
+    "vRKrJxnrHRZCndZDK"
+  )
 
-                .then(() => {
+  .then(() => {
 
-                  alert("Consultation Booked Successfully!");
+    alert("Consultation Booked Successfully!");
 
-                  onClose();
+    onClose();
 
-                  setFormData({
-                    name: "",
-                    email: "",
-                    date: "",
-                  });
+    setFormData({
+      name: "",
+      email: "",
+      date: "",
+    });
 
-                })
+  })
 
-                .catch((error) => {
-                  console.log(error);
-                  alert("Failed to send email");
-                });
+  .catch((error) => {
+    console.log(error);
+    alert("Failed to send email");
+  });
 
-              }}
+}}
               className={`flex-1 rounded-xl py-4 font-semibold transition-all duration-300
                 ${
                   !formData.name ||

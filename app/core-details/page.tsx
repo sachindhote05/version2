@@ -1,5 +1,6 @@
 ﻿"use client";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaUserTie, FaBrain, FaCrown, FaRocket, FaHeart, FaSearch, FaPenFancy, FaChalkboardTeacher, FaSyncAlt } from "react-icons/fa";
 
 export default function CoreDetailsPage() {
