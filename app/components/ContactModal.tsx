@@ -23,9 +23,9 @@ export default function ContactModal({
   });
 
   const [loading, setLoading] = useState(false);
-
+const [success, setSuccess] = useState(false);
   if (!isOpen) return null;
-  const [success, setSuccess] = useState(false);
+ 
 
   const handleSubmit = async () => {
 
@@ -54,9 +54,9 @@ export default function ContactModal({
         message: "",
       });
 
-      alert("Message Sent Successfully ✅");
+      setSuccess(true);
 
-      onClose();
+      
 
     } catch (error) {
 
@@ -155,7 +155,37 @@ export default function ContactModal({
         </div>
 
       </div>
+{/* SUCCESS POPUP */}
+{success && (
+  <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm">
 
+    <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl">
+
+      <div className="text-5xl mb-4">✅</div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mb-3">
+        Message Sent
+      </h2>
+
+      <p className="text-gray-600 mb-6">
+        Thank you for contacting us.
+        Our team will get back to you shortly.
+      </p>
+
+      <button
+        onClick={() => {
+          setSuccess(false);
+          onClose();
+        }}
+        className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"
+      >
+        Done
+      </button>
+
+    </div>
+
+  </div>
+)}
     </div>
   );
 }
