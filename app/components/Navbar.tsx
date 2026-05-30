@@ -21,11 +21,11 @@ const resources = [
   },
   {
     name: "POSH FAQ's",
-    file: "/resources/posh-faq.docx",
+    file: "/resources/posh-faq.pdf",
   },
   {
     name: "Mindset vs Skillset",
-    file: "/resources/mindset-vs-skillset.docx",
+    file: "/resources/mindset-vs-skillset.pdf",
   },
   {
     name: "POSH Poster 1",
@@ -37,7 +37,7 @@ const resources = [
   },
   {
     name: "Psychological Safety Assessment",
-    file: "/resources/psychological-safety.docx",
+    file: "/resources/psychological-safety.pdf",
   },
 ];
 
