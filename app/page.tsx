@@ -449,6 +449,11 @@ useEffect(() => {
         "/h.png",
         "/i.png",
         "/j.png",
+        "/l.png",
+        "/m.png",
+        "/n.png",
+        "/o.png",
+        "/p.png"
       ].map((logo, i) => (
 
         <div
