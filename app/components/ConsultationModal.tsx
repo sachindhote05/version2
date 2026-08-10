@@ -167,14 +167,14 @@ export default function ConsultationModal({
 
       emailjs.send(
         "service_qbd7hus",
-        "template_th4u5q9",
+        "template_al1trd6",
         {
           name: formData.name,
           email: formData.email,
           date: formData.date,
           time: formData.time,
         },
-        "vRKrJxnrHRZCndZDK"
+        "iDReyH37HkUCcGnDE"
       )
 
       .then(() => {
