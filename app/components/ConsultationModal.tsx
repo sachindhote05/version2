@@ -16,10 +16,13 @@ export default function ConsultationModal({
   const [successMessage, setSuccessMessage] = useState("");
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    date: "",
-  });
+  name: "",
+  email: "",
+  date: "",
+  time: "",   // 👈 ADD THIS
+});
+
+ 
   const [success, setSuccess] = useState(false);
 
   if (!isOpen) return null;
@@ -113,76 +116,100 @@ export default function ConsultationModal({
               className="w-full rounded-xl bg-white/10 border border-white/10 px-5 py-4 text-white outline-none"
             />
           </div>
+          {/* TIME SLOT */}
+<div>
+  <label className="block text-white mb-2">
+    Time Slot
+  </label>
+
+  <select
+    value={formData.time}
+    onChange={(e) =>
+      setFormData({
+        ...formData,
+        time: e.target.value,
+      })
+    }
+   className="w-full rounded-xl bg-white/10 border border-white/10 px-5 py-4 text-white outline-none appearance-none"
+   >
+  <option value="" className="text-black">Select a time</option>
+<option value="10:00 AM" className="text-black">10:00 AM</option>
+<option value="11:00 AM" className="text-black">11:00 AM</option>
+<option value="12:00 PM" className="text-black">12:00 PM</option>
+<option value="2:00 PM" className="text-black">2:00 PM</option>
+<option value="3:00 PM" className="text-black">3:00 PM</option>
+<option value="4:00 PM" className="text-black">4:00 PM</option>
+  </select>
+</div>
 
           {/* BUTTONS */}
-          <div className="flex gap-4 pt-4">
+         <div className="flex gap-4 pt-4">
 
-            {/* CANCEL */}
-            <button
-              onClick={onClose}
-              className="flex-1 rounded-xl bg-white/10 py-4 text-white font-semibold"
-            >
-              Cancel
-            </button>
+  {/* CANCEL */}
+  <button
+    onClick={onClose}
+    className="flex-1 rounded-xl bg-white/10 py-4 text-white font-semibold"
+  >
+    Cancel
+  </button>
 
-            {/* SUBMIT */}
-            <button
-              type="button"
-              disabled={
-                !formData.name ||
-                !formData.email ||
-                !formData.date ||
-                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-              }
-             onClick={() => {
+  {/* SUBMIT */}
+  <button
+    type="button"
+    disabled={
+      !formData.name ||
+      !formData.email ||
+      !formData.date ||
+      !formData.time ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    }
+    onClick={() => {
 
-  emailjs.send(
-    "service_qbd7hus",
-    "template_th4u5q9",
-    {
-      name: formData.name,
-      email: formData.email,
-      date: formData.date,
-    },
-    "vRKrJxnrHRZCndZDK"
-  )
+      emailjs.send(
+        "service_qbd7hus",
+        "template_th4u5q9",
+        {
+          name: formData.name,
+          email: formData.email,
+          date: formData.date,
+          time: formData.time,
+        },
+        "vRKrJxnrHRZCndZDK"
+      )
 
-  .then(() => {
-    
-    setSuccess(true);
+      .then(() => {
+        setSuccess(true);
 
+        setFormData({
+          name: "",
+          email: "",
+          date: "",
+          time: "",
+        });
+      })
 
-   
+      .catch((error) => {
+        console.log(error);
+        alert("Failed to send email");
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      date: "",
-    });
+    }}
+    className={`flex-1 rounded-xl py-4 font-semibold transition-all duration-300
+      ${
+        !formData.name ||
+        !formData.email ||
+        !formData.date ||
+        !formData.time ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+          ? "bg-gray-500 cursor-not-allowed text-white"
+          : "bg-gradient-to-r from-cyan-400 to-blue-500 text-black hover:scale-105"
+      }
+    `}
+  >
+    Submit
+  </button>
 
-  })
-
-  .catch((error) => {
-    console.log(error);
-    alert("Failed to send email");
-  });
-
-}}
-              className={`flex-1 rounded-xl py-4 font-semibold transition-all duration-300
-                ${
-                  !formData.name ||
-                  !formData.email ||
-                  !formData.date ||
-                  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-                    ? "bg-gray-500 cursor-not-allowed text-white"
-                    : "bg-gradient-to-r from-cyan-400 to-blue-500 text-black hover:scale-105"
-                }
-              `}
-            >
-              Submit
-            </button>
-
-          </div>
+</div>
 
         </div>
 
