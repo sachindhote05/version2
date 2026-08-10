@@ -372,11 +372,10 @@ useEffect(() => {
 
             {/* Thumbnail */}
             <img
-              src={`https://www.youtube.com/watch?v=${video.id}`}
-              alt={video.title}
-              className="w-full h-full object-contain bg-black transition duration-500 group-hover:scale-110"
-            />
-
+  src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+  alt={video.title}
+  className="w-full h-full object-cover bg-black transition duration-500 group-hover:scale-110"
+/>
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
 
