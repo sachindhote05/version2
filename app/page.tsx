@@ -15,7 +15,7 @@ import ClientFeedbackScroll from "./components/ClientFeedbackScroll";
 import TrainTrainerSlider from "./components/TrainTrainerSlider";
 import ExecutiveSlider from "./components/ExecutiveSlider";
 import ConsultationModal from "./components/ConsultationModal";
-
+import WorkGlimpses from "./components/WorkGlimpses";
 
 export default function Home() 
 {
@@ -523,6 +523,8 @@ useEffect(() => {
 
 
 <ClientFeedbackScroll />
+
+<WorkGlimpses />
 
 <section className="py-10 bg-white">
   <div className="max-w-5xl mx-auto px-6">
