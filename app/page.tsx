@@ -31,6 +31,18 @@ const words = [
   const fullText = "Empowering Minds";
   const [displayText, setDisplayText] = useState("");
   const [open, setOpen] = useState(false);
+  const [selectedWorkVideo, setSelectedWorkVideo] = useState<{
+    title: string;
+    src: string;
+  } | null>(null);
+
+  const workVideos = [
+    { title: "Corporate Training Session", src: "/videos/video1.mp4" },
+    { title: "Leadership Workshop", src: "/videos/video2.mp4" },
+    { title: "POSH Awareness Program", src: "/videos/video3.mp4" },
+    { title: "Train The Trainer Event", src: "/videos/video4.mp4" },
+    { title: "E-Learning Module Demo", src: "/videos/video5.mp4" },
+  ];
 
   const videos = useMemo<string[]>(() => [
   "/sample.mp4"
@@ -80,6 +92,23 @@ useEffect(() => {
 
     return () => clearInterval(interval);
   }, [videos.length]);
+
+  // Close the Our Work video popup with Escape and prevent background scrolling.
+  useEffect(() => {
+    if (!selectedWorkVideo) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedWorkVideo(null);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [selectedWorkVideo]);
 
   return (
     <main className="overflow-x-hidden pt-6">
@@ -345,75 +374,93 @@ useEffect(() => {
 </div>
 
       {/* ================= OUR WORK ================= */}
-     {/* ================= OUR WORK ================= */}
 <section className="py-12 bg-white">
   <div className="max-w-7xl mx-auto px-6">
-
     <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-700">
       Our Work
     </h2>
 
     <div className="grid md:grid-cols-5 gap-8">
-
-      {[
-        { id: "s6XEPyIUNhA", title: "Corporate Training Session" },
-        { id: "KDV9nJHEt6c", title: "Leadership Workshop" },
-        { id: "61d7ZAb90gY", title: "POSH Awareness Program" },
-        { id: "8NDiwqv00uE", title: "Train The Trainer Event" },
-        { id: "yJeMUB6BeK0", title: "E-Learning Module Demo" },
-      ].map((video, i) => (
-        <div
-          key={i}
-          className="relative group rounded-2xl overflow-hidden shadow-lg
-                     transform transition duration-500 hover:-translate-y-3 hover:shadow-2xl"
+      {workVideos.map((video, i) => (
+        <button
+          type="button"
+          key={video.src}
+          onClick={() => setSelectedWorkVideo(video)}
+          aria-label={`Play ${video.title}`}
+          className="relative group block w-full h-60 rounded-2xl overflow-hidden shadow-lg
+                     transform transition duration-500 hover:-translate-y-3 hover:shadow-2xl
+                     focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500"
         >
+          <video
+            src={video.src}
+            muted
+            loop
+            autoPlay
+            playsInline
+            preload="metadata"
+            aria-label={video.title}
+            className="w-full h-full object-cover bg-black transition duration-500 group-hover:scale-110"
+          />
 
-          <div className="relative w-full h-60">
+          {/* Overlay */}
+          <span className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition" />
 
-            {/* Thumbnail */}
-            <img
-  src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-  alt={video.title}
-  className="w-full h-full object-cover bg-black transition duration-500 group-hover:scale-110"
-/>
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
-
-            {/* Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition flex items-center justify-center">
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="red"
-    className="w-8 h-8"
-  >
-    <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C15.8 4.8 12 4.8 12 4.8h0s-3.8 0-6.9.3c-.4.1-1.3.1-2.1.9-.6.6-.8 2-.8 2S2 9.6 2 11.3v1.5c0 1.7.2 3.3.2 3.3s.2 1.4.8 2c.8.8 1.9.8 2.4.9 1.7.2 6.6.3 6.6.3s3.8 0 6.9-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22 9.6 21.8 8 21.8 8zM9.8 14.5V9.5l5 2.5-5 2.5z" />
-  </svg>
-
-</div>
-            </div>
-
-            {/* CLICK → YOUTUBE */}
-            <a
-              href={`https://www.youtube.com/watch?v=${video.id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute inset-0"
-            ></a>
-
-          </div>
-
-          
-
-        </div>
+          {/* Play Button */}
+          <span className="absolute inset-0 flex items-center justify-center">
+            <span className="bg-white/90 rounded-full w-16 h-16 group-hover:scale-110 transition flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="blue"
+                className="w-8 h-8"
+                aria-hidden="true"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </span>
+        </button>
       ))}
-
     </div>
-
   </div>
 </section>
+
+{/* ================= OUR WORK VIDEO MODAL ================= */}
+{selectedWorkVideo && (
+  <div
+    role="dialog"
+    aria-modal="true"
+    aria-label={selectedWorkVideo.title}
+    onClick={() => setSelectedWorkVideo(null)}
+    className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
+  >
+    <div
+      className="relative w-full max-w-5xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <button
+        type="button"
+        onClick={() => setSelectedWorkVideo(null)}
+        aria-label="Close video"
+        className="absolute -top-12 right-0 text-white text-4xl leading-none hover:text-gray-300 transition"
+      >
+        &times;
+      </button>
+
+      <video
+        key={selectedWorkVideo.src}
+        src={selectedWorkVideo.src}
+        controls
+        autoPlay
+        playsInline
+        className="w-full max-h-[80vh] rounded-xl bg-black"
+      />
+      <h3 className="text-white text-center mt-4 text-xl font-semibold">
+        {selectedWorkVideo.title}
+      </h3>
+    </div>
+  </div>
+)}
 <section className="py-12 bg-white">
   <div className="max-w-7xl mx-auto px-6 text-center">
 
