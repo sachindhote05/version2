@@ -226,9 +226,7 @@ We are UNIQUE to use Coaching, Training, Counselling, Healing & Therapeutic inte
       {/* MEET OUR FOUNDER VIDEO */}
       <section className="bg-white py-12">
         <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="mb-8 text-3xl font-bold text-[#1E3A8A] underline md:text-4xl">
-            Meet Our Founder
-          </h2>
+          
           <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-black shadow-xl">
             <video
               className="h-[280px] w-full bg-black object-contain md:h-[480px]"
