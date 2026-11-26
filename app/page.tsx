@@ -156,28 +156,29 @@ export default function Home()
 
       </div>
 
-      {/* ABOUT OUR FOUNDER — moved below the hero cards */}
-      <section className="bg-white py-8">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="rounded-2xl border-2 border-[#1E3A8A] bg-white p-5 shadow-sm md:p-7">
-            <div className="grid items-center gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      {/* FOUNDER PROFILE + VIDEO — balanced 50/50 layout */}
+      <section className="relative bg-white py-10 md:py-14">
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 px-6 md:grid-cols-2">
+          {/* Founder card */}
+          <div className="h-full rounded-2xl border border-[#1E3A8A] bg-[#1E3A8A] p-4 shadow-xl md:p-5">
+            <div className="grid h-full grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] items-center gap-4">
               <img
                 src="/founder.jpg"
-                alt="Founder"
-                className="mx-auto w-full max-w-[260px] rounded-xl object-cover shadow-sm"
+                alt="Dr. Shilpi Gupta"
+                className="mx-auto w-full max-w-[150px] rounded-xl object-cover shadow-sm md:max-w-[170px]"
               />
 
               <div>
-                <h2 className="mb-1 text-2xl font-semibold text-[#1E3A8A]">
+                <h2 className="mb-1 text-xl font-semibold text-white md:text-2xl">
                   About Our Founder
                 </h2>
-                <h3 className="mb-1 text-lg font-bold text-gray-900">
+                <h3 className="mb-1 text-lg font-bold text-white">
                   Dr. Shilpi Gupta
                 </h3>
-                <p className="mb-4 text-sm font-bold leading-relaxed text-[#1E3A8A]">
+                <p className="mb-3 text-sm font-bold leading-relaxed text-blue-100">
                   Founder &amp; Director - Version2 | Corporate Transformation and Workplace Safety Expert
                 </p>
-                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700 md:text-base">
+                <ul className="list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-white">
                   <li>17 years of corporate wellness expertise.</li>
                   <li>Meant to design sustainable and long-lasting results.</li>
                   <li>3 STEP Pattern Framework Model delivering 88% results.</li>
@@ -189,15 +190,11 @@ export default function Home()
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* MEET OUR FOUNDER VIDEO */}
-      <section className="bg-white py-8">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl bg-black shadow-xl">
+          {/* Founder video */}
+          <div className="flex h-full min-h-[280px] aspect-video items-center justify-center overflow-hidden rounded-2xl border border-blue-200 bg-gradient-to-br from-[#1E3A8A] to-[#0F172A] p-2 shadow-xl md:min-h-0">
             <video
-              className="h-[200px] w-full bg-black object-contain sm:h-[260px] md:h-[340px]"
+              className="h-full w-full rounded-xl bg-[#0F172A] object-contain"
               src="/sample1.mp4"
               autoPlay
               muted
@@ -269,17 +266,18 @@ export default function Home()
 
 
 {/* 🔥 WHAT MAKES US DIFFERENT */}
+{/* WHAT MAKES US DIFFERENT */}
 <section className="py-10 md:py-12 bg-gradient-to-r from-[#1E3A8A] to-[#0F172A] text-white text-center">
   <div className="max-w-3xl mx-auto px-6">
 
-    <h2 
+    <h2
       data-aos="fade-up"
       className="text-4xl font-bold mb-6"
     >
       What Makes Us Different
     </h2>
 
-    <p 
+    <p
       data-aos="fade-up"
       data-aos-delay="200"
       className="text-base mb-6"
@@ -287,7 +285,7 @@ export default function Home()
       We don’t just focus on skill development
     </p>
 
-    <p 
+    <p
       data-aos="fade-up"
       data-aos-delay="400"
       className="text-base mb-6"
@@ -295,7 +293,7 @@ export default function Home()
       Our approach works at the level of mindset, identity, and behavioral patterns to create long-term transformation.
     </p>
 
-    <p 
+    <p
       data-aos="fade-up"
       data-aos-delay="600"
       className="text-base"
