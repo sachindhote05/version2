@@ -110,36 +110,30 @@ export default function Home()
           {/* CTA BUTTON */}
 
           {/* TWO HERO SERVICE CARDS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-5xl mx-auto text-left">
-            <div className="rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-2xl">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 3 8-8" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 6h6v6" />
-                </svg>
-              </div>
-              <h2 className="mb-3 text-xl font-semibold text-white md:text-2xl">Corporate Transformation</h2>
-              <p className="mb-4 text-sm leading-relaxed text-white/80 md:text-base">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 max-w-4xl mx-auto text-left">
+            <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 text-left shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <h2 className="mb-2 text-lg font-semibold text-[#1E3A8A] md:text-xl">Corporate Transformation</h2>
+              <p className="mb-4 text-sm leading-relaxed text-gray-700">
                 Leadership development, behavioural training, performance coaching, communication and culture interventions.
               </p>
-              <a href="#services" className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-cyan-200">
+              <a href="#services" className="mb-4 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 font-semibold text-[#1E3A8A] transition-all duration-300 hover:bg-[#1E3A8A] hover:text-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E3A8A] focus-visible:ring-offset-2">
                 Explore Services <span aria-hidden="true">→</span>
+              </a>
+              <a href="/Brochure.pdf" download className="mt-auto inline-flex w-fit items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:scale-105">
+                Download Brochure
               </a>
             </div>
 
-            <div className="rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-2xl">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
-                </svg>
-              </div>
-              <h2 className="mb-3 text-xl font-semibold text-white md:text-2xl">Workplace Safety &amp; Compliance</h2>
-              <p className="mb-4 text-sm leading-relaxed text-white/80 md:text-base">
+            <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-5 text-left shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <h2 className="mb-2 text-lg font-semibold text-[#1E3A8A] md:text-xl">Workplace Safety &amp; Compliance</h2>
+              <p className="mb-4 text-sm leading-relaxed text-gray-700">
                 POSH, POCSO, IC training, external member services, workplace ethics and psychological safety.
               </p>
-              <a href="#compliance-safety" className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-cyan-200">
+              <a href="#compliance-safety" className="mb-4 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 font-semibold text-[#1E3A8A] transition-all duration-300 hover:bg-[#1E3A8A] hover:text-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E3A8A] focus-visible:ring-offset-2">
                 Explore POSH Services <span aria-hidden="true">→</span>
+              </a>
+              <a href="/Brochure.pdf" download className="mt-auto inline-flex w-fit items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:scale-105">
+                Download Brochure
               </a>
             </div>
           </div>
@@ -162,74 +156,48 @@ export default function Home()
 
       </div>
 
-      {/* DOWNLOAD BROCHURE — placed below the blue hero section */}
-      <div className="relative z-10 -mt-2 flex justify-center bg-white px-4 pb-8 pt-6">
-        <a
-          href="/Brochure.pdf"
-          download
-          className="inline-block rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 px-7 py-3 font-semibold text-white shadow-md transition hover:scale-105"
-        >
-          Download Brochure ☁️
-        </a>
-      </div>
-
       {/* ABOUT OUR FOUNDER — moved below the hero cards */}
-      {/* ================= ABOUT FOUNDER ================= */}
-  <section className="py-12 bg-white">
-  <div className="max-w-full mx-auto px-6">
+      <section className="bg-white py-8">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="rounded-2xl border-2 border-[#1E3A8A] bg-white p-5 shadow-sm md:p-7">
+            <div className="grid items-center gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+              <img
+                src="/founder.jpg"
+                alt="Founder"
+                className="mx-auto w-full max-w-[260px] rounded-xl object-cover shadow-sm"
+              />
 
-    {/* BOX */}
-    <div className="border-4 border-[#1E3A8A] rounded-3xl p-10 bg-white shadow-sm">
-
-      <div className="grid md:grid-cols-2 gap-10 items-center">
-
-        {/* IMAGE */}
-        <img
-          src="/founder.jpg"
-          alt="Founder"
-          className="rounded-2xl shadow-md w-full max-w-md mx-auto"
-        />
-
-        {/* CONTENT */}
-        <div>
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#1E3A8A] mb-2 underline">
-            About Our Founder
-          </h2>
-
-          <h3 className="text-xl font-bold text-[#1E3A8A] mb-4">
-            Dr. Shilpi Gupta
-          </h3>
-
-          <p className="text-gray-700 mb-8">
-           Version2 is inspired by the eagle’s extraordinary journey of self-renewal, the eagle, sheds its old feathers to fly higher, breaks its beak to have newer, changes itself to soar highest and achieve maximum potential. we embrace the belief that to soar, you must first rise above the storm.
-          </p>
-
-          <p className="text-gray-700 mb-8">
-           We empower individuals & organizations to undergo Transformational Change. We guide you through the process to unlock your Version2.
-          </p>
-
-          <p className="text-gray-700 mb-8">
-            We help our clients break free from limiting beliefs & reprogram their mindset for growth. At Version2, it’s change followed by transformation that takes you to greater heights.
-          </p>
-
-          <p className="text-gray-700">
-We are UNIQUE to use Coaching, Training, Counselling, Healing & Therapeutic interventions at various platforms to empower individuals and organizations discover their true purpose by shared accountability, time bound ROI Based coaching and training to transform every thing around them, Health, Relationship, Career and Money.          </p>
+              <div>
+                <h2 className="mb-1 text-2xl font-semibold text-[#1E3A8A]">
+                  About Our Founder
+                </h2>
+                <h3 className="mb-1 text-lg font-bold text-gray-900">
+                  Dr. Shilpi Gupta
+                </h3>
+                <p className="mb-4 text-sm font-bold leading-relaxed text-[#1E3A8A]">
+                  Founder &amp; Director - Version2 | Corporate Transformation and Workplace Safety Expert
+                </p>
+                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700 md:text-base">
+                  <li>17 years of corporate wellness expertise.</li>
+                  <li>Meant to design sustainable and long-lasting results.</li>
+                  <li>3 STEP Pattern Framework Model delivering 88% results.</li>
+                  <li>Psychology-led leadership interventions.</li>
+                  <li>Corporate behaviour and performance plans.</li>
+                  <li>POSH consultant and certified POSH trainer.</li>
+                  <li>Building safe and compliant workplaces.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* MEET OUR FOUNDER VIDEO */}
-      <section className="bg-white py-12">
+      <section className="bg-white py-8">
         <div className="mx-auto max-w-5xl px-6 text-center">
-          
-          <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-black shadow-xl">
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl bg-black shadow-xl">
             <video
-              className="h-[280px] w-full bg-black object-contain md:h-[480px]"
+              className="h-[200px] w-full bg-black object-contain sm:h-[260px] md:h-[340px]"
               src="/sample1.mp4"
               autoPlay
               muted
