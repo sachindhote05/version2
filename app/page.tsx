@@ -1,10 +1,9 @@
 "use client"
 
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState } from "react"
 import AOS from "aos"
 import ServicesSlider from "./components/ServicesSlider"
 import { motion } from "framer-motion";
-import Link from "next/link"
 import TypewriterText from "./components/TypewriterText";
 import CoreSlider from "./components/CoreSlider";
 import { FaWhatsapp } from "react-icons/fa";
@@ -20,16 +19,7 @@ import WorkGlimpses from "./components/WorkGlimpses";
 export default function Home() 
 {
 
-const words = [
-     "Lives",
-    "Skills",
-    "Performance",
-    "Business",
-    "Growth"
-];
 
-  const fullText = "Empowering Minds";
-  const [displayText, setDisplayText] = useState("");
   const [open, setOpen] = useState(false);
   const [selectedWorkVideo, setSelectedWorkVideo] = useState<{
     title: string;
@@ -44,22 +34,7 @@ const words = [
     { title: "E-Learning Module Demo", src: "/videos/video5.mp4" },
   ];
 
-  const videos = useMemo<string[]>(() => [
-  "/sample.mp4"
-], []);
 
-
-  const [videoIndex, setVideoIndex] = useState(0);
-
- const [index, setIndex] = useState(0);
-
-useEffect(() => {
-  const interval = setInterval(() => {
-    setIndex((prev) => (prev + 1) % words.length);
-  }, 1200);
-
-  return () => clearInterval(interval);
-}, [words.length]);
 
   useEffect(() => {
     AOS.init({
@@ -67,31 +42,6 @@ useEffect(() => {
       once: false,
     });
   }, []);
-
-  useEffect(() => {
-    let i = 0;
-
-    const typing = setInterval(() => {
-      setDisplayText(fullText.slice(0, i + 1));
-      i++;
-
-      if (i === fullText.length) {
-        clearInterval(typing);
-      }
-    }, 40);
-
-    return () => clearInterval(typing);
-  }, []);
-
-  useEffect(() => {
-    if (videos.length === 0) return;
-    
-    const interval = setInterval(() => {
-      setVideoIndex((prev) => (prev + 1) % videos.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [videos.length]);
 
   // Close the Our Work video popup with Escape and prevent background scrolling.
   useEffect(() => {
@@ -119,11 +69,10 @@ useEffect(() => {
       {/* 🔥 HERO SECTION */}
       <div className="relative bg-gradient-to-r from-[#1e3a8a] to-[#0f172a] text-white pt-32 pb-20 px-6 overflow-visible">
         
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
 
           {/* HEADING */}
-          <h1 className="text-4xl md:text-4
-          xl font-bold leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
             Empowering Minds, Elevating{" "}
            <TypewriterText words={[" Lives", " Skills", " Performance", " Leaders"]} />
           </h1>
@@ -132,7 +81,7 @@ useEffect(() => {
         
 
           {/* TRUST STRIP - STATS */}
-          <div className="mt-10 py-">
+          <div className="mt-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
                 { number: 98, suffix: "%", label: "Client Satisfaction" },
@@ -159,36 +108,43 @@ useEffect(() => {
           </div>
 
           {/* CTA BUTTON */}
-       
 
-          {/* VIDEO SECTION - OVERLAPS CURVE */}
-          <div className="relative mt-8 z-30">
-            <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-3xl">
-             <video
-  className="w-full h-[280px] md:h-[300px] object-cover bg-black rounded-3xl"
-  src="/sample1.mp4"
-  autoPlay
-  muted
-  loop
-  playsInline
-  controls
-/>
+          {/* TWO HERO SERVICE CARDS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-5xl mx-auto text-left">
+            <div className="rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-2xl">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 3 8-8" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 6h6v6" />
+                </svg>
+              </div>
+              <h2 className="mb-3 text-xl font-semibold text-white md:text-2xl">Corporate Transformation</h2>
+              <p className="mb-4 text-sm leading-relaxed text-white/80 md:text-base">
+                Leadership development, behavioural training, performance coaching, communication and culture interventions.
+              </p>
+              <a href="#services" className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-cyan-200">
+                Explore Services <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <div className="rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-2xl">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <h2 className="mb-3 text-xl font-semibold text-white md:text-2xl">Workplace Safety &amp; Compliance</h2>
+              <p className="mb-4 text-sm leading-relaxed text-white/80 md:text-base">
+                POSH, POCSO, IC training, external member services, workplace ethics and psychological safety.
+              </p>
+              <a href="#compliance-safety" className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-cyan-200">
+                Explore POSH Services <span aria-hidden="true">→</span>
+              </a>
             </div>
           </div>
-          <div className="mt-4 flex justify-center">
-<a
-  href="/Brochure.pdf"
-  download
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block px-6 py-3 rounded-full text-white font-semibold 
-  bg-gradient-to-r from-purple-500 to-indigo-500 
-  hover:scale-105 transition"
->
-  Download Brochure ☁️
-</a>  
-</div>
- </div>
+
+        </div>
 
         {/* U-SHAPED CURVE - WHITE BOTTOM WAVE */}
        <div className="absolute bottom-0 left-0 w-full z-0 overflow-hidden pointer-events-none">
@@ -205,6 +161,88 @@ useEffect(() => {
         </div>
 
       </div>
+
+      {/* DOWNLOAD BROCHURE — placed below the blue hero section */}
+      <div className="relative z-10 -mt-2 flex justify-center bg-white px-4 pb-8 pt-6">
+        <a
+          href="/Brochure.pdf"
+          download
+          className="inline-block rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 px-7 py-3 font-semibold text-white shadow-md transition hover:scale-105"
+        >
+          Download Brochure ☁️
+        </a>
+      </div>
+
+      {/* ABOUT OUR FOUNDER — moved below the hero cards */}
+      {/* ================= ABOUT FOUNDER ================= */}
+  <section className="py-12 bg-white">
+  <div className="max-w-full mx-auto px-6">
+
+    {/* BOX */}
+    <div className="border-4 border-[#1E3A8A] rounded-3xl p-10 bg-white shadow-sm">
+
+      <div className="grid md:grid-cols-2 gap-10 items-center">
+
+        {/* IMAGE */}
+        <img
+          src="/founder.jpg"
+          alt="Founder"
+          className="rounded-2xl shadow-md w-full max-w-md mx-auto"
+        />
+
+        {/* CONTENT */}
+        <div>
+          <h2 className="text-2xl md:text-3xl font-semibold text-[#1E3A8A] mb-2 underline">
+            About Our Founder
+          </h2>
+
+          <h3 className="text-xl font-bold text-[#1E3A8A] mb-4">
+            Dr. Shilpi Gupta
+          </h3>
+
+          <p className="text-gray-700 mb-8">
+           Version2 is inspired by the eagle’s extraordinary journey of self-renewal, the eagle, sheds its old feathers to fly higher, breaks its beak to have newer, changes itself to soar highest and achieve maximum potential. we embrace the belief that to soar, you must first rise above the storm.
+          </p>
+
+          <p className="text-gray-700 mb-8">
+           We empower individuals & organizations to undergo Transformational Change. We guide you through the process to unlock your Version2.
+          </p>
+
+          <p className="text-gray-700 mb-8">
+            We help our clients break free from limiting beliefs & reprogram their mindset for growth. At Version2, it’s change followed by transformation that takes you to greater heights.
+          </p>
+
+          <p className="text-gray-700">
+We are UNIQUE to use Coaching, Training, Counselling, Healing & Therapeutic interventions at various platforms to empower individuals and organizations discover their true purpose by shared accountability, time bound ROI Based coaching and training to transform every thing around them, Health, Relationship, Career and Money.          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+      {/* MEET OUR FOUNDER VIDEO */}
+      <section className="bg-white py-12">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <h2 className="mb-8 text-3xl font-bold text-[#1E3A8A] underline md:text-4xl">
+            Meet Our Founder
+          </h2>
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-black shadow-xl">
+            <video
+              className="h-[280px] w-full bg-black object-contain md:h-[480px]"
+              src="/sample1.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              preload="metadata"
+            />
+          </div>
+        </div>
+      </section>
 
   
  <section className="pt-6 pb-20 bg-white">
@@ -572,54 +610,7 @@ useEffect(() => {
       >
         <FaWhatsapp />
       </a>
-      {/* ================= ABOUT FOUNDER ================= */}
-  <section className="py-12 bg-white">
-  <div className="max-w-full mx-auto px-6">
 
-    {/* BOX */}
-    <div className="border-4 border-[#1E3A8A] rounded-3xl p-10 bg-white shadow-sm">
-
-      <div className="grid md:grid-cols-2 gap-10 items-center">
-
-        {/* IMAGE */}
-        <img
-          src="/founder.jpg"
-          alt="Founder"
-          className="rounded-2xl shadow-md w-full max-w-md mx-auto"
-        />
-
-        {/* CONTENT */}
-        <div>
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#1E3A8A] mb-2 underline">
-            About Our Founder
-          </h2>
-
-          <h3 className="text-xl font-bold text-[#1E3A8A] mb-4">
-            Dr. Shilpi Gupta
-          </h3>
-
-          <p className="text-gray-1000 mb-8">
-           Version2 is inspired by the eagle’s extraordinary journey of self-renewal, the eagle, sheds its old feathers to fly higher, breaks its beak to have newer, changes itself to soar highest and achieve maximum potential. we embrace the belief that to soar, you must first rise above the storm.
-          </p>
-
-          <p className="text-gray-1000 mb-8">
-           We empower individuals & organizations to undergo Transformational Change. We guide you through the process to unlock your Version2.
-          </p>
-
-          <p className="text-gray-1000 mb-8">
-            We help our clients break free from limiting beliefs & reprogram their mindset for growth. At Version2, it’s change followed by transformation that takes you to greater heights.
-          </p>
-
-          <p className="text-gray-1000">
-We are UNIQUE to use Coaching, Training, Counselling, Healing & Therapeutic interventions at various platforms to empower individuals and organizations discover their true purpose by shared accountability, time bound ROI Based coaching and training to transform every thing around them, Health, Relationship, Career and Money.          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
 
 
     </main>
